@@ -45,3 +45,4 @@ actions/copy-carbon/output/*
 packages/styles/styles.css
 packages/website/types/*
 packages/react/.temp
+packages/react/stats.html
