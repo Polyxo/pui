@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.2 (2023-12-11)
+
+
+### Bug Fixes
+
+* **react:** ignore stats in build ([0085db3](https://github.com/wfp/designsystem/commit/0085db3e659a70d839f8832ac6a6ec6e1060f7e7))
+
+
+
+
+
 ## 0.3.1 (2023-12-11)
 
 **Note:** Version bump only for package @wfp/themes-core

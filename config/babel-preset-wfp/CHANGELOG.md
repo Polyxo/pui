@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.4.2 (2023-12-11)
+
+
+### Bug Fixes
+
+* **react:** ignore stats in build ([0085db3](https://github.com/wfp-design-system/wfp/commit/0085db3e659a70d839f8832ac6a6ec6e1060f7e7))
+
+
+
+
+
 ## 0.4.1 (2023-12-11)
 
 **Note:** Version bump only for package @un/babel-preset-wfp
