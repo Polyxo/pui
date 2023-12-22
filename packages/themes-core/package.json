@@ -20,18 +20,16 @@
   "type": "module",
   "scripts": {
     "build": "node --stack-size=9900 runTheme.js",
-    "build:legacy": "style-dictionary build --config ./config.js",
-    "generate-theme": "node config.js",
     "filter:theme": "node filterJson.js",
-    "token-transform": "node ../../node_modules/token-transformer tokens/tokens-new.json.raw tokens/design-tokens.tokens.new.json"
+    "sync:tokens": "node syncTokens.js",
+    "build:tokens": "yarn sync:tokens && yarn filter:theme && yarn build"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "token-transformer": "^0.0.33"
-  },
-  "dependencies": {
+    "dotenv": "^16.3.1",
+    "token-transformer": "^0.0.33",
     "change-case": "^5.2.0",
     "deepdash": "^5.3.9",
     "lodash": "^4.17.21",

@@ -2,8 +2,40 @@
 
 The themes core generates design tokens by using [Style Dictionary](https://amzn.github.io/style-dictionary/#).
 
-Generate tokens
-`npm run build`
+### Development
+
+### `build`
+
+```bash
+yarn build
+```
+
+Builds themes from existing raw tokens.
+
+### `build:tokens`
+
+```bash
+yarn build:tokens
+```
+
+- **Purpose**: A composite command that sequentially executes `sync:tokens`, `filter:theme`, and `build`. This script ensures a comprehensive update and build process, encompassing the synchronization of design tokens, filtering of theme data, and the final theme build.
+- **When to Use**: Use this script for a complete end-to-end update and build process involving design tokens and theme data, ensuring all components are up-to-date and in sync.
+
+### `sync:tokens`
+
+```bash
+yarn sync:tokens
+```
+
+Downloads the latest `tokens.json` (Figma Tokens) from the tokens repository.
+
+### `filter:theme`
+
+```bash
+yarn filter:theme
+```
+
+Prepares raw tokens and cleans them up.
 
 ### Using existing theme
 
