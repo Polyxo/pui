@@ -18,8 +18,7 @@ Builds themes from existing raw tokens.
 yarn build:tokens
 ```
 
-- **Purpose**: A composite command that sequentially executes `sync:tokens`, `filter:theme`, and `build`. This script ensures a comprehensive update and build process, encompassing the synchronization of design tokens, filtering of theme data, and the final theme build.
-- **When to Use**: Use this script for a complete end-to-end update and build process involving design tokens and theme data, ensuring all components are up-to-date and in sync.
+A composite command that sequentially executes `sync:tokens`, `filter:theme`, and `build`. This script ensures a comprehensive update and build process, encompassing the synchronization of design tokens, filtering of theme data, and the final theme build.
 
 ### `sync:tokens`
 
