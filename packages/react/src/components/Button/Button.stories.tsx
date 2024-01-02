@@ -53,6 +53,7 @@ export const PrimaryButton = (args) => (
     <Button {...args} icon={AddCircle} iconReverse>
       With Icon
     </Button>{" "}
+    <Button {...args} icon={AddCircle} />{" "}
     <Button {...args} disabled>
       Disable
     </Button>
@@ -71,7 +72,8 @@ export const SecondaryButton = (args) => (
     </Button>{" "}
     <Button {...args} disabled>
       Disable
-    </Button>
+    </Button>{" "}
+    <Button {...args} icon={AddCircle} disabled />
   </>
 );
 
@@ -141,6 +143,23 @@ ButtonSolid.parameters = {
   docs: {
     storyDescription: solidDesc,
   },
+};
+
+export const DangerButton = (args) => (
+  <>
+    <Button {...args}>Default</Button> {""}
+    <Button {...args} icon={AddCircle}>
+      With Icon
+    </Button>{" "}
+    <Button {...args} icon={AddCircle} />{" "}
+    <Button {...args} disabled>
+      Disable
+    </Button>
+  </>
+);
+
+DangerButton.args = {
+  kind: "danger",
 };
 
 // const hello = `
