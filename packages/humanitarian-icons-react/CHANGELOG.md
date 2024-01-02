@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 11.17.5 (2024-01-02)
+
+**Note:** Version bump only for package @wfp/humanitarian-icons-react
+
+
+
+
+
 ## 11.17.4 (2024-01-02)
 
 **Note:** Version bump only for package @wfp/humanitarian-icons-react
