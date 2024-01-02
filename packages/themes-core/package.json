@@ -1,7 +1,7 @@
 {
   "name": "@wfp/themes-core",
   "description": "Themes for un core",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -28,12 +28,12 @@
     "access": "public"
   },
   "devDependencies": {
-    "dotenv": "^16.3.1",
-    "token-transformer": "^0.0.33",
     "change-case": "^5.2.0",
     "deepdash": "^5.3.9",
+    "dotenv": "^16.3.1",
     "lodash": "^4.17.21",
-    "style-dictionary": "^3.9.0"
+    "style-dictionary": "^3.9.0",
+    "token-transformer": "^0.0.33"
   },
   "gitHead": "7201da36cfb8dad97a91763abc2497f70c239243"
 }
