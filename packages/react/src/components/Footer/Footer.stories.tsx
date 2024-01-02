@@ -54,7 +54,7 @@ import { Footer } from "@wfp/react";
 </Footer>
 `;
 
-Regular.story = {
+FooterDefault.story = {
   parameters: {
     docs: {
       source: {

@@ -29,8 +29,8 @@
   .#{$prefix}--footer {
     @include reset;
     @include font-family("sans");
-    color: $text-on-color; // TODO: use new text color white token $text-primary(old);
-    background-color: #0d295c; // use new color token $background-main(old);
+    color: $neutral-neutral100-white;
+    background-color: $brand-dark-blue-dark-blue20;
     z-index: z("footer");
     padding: calcRem(20px) 0;
     @media print {
@@ -101,6 +101,7 @@
     @include type-style("label-02");
     font-weight: 600;
     margin: 0;
+    color: $brand-wfp-blue-wfp-blue70;
   }
 
   .#{$prefix}--footer__cta {

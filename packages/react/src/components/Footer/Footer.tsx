@@ -120,7 +120,7 @@ const Footer: React.FC<FooterProps> = ({
               <img
                 className={`${prefix}--footer__cta-logo-small`}
                 src={logo}
-                alt="World Food Programme Logo"
+                alt="WFP Logo"
               />
             ) : logo ? (
               logo
