@@ -107,7 +107,13 @@ export const ButtonSolid = (args) => (
     }}
   >
     {buttonKinds
-      .filter((e) => e === "primary" || e === "secondary" || e === "ghost")
+      .filter(
+        (e) =>
+          e === "primary" ||
+          e === "secondary" ||
+          e === "ghost" ||
+          e === "danger"
+      )
       .map((e) => (
         <div
           key={e}
