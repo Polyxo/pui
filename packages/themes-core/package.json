@@ -19,9 +19,9 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "node --stack-size=9900 runTheme.js",
-    "filter:theme": "node filterJson.js",
-    "sync:tokens": "node syncTokens.js",
+    "build": "node --stack-size=9900 scripts/runTheme.js",
+    "filter:theme": "node scripts/filterJson.js",
+    "sync:tokens": "node scripts/syncTokens.js",
     "build:tokens": "yarn sync:tokens && yarn filter:theme && yarn build"
   },
   "publishConfig": {
