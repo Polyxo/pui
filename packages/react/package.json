@@ -92,7 +92,7 @@
     "@wfp/icons-react": "^10.37.6",
     "@wfp/pictograms-react": "^11.17.6",
     "@wfp/styles": "^10.29.6",
-    "@wfp/themes-core": "^0.1.8",
+    "@wfp/themes-core": "^0.3.6",
     "all-contributors-cli": "^6.17.0",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
