@@ -26,11 +26,11 @@ $css--body: true;
 //@import "~@wfp/react/src/globals/scss/layout";
 //@import "~@wfp/react/src/globals/scss/_typography";
 
-@import "@un/type/scss/font-face/mono";
+/* @import "@un/type/scss/font-face/mono";
 @import "@un/type/scss/font-face/sans";
-@import "@un/type/scss/font-face/serif";
+@import "@un/type/scss/font-face/serif"; */
 
-@include open-sans-font-face();
+// @include open-sans-font-face();
 
 :root {
   @include defaulttheme.theme-default();

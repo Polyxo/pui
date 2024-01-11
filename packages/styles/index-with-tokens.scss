@@ -11,11 +11,11 @@ $css--body: true;
 @use "@wfp/styles/scss/components";
 
 // Import types
-@import "@un/type/scss/font-face/mono";
+/* @import "@un/type/scss/font-face/mono";
 @import "@un/type/scss/font-face/sans";
-@import "@un/type/scss/font-face/serif";
+@import "@un/type/scss/font-face/serif"; */
 
-@include open-sans-font-face();
+// @include open-sans-font-face();
 
 :root {
   @include defaultTheme.theme-default();

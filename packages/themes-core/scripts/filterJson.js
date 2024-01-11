@@ -73,7 +73,7 @@ if (!String.prototype.endsWith) {
 let json = JSON.parse(readFileSync("./figmaTokenStudio/tokens.json", "utf8"));
 
 function addCategoryToLeaves(obj, category) {
-  return obj;
+  // return obj;
   let newObj = Array.isArray(obj) ? [] : {};
 
   Object.keys(obj).forEach((key) => {
@@ -94,12 +94,7 @@ function addCategoryToLeaves(obj, category) {
 }
 // const Global = json.Global;
 
-/*json = {
-  ...json.Global,
-  ...json.System,
-  ...json.Component,
-};*/
-
+// TODO: Cleanup duplicate names in tokens
 json = mergeDeep(
   mergeDeep(
     addCategoryToLeaves(json.Global, "global"),
