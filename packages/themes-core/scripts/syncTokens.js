@@ -2,10 +2,7 @@ import axios from "axios";
 import fs from "fs";
 import "dotenv/config";
 
-// Personal Access Token
-const pat = process.env.GIT_ACCESS_TOKEN;
-
-if (!pat) {
+if (!process.env.GIT_ACCESS_TOKEN) {
   console.error("No GIT_ACCESS_TOKEN found in .env");
   process.exit(1);
 }
@@ -17,24 +14,24 @@ const repository = "tokens";
 const filePath = "tokens.json";
 const apiVersion = "7.0";
 
-// Construct the URL for API request
 const url = `https://dev.azure.com/${organization}/${project}/_apis/git/repositories/${repository}/items?path=/${filePath}&api-version=${apiVersion}&download=true`;
 
-// Make a GET request
 axios
   .get(url, {
     headers: {
-      Authorization: `Basic ${Buffer.from(pat).toString("base64")}`,
+      Authorization: `Basic ${Buffer.from(
+        process.env.GIT_ACCESS_TOKEN
+      ).toString("base64")}`,
       Accept: "application/text",
     },
   })
   .then((response) => {
     fs.writeFileSync(
-      "tokens/design-tokens.tokens.new.json",
+      "figmaTokenStudio/tokens.json",
       JSON.stringify(response.data, null, 2)
     );
     console.log(
-      "🐝 Tokens downloaded successfully and saved under tokens/design-tokens.tokens.new.json"
+      "🐝 Tokens downloaded successfully and saved under figmaTokenStudio/tokens.json"
     );
   })
   .catch((error) => {
