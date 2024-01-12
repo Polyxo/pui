@@ -27,59 +27,41 @@ Footer is the second most important place where your basic site information and 
 
 </DoNotUse>
 
-### External footer
+### Footer
 
 ```jsx live forceFullWidth
-import { FooterExternal, Link  } from "@wfp/react";
+import { Footer, Link } from "@wfp/react";
 
-<FooterExternal
-    metaContent="Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy"
-    metaLinks={
-      <>
-        <FooterMetaLink href="hh.com">First legal link</FooterMetaLink>
-        <FooterMetaLink href="hh.com">Second legal link</FooterMetaLink>
-      </>
-    }
-    productName={<span>Service{' '}<br />{' '}Marketplace</span>
-    >
-    <>
-      <LinksColumn title="Title">
-        <li className="wfp--links-column-link">
-          <Link>First link</Link>
+<Footer
+  metaContent="2023 © World Food Programme"
+  secondary="Via C. G. Viola 68 Parco dei Medici
+    00148 Rome, Italy"
+>
+  <div className="wfp--footer__info">
+    <div className="wfp--footer__info__item">
+      <p className="wfp--footer__label">A label</p>
+      <ul className="wfp--footer__list">
+        <li>
+          <Link href="http://www.wfp.org">First Link</Link>
         </li>
-        <li className="wfp--links-column-link">
-          <Link>Second link</Link>
+        <li>
+          <Link href="http://www.wfp.org">Second Link</Link>
         </li>
-        <li className="wfp--links-column-link">
-          <Link>Third link</Link>
+      </ul>
+    </div>
+    <div className="wfp--footer__info__item">
+      <p className="wfp--footer__label">Another label</p>
+      <ul className="wfp--footer__list">
+        <li>
+          <Link href="http://www.wfp.org">First Link</Link>
         </li>
-        <li className="wfp--links-column-link">
-          <Link>Fourth link</Link>
+        <li>
+          <Link href="http://www.wfp.org">Second Link</Link>
         </li>
-        <li className="wfp--links-column-link">
-          <Link>Fifth link</Link>
-        </li>
-      </LinksColumn>
-
-      <LinksColumn title="Title 2">
-        <li className="wfp--links-column-link">
-          <Link>First link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Second link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Third link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Fourth link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Fifth link 2</Link>
-        </li>
-      </LinksColumn>
-    </>
-  </FooterExternal>
+      </ul>
+    </div>
+  </div>
+</Footer>;
 ```
 
 ## Related
