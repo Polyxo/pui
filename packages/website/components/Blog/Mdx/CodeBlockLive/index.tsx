@@ -73,6 +73,7 @@ const CodeBlockLive = (props: any) => {
     live,
     center,
     forceFullWidth,
+    noCode,
     hideWrapper,
     noInline,
     showEditor = true,
@@ -82,8 +83,11 @@ const CodeBlockLive = (props: any) => {
     expandCode,
     reactHookForm,
   } = props;
+
   const [showHtml, setShowHtml] = useState(false);
-  const [showCode, setShowCode] = useState(showEditor);
+  const [showCode, setShowCode] = useState(
+    noCode !== undefined ? !noCode : showEditor
+  );
   const [showAllCode, setShowAllCode] = useState(expandCode);
   // const [showExpandButton, setShowExpandButtons] = useState(true);
   const [rtl, setRtl] = useState(false);
@@ -352,6 +356,7 @@ export function Pre({
   noInline,
   reactHookForm,
   forceFullWidth,
+  noCode,
   children,
   ...props
 }: PreProps) {
@@ -364,6 +369,7 @@ export function Pre({
           live={live}
           noInline={noInline}
           reactHookForm={reactHookForm}
+          noCode={noCode}
           forceFullWidth={forceFullWidth}
           {...childProps}
         />
