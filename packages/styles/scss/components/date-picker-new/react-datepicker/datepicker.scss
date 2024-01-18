@@ -1,10 +1,10 @@
-@use '../../../colors' as *;
-@use '../../../config' as *;
-@use '../../../motion' as *;
-@use '../../../theme' as *;
+@use "../../../colors" as *;
+@use "../../../config" as *;
+@use "../../../motion" as *;
+@use "../../../theme" as *;
 
-@import 'variables.scss';
-@import 'mixins.scss';
+@import "variables.scss";
+@import "mixins.scss";
 
 .react-datepicker-wrapper {
   display: inline-block;
@@ -47,7 +47,7 @@
 .react-datepicker-popper {
   z-index: 1;
 
-  &[data-placement^='bottom'] {
+  &[data-placement^="bottom"] {
     padding-top: $datepicker__triangle-size + 2px;
 
     .react-datepicker__triangle {
@@ -55,15 +55,15 @@
     }
   }
 
-  &[data-placement='bottom-end'],
-  &[data-placement='top-end'] {
+  &[data-placement="bottom-end"],
+  &[data-placement="top-end"] {
     .react-datepicker__triangle {
       left: auto;
       right: 50px;
     }
   }
 
-  &[data-placement^='top'] {
+  &[data-placement^="top"] {
     padding-bottom: $datepicker__triangle-size + 2px;
 
     .react-datepicker__triangle {
@@ -71,7 +71,7 @@
     }
   }
 
-  &[data-placement^='right'] {
+  &[data-placement^="right"] {
     padding-left: $datepicker__triangle-size;
 
     .react-datepicker__triangle {
@@ -80,7 +80,7 @@
     }
   }
 
-  &[data-placement^='left'] {
+  &[data-placement^="left"] {
     padding-right: $datepicker__triangle-size;
 
     .react-datepicker__triangle {
@@ -221,6 +221,7 @@
 
 .react-datepicker__month-container {
   float: left;
+  background-color: $background-main;
 }
 
 .react-datepicker__year {
@@ -274,13 +275,13 @@
         width: auto;
       }
 
-      input[type='time']::-webkit-inner-spin-button,
-      input[type='time']::-webkit-outer-spin-button {
+      input[type="time"]::-webkit-inner-spin-button,
+      input[type="time"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
 
-      input[type='time'] {
+      input[type="time"] {
         -moz-appearance: textfield;
       }
     }
@@ -643,7 +644,7 @@
     text-align: center;
     display: table-cell;
     vertical-align: middle;
-    content: '\00d7';
+    content: "\00d7";
   }
 }
 

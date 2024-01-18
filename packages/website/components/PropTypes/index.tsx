@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as wfpComponents from "@wfp/react";
+import ReactDatePicker from "react-datepicker";
 
 import reactElementToJSXString from "react-element-to-jsx-string";
 
@@ -261,8 +262,9 @@ export default function PropTypes({
       });
 
       // Evaluate the transpiled code to get a React element
-      // WARNING: eval() can be dangerous and is generally not recommended.
       window.React = React;
+      window.react = React;
+      window.ReactDatePicker = ReactDatePicker;
       (window as any).action = (action) => {
         console.log("action triggered", action);
       };
@@ -270,29 +272,34 @@ export default function PropTypes({
         window[entry[0]] = entry[1];
       });
 
-      let codeNew: any = "";
+      const codeNew: any = eval(transformedCode.code);
 
-      console.log("transformedCode.code", transformedCode.code);
+      // const
 
-      codeNew = eval(transformedCode.code);
-
-      // .replace("{...args}", "")
-      /*const options = {
-      htmlparser2: {
-        lowerCaseTags: false,
-      },
-    };
-
-    const codeNew = parse(sampleCode.replace("{...args}", ""), options);*/
+      /*const codeNew = parse(sampleCode.replace("{...args}", ""), options);*/
 
       const enhancedElement = React.cloneElement(codeNew, {
         ...filterEmptyValues(defaultProps),
         ...filterEmptyValues(componentProps),
       });
 
-      code = reactElementToJSXString(enhancedElement);
+      code = reactElementToJSXString(enhancedElement, {
+        showFunctions: true,
+        functionValue: (fn) => {
+          return "ReactDatePicker";
+          //fn().length > 1000 ? "ReactDatePicker" : fn;
+        }, // TODO: Replace with better universal solution
+      });
+
+      // Raw JSX without transpilation
+      //  code = sampleCode;
+      /*
+      React.createElement(DatePicker, {
+  hello: DatePicker
+});
+*/
     } catch (error) {
-      // console.log("Transform failed");
+      console.log("Transform failed", error);
     }
 
     // console.log("codeNew", reactElementToJSXString(enhancedElement));

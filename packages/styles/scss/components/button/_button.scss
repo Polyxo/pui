@@ -9,7 +9,6 @@
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/skeleton" as *;
 @use "../../utilities/rtl" as *;
-@use "../../utilities/tooltip" as *;
 @use "../../utilities/visually-hidden" as *;
 //@use 'tokens' as *;
 
@@ -105,7 +104,7 @@
     }
 
     &:focus {
-      border: 2px solid $action-default-border-focus;
+      //  border: 2px solid $action-default-border-focus;
     }
     &:disabled,
     &:hover:disabled,
@@ -133,7 +132,7 @@
       background-color: $brand-dark-blue-dark-blue10;
     }
     &:focus {
-      border: 2px solid $action-solid-border-focus;
+      // border: 2px solid $action-solid-border-focus;
     }
 
     &:disabled,
@@ -148,7 +147,7 @@
   .#{$prefix}--btn--secondary {
     @include button-theme(
       transparent,
-      $action-default-border-default,
+      #fff,
       //token:create $action-secondary-text-default
       $action-default-link-default,
       transparent,
@@ -159,16 +158,16 @@
 
     &:hover {
       background-color: $action-default-fill-secondary-hover;
-      color: $action-default-text-secondary-tertiary-hover;
+      color: $action-default-text-secondary-hover;
     }
 
     &:active {
       background-color: $action-default-fill-secondary-active;
-      color: $action-default-text-secondary-tertiary-active;
+      color: $action-default-text-secondary-active;
     }
 
     &:focus {
-      border: 2px solid $action-default-border-focus;
+      //  border: 2px solid $action-default-border-focus;
     }
     // &:hover > .#{$prefix}--btn__icon,
     // &:focus > .#{$prefix}--btn__icon {
@@ -178,8 +177,8 @@
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-default-text-secondary-tertiary-disable;
-      border-color: $action-default-border-disable;
+      color: $action-default-text-secondary-disable;
+      // border-color: $action-default-border-disable;
       opacity: unset;
     }
   }
@@ -188,27 +187,27 @@
     @include button-theme(
       transparent,
       #fff,
-      $action-solid-text-secondary-tertiary-default,
+      $action-solid-text-secondary-default,
       transparent,
       // TODO rename to $button-secondary-hover
-      $action-solid-text-secondary-tertiary-default
+      $action-solid-text-secondary-default
     );
 
     &:hover {
       border-color: transparent;
-      color: $action-solid-text-secondary-tertiary-hover;
+      color: $action-solid-text-secondary-hover;
       background-color: $action-solid-fill-secondary-hover;
     }
 
     &:active {
       border-color: transparent;
-      color: $action-solid-text-secondary-tertiary-active;
+      color: $action-solid-text-secondary-active;
       background-color: $action-solid-fill-secondary-active;
     }
 
     &:focus {
-      border-color: $action-default-border-focus;
-      color: $action-solid-text-secondary-tertiary-default;
+      //  border-color: $action-default-border-focus;
+      color: $action-solid-text-secondary-default;
       background-color: transparent;
     }
     &:hover > .#{$prefix}--btn__icon,
@@ -219,8 +218,8 @@
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-solid-text-secondary-tertiary-disable;
-      border-color: $action-default-border-disable;
+      color: $action-solid-text-secondary-disable;
+      //border-color: $action-default-border-disable;
       opacity: unset;
     }
   }
@@ -244,14 +243,14 @@
     }
 
     &:focus {
-      border: 2px solid $action-default-border-focus;
+      // border: 2px solid $action-default-border-focus;
       background-color: transparent;
     }
 
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-default-text-secondary-tertiary-disable;
+      color: $action-default-text-secondary-disable;
       border-color: transparent;
       opacity: unset;
     }
@@ -280,7 +279,7 @@
     }
     &:focus {
       color: $action-solid-text-primary-default;
-      border-color: $action-solid-border-focus; // token:wfp-blue-70;
+      // border-color: $action-solid-border-focus; // token:wfp-blue-70;
       background-color: transparent;
 
       .#{$prefix}--btn__icon {
@@ -289,7 +288,7 @@
     }
 
     &:active {
-      color: $action-solid-text-secondary-tertiary-active; // token:wfp-blue-30
+      color: $action-solid-text-secondary-active; // token:wfp-blue-30
     }
 
     .#{$prefix}--btn__icon {
@@ -302,10 +301,10 @@
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-solid-border-disable; //TODO create nuetral80 disable-text token
+      // color: $action-solid-border-disable; //TODO create nuetral80 disable-text token
       opacity: unset;
       .#{$prefix}--btn__icon {
-        fill: $action-solid-border-disable;
+        // fill: $action-solid-border-disable;
       }
     }
   }
@@ -339,7 +338,7 @@
     }
 
     &:focus {
-      border-color: $action-default-border-focus;
+      // border-color: $action-default-border-focus;
     }
 
     &:active {

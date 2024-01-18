@@ -1,10 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 
-/**
- * Simple object check.
- * @param item
- * @returns {boolean}
- */
+let json = JSON.parse(readFileSync("./figmaTokenStudio/tokens.json", "utf8"));
+
 export function isObject(item) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
@@ -27,8 +24,7 @@ export function mergeDeep(target, ...sources) {
   return mergeDeep(target, ...sources);
 }
 
-function removeKeys(obj) {
-  // Base case: if the object is not an object or is null, return it as is
+function removeUnusedKeys(obj) {
   if (typeof obj !== "object" || obj === null) {
     return obj;
   }
@@ -50,7 +46,7 @@ function removeKeys(obj) {
 
   // Iterate over the object's keys and apply the function recursively
   for (let key in obj) {
-    obj[key] = removeKeys(obj[key]);
+    obj[key] = removeUnusedKeys(obj[key]);
   }
 
   return obj;
@@ -70,29 +66,21 @@ if (!String.prototype.endsWith) {
   });
 }
 
-let json = JSON.parse(readFileSync("./figmaTokenStudio/tokens.json", "utf8"));
-
 function addCategoryToLeaves(obj, category) {
-  // return obj;
   let newObj = Array.isArray(obj) ? [] : {};
 
   Object.keys(obj).forEach((key) => {
-    // If the property is a 'value', add 'category'
     if (key === "value") {
       newObj["category"] = category;
     }
-
     if (typeof obj[key] === "object" && obj[key] !== null) {
-      // Recursively call the function for nested objects
       newObj[key] = addCategoryToLeaves(obj[key], category);
     } else {
       newObj[key] = obj[key];
     }
   });
-
   return newObj;
 }
-// const Global = json.Global;
 
 // TODO: Cleanup duplicate names in tokens
 json = mergeDeep(
@@ -103,7 +91,7 @@ json = mergeDeep(
   addCategoryToLeaves(json.Component, "component")
 );
 
-json = removeKeys(json);
+json = removeUnusedKeys(json);
 
 writeFileSync(
   "./tokens/design-tokens.tokens.new.json",

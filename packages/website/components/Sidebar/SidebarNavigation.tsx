@@ -7,6 +7,7 @@ import slugifyWithSlashes from "../../lib/slugifyWithSlashes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "@wfp/react";
 import NextLink from "next/link";
+import deepSortByName from "./deepSort";
 
 interface SidebarProps {
   slug: string;
@@ -111,15 +112,20 @@ export const createPathTree = (paths: any) => {
 };
 
 export default function SidebarNavigation({ post, posts, slug }: any) {
+  console.log("posts", posts);
   const postSplit = posts.map((p) => {
     return {
       key: "/" + p.slug,
       title: p.title,
+      order: p.order,
       directory: false,
     };
   });
 
   const split: any = createPathTree(postSplit) || [];
+  console.log("split", split);
+
+  deepSortByName(split.children);
 
   const splitSidebar = split.children.find(
     (e) => e.name === post.slug.split("/")[0]

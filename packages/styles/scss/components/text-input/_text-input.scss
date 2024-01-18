@@ -1,24 +1,17 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
-
 //-----------------------------
 // Text
 //-----------------------------
-@use '../../config' as *;
-@use '../form';
-@use '../../theme' as *;
-@use '../../utilities/input-base' as *;
+@use "../../config" as *;
+@use "../form";
+@use "../../theme" as *;
+@use "../../utilities/input-base" as *;
 
 /// Text input styles
 /// @access public
 /// @group text-input
 @mixin text-input {
   .#{$prefix}--text--required label::after {
-    content: ' *';
+    content: " *";
   }
   .#{$prefix}--text-input {
     @include input-base;
