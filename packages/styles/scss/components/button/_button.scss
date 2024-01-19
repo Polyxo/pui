@@ -5,7 +5,7 @@
 @use "../../theme" as *;
 @use "../../type" as *;
 @use "../../utilities/convert" as *;
-@use "../../utilities/focus-outline";
+@use "../../utilities/focus-outline" as *;
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/skeleton" as *;
 @use "../../utilities/rtl" as *;
@@ -97,15 +97,15 @@
       $action-default-text-primary-default
     );
     &:hover {
-      background-color: $brand-wfp-blue-wfp-blue40; //create fill-primary-hover
+      background-color: $action-default-fill-primary-hover;
     }
 
     &:active {
-      background-color: $brand-wfp-blue-wfp-blue20; //replace with fill-primary-active
+      background-color: $action-default-fill-primary-active;
     }
 
     &:focus {
-      outline: 2px solid $brand-wfp-blue-wfp-blue70;
+      @include focus-outline("border-focus");
     }
     &:disabled,
     &:hover:disabled,
@@ -125,17 +125,18 @@
       $action-solid-text-primary-default
     );
 
-    //TODO correct token
-    &:active {
-      background-color: $brand-dark-blue-dark-blue10;
-      color: $brand-wfp-blue-wfp-blue90;
-    }
     &:hover {
       color: $action-solid-text-primary-hover;
-      background-color: $brand-dark-blue-dark-blue10;
+      background-color: $action-solid-fill-primary-hover;
     }
+
+    &:active {
+      background-color: $action-solid-fill-primary-active;
+      color: $action-solid-text-primary-active;
+    }
+
     &:focus {
-      outline: 2px solid $brand-wfp-blue-wfp-blue70;
+      @include focus-outline("border-focus");
     }
 
     &:disabled,
@@ -151,36 +152,32 @@
     @include button-theme(
       transparent,
       $action-default-text-secondary-default,
-      $action-default-link-default,
+      $action-default-text-secondary-default,
       transparent,
-      // TODO rename to $button-secondary-hover
-      $action-default-link-default
+      $action-default-text-secondary-default
     );
     border-width: 1px;
 
     &:hover {
       background-color: $action-default-fill-secondary-hover;
-      color: $brand-wfp-blue-wfp-blue20; //TODO replace with correct token
+      color: $action-default-text-secondary-hover;
     }
 
     &:active {
-      background-color: $brand-wfp-blue-wfp-blue90; //TODO replace with correct token
-      color: $brand-wfp-blue-wfp-blue20; //TODO replace with correct token
-      outline: none;
+      background-color: $action-default-fill-secondary-active;
+      color: $action-default-text-secondary-active;
     }
 
     &:focus {
-      outline: 1px solid $brand-wfp-blue-wfp-blue70;
+      @include focus-outline("border-focus");
+      border-color: transparent;
     }
-    // &:hover > .#{$prefix}--btn__icon,
-    // &:focus > .#{$prefix}--btn__icon {
-    //   fill: $icon-inverse;
-    // }
 
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
       color: $action-default-text-secondary-disable;
+      border-width: 2px;
       border-color: $action-default-text-secondary-disable;
       opacity: unset;
     }
@@ -189,7 +186,7 @@
   .#{$prefix}--btn--secondary-solid {
     @include button-theme(
       transparent,
-      #fff,
+      $action-default-fill-secondary-default,
       $action-default-fill-secondary-default,
       transparent,
       $action-default-fill-secondary-default
@@ -209,9 +206,8 @@
     }
 
     &:focus {
-      border-color: $brand-wfp-blue-wfp-blue70;
-      color: $action-solid-text-secondary-focus;
-      background-color: transparent;
+      @include focus-outline("border-focus");
+      border-color: transparent;
     }
     &:hover > .#{$prefix}--btn__icon,
     &:focus > .#{$prefix}--btn__icon {
@@ -231,24 +227,23 @@
     @include button-theme(
       transparent,
       transparent,
-      $action-default-link-default,
+      $action-default-text-ghost-default,
       transparent,
-      $action-default-link-default
+      $action-default-text-ghost-default
     );
 
     &:hover {
-      color: $action-default-text-primary-hover;
-      background-color: $neutral-neutral95; //TODO correct token
+      color: $action-default-text-ghost-hover;
+      background-color: $action-default-fill-ghost-hover;
     }
 
     &:active {
-      color: $action-default-text-primary-hover; //TODO correct token
-      background-color: $neutral-neutral90; //TODO correct token
+      color: $action-default-text-ghost-active;
+      background-color: $action-default-fill-ghost-active;
     }
 
     &:focus {
-      outline: 1px solid $brand-wfp-blue-wfp-blue70;
-      background-color: transparent;
+      @include focus-outline("border-focus-small");
     }
 
     &:disabled,
@@ -272,28 +267,27 @@
     @include button-theme(
       transparent,
       transparent,
-      $action-default-text-primary-default,
-      $action-default-fill-primary-default,
-      $action-default-text-primary-default
+      $action-solid-text-ghost-default,
+      $action-solid-fill-ghost-default,
+      $action-solid-text-ghost-default
     );
 
     &:hover {
-      color: $brand-wfp-blue-wfp-blue10;
-      background-color: $brand-wfp-blue-wfp-blue70;
+      color: $action-solid-text-ghost-hover;
+      background-color: $action-solid-fill-ghost-hover;
     }
+
+    &:active {
+      color: $action-solid-text-ghost-active;
+      background-color: $action-solid-fill-ghost-active;
+    }
+
     &:focus {
-      color: $action-solid-fill-ghost-focus;
-      border-color: $brand-wfp-blue-wfp-blue70; // token:wfp-blue-70;
-      background-color: transparent;
+      @include focus-outline("border-focus");
 
       .#{$prefix}--btn__icon {
         fill: $action-solid-fill-ghost-focus;
       }
-    }
-
-    &:active {
-      color: $brand-wfp-blue-wfp-blue10; // token:wfp-blue-10
-      background-color: $brand-wfp-blue-wfp-blue40;
     }
 
     .#{$prefix}--btn__icon {
@@ -331,30 +325,30 @@
 
   .#{$prefix}--btn--danger {
     @include button-theme(
-      $semantic-error-error50,
+      $action-default-fill-danger-default,
       transparent,
-      $action-default-text-primary-default,
-      $semantic-error-error50,
-      $action-default-text-primary-default
+      $action-default-text-danger-default,
+      $action-default-fill-danger-default,
+      $action-default-text-danger-default
     );
 
     &:hover {
-      background-color: $semantic-error-error30;
-    }
-
-    &:focus {
-      outline: 2px solid $brand-wfp-blue-wfp-blue70;
+      background-color: $action-default-fill-danger-hover;
     }
 
     &:active {
-      background-color: $semantic-error-error20;
+      background-color: $action-default-fill-danger-active;
+    }
+
+    &:focus {
+      @include focus-outline("border-focus-small");
     }
 
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-default-text-primary-disable;
-      background-color: $action-default-fill-primary-disable;
+      color: $action-default-text-danger-disable;
+      background-color: $action-default-fill-danger-disable;
       opacity: unset;
     }
 
