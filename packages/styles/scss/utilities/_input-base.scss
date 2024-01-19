@@ -10,7 +10,7 @@
 /// @example @include input-base;
 /// @group utilities
 
-$input-border: 1px solid $field-border; //TODO
+$input-border: 1px solid var(--neutral-100__color); //TODO
 $input-height: 40px;
 $input-border-radius: 0px;
 
@@ -28,7 +28,9 @@ $input-border-radius: 0px;
   background-color: $fill-field;
   order: 2;
   border: $input-border;
+  border-color: var(--neutral-100__color);
   border-radius: $input-border-radius;
+  border-radius: $field-border;
   box-shadow: none;
 
   //TODO

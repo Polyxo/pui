@@ -15,7 +15,7 @@
 @use "../../utilities/button-reset";
 
 $input-height: 40px !default;
-$input-border: 1px solid $field-border;
+$input-border: 1px solid var(--neutral-100__color);
 
 /// Search styles
 /// @access public

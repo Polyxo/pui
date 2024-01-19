@@ -5,25 +5,25 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../motion' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
-@use '../../theme' as *;
-@use '../../utilities/component-reset';
-@use '../../utilities/convert' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/skeleton' as *;
-@use '../form';
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../motion" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
+@use "../../theme" as *;
+@use "../../utilities/component-reset";
+@use "../../utilities/convert" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/skeleton" as *;
+@use "../form";
 
 /// React Select styles
 /// @access public
 /// @group react-select
 
 $input-height: 40px !default;
-$input-border: 1px solid $field-border;
+$input-border: 1px solid var(--neutral-100__color);
 
 @mixin react-select {
   .#{$prefix}--react-select-container {
@@ -51,7 +51,7 @@ $input-border: 1px solid $field-border;
       //border: $input-border;
       box-shadow: none;
       //border-color: red;
-      @include focus-outline('border-important');
+      @include focus-outline("border-important");
     }
 
     .#{$prefix}--react-select__control--is-disabled,

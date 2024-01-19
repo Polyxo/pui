@@ -2409,12 +2409,12 @@
       "type": "border"
     }
   },
-  "Border": {
-    "form": {
+  "Field": {
+    "border": {
       "category": "system",
-      "value": "{Neutral.Neutral60}",
-      "type": "color",
-      "description": "Border of form inputs"
+      "value": "{borderRadius.100}",
+      "type": "borderRadius",
+      "description": "The border radius of a field input"
     }
   }
 }

@@ -7,8 +7,13 @@
 /// @group utilities
 @mixin focus-outline($type: "border") {
   @if ($type == "border") {
-    outline: 1px solid theme.$focus;
-    border-color: theme.$focus;
+    /*  outline: 1px solid theme.$focus;
+    border-color: theme.$focus; */
+
+    // TODO: Add multidimensional tokens
+    outline: 1px solid var(--focus-100__color);
+    border-width: var(--focus-100__width);
+    border-color: var(--focus-100__color);
     //box-shadow: 0px 2px 8px 0 theme.$focus; //get new token
 
     @media screen and (prefers-contrast) {
