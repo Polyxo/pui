@@ -5,7 +5,7 @@
 @use "../../theme" as *;
 @use "../../type" as *;
 @use "../../utilities/convert" as *;
-@use "../../utilities/focus-outline";
+@use "../../utilities/focus-outline" as *;
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/skeleton" as *;
 @use "../../utilities/rtl" as *;
@@ -97,15 +97,15 @@
       $action-default-text-primary-default
     );
     &:hover {
-      background-color: $brand-wfp-blue-wfp-blue40; //create fill-primary-hover
+      background-color: $action-default-fill-primary-hover;
     }
 
     &:active {
-      color: $action-default-text-primary-active;
+      background-color: $action-default-fill-primary-active;
     }
 
     &:focus {
-      border: 2px solid $action-default-border-focus;
+      @include focus-outline("border-focus");
     }
     &:disabled,
     &:hover:disabled,
@@ -125,15 +125,18 @@
       $action-solid-text-primary-default
     );
 
-    &:active {
-      color: $action-solid-text-primary-active;
-    }
     &:hover {
       color: $action-solid-text-primary-hover;
-      background-color: $brand-dark-blue-dark-blue10;
+      background-color: $action-solid-fill-primary-hover;
     }
+
+    &:active {
+      background-color: $action-solid-fill-primary-active;
+      color: $action-solid-text-primary-active;
+    }
+
     &:focus {
-      border: 2px solid $action-solid-border-focus;
+      @include focus-outline("border-focus");
     }
 
     &:disabled,
@@ -148,38 +151,34 @@
   .#{$prefix}--btn--secondary {
     @include button-theme(
       transparent,
-      $action-default-border-default,
-      //token:create $action-secondary-text-default
-      $action-default-link-default,
+      $action-default-text-secondary-default,
+      $action-default-text-secondary-default,
       transparent,
-      // TODO rename to $button-secondary-hover
-      $action-default-link-default
+      $action-default-text-secondary-default
     );
     border-width: 1px;
 
     &:hover {
       background-color: $action-default-fill-secondary-hover;
-      color: $action-default-text-secondary-tertiary-hover;
+      color: $action-default-text-secondary-hover;
     }
 
     &:active {
       background-color: $action-default-fill-secondary-active;
-      color: $action-default-text-secondary-tertiary-active;
+      color: $action-default-text-secondary-active;
     }
 
     &:focus {
-      border: 2px solid $action-default-border-focus;
+      @include focus-outline("border-focus");
+      border-color: transparent;
     }
-    // &:hover > .#{$prefix}--btn__icon,
-    // &:focus > .#{$prefix}--btn__icon {
-    //   fill: $icon-inverse;
-    // }
 
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-default-text-secondary-tertiary-disable;
-      border-color: $action-default-border-disable;
+      color: $action-default-text-secondary-disable;
+      border-width: 2px;
+      border-color: $action-default-text-secondary-disable;
       opacity: unset;
     }
   }
@@ -187,29 +186,28 @@
   .#{$prefix}--btn--secondary-solid {
     @include button-theme(
       transparent,
-      #fff,
-      $action-solid-text-secondary-tertiary-default,
+      $action-default-fill-secondary-default,
+      $action-default-fill-secondary-default,
       transparent,
-      // TODO rename to $button-secondary-hover
-      $action-solid-text-secondary-tertiary-default
+      $action-default-fill-secondary-default
     );
+    border-width: 1px;
 
     &:hover {
       border-color: transparent;
-      color: $action-solid-text-secondary-tertiary-hover;
+      color: $action-solid-text-secondary-hover;
       background-color: $action-solid-fill-secondary-hover;
     }
 
     &:active {
       border-color: transparent;
-      color: $action-solid-text-secondary-tertiary-active;
+      color: $action-solid-text-secondary-active;
       background-color: $action-solid-fill-secondary-active;
     }
 
     &:focus {
-      border-color: $action-default-border-focus;
-      color: $action-solid-text-secondary-tertiary-default;
-      background-color: transparent;
+      @include focus-outline("border-focus");
+      border-color: transparent;
     }
     &:hover > .#{$prefix}--btn__icon,
     &:focus > .#{$prefix}--btn__icon {
@@ -219,8 +217,8 @@
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-solid-text-secondary-tertiary-disable;
-      border-color: $action-default-border-disable;
+      color: $action-solid-text-secondary-disable;
+      border-color: $action-solid-text-secondary-disable;
       opacity: unset;
     }
   }
@@ -229,29 +227,29 @@
     @include button-theme(
       transparent,
       transparent,
-      $action-default-link-default,
+      $action-default-text-ghost-default,
       transparent,
-      $action-default-link-default
+      $action-default-text-ghost-default
     );
 
     &:hover {
-      color: $action-default-text-primary-hover;
-      background-color: transparent;
+      color: $action-default-text-ghost-hover;
+      background-color: $action-default-fill-ghost-hover;
     }
 
     &:active {
-      color: $action-default-text-primary-active;
+      color: $action-default-text-ghost-active;
+      background-color: $action-default-fill-ghost-active;
     }
 
     &:focus {
-      border: 2px solid $action-default-border-focus;
-      background-color: transparent;
+      @include focus-outline("border-focus-small");
     }
 
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-default-text-secondary-tertiary-disable;
+      color: $action-solid-text-ghost-disable;
       border-color: transparent;
       opacity: unset;
     }
@@ -269,27 +267,27 @@
     @include button-theme(
       transparent,
       transparent,
-      $action-default-text-primary-default,
-      $action-default-fill-primary-default,
-      $action-default-text-primary-default
+      $action-solid-text-ghost-default,
+      $action-solid-fill-ghost-default,
+      $action-solid-text-ghost-default
     );
 
     &:hover {
-      color: $brand-wfp-blue-wfp-blue10;
-      background-color: transparent;
-    }
-    &:focus {
-      color: $action-solid-text-primary-default;
-      border-color: $action-solid-border-focus; // token:wfp-blue-70;
-      background-color: transparent;
-
-      .#{$prefix}--btn__icon {
-        fill: $action-solid-text-primary-default;
-      }
+      color: $action-solid-text-ghost-hover;
+      background-color: $action-solid-fill-ghost-hover;
     }
 
     &:active {
-      color: $action-solid-text-secondary-tertiary-active; // token:wfp-blue-30
+      color: $action-solid-text-ghost-active;
+      background-color: $action-solid-fill-ghost-active;
+    }
+
+    &:focus {
+      @include focus-outline("border-focus");
+
+      .#{$prefix}--btn__icon {
+        fill: $action-solid-fill-ghost-focus;
+      }
     }
 
     .#{$prefix}--btn__icon {
@@ -302,10 +300,10 @@
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-solid-border-disable; //TODO create nuetral80 disable-text token
+      color: $action-solid-text-ghost-disable;
       opacity: unset;
       .#{$prefix}--btn__icon {
-        fill: $action-solid-border-disable;
+        fill: $action-solid-text-ghost-disable;
       }
     }
   }
@@ -327,31 +325,30 @@
 
   .#{$prefix}--btn--danger {
     @include button-theme(
-      $semantic-error-error50,
+      $action-default-fill-danger-default,
       transparent,
-      $action-default-text-primary-default,
-      $semantic-error-error50,
-      $action-default-text-primary-default
+      $action-default-text-danger-default,
+      $action-default-fill-danger-default,
+      $action-default-text-danger-default
     );
 
     &:hover {
-      background-color: $semantic-error-error30;
-    }
-
-    &:focus {
-      border-color: $action-default-border-focus;
+      background-color: $action-default-fill-danger-hover;
     }
 
     &:active {
-      color: $semantic-error-error30;
-      background-color: $semantic-error-error40;
+      background-color: $action-default-fill-danger-active;
+    }
+
+    &:focus {
+      @include focus-outline("border-focus-small");
     }
 
     &:disabled,
     &:hover:disabled,
     &:focus:disabled {
-      color: $action-default-text-primary-disable;
-      background-color: $action-default-fill-primary-disable;
+      color: $action-default-text-danger-disable;
+      background-color: $action-default-fill-danger-disable;
       opacity: unset;
     }
 

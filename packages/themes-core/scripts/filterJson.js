@@ -73,7 +73,7 @@ if (!String.prototype.endsWith) {
 let json = JSON.parse(readFileSync("./figmaTokenStudio/tokens.json", "utf8"));
 
 function addCategoryToLeaves(obj, category) {
-  return obj;
+  //return obj;
   let newObj = Array.isArray(obj) ? [] : {};
 
   Object.keys(obj).forEach((key) => {

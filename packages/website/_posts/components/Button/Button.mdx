@@ -8,22 +8,23 @@ storybook: true
 mainComponent: "Button"
 ---
 
-<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=233%3A1303" />
-
-### Usage
-
-They communicate calls to action to the user and allow users to interact with pages in a variety of ways. Button labels express what action will occur when the user interacts with it.
+### Examples
 
 - Buttons should always have a label, except when using a universally understood and accessible icon.
 - Optional icons should not be used for decoration and should only be included when necessary and strongly associated with the label text.
 - The label can be hidden to create an icon-only button, with a tooltip providing the label when necessary.
-- TODO: Discuss Use Medium size for default interface, while you can use the small version for mobile or inside other interface elements (such as **Callout**, **Tables**, …)
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=233%3A1303" />
+
+### Usage
+
+- Use Medium size for default interface, while you can use the small version for mobile or inside other interface elements (such as **Callout**, **Tables**, …)
 - Use a button group to show additional actions.
 - When the button label is not visible, a tooltip will appear when the user hovers over the button. The tooltip will show the label text and, if applicable, a keyboard shortcut.
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=233%3A1779" />
 
-When the background is dark use the Button Solid
+When the background is dark use the **Button Solid**
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=241%3A1423" />
 
@@ -32,9 +33,8 @@ When the background is dark use the Button Solid
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=233%3A1775" />
 
 <Callout kind="warning">
-  TODO: Discuss color should be an info not a warning Default Button should be
-  used only on light backgrounds (white or light grey). In case you have dark
-  background use Button Solid.
+  Default Button should be used only on light backgrounds (white or light grey).
+  In case you have dark background use <b>Button Solid</b>.
 </Callout>
 
 ## How to use
@@ -43,30 +43,18 @@ Button has a range of styles that cater to different needs. They are designed to
 
 <DoUse>
 
-- Buttons are used primarily on action items. Some examples include `Add`, `Save`, `Delete`, and `Sign up`. Each page can have one or two primary or accent buttons. Any remaining calls-to-action should be represented as secondary buttons.
-- Use icons only when necessary TODO: Discuss, should it be only restricted when only icon without any text
+- Use icons only when necessary
 - Be concise and use verbs for the labels
 
 </DoUse>
 
 <DoNotUse>
 
-- Do not use buttons as navigational elements. Instead, use links when the desired action is to take the user to a new page.
-- Never use capitalization to emphasize a specific button. TODO: Discuss there was previously an all caps Button
-- Do not use buttons as navigational elements. Instead, use Links when the desired action is to take the user to a new page. TODO: Discuss, in the intro it is mentioned
+- Never use capitalization to emphasize a specific button.
+- Do not use buttons as navigational elements. Instead, use <b>Links</b> when the desired action is to take the user to a new page.
 
 </DoNotUse>
 
 ### Accessibility
 
 Press the Space or Enter key to execute the button action. The button will remain in focus, unless it opens or closes a container, in which case the focus will move to the target or back to the caller.
-
-### Actions 🎬
-
-TODO: Currently missing, we need to tell when to use which button
-
-When an action required by the user has more than one option, always use a a negative action button (`secondary`) paired with a positive action button (`primary` in that order.
-
-Negative action buttons will be on the left. Positive action buttons should be on the right.
-
-<Figma url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FKWrOuAzzykyysIDFpLikx1%2FWFP---Bridge%3Ftype%3Ddesign%26node-id%3D217%253A2718%26mode%3Ddesign%26t%3DeFfGsO7k7LGjWFwo-1" />
