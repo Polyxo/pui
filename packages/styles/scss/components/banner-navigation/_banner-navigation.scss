@@ -17,6 +17,20 @@
     @include breakpoint-down("sm") {
       display: none;
     }
+    .#{$prefix}--search {
+      .#{$prefix}--search-input {
+        border: none;
+        padding-left: 1.35em;
+      }
+      .#{$prefix}--search-magnifier-icon {
+        left: 0.4em;
+        height: 0.9em;
+        width: 0.9em;
+      }
+      .#{$prefix}--search-close {
+        right: 0.3em;
+      }
+    }
   }
 
   .#{$prefix}--banner-navigation__item {
@@ -60,20 +74,5 @@
     justify-content: flex-end;
     height: 2rem;
     align-items: center;
-  }
-
-  .#{$prefix}--search {
-    .#{$prefix}--search-input {
-      border: none;
-      padding-left: 1.35em;
-    }
-    .#{$prefix}--search-magnifier-icon {
-      left: 0.4em;
-      height: 0.9em;
-      width: 0.9em;
-    }
-    .#{$prefix}--search-close {
-      right: 0.3em;
-    }
   }
 }
