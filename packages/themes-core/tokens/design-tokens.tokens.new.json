@@ -2410,11 +2410,17 @@
     }
   },
   "Field": {
-    "border": {
+    "borderRadius": {
       "category": "system",
       "value": "{borderRadius.100}",
       "type": "borderRadius",
       "description": "The border radius of a field input"
+    },
+    "borderColor": {
+      "category": "system",
+      "value": "{Neutral.Neutral60}",
+      "type": "color",
+      "description": "The field border color"
     }
   }
 }
