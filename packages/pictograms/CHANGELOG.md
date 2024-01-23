@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 11.17.9 (2024-01-23)
+
+**Note:** Version bump only for package @wfp/pictograms
+
+
+
+
+
 ## 11.17.8 (2024-01-22)
 
 **Note:** Version bump only for package @wfp/pictograms
