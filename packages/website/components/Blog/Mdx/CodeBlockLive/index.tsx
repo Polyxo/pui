@@ -344,6 +344,7 @@ interface PreProps {
   noInline?: boolean;
   reactHookForm?: boolean;
   forceFullWidth?: boolean;
+  noCode?: boolean;
   children?: /*| React.ReactElement<any, any>
     | JSX.Element
     | React.ReactFragment*/

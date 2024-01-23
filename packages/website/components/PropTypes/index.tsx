@@ -26,6 +26,8 @@ import { AddCircle, CloseCircle, Settings, StarSolid } from "@wfp/icons-react";
 
 import * as componentsSource from "@../../../demoCode/dist/bundle";
 
+declare const window: any;
+
 const filterEmptyValues = (obj) => {
   return Object.entries(obj).reduce((acc, [key, value]) => {
     if (value !== undefined && value !== null && value !== "") {
@@ -285,7 +287,7 @@ export default function PropTypes({
 
       code = reactElementToJSXString(enhancedElement, {
         showFunctions: true,
-        functionValue: (fn) => {
+        functionValue: () => {
           return "ReactDatePicker";
           //fn().length > 1000 ? "ReactDatePicker" : fn;
         }, // TODO: Replace with better universal solution
