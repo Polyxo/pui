@@ -38,7 +38,7 @@ export default function Navigation() {
         <span>🚧 This website is work in progress 👷</span>
       </BannerNavigation>
       <MainNavigation
-        logo={<NextLink href="./">UN core</NextLink>}
+        logo={<NextLink href="./">Bridge</NextLink>}
         line={false}
         className={styles.mainNavigation}
         pageWidth="full"

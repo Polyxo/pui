@@ -39,7 +39,7 @@ interface MainNavigationProps extends React.ComponentPropsWithRef<"div"> {
   /**
    * Show a logo ribbon on the left side of the logo
    */
-  logoRibbon?: "default" | "offShelf";
+  logoRibbon?: "default" | "offShelf" | null;
 
   /**
    * Additional className for the `Wrapper`

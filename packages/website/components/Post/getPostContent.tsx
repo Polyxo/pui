@@ -33,6 +33,7 @@ export default async function getPostContent(params: any) {
     "componentsNew",
     "defaultProps",
     "sampleCode",
+    "order",
   ]);
 
   const slugs: any = await getPostSlugs();

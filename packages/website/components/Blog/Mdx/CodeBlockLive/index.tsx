@@ -15,6 +15,7 @@ import { DoUse, DoNotUse } from "../DoUse";
 //import { MDXProvider } from '@mdx-js/react';
 import { Controller, useForm } from "react-hook-form";
 import classNames from "classnames";
+import ReactDatePicker from "react-datepicker";
 
 //import MDX from '@mdx-js/runtime';
 //import components from '../';
@@ -72,6 +73,7 @@ const CodeBlockLive = (props: any) => {
     live,
     center,
     forceFullWidth,
+    noCode,
     hideWrapper,
     noInline,
     showEditor = true,
@@ -81,8 +83,11 @@ const CodeBlockLive = (props: any) => {
     expandCode,
     reactHookForm,
   } = props;
+
   const [showHtml, setShowHtml] = useState(false);
-  const [showCode, setShowCode] = useState(showEditor);
+  const [showCode, setShowCode] = useState(
+    noCode !== undefined ? !noCode : showEditor
+  );
   const [showAllCode, setShowAllCode] = useState(expandCode);
   // const [showExpandButton, setShowExpandButtons] = useState(true);
   const [rtl, setRtl] = useState(false);
@@ -94,7 +99,7 @@ const CodeBlockLive = (props: any) => {
 
     const [defaultValues, setDefaultValues] = useState({"inputname":true});
     const { control, register, handleSubmit, watch, reset } = useForm({defaultValues});
-    const [data, setData] = useState("");
+    const [data, setData] = useState({});
 
     const setDefaultValuesFunc = (e) => {
       console.log(e.target.value);
@@ -113,8 +118,8 @@ const CodeBlockLive = (props: any) => {
   
     return (
       <>
-      <TextInput name="default values" labelText="Default values" defaultValue={JSON.stringify(defaultValues)} onChange={setDefaultValuesFunc} /> 
-      <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+      
+      <form onSubmit={handleSubmit((data) => setData(data))}>
 
         ${code}
   
@@ -122,10 +127,12 @@ const CodeBlockLive = (props: any) => {
         <Button onClick={resetInputs} kind="tertiary">Reset</Button>
 
         <h4>Submitted form data</h4>
-        <p>{data}</p>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
 
         <h4>Current values</h4>
-        <p>{JSON.stringify(currentValues)}</p>
+        <pre>{JSON.stringify(currentValues, null, 2)}</pre>
+
+        <TextInput name="default values" labelText="Default values" defaultValue={JSON.stringify(defaultValues)} onChange={setDefaultValuesFunc} /> 
 
       </form>
       </>
@@ -177,6 +184,7 @@ const CodeBlockLive = (props: any) => {
       ...unPictograms,
       ...icons,
       ...unComponents,
+      ReactDatePicker,
       useForm,
       useState,
       Storybook,
@@ -199,6 +207,7 @@ const CodeBlockLive = (props: any) => {
       [stylesModule.expandCode]: showAllCode,
       [stylesModule.collapseCode]: !showAllCode,
       [stylesModule.showExpandButton]: showExpandButton,
+      [stylesModule.reactHookForm]: reactHookForm,
       [stylesModule.rtl]: rtl,
       [`${stylesModule[view]}`]: view,
     });
@@ -262,6 +271,7 @@ const CodeBlockLive = (props: any) => {
               <div className={stylesModule.previewInside}>
                 <LivePreview
                   className={stylesModule.preview}
+                  dir={rtl ? "rtl" : "ltr"}
                   style={{ width: width ? width + "px" : undefined }}
                 />
               </div>
@@ -334,6 +344,7 @@ interface PreProps {
   noInline?: boolean;
   reactHookForm?: boolean;
   forceFullWidth?: boolean;
+  noCode?: boolean;
   children?: /*| React.ReactElement<any, any>
     | JSX.Element
     | React.ReactFragment*/
@@ -346,6 +357,7 @@ export function Pre({
   noInline,
   reactHookForm,
   forceFullWidth,
+  noCode,
   children,
   ...props
 }: PreProps) {
@@ -358,6 +370,7 @@ export function Pre({
           live={live}
           noInline={noInline}
           reactHookForm={reactHookForm}
+          noCode={noCode}
           forceFullWidth={forceFullWidth}
           {...childProps}
         />

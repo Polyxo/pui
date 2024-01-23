@@ -1,7 +1,7 @@
 {
   "name": "@wfp/icons-react",
   "description": "React components for icons in digital and software products using the Carbon Design System",
-  "version": "10.37.8",
+  "version": "10.37.6",
   "license": "Apache-2.0",
   "main": "umd/index.js",
   "module": "es/index.js",
@@ -40,8 +40,9 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@wfp/icons": "^10.37.8",
-    "@wfp/icons-core": "^0.3.8"
+    "@babel/preset-react": "^7.23.3",
+    "@wfp/icons": "^10.37.6",
+    "@wfp/icons-core": "^0.3.6"
   },
   "sideEffects": false,
   "gitHead": "5d9678f4a62413b834d07736413c50ff2f851824"

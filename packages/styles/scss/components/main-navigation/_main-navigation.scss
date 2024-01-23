@@ -136,8 +136,9 @@ $main-navigation-menu-width: calcRem(300px);
 
   .#{$prefix}--main-navigation__logo {
     a {
-      color: $text-primary;
+      color: $link-primary;
       text-decoration: none;
+      text-transform: uppercase;
       &:hover,
       &:visited,
       &:active {
@@ -160,10 +161,16 @@ $main-navigation-menu-width: calcRem(300px);
       flex-grow: 1;
     }
 
+    .#{$prefix}--main-navigation--line {
+      .#{$prefix}--main-navigation__logo__default__ribbon {
+        margin-top: -12px;
+      }
+    }
+
     .#{$prefix}--main-navigation__logo {
       display: flex;
       flex-grow: 1;
-      font-weight: 700;
+      font-weight: 600;
       white-space: nowrap;
     }
     .#{$prefix}--main-navigation__logo__default {
@@ -173,12 +180,13 @@ $main-navigation-menu-width: calcRem(300px);
         margin-right: 0.5em;
         width: 4.7rem;
         margin-left: -5.7rem;
-        margin-top: -12px;
+
         margin-bottom: -20em;
         position: absolute;
         top: 0;
         padding: 0.5em 0em;
       }
+
       svg {
         margin: 0 -0.2em;
         width: calc(100% + 0.4em);

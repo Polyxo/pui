@@ -1,16 +1,29 @@
 ---
 category: "Core"
 title: "DatePicker"
-excerpt: "**Text inputs** enable the user to interact with and input data. Use when the application requires long-form content from the user."
+excerpt: "Datepicker allows the user to select a date or date range from a calendar."
 slug: "Components/Forms/DatePicker"
 figma: "https://www.figma.com/file/KWrOuAzzykyysIDFpLikx1/WFP---Bridge?type=design&node-id=130%3A2249&mode=design&t=eFfGsO7k7LGjWFwo-1"
-mainComponent: "DateRangePickerInput"
-components: ["SingleDatePickerInput"]
-componentsNew:
-  SingleDatePickerInput:
-    path: "DatePicker/SingleDatePickerInput"
-  DateRangePickerInput:
-    path: "DatePicker/DateRangePickerInput"
+mainComponent: "DatePicker"
+components: ["DateRangePicker"]
 ---
 
-DatePicker Documentation
+`Datepicker` allows the user to select a date or date range from a calendar. It is a single input field that opens a calendar overlay on focus or click, and allows the user to enter a date.
+
+The `DateRangePicker` component is a combination of two DatePickers, one for the start date and one for the end date.
+
+<DoUse>
+
+- To allow the user to select a date or date range from a calendar.
+
+</DoUse>
+
+<DoNotUse>
+
+- Refrain from using inconsistent date formats that might lead to confusion or errors.
+
+</DoNotUse>
+
+### Reference
+
+- [Norman Nielsen Group: Date Inputs](https://www.nngroup.com/articles/date-input//)

@@ -1755,7 +1755,8 @@
           "Focus": {
             "category": "system",
             "value": "{Brand.WFP-Blue.WFP-Blue50🔹}",
-            "type": "color"
+            "type": "color",
+            "description": "Focus state of buttons"
           },
           "Disable": {
             "category": "system",
@@ -2204,6 +2205,11 @@
       "category": "system",
       "value": "{Neutral.✅ Neutral95}",
       "type": "color"
+    },
+    "main": {
+      "category": "system",
+      "value": "{Neutral.Neutral100 (white)}",
+      "type": "color"
     }
   },
   "Focus": {
@@ -2285,7 +2291,8 @@
       "On-Dark": {
         "category": "system",
         "value": "{Neutral.Neutral100 (white)}",
-        "type": "color"
+        "type": "color",
+        "description": "Main background of any page"
       }
     },
     "Heading": {
@@ -2298,6 +2305,20 @@
         "category": "system",
         "value": "{Brand.WFP-Blue.WFP-Blue70}",
         "type": "color"
+      }
+    },
+    "Field": {
+      "placeholder": {
+        "category": "system",
+        "value": "{Neutral.Neutral60}",
+        "type": "color",
+        "description": "Placeholder color for input elements"
+      },
+      "default": {
+        "category": "system",
+        "value": "{Text.Body.Default}",
+        "type": "color",
+        "description": "The default color for the text in form inputs"
       }
     }
   },
@@ -2326,6 +2347,12 @@
       "category": "system",
       "value": "{Brand.Dark-Blue.✅ Dark-Blue20}",
       "type": "color"
+    },
+    "field": {
+      "category": "system",
+      "value": "{Neutral.Neutral100 (white)}",
+      "type": "color",
+      "description": "Background of form inputs"
     }
   },
   "Disable": {
@@ -2380,6 +2407,20 @@
         "width": "{borderWidth.200}"
       },
       "type": "border"
+    }
+  },
+  "Field": {
+    "borderRadius": {
+      "category": "system",
+      "value": "{borderRadius.100}",
+      "type": "borderRadius",
+      "description": "The border radius of a field input"
+    },
+    "borderColor": {
+      "category": "system",
+      "value": "{Neutral.Neutral60}",
+      "type": "color",
+      "description": "The field border color"
     }
   }
 }

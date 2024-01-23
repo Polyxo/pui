@@ -18,7 +18,14 @@ export { buttonKinds, notificationtypes } from "./prop-types/types";
 export { default as Empty } from "./components/Empty";
 export { Hero, HeroExternal } from "./components/Hero";
 export { Card, CardExternal } from "./components/Card";
-export { DateRangePickerInput } from "./components/DatePicker";
+
+export {
+  DatePicker,
+  DateRangePicker,
+  DatePickerInput,
+  DateRangePickerInput,
+} from "./components/DatePicker";
+
 export { default as Checkbox } from "./components/Checkbox";
 export { default as Credits } from "./components/Credits";
 //export { default as ContentSwitcher } from './components/ContentSwitcher';

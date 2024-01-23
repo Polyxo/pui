@@ -1,24 +1,18 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
+@use "../../colors" as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../theme" as *;
+@use "../../spacing" as *;
+@use "../../type" as *;
+@use "../../utilities/component-reset";
+@use "../../utilities/convert" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/placeholder-colors" as *;
+@use "../../utilities/skeleton" as *;
+@use "../../utilities/input-base" as *;
 
-@use '../../colors' as *;
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../theme' as *;
-@use '../../spacing' as *;
-@use '../../type' as *;
-@use '../../utilities/component-reset';
-@use '../../utilities/convert' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/placeholder-colors' as *;
-@use '../../utilities/skeleton' as *;
-
-@use './react-datepicker/datepicker.scss' as *;
+@use "./react-datepicker/datepicker.scss" as *;
 
 /// Date picker styles
 /// @access public
@@ -36,7 +30,7 @@ $datepicker__navigation-disabled-color: lighten(
   10%
 ) !default;
 
-$datepicker__border-radius: 0.3rem !default;
+$datepicker__border-radius: 0rem !default;
 $datepicker__day-margin: 0.166rem !default;
 $datepicker__font-size: 0.8rem !default;
 $datepicker__item-size: 1.7rem !default;
@@ -45,9 +39,41 @@ $datepicker__navigation-button-size: 32px !default;
 $datepicker__triangle-size: 8px !default;
 
 @mixin date-picker-new {
+  /* Date  Picker */
+  .#{$prefix}--date-picker {
+    display: inline-flex;
+  }
+
+  .#{$prefix}--date-picker__arrow {
+    width: 0.8em;
+    height: auto;
+    margin: 0 0.7em;
+    //color: $form-field-border; //$field-border;
+  }
+  .#{$prefix}--date-picker__input {
+    position: relative;
+    input {
+      @include input-base;
+      min-width: 10em !important;
+      max-width: 10em !important;
+      //padding-left: 2.5em;
+    }
+  }
+  .#{$prefix}--date-picker__icon {
+    position: absolute;
+    top: 0.75em;
+    right: 0.7em;
+    width: 0.9em;
+    height: auto;
+    pointer-events: none;
+    color: $interactive;
+  }
+
+  /* Date Range Picker */
   .#{$prefix}--date-ranger-picker {
     display: inline-flex;
   }
+
   .#{$prefix}--date-ranger-picker__arrow {
     width: 0.8em;
     height: auto;
@@ -57,6 +83,7 @@ $datepicker__triangle-size: 8px !default;
   .#{$prefix}--date-ranger-picker__input {
     position: relative;
     input {
+      @include input-base;
       min-width: 10em !important;
       max-width: 10em !important;
       //padding-left: 2.5em;
