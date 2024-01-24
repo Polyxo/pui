@@ -1,23 +1,23 @@
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../motion' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
-@use '../../theme' as *;
-@use '../../utilities/component-reset';
-@use '../../utilities/convert' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/skeleton' as *;
-@use '../../utilities/input-base' as *;
-@use '../form';
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../motion" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
+@use "../../theme" as *;
+@use "../../utilities/component-reset";
+@use "../../utilities/convert" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/skeleton" as *;
+@use "../../utilities/input-base" as *;
+@use "../form";
 
 /// Select styles
 /// @access public
 /// @group select
 
 $input-height: 40px !default;
-$input-border: 1px solid $field-border;
+$input-border: 1px solid var(--neutral-100__color);
 
 @mixin select {
   .#{$prefix}--select {
@@ -55,7 +55,7 @@ $input-border: 1px solid $field-border;
     }
 
     &:focus {
-      @include focus-outline('border');
+      @include focus-outline("border");
     }
 
     &:focus ~ .#{$prefix}--label {
@@ -172,7 +172,7 @@ $input-border: 1px solid $field-border;
       }
 
       &:focus {
-        @include focus-outline('border');
+        @include focus-outline("border");
       }
 
       ~ .#{$prefix}--select__arrow {

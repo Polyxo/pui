@@ -29,8 +29,12 @@
     &:hover,
     &.#{$prefix}--link--hover {
       text-decoration: underline;
+      color: $action-default-link-hover;
     }
     &:visited {
+      color: $action-default-link-default;
+    }
+    &:active {
       color: $action-default-link-active;
     }
 

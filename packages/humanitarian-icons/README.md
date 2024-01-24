@@ -29,7 +29,3 @@ If you're looking for `@wfp/humanitarian-icons` API documentation, check out:
 We're always looking for contributors to help us fix bugs, build new features,
 or help us improve the project documentation. If you're interested, definitely
 check out our [Contributing Guide](/.github/CONTRIBUTING.md)! 👀
-
-## 📝 License
-
-Licensed under the [Apache 2.0 License](/LICENSE).

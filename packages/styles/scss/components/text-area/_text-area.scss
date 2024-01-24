@@ -21,7 +21,7 @@
 /// @access public
 /// @group text-area
 
-$input-border: 1px solid $field-border !default; //TODO change to current token $field-border
+$input-border: 1px solid var(--neutral-100__color) !default; //TODO change to current token $field-border
 $input-border-radius: 0px !default;
 $input-height: 40px !default;
 

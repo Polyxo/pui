@@ -1,65 +1,96 @@
 ---
 category: "Core"
 title: "DatePicker"
-excerpt: "**Text inputs** enable the user to interact with and input data. Use when the application requires long-form content from the user."
+excerpt: "Datepicker allows the user to select a date or date range from a calendar."
 slug: "Components/Forms/DatePicker/tab:Code"
 figma: "https://www.figma.com/file/KWrOuAzzykyysIDFpLikx1/WFP---Bridge?type=design&node-id=130%3A2249&mode=design&t=eFfGsO7k7LGjWFwo-1"
-mainComponent: "DateRangePickerInput"
-components: ["SingleDatePickerInput"]
-componentsNew:
-  SingleDatePickerInput:
-    path: "DatePicker/SingleDatePickerInput"
-  DateRangePickerInput:
-    path: "DatePicker/DateRangePickerInput"
+mainComponent: "DatePicker"
+components: ["DateRangePicker"]
 ---
 
 The Datepicker allows the user to select a date or date range from a calendar.
 
-We recommend [react-datepicker](https://www.npmjs.com/package/react-datepicker) for DatePickers and DateRangePickers.
+We recommend [react-datepicker](https://www.npmjs.com/package/react-datepicker) for DatePickers and DateRangePickers. It is a well maintained library with a lot of features and customizability and is used in the examples below. It uses [date-fns](https://date-fns.org/) for date manipulation.
 
 ### Usage
 
 Initialize with loading classes to load the styling from WFP UI
 
-```js
-import 'react-dates/initialize';
-import { SingleDatePicker, DateRangePicker } from 'react-dates';
-import { SingleDatePickerInput} from '@wfp/react';
+Make sure to also install [react-datepicker](https://www.npmjs.com/package/react-datepicker) and import it in your project.
 
-<SingleDatePickerInput
-  datePicker={SingleDatePicker}
-/>
+```jsx
+import ReactDatePicker from "react-datepicker";
+```
 
-<DateRangePickerInput
-  datePicker={DateRangePicker}
+### DatePicker
+
+```jsx live
+<DatePicker labelText="Date Picker" datePicker={ReactDatePicker} />
+```
+
+### Configuration
+
+You can use onSelect event handler which fires each time some calendar date has been selected.
+
+```jsx
+<DatePicker
+  datePicker={ReactDatePicker}
+  selected={date}
+  onSelect={handleDateSelect} //when day is clicked
+  onChange={handleDateChange} //only when value has changed
+  onClickOutside={handleDateClickOutside}
 />
 ```
 
-### Usage with redux-form or final-forms
+It also takes all the properties of the [Input](../input) component.
 
-```js
-import ReduxFormWrapper from "@wfp/react";
-import { SingleDatePickerInput } from "@wfp/react";
-import { SingleDatePicker, DateRangePicker } from "react-dates";
+### DateRangePicker
 
-<Field
-  component={ReduxFormWrapper}
-  inputComponent={SingleDatePickerInput}
-  datePicker={SingleDatePicker}
-  format={(value) => (value ? moment(value) : undefined)}
-  normalize={(data) => data && data.value && data.value.format()}
-/>;
+```jsx live
+<DateRangePicker labelText="Date Range Picker" datePicker={ReactDatePicker} />
 ```
 
-```js
-<Field
-  component={ReduxFormWrapper}
-  inputComponent={DateRangePickerInput}
-  datePicker={DateRangePicker}
-  format={(value) =>
-    value
-      ? { startDate: moment(value.startDate), endDate: moment(value.endDate) }
-      : undefined
-  }
+### Localization
+
+The date picker relies on [date-fns](https://date-fns.org/) internationalization to localize its display components. By default, the date picker will use the locale globally set, which is English. Provided are 3 helper methods to set the locale:
+
+- `registerLocale` (string, object): loads an imported locale object from date-fns
+- `setDefaultLocale` (string): sets a registered locale as the default for all datepicker instances
+- `getDefaultLocale`: returns a string showing the currently set default locale
+
+Example:
+
+```jsx
+import { registerLocale, setDefaultLocale } from  "react-datepicker";
+import es from 'date-fns/locale/es';
+registerLocale('es', es)
+
+<DatePicker
+  locale="es"
+/>
+```
+
+### reactHookForm
+
+DatePicker can be used with [react-hook-form](https://react-hook-form.com/) by using the `Controller` component.
+
+```jsx live reactHookForm
+<Controller
+  name="inputname"
+  control={control}
+  render={({ field }) => (
+    <DatePicker
+      datePicker={ReactDatePicker}
+      {...field}
+      selected={field.value}
+      datePickerProps={{
+        selected: field.value ? new Date(field.value) : Date.now,
+        onSelect: (d) => {
+          console.log("ddd", d);
+          field.onChange(d);
+        },
+      }}
+    />
+  )}
 />
 ```

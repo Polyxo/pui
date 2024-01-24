@@ -41,7 +41,7 @@ $input-label-weight: 400 !default;
     font-weight: 600 !important;
     display: inline-block;
     vertical-align: baseline;
-    margin-bottom: $spacing-02;
+    margin-bottom: $spacing-04;
   }
 
   .#{$prefix}--label + .#{$prefix}--form__helper-text {
@@ -148,6 +148,6 @@ $input-label-weight: 400 !default;
     z-index: 0;
     // max-height: 3rem;
     // opacity: 1;
-    margin-bottom: $spacing-02;
+    margin-bottom: $spacing-03;
   }
 }

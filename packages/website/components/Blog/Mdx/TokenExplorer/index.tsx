@@ -14,13 +14,11 @@ import { hex, score } from "wcag-contrast";
 
 import styles from "./typeset.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  //  faChevronCircleRight,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 function deepFilter(obj, category) {
   // Base case: If the current object has the desired property and value, return the object
+
   if (
     obj &&
     typeof obj === "object" &&
@@ -33,7 +31,6 @@ function deepFilter(obj, category) {
   if (obj && typeof obj === "object") {
     const newObj = Array.isArray(obj) ? [] : {};
     let hasValidChildren = false;
-
     for (const key of Object.keys(obj)) {
       const child = deepFilter(obj[key], category);
       if (child !== null) {
@@ -371,21 +368,20 @@ const TokenDisplay: React.FC<TokenDisplayProps> = ({
     return <div>LetterSpacing</div>;
   }
 
-  const isLastStep = (token as any)[Object.keys(token)[0]][
-    Object.keys((token as any)[Object.keys(token)[0]])[0]
-  ].filePath;
-  const lastStepPath = (token as any)[Object.keys(token)[0]][
-    Object.keys((token as any)[Object.keys(token)[0]])[0]
-  ].path;
+  const lastStepPrev = token[Object.keys(token)[0]];
 
-  const lastStepBreadcrumb = lastStepPath
-    ? [...lastStepPath].splice(0, lastStepPath.length - 2)
+  const lastStep = lastStepPrev
+    ? lastStepPrev[Object.keys(token[Object.keys(token)[0]])[0]]
+    : undefined;
+
+  const lastStepBreadcrumb = lastStep?.path
+    ? [...lastStep.path].splice(0, lastStep.path.length - 2)
     : [];
   return (
     <div className="token-category">
       <h4 className={styles.heading}>
-        {isLastStep &&
-          lastStepPath &&
+        {lastStep?.filePath &&
+          lastStep?.path &&
           lastStepBreadcrumb.map((p, i) => (
             <span key={i}>
               {i !== 0 && (

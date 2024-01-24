@@ -2,7 +2,7 @@ import * as React from "react";
 import useSettings from "../../hooks/useSettings";
 import { ArrowRight, CalendarAltRegular } from "@wfp/icons-react";
 
-export interface DateRangePickerInputProps {
+export interface DatePickerInputProps {
   /**
    * The starting date value, formatted as a string.
    */
@@ -40,14 +40,12 @@ export interface DateRangePickerInputProps {
    */
   toProps?: object;
 }
-export const DateRangePickerInput: React.FC<DateRangePickerInputProps> = ({
+export const DatePickerInput: React.FC<DatePickerInputProps> = ({
   startDate,
   endDate,
   setStartDate,
-  setEndDate,
   datePicker,
-  fromProps = {},
-  toProps = {},
+  datePickerProps = {},
 }) => {
   const { prefix } = useSettings();
   const DatePicker = datePicker;
@@ -55,37 +53,22 @@ export const DateRangePickerInput: React.FC<DateRangePickerInputProps> = ({
     return "Add a datepicker component";
   }
   return (
-    <div className={`${prefix}--date-ranger-picker`}>
-      <div className={`${prefix}--date-ranger-picker__input`}>
+    <div className={`${prefix}--date-picker`}>
+      <div className={`${prefix}--date-picker__input`}>
         <DatePicker
           selected={startDate}
-          className={`${prefix}--input ${prefix}--date-ranger__input__start-date`}
+          className={`${prefix}--input ${prefix}--date__input__start-date`}
           onChange={setStartDate}
           selectsStart
           startDate={startDate}
           endDate={endDate}
           wrapperClassName={`${prefix}--date-picker__wrapper`}
-          {...fromProps}
+          {...datePickerProps}
         />
-        <CalendarAltRegular className={`${prefix}--date-ranger-picker__icon`} />
-      </div>
-      <ArrowRight className={`${prefix}--date-ranger-picker__arrow`} />
-      <div className={`${prefix}--date-ranger-picker__input`}>
-        <DatePicker
-          selected={endDate}
-          className={`${prefix}--input ${prefix}--date-ranger__input__start-date`}
-          onChange={setEndDate}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-          wrapperClassName={`${prefix}--date-picker__wrapper`}
-          {...toProps}
-        />
-        <CalendarAltRegular className={`${prefix}--date-ranger-picker__icon`} />
+        <CalendarAltRegular className={`${prefix}--date-picker__icon`} />
       </div>
     </div>
   );
 };
 
-DateRangePickerInput.displayName = "DateRangePickerInput";
+DatePickerInput.displayName = "DatePickerInput";
