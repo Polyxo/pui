@@ -25,12 +25,12 @@ $input-border-radius: 0px;
   appearance: none;
   //TODO: dynamic font-size
   font-size: 1em;
-  background-color: #fff; //$fill-field is giving undefined var error
+  background-color: $fill-field;
   order: 2;
   border: $input-border;
   border-color: var(--neutral-100__color);
-  border-radius: 2px; //$input-border-radius; undefined var error
-  border-radius: 2px; //$field-border-radius; undefined var error
+  border-radius: $input-border-radius;
+  border-radius: $field-border-radius;
   box-shadow: none;
 
   //TODO
