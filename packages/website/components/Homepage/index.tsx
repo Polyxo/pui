@@ -2,14 +2,17 @@ import React from "react";
 import Hero from "./Hero";
 import Possiblities from "./Possibilities";
 import Tools from "./Tools";
+import Essentials from "./Essentials";
 import { Wrapper } from "@wfp/react";
 
 export default function Homepage() {
   return (
-    <Wrapper pageWidth="md">
+    <div>
       <Hero />
-      <Possiblities />
-      <Tools />
-    </Wrapper>
+      <Wrapper pageWidth="md">
+        <Possiblities />
+        <Essentials />
+      </Wrapper>
+    </div>
   );
 }
