@@ -5,6 +5,6 @@
 /// @example @include placeholder-colors;
 /// @group utilities
 @mixin placeholder-colors {
-  color: $text-field-placeholder;
+  color: $text-field-placeholder; //undefined var error
   opacity: 1;
 }
