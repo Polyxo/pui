@@ -6,6 +6,11 @@
   @include breakpoint-up(md) {
     margin-bottom: 0;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .headerTitle {
@@ -20,9 +25,13 @@
 .content {
   height: 120px;
   background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
 }
 
 .contentOther {
+  display: flex;
+  justify-content: center;
   height: 280px;
   background-color: #f1f1f1;
 }
@@ -79,6 +88,17 @@
     column-gap: 1em;
     row-gap: 1em;
   }
+}
+
+.flexDisplay {
+  display: flex;
+  justify-content: center;
+}
+
+.fontAwesomeIconStyle {
+  width: 30%;
+  height: auto;
+  margin: 5px;
 }
 
 .icon {

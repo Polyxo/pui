@@ -40,7 +40,7 @@ export default function Navigation() {
       </BannerNavigation>
 
       <MainNavigation
-        logo={<NextLink href="./">Bridge</NextLink>}
+        logo={<NextLink href="/">Bridge</NextLink>}
         line={false}
         className={styles.mainNavigation}
         pageWidth="full"

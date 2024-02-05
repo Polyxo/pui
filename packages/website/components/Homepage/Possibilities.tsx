@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./possibilities.module.scss";
-import MoreLink from "../MoreLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Wrapper } from "@wfp/react";
 import {
@@ -10,8 +9,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Button } from "@wfp/react";
-
-import { faReact } from "@fortawesome/free-brands-svg-icons";
 
 function PossibilitiesContainer({ className = "", title, icon, content }: any) {
   return (
@@ -38,7 +35,7 @@ export default function Possiblities() {
           title="Are you a Designer?"
           content={
             <>
-              <Link href="./documentation/overview" legacyBehavior>
+              <Link href="./documentation/designing/intro" legacyBehavior>
                 <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
                   Start designing
                 </Button>
@@ -52,7 +49,10 @@ export default function Possiblities() {
           title="Are you a Developer?"
           content={
             <>
-              <Link href="./documentation/overview" legacyBehavior>
+              <Link
+                href="./documentation/developing/installation"
+                legacyBehavior
+              >
                 <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
                   Start coding
                 </Button>

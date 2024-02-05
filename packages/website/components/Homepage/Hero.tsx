@@ -1,12 +1,9 @@
 import React from "react";
 import styles from "./hero.module.scss";
-import { Button } from "@wfp/react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Wrapper } from "@wfp/react";
 import Image from "next/image";
-import screenImage from "../../public/hp-screen1.svg";
+import screenImage from "../../public/homescreens.png";
 
 export default function Hero() {
   return (
@@ -24,11 +21,13 @@ export default function Hero() {
       </Wrapper>
 
       <div className={styles.screenImageWrapper}>
-        <Image
-          src={screenImage}
-          alt="Bridge screen"
-          className={styles.screenImage}
-        />
+        <Wrapper pageWidth="lg">
+          <Image
+            src={screenImage}
+            alt="Bridge screen"
+            className={styles.screenImage}
+          />
+        </Wrapper>
       </div>
 
       <Wrapper pageWidth="md">
