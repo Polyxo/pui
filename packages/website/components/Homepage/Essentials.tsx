@@ -56,7 +56,7 @@ export default function Essentials() {
         <div className={styles.essentialWrapper}>
           <PossibilitiesContainer
             title="Spacing Units"
-            link="./documentation/tokens"
+            link="./documentation/guidelines/spacing"
             content={
               <div className={styles.flexDisplay}>
                 <Image
@@ -85,6 +85,7 @@ export default function Essentials() {
           />
           <PossibilitiesContainer
             title="Notifications"
+            link="./components/overlay/notification"
             content={
               <Image
                 src={bellsIcon}
@@ -127,7 +128,7 @@ export default function Essentials() {
         <div className={styles.essentialWrapper2}>
           <PossibilitiesContainer
             title="Install the UI-KIT"
-            link="./developing/installation"
+            link="./documentation/developing/installation"
             type="howto"
             content={
               <Image
@@ -139,7 +140,7 @@ export default function Essentials() {
           />
           <PossibilitiesContainer
             title="Design for Accessibility"
-            link="https://npmjs.com/package/@wfp/react"
+            link="./support/accessibility"
             type="howto"
             content={
               <div className={styles.flexDisplay}>
