@@ -27,6 +27,7 @@ export interface ModalProps {
   children?: React.ReactNode;
   components?: {
     Wrapper?: React.ReactNode;
+    ModalFooter?: React.ReactNode;
   };
   /**
    * Specify a label to be read by screen readers on the modal root node
@@ -96,10 +97,6 @@ export interface ModalProps {
    * If true the Modal will be wider then the regular Modal
    */
   wide?: boolean;
-  /**
-   * Specify the a function which renders a custom ModalFooter.
-   */
-  modalFooter?: () => void;
   /**
    * Specify a handler for closing modal.
    * The handler should care of closing modal, e.g. changing `open` prop.

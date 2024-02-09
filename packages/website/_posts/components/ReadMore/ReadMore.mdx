@@ -1,24 +1,15 @@
 ---
 category: "Core"
 title: "ReadMore"
-excerpt: "Using the **ReadMore** component is a simple way to keep longer content from cluttering up your page, giving you more control over how much content is displayed to visitors."
-coverImage: "../sample-image.jpg"
+excerpt: "The `ReadMore` component allows users to expand and view additional content beyond a truncated version, providing a way to manage and display longer text or information."
 slug: "Components/Structure/ReadMore"
 storybook: true
 mainComponent: "ReadMore"
-defaultProps:
-  labelText: "Toggle label"
-  helperText: "Optional helper text."
-  defaultValue: "false"
-  labelA: "Off"
-  labelB: "On"
 ---
-
-**ReadMore** is used to hide or reveal content. It saves space while preserving visual balance and maintaining information hierarchy.
 
 ## Examples
 
-Using the **Read More** component is a simple way to keep longer content from cluttering up your page, giving you more control over how much content is displayed to visitors.
+Using the `ReadMore` component is a simple way to keep longer content from cluttering up your page, giving you more control over how much content is displayed to visitors.
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=242%3A1337" />
 
@@ -26,7 +17,39 @@ Using the **Read More** component is a simple way to keep longer content from 
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=242%3A1424" />
 
-The `ReadMore` component is a versatile UI element designed to manage the display of long content sections in a user-friendly manner. It allows users to choose between viewing the entire content or a condensed version, enhancing the user experience, especially in content-heavy interfaces.
+<DoUse>
+
+- **Content Exceeding Display Limit:** Use `ReadMore` when presenting content that is too long to display entirely on the initial view, preventing overwhelming users with excessive information.
+- **Teaser Content:** Employ `ReadMore` to show a concise preview of content, allowing users to access more details if they're interested.
+- **Flexible Content Areas:** When the amount of content can vary, `ReadMore` provides a flexible solution for accommodating different lengths.
+
+</DoUse>
+
+<DoNotUse>
+
+- **Short and Static Content:** Avoid `ReadMore` for content that is already brief and doesn't require expansion.
+- **Disruptive Reading Flow:** In scenarios where users should consume content continuously without interruptions, opt for presenting the entire content upfront.
+- **Inconsistent Usage:** Ensure uniformity in the usage of `ReadMore`; avoid using it inconsistently across different sections or pages.
+
+</DoNotUse>
+
+### Alternative Components
+
+- **Accordions:** For organizing and presenting content in collapsible sections with headers.
+- **Tabs:** When content can be logically divided into distinct categories or sections.
+- **Pagination:** For navigating through lengthy content in a sequential manner.
+
+## Accessibility
+
+- **Keyboard Navigation:** Ensure that `ReadMore` can be easily accessed and activated using keyboard controls.
+- **Screen Reader Compatibility:** Provide descriptive labels and ensure screen readers can interpret and communicate the purpose of the `ReadMore` component.
+- **Focus States:** Clearly indicate the focus state of `ReadMore` and any associated interactive elements for users navigating through the interface.
+- **Animation Considerations:** If using animations to expand or collapse content, provide alternatives or ensure that they are accessible and don't cause discomfort for users with motion sensitivity.
+- **Text Contrast:** Maintain sufficient contrast between the text in the `ReadMore` link and its background to enhance readability, especially for users with visual impairments.
+
+Use the **`aria-label`** attribute to add context for screen reader users.
+
+This will announce to the screen reader exactly where the link will take them.
 
 ## Design Purpose
 
@@ -49,20 +72,6 @@ The `ReadMore` component is a versatile UI element designed to manage the displa
 <Callout>
   Use a smooth animation to expand content and drive user through reading.
 </Callout>
-
-## How to use
-
-<DoUse>
-
-- Use when you have long content and you need to hide part of it to avoid page cluttering
-
-</DoUse>
-
-<DoNotUse>
-
-- Expand content on-click and not on hover to recognise user’s intent.
-
-</DoNotUse>
 
 ### Accessibility
 

@@ -1,7 +1,6 @@
-@use '../../../colors' as *;
-@use '../../../config' as *;
-@use '../../../motion' as *;
-@use '../../../theme' as *;
+@use "../../../config" as *;
+@use "../../../motion" as *;
+@use "../../../theme" as *;
 
 $datepicker__background-color: $layer-primary !default;
 $datepicker__border-color: $border-strong !default;

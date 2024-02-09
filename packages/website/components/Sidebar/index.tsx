@@ -195,7 +195,7 @@ export default function SidebarWrapper({
             target="_blank"
             className={styles.editOnGitHub}
           >
-            Edit this page on GitHub <FontAwesomeIcon icon={faArrowRight} />
+            Edit this page <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
         <div className={styles.sidebarAddition}>

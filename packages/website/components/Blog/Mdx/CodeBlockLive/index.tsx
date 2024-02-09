@@ -35,6 +35,8 @@ import {
   faCheckSquare,
   faMinusSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import useGenerateCodeSandbox from "../../../PropTypes/useGenerateCodeSandbox";
+import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 
 const countLines = (str) => {
   return str.split("\n").length;
@@ -72,6 +74,7 @@ const CodeBlockLive = (props: any) => {
     className = "",
     live,
     center,
+    componentName,
     forceFullWidth,
     noCode,
     hideWrapper,
@@ -154,6 +157,11 @@ const CodeBlockLive = (props: any) => {
   };
 
   let formatedCode = code;
+
+  const { generateCodeSandbox } = useGenerateCodeSandbox({
+    componentName,
+    formatedCode,
+  });
 
   try {
     formatedCode =
@@ -249,6 +257,16 @@ const CodeBlockLive = (props: any) => {
               }
             >
               html
+            </Button>
+
+            <Button
+              small
+              iconReverse
+              className={stylesModule.showAllPropsButton}
+              onClick={generateCodeSandbox}
+              icon={<FontAwesomeIcon icon={faCodepen} />}
+            >
+              Codesandbox
             </Button>
           </div>
         )}

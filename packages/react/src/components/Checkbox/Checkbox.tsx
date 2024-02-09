@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
-import useSettings from '../../hooks/useSettings';
+import * as React from "react";
+import { PropsWithChildren } from "react";
+import classNames from "classnames";
+import useSettings from "../../hooks/useSettings";
 
 interface CheckboxProps
-  extends Omit<React.ComponentPropsWithRef<'input'>, 'onChange'> {
+  extends Omit<React.ComponentPropsWithRef<"input">, "onChange"> {
   /**
    * Specify whether the Checkbox is in an indeterminate state
    */
@@ -47,7 +47,7 @@ const Checkbox: React.FC<PropsWithChildren<CheckboxProps>> = React.forwardRef(
       indeterminate,
       hideLabel,
       wrapperClassName,
-      title = '',
+      title = "",
       ...other
     },
     ref
@@ -73,25 +73,24 @@ const Checkbox: React.FC<PropsWithChildren<CheckboxProps>> = React.forwardRef(
           }}
           className={`${prefix}--checkbox`}
           id={id || other.name}
-          ref={
-            ref /*(el) => {
+          ref={(el) => {
             if (el) {
               if (indeterminate) {
                 el.indeterminate = indeterminate;
               }
             }
-            if (typeof ref === 'function') {
+            if (typeof ref === "function") {
               ref(el);
             } else if (Object(ref) === ref) {
               ref.current = el;
             }
-          }*/
-          }
+          }}
         />
         <label
           htmlFor={id || other.name}
           className={labelClasses}
-          title={title || undefined}>
+          title={title || undefined}
+        >
           <span className={innerLabelClasses}>{labelText}</span>
         </label>
       </div>
@@ -99,6 +98,6 @@ const Checkbox: React.FC<PropsWithChildren<CheckboxProps>> = React.forwardRef(
   }
 );
 
-Checkbox.displayName = 'Checkbox';
+Checkbox.displayName = "Checkbox";
 
 export default Checkbox;

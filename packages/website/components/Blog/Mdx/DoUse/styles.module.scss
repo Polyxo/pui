@@ -1,26 +1,6 @@
-@use 'scss/meta' as *;
-/*
-@mixin caption {
-  font-size: 1.1em;
-  display: block;
-  width: 100%;
-  font-style: italic;
-  text-align: center;
-  line-height: 1.75;
-  margin-bottom: 2em;
+@use "scss/meta" as *;
 
-  @include breakpoint-up(md) {
-    max-width: calc(100% - 1em);
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-  }
-}
-.caption {
-  @include caption;
-}
-*/
-
-.doUse {
+.doUseElement {
   background: $layer-primary;
   padding: 1.5em;
   border-radius: 10px;
@@ -28,4 +8,12 @@
   h3 {
     margin-top: 0;
   }
+}
+
+.doUse {
+  background: $fill-success;
+}
+
+.doNotUse {
+  background: $fill-error;
 }

@@ -2348,7 +2348,7 @@
       "value": "{Brand.Dark-Blue.✅ Dark-Blue20}",
       "type": "color"
     },
-    "field": {
+    "Field": {
       "category": "system",
       "value": "{Neutral.Neutral100 (white)}",
       "type": "color",
@@ -2421,6 +2421,11 @@
       "value": "{Neutral.Neutral60}",
       "type": "color",
       "description": "The field border color"
+    },
+    "focus": {
+      "category": "system",
+      "value": "{Brand.WFP-Blue.WFP-Blue80}",
+      "type": "color"
     }
   }
 }

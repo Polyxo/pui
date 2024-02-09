@@ -20,7 +20,7 @@ interface MainNavigationProps extends React.ComponentPropsWithRef<"div"> {
    * Specify the max-width on desktop devices (same as \`Wrapper\` component)
    */
   pageWidth?: ScreenSize;
-  /*
+  /**
    * The replaceable components to be used for the main navigation. MobileButton(prefix, toggleMenu): accepts a React.ReactNode which will be used as the mobile button. Wrapper: accepts a React.ReactNode which will be used as the wrapper.
    */
   components?: {
@@ -35,7 +35,6 @@ interface MainNavigationProps extends React.ComponentPropsWithRef<"div"> {
    * A line will be placed above the navigation
    */
   line?: boolean;
-
   /**
    * Show a logo ribbon on the left side of the logo
    */

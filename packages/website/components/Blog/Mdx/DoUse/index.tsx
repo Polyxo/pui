@@ -1,17 +1,20 @@
-import { List, ListItem } from '@wfp/react';
-import React from 'react';
-import styles from './styles.module.scss';
+import { List, ListItem } from "@wfp/react";
+import React from "react";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 interface DoUseType {
   children: React.ReactNode;
   title?: string;
-  kind?: 'checkmark' | 'cross';
+  kind?: "checkmark" | "cross";
+  background: boolean;
 }
 
 export function DoUse({
   children,
-  title = 'When to use',
-  kind = 'checkmark',
+  title = "When to use",
+  kind = "checkmark",
+  background = false,
 }: DoUseType) {
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -28,22 +31,22 @@ export function DoUse({
         }
       );
       return childrenListItemWithProps;
-      /*console.log('childrenListItemWithProps', childrenListItemWithProps);
-      return React.cloneElement(childrenListItemWithProps, {
-        className: styles.list,
-      });*/
     }
     return child;
   });
+  const classes = classNames(styles.doUseElement, {
+    [styles.doUse]: kind === "checkmark" && background,
+    [styles.doNotUse]: kind === "cross" && background,
+  });
 
   return (
-    <div className={styles.doUse}>
+    <div className={classes}>
       <h3>{title}</h3>
       <List kind="bullets">{childrenWithProps}</List>
     </div>
   );
 }
 
-export function DoNotUse({ title = 'When not to use', ...props }: any) {
+export function DoNotUse({ title = "When not to use", ...props }: any) {
   return <DoUse {...props} kind="cross" title={title} />;
 }

@@ -1,15 +1,14 @@
-@use '../../breakpoint' as *;
-@use '../../colors' as *;
-@use '../../config' as *;
-@use '../../feature-flags' as *;
-@use '../../motion' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../themes' as *;
-@use '../../type' as *;
-@use '../../utilities/convert' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/focus-outline' as *;
+@use "../../breakpoint" as *;
+@use "../../config" as *;
+@use "../../feature-flags" as *;
+@use "../../motion" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../themes" as *;
+@use "../../type" as *;
+@use "../../utilities/convert" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/focus-outline" as *;
 
 @function cssColor($color-variable) {
   @return var(--cds-inverse-support-02, #fa4d56);
@@ -430,12 +429,12 @@
       // grid-template-columns: min-content 0.9fr;
       grid-template-columns: 0fr 1fr;
       grid-template-areas:
-        'icon name'
-        'icon subject';
+        "icon name"
+        "icon subject";
 
       @include breakpoint(md) {
         grid-template-columns: 0fr 1fr 0fr;
-        grid-template-areas: 'icon name subject';
+        grid-template-areas: "icon name subject";
       }
     }
 

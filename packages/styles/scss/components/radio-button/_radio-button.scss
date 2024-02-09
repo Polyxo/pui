@@ -99,7 +99,7 @@ $radio-border-width: 2px !default;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-color: $interactive;
+    border-color: $action-default-fill-primary-default;
 
     &:before {
       content: "";
@@ -108,7 +108,7 @@ $radio-border-width: 2px !default;
       width: 0.5rem;
       height: 0.5rem;
       border-radius: 50%;
-      background-color: $interactive;
+      background-color: $action-default-fill-primary-default;
     }
   }
 

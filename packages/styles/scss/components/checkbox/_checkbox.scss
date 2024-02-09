@@ -54,7 +54,7 @@
     top: calc(50% - 9px);
     height: calcRem(18px);
     width: calcRem(18px);
-    border: 2px solid $border-inverse;
+    border: 2px solid $field-border-color;
     border-radius: 4px;
     background-color: $background-main;
   }
@@ -80,7 +80,7 @@
   .#{$prefix}--checkbox-label[data-contained-checkbox-state="true"]::before,
   .#{$prefix}--checkbox-label[data-contained-checkbox-state="mixed"]::before {
     background-color: $background-brand;
-    border-color: $interactive;
+    border-color: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--checkbox:checked + .#{$prefix}--checkbox-label::after,
@@ -127,7 +127,7 @@
     width: calcRem(18px);
     margin-right: $spacing-03;
     background-color: $field;
-    border: 2px solid $border-inverse;
+    border: 2px solid $field-border-color;
     min-width: calcRem(18px);
   }
 

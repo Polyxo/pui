@@ -7,8 +7,8 @@
 /// @group utilities
 @mixin focus-outline($type: "border") {
   @if ($type == "border") {
-    outline: 1px solid theme.$focus;
-    border-color: theme.$focus; //update $focus color
+    outline: 1px solid theme.$field-focus;
+    border-color: theme.$field-focus; //update $focus color
     //box-shadow: 0px 2px 8px 0 theme.$focus; //get new token
 
     @media screen and (prefers-contrast) {
@@ -22,20 +22,11 @@
   }
 
   @if ($type == "outline") {
-    outline: 2px solid theme.$focus;
+    outline: 2px solid theme.$field-focus;
     outline-offset: -2px;
 
     @media screen and (prefers-contrast) {
       outline-style: dotted;
-    }
-  }
-
-  @if ($type == "outline-compat") {
-    box-sizing: border-box;
-    border: 2px solid theme.$focus;
-
-    @media screen and (prefers-contrast) {
-      border-style: dotted;
     }
   }
 
@@ -54,7 +45,7 @@
   }
 
   @if ($type == "border-important") {
-    outline: 2px solid theme.$focus !important;
+    outline: 2px solid theme.$field-focus !important;
     outline-offset: -1px;
   }
 

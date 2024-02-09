@@ -1,11 +1,4 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-
 @use "../../config" as *;
-@use "../../colors" as *;
 @use "../../theme" as *;
 @use "../../type" as *;
 @use "../../breakpoint" as *;
@@ -294,6 +287,7 @@ $main-navigation-menu-width: calcRem(300px);
 
     .#{$prefix}--main-navigation__list {
       display: none;
+      background: $background-main;
     }
 
     .#{$prefix}--main-navigation__list--open {
@@ -309,6 +303,7 @@ $main-navigation-menu-width: calcRem(300px);
     }
 
     .#{$prefix}--main-navigation__trigger {
+      justify-content: flex-start;
       a {
         display: block;
         width: 100%;

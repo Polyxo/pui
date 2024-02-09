@@ -2,27 +2,49 @@
 category: "Core"
 title: "Search"
 excerpt: "Search offers users a way to explore a website or application using keywords. Search can be used as the primary means of discovering content or as a filter to aid the user in finding content."
-coverImage: "../sample-image.jpg"
 slug: "Components/Forms/Search"
 status: "published"
 storybook: true
 mainComponent: "Search"
 ---
 
-**Search** enables users to specify a word or a phrase to find particular relevant pieces of content without the use of navigation. Search can be used as the primary means of discovering content, or as a filter to aid the user in finding content.
+**Search** component provides a user interface element for searching within a designated scope, typically used to retrieve specific information or content.
+
+### Examples
+
+Search input can have different shapes.
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=549%3A2501" />
+
+### Anatomy
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=549%3A2686" />
 
 <DoUse>
 
-- To help users find data more efficiently within a complex or large data set.
-- Use at a global level when searching an entire site.
-- Use at a page level when searching through content on one page specifically.
-- Use at a component level when searching data in a component, like a data table.
+- **Information Retrieval:** Utilize the `Search` component when users need to find specific information within a defined dataset or content repository.
+- **Navigation Enhancement:** Implement `Search` to facilitate navigation, especially in large datasets or complex systems.
+- **Content Filtering:** Use `Search` to enable users to filter content based on specific criteria, improving the overall user experience.
 
 </DoUse>
 
 <DoNotUse>
 
-- Do not use when there is small or limited amounts of data.
-- Do not use when the information is simple and can be found easily within one view.
+- **Limited Content:** Avoid using `Search` for small or static content sets where a manual navigation approach might be more efficient.
+- **Simple Interfaces:** In straightforward applications, where the complexity of a search feature is unnecessary, consider simpler alternatives.
 
 </DoNotUse>
+
+### Alternative Components:
+
+- **Dropdown Menus:** For a predefined set of options.
+- **Filter Panes:** When users need to apply multiple filters simultaneously.
+- **Clickable Tags:** In scenarios where users can quickly select from a set of predefined options.
+
+### Accessibility
+
+- **Keyboard Navigation:** Ensure the SEARCH component can be navigated and activated using keyboard controls for users who rely on them.
+- **Screen Reader Compatibility:** Provide descriptive labels and ensure screen readers can interpret and communicate the purpose and results of the search.
+- **Contrast and Readability:** Maintain sufficient color contrast and text readability for users with visual impairments.
+- **Focus States:** Clearly indicate the focus state of the SEARCH component to assist users navigating through the interface.
+- **Aria Roles:** Implement ARIA roles appropriately to enhance the understanding of the SEARCH component for assistive technologies.

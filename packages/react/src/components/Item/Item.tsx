@@ -17,7 +17,6 @@ interface ItemProps extends Omit<React.ComponentPropsWithRef<"div">, "title"> {
    * Provide the icon for the item content
    */
   icon?: React.ReactNode | IIcon;
-  // button?: React.ReactNode;
   /**
    * Provide a kind to use different appearances.
    */
@@ -26,14 +25,37 @@ interface ItemProps extends Omit<React.ComponentPropsWithRef<"div">, "title"> {
    * Provide a wrap to use different borders.
    */
   wrapper?: "undefined" | "sidebar" | "repeater";
+  /**
+   * Show an additional chevron icon on the right side
+   */
   showAdditionalIcon?: boolean;
+  /**
+   * Additional content shown underneath the regular content (children)
+   */
   subContent?: React.ReactNode;
+  /**
+   * Provide a hint to the item shown on the right bottom corner
+   */
   hint?: React.ReactNode;
-  //className?: string;
+  /**
+   * Enable the active state to the item
+   */
   active?: boolean;
+  /**
+   * Provide additional info on the top right corner of the item
+   */
   additional?: React.ReactNode;
+  /**
+   * Provide an image to the item
+   */
   image?: React.ReactNode;
+  /**
+   * Disable the image to the item
+   */
   noImage?: boolean;
+  /**
+   * Enable an unread state to the item
+   */
   unread?: boolean;
 }
 /** The item component to show entries inside a list, like a sidebar or an overview page. */
@@ -106,5 +128,7 @@ const Item: React.FC<ItemProps> = React.forwardRef(
       );
     }
 );
+
+Item.displayName = "Item";
 
 export default Item;
