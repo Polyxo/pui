@@ -7,7 +7,10 @@ import {
   BannerNavigation,
   MainNavigation,
   useTheme,
-  Wrapper,
+  SubNavigation,
+  SubNavigationHeader,
+  SubNavigationLink,
+  SubNavigationItem,
 } from "@wfp/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -46,7 +49,29 @@ export default function Navigation() {
         pageWidth="full"
       >
         <MainNavigationItem>
-          <NextLink href="/components/overview">Components</NextLink>
+          <NextLink href="/brand/overview">Brand</NextLink>
+        </MainNavigationItem>
+        <MainNavigationItem
+          subNavigation={
+            <SubNavigation>
+              <SubNavigationItem>
+                <NextLink href="/foundations/overview">Foundations</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/icons/overview">Icons</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/components/overview">
+                  Design Components
+                </NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/templates/overview">Templates</NextLink>
+              </SubNavigationItem>
+            </SubNavigation>
+          }
+        >
+          <NextLink href="">Digital Assets</NextLink>
         </MainNavigationItem>
         <MainNavigationItem>
           <NextLink href="/documentation/overview">Resources</NextLink>
@@ -59,7 +84,7 @@ export default function Navigation() {
         <MainNavigationItem className={styles.darkModeSwitch}>
           <div className={styles.meta}>
             <Search />
-            <Button
+            {/* <Button
               kind="tertiary"
               onClick={(e) => {
                 e.currentTarget.blur();
@@ -71,7 +96,7 @@ export default function Navigation() {
               ) : (
                 <FontAwesomeIcon icon={faMoon} />
               )}
-            </Button>
+            </Button> */}
 
             {/* <NextLink
               href="https://github.com/un-core/designsystem"
