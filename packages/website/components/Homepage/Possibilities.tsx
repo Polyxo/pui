@@ -1,16 +1,14 @@
 import React from "react";
 import styles from "./possibilities.module.scss";
-import MoreLink from "../MoreLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Wrapper } from "@wfp/react";
 import {
-  faFloppyDisk,
-  faHandshakeAlt,
-  faStar,
-  faVectorSquare,
+  faPenNib,
+  faCode,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-
-import { faReact } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
+import { Button } from "@wfp/react";
 
 function PossibilitiesContainer({ className = "", title, icon, content }: any) {
   return (
@@ -31,50 +29,41 @@ function PossibilitiesContainer({ className = "", title, icon, content }: any) {
 export default function Possiblities() {
   return (
     <Wrapper pageWidth="lg" className={styles.possibilities}>
+      <hr className={styles.customHr} />
       <div className={styles.possibilitiesWrapper}>
         <PossibilitiesContainer
-          title="> 50 components"
-          className={styles.components}
+          title="Are you a Designer?"
           content={
             <>
-              are currently implemented in react.js or use the tools with other
-              UI libraries
-              <br />
-              <br />
-              <MoreLink href="./components/overview" className={styles.link}>
-                Components
-              </MoreLink>
+              <Link href="./documentation/designing/intro" legacyBehavior>
+                <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
+                  Start designing
+                </Button>
+              </Link>
             </>
           }
-          background="#E7DFFF"
-          icon={faReact}
+          icon={faPenNib}
         />
 
         <PossibilitiesContainer
-          title="Build & maintain an icon library"
-          content="A complete tool box to take advantage of using SVGs in your React applications."
-          //background="#E7FFDF"
-          icon={faVectorSquare}
-        />
-        <PossibilitiesContainer
-          title="Style once – use everywhere"
-          content="define styles once and use them in your web, Android, iOS or other projects"
-          //  background="#DFFDFF"
-          icon={faHandshakeAlt}
-        />
-        <PossibilitiesContainer
-          title="Recommendations"
-          content="Lorem ipsum dolor sit amet"
-          // background="#FFDFDF"
-          icon={faStar}
-        />
-        <PossibilitiesContainer
-          title="Legacy support"
-          content="Lorem ipsum dolor sit dal."
-          // background="#DFF0FF"
-          icon={faFloppyDisk}
+          title="Are you a Developer?"
+          content={
+            <>
+              <Link
+                href="./documentation/developing/installation"
+                legacyBehavior
+              >
+                <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
+                  Start coding
+                </Button>
+              </Link>
+            </>
+          }
+          icon={faCode}
         />
       </div>
+
+      <hr className={styles.customHr} />
     </Wrapper>
   );
 }

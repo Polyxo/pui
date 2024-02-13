@@ -1,23 +1,14 @@
 //import Link from 'next/link';
 import React from "react";
 import styles from "./styles.module.scss";
-import { Link, LinksColumn, FooterExternal, FooterMetaLink } from "@wfp/react";
+import { Link, LinksColumn, Footer, FooterMetaLink } from "@wfp/react";
 import NextLink from "next/link";
 
 export default function FooterWrapper() {
   return (
-    <FooterExternal
-      className={styles.footer}
-      metaLinks={
-        <>
-          <FooterMetaLink href="https://www.wfp.org/contact" target="_blank">
-            Contact
-          </FooterMetaLink>
-        </>
-      }
-    >
+    <Footer className={styles.footer} metaLinks="2023 © World Food Programme">
       <>
-        <LinksColumn title="UN Core">
+        <LinksColumn>
           <li className={`wfp--links-column-link`}>
             <NextLink href="/" legacyBehavior>
               <Link>Documentation</Link>
@@ -27,22 +18,26 @@ export default function FooterWrapper() {
             <Link href="#">Storybook</Link>
           </li>
         </LinksColumn>
-        <LinksColumn title="UN Core">
+        <LinksColumn>
           <li className={`wfp--links-column-link`}>
             <Link
               href="https://github.com/un-core/designsystem"
               target="_blank"
             >
-              GitHub Repository
+              GitHub Repo
             </Link>
           </li>
           <li className={`wfp--links-column-link`}>
-            <NextLink href="/core/designers/figma" legacyBehavior>
+            <NextLink
+              href="https://www.figma.com/file/KWrOuAzzykyysIDFpLikx1/WFP---Bridge"
+              target="_blank"
+              legacyBehavior
+            >
               <Link>Figma library</Link>
             </NextLink>
           </li>
         </LinksColumn>
       </>
-    </FooterExternal>
+    </Footer>
   );
 }

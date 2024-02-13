@@ -6,7 +6,7 @@
   //padding: 1.2em;
   text-align: center;
   @include breakpoint-up(md) {
-    margin: 5em -1.2em 8em;
+    margin: 3em -1.2em 0;
     width: calc(100% + 2 * 1.2em);
   }
 
@@ -35,7 +35,7 @@
     line-height: 1.5;
   }
   .icon {
-    font-size: 2em;
+    font-size: 5em;
     margin-bottom: 0.5rem;
     width: 1.2em;
     text-align: center;
@@ -49,28 +49,26 @@
 }
 .content {
   flex: 1;
+
+  h4 {
+    margin-bottom: 2.5rem;
+  }
 }
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: $layer-primary;
   border-radius: 10px;
   padding: 1.2em;
-  //margin-bottom: 0.5em;
-  &:first-child {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    background: #d5e8f2;
-    .icon {
-      color: $interactive;
-    }
-    a {
-      color: $interactive;
-    }
+  background: $action-default-fill-secondary-active;
+
+  .icon {
+    color: $background-secondary;
   }
+  a {
+    color: $interactive;
+  }
+
   @include breakpoint-up(md) {
     margin-bottom: 0;
     padding: 1.5em;
@@ -78,6 +76,7 @@
 }
 
 .possibilitiesWrapper {
+  margin: 3rem 0;
   display: grid;
 
   column-gap: 0.5em;
@@ -87,6 +86,11 @@
     column-gap: 1em;
     row-gap: 1em;
   }
+}
+.customHr {
+  background-color: $neutral-neutral80;
+  height: 2px;
+  border: none;
 }
 
 .link {

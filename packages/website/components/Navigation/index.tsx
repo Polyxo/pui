@@ -7,6 +7,7 @@ import {
   BannerNavigation,
   MainNavigation,
   useTheme,
+  Wrapper,
 } from "@wfp/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -37,21 +38,19 @@ export default function Navigation() {
       <BannerNavigation className={styles.bannerNavigation}>
         <span>🚧 This website is work in progress 👷</span>
       </BannerNavigation>
+
       <MainNavigation
-        logo={<NextLink href="./">Bridge</NextLink>}
+        logo={<NextLink href="/">Bridge</NextLink>}
         line={false}
         className={styles.mainNavigation}
         pageWidth="full"
       >
         <MainNavigationItem>
-          <NextLink href="/">Homepage</NextLink>
+          <NextLink href="/components/overview">Components</NextLink>
         </MainNavigationItem>
         <MainNavigationItem>
           <NextLink href="/documentation/overview">Resources</NextLink>
           {/* <SidebarNavigation path="documentation" /> */}
-        </MainNavigationItem>
-        <MainNavigationItem>
-          <NextLink href="/components/overview">Components</NextLink>
         </MainNavigationItem>
         <MainNavigationItem>
           <NextLink href="/support/overview">Support</NextLink>
@@ -74,7 +73,7 @@ export default function Navigation() {
               )}
             </Button>
 
-            <NextLink
+            {/* <NextLink
               href="https://github.com/un-core/designsystem"
               target="_blank"
               legacyBehavior
@@ -85,7 +84,7 @@ export default function Navigation() {
               >
                 GitHub
               </Button>
-            </NextLink>
+            </NextLink> */}
           </div>
         </MainNavigationItem>
       </MainNavigation>
