@@ -10,8 +10,6 @@ import {
   Wrapper,
 } from "@wfp/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Search from "../Search";
 
 import styles from "./styles.module.scss";

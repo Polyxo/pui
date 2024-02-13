@@ -1,7 +1,7 @@
 //import Link from 'next/link';
 import React from "react";
 import styles from "./styles.module.scss";
-import { Link, LinksColumn, Footer, FooterMetaLink } from "@wfp/react";
+import { Link, LinksColumn, Footer } from "@wfp/react";
 import NextLink from "next/link";
 
 export default function FooterWrapper() {
