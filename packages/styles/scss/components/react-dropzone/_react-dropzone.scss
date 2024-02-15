@@ -5,14 +5,14 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../utilities/convert' as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../utilities/convert" as *;
 
-@use '../select';
+@use "../select";
 
 /// React dropzone styles
 /// @access public
@@ -28,12 +28,12 @@
       cursor: pointer;
       &--drag-active {
         background: $border-subtle;
-        border-color: $interactive;
+        border-color: $action-default-fill-primary-default;
         box-shadow: 0px 0px 10px rgba(#0b77c2, 0.2);
       }
-      @include type-style('body-short');
+      @include type-style("body-short");
       &:hover {
-        border-color: $interactive;
+        border-color: $action-default-fill-primary-default;
       }
       &:focus {
         outline: none;
@@ -43,16 +43,16 @@
     &__icon {
       margin-bottom: $spacing-04;
       path {
-        fill: $interactive;
+        fill: $action-default-fill-primary-default;
       }
     }
     &__file-list {
       h4 {
-        @include type-style('body-short');
+        @include type-style("body-short");
         margin-bottom: $spacing-02;
       }
       margin-top: $spacing-03;
-      @include type-style('body-short');
+      @include type-style("body-short");
     }
   }
 }

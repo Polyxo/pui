@@ -5,17 +5,17 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../breakpoint' as *;
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../theme' as *;
-@use '../../spacing' as *;
-@use '../../type' as *;
-@use '../../utilities/button-reset';
-@use '../../utilities/component-reset';
-@use '../../utilities/convert';
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
+@use "../../breakpoint" as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../theme" as *;
+@use "../../spacing" as *;
+@use "../../type" as *;
+@use "../../utilities/button-reset";
+@use "../../utilities/component-reset";
+@use "../../utilities/convert";
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
 
 /// @type Value
 /// @access public
@@ -119,7 +119,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
     justify-content: $justify-content;
     padding: convert.rem(10px) 0;
     margin: 0;
-    color: $text-primary;
+    color: $text-body-default;
     cursor: pointer;
     transition: background-color motion(standard, productive) $duration-fast-02;
 
@@ -130,7 +130,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
       left: 0;
       width: 100%;
       height: calc(100% + 2px);
-      content: '';
+      content: "";
     }
 
     &:hover::before {
@@ -142,7 +142,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
     }
 
     &:focus::before {
-      @include focus-outline('outline-compat');
+      @include focus-outline("outline-compat");
     }
   }
 
@@ -180,7 +180,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
   }
 
   .#{$prefix}--accordion__arrow {
-    @include focus-outline('reset');
+    @include focus-outline("reset");
 
     width: 1rem;
     height: 1rem;
@@ -189,12 +189,12 @@ $content-padding: 0 0 0 $spacing-05 !default;
     flex: 0 0 1rem;
     margin: $arrow-margin;
     fill: $icon-primary;
-    transform: rotate(-270deg) #{'/*rtl:ignore*/'};
+    transform: rotate(-270deg) #{"/*rtl:ignore*/"};
     transition: all $duration-fast-02 motion(standard, productive);
   }
 
   .#{$prefix}--accordion__title {
-    @include type-style('body-long-01');
+    @include type-style("body-long-01");
 
     z-index: 1;
     width: 100%;
@@ -219,7 +219,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
     }
 
     > p {
-      @include type-style('body-long-01');
+      @include type-style("body-long-01");
     }
   }
 
@@ -282,7 +282,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
 
     .#{$prefix}--accordion__arrow {
       fill: $icon-primary;
-      transform: rotate(-90deg) #{'/*rtl:ignore*/'};
+      transform: rotate(-90deg) #{"/*rtl:ignore*/"};
     }
   }
 
@@ -331,7 +331,7 @@ $content-padding: 0 0 0 $spacing-05 !default;
   // Windows HCM fix
   .#{$prefix}--accordion__arrow,
   .#{$prefix}--accordion__item--active .#{$prefix}--accordion__arrow {
-    @include high-contrast-mode('icon-fill');
+    @include high-contrast-mode("icon-fill");
   }
 }
 

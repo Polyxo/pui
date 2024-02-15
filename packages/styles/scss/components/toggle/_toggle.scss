@@ -41,7 +41,7 @@
       height: calcRem(28px);
       top: calcRem(-14px);
       border-radius: calcRem(28px);
-      background-color: $border-inverse; //TODO: create token for ui-05 to cater for background
+      background-color: $field-background-disabled;
       transition: $transition--base $standard-easing;
       cursor: pointer;
     }
@@ -50,7 +50,7 @@
       box-sizing: border-box;
       position: absolute;
       display: block;
-      border: 3px solid $border-inverse;
+      border: 3px solid $field-background-disabled;
       cursor: pointer;
       top: -14px;
       width: calcRem(28px);
@@ -78,14 +78,14 @@
       width: calcRem(32px);
       border-radius: 0.9375rem;
       background-color: transparent;
-      border: 2px solid $border-inverse; // TODO: Replace
+      border: 2px solid $field-background-enabled;
       top: 0;
     }
 
     &:after {
       width: calcRem(10px);
       height: calcRem(10px);
-      background-color: $border-inverse; //TODO create token for ui-05 to cater for background
+      background-color: $field-background-enabled;
       border: none;
       top: 3px;
       left: 3px;
@@ -134,7 +134,7 @@
       transform: translateX(24px);
       background-color: $background-main;
       box-shadow: none;
-      border-color: $border-interactive; // TODO: Replace
+      border-color: $field-background-enabled; // TODO: Replace
     }
   }
 
@@ -142,8 +142,8 @@
     + .#{$prefix}--toggle__label
     .#{$prefix}--toggle__appearance {
     &:before {
-      background-color: $action-default-fill-primary-default; // $interactive;
-      border-color: $border-interactive;
+      background-color: $action-default-fill-primary-default; // $action-default-fill-primary-default;
+      border-color: $field-background-enabled;
     }
 
     &:after {

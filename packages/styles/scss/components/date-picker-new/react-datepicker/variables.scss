@@ -4,11 +4,11 @@
 
 $datepicker__background-color: $layer-primary !default;
 $datepicker__border-color: $border-strong !default;
-$datepicker__highlighted-color: $interactive !default;
-$datepicker__muted-color: $text-secondary !default;
-$datepicker__selected-color: $interactive !default;
-$datepicker__text-color: $text-primary !default;
-$datepicker__header-color: $text-primary !default;
+$datepicker__highlighted-color: $action-default-fill-primary-default !default;
+$datepicker__muted-color: $text-body-secondary !default;
+$datepicker__selected-color: $action-default-fill-primary-default !default;
+$datepicker__text-color: $text-body-default !default;
+$datepicker__header-color: $text-body-default !default;
 $datepicker__navigation-disabled-color: $layer-accent-active;
 
 $datepicker__border-radius: 0.3rem !default;

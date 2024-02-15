@@ -54,8 +54,8 @@ $input-border: 1px solid var(--neutral-100__color);
     cursor: pointer;
 
     appearance: none;
-    background-color: $field;
-    color: $text-primary;
+    background-color: $fill-field;
+    color: $text-body-default;
     text-overflow: ellipsis;
     transition: background-color $duration-fast-02 motion(standard, productive),
       outline $duration-fast-02 motion(standard, productive);
@@ -75,12 +75,12 @@ $input-border: 1px solid var(--neutral-100__color);
 
   .#{$prefix}--search-input[disabled] {
     border-bottom: 1px solid transparent;
-    background-color: $field;
+    background-color: $fill-field;
     color: $text-disabled;
     cursor: not-allowed;
 
     &::placeholder {
-      color: $field;
+      color: $fill-field;
     }
   }
   .#{$prefix}--search--light .#{$prefix}--search-input {
@@ -159,7 +159,7 @@ $input-border: 1px solid var(--neutral-100__color);
       display: block;
       width: 2px;
       height: calc(100% - 2px);
-      background-color: $field;
+      background-color: $fill-field;
       content: "";
       transition: background-color $duration-fast-02
         motion(standard, productive);
@@ -177,7 +177,7 @@ $input-border: 1px solid var(--neutral-100__color);
   .#{$prefix}--search-button {
     flex-shrink: 0;
     margin-left: $spacing-01;
-    background-color: $field;
+    background-color: $fill-field;
 
     svg {
       fill: currentColor;
@@ -416,7 +416,7 @@ $input-border: 1px solid var(--neutral-100__color);
   }
 
   .#{$prefix}--search--main {
-    color: $text-primary;
+    color: $text-body-default;
     .#{$prefix}--search-close,
     ~ .#{$prefix}--search-button,
     &.#{$prefix}--search--expandable,

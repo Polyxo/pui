@@ -59,7 +59,7 @@
 
   .#{$prefix}--pagination__text {
     @include type-style("label");
-    color: $text-secondary;
+    color: $text-body-secondary;
     display: none;
     padding-right: $spacing-02;
 
@@ -86,7 +86,7 @@
 
     &:hover {
       .#{$prefix}--pagination__button-icon {
-        fill: $interactive;
+        fill: $action-default-fill-primary-default;
       }
     }
 
@@ -154,7 +154,7 @@
     }
 
     .#{$prefix}--text-input {
-      background-color: $field;
+      background-color: $fill-field;
       height: calcRem(24px);
       min-width: calcRem(24px);
       width: calcRem(24px);

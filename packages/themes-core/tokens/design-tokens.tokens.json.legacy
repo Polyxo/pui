@@ -257,18 +257,6 @@
       }
     },
     "background": {
-      "main": {
-        "description": "",
-        "type": "color",
-        "value": "#ffffffff",
-        "blendMode": "normal",
-        "extensions": {
-          "org.lukasoppermann.figmaDesignTokens": {
-            "styleId": "S:2e8f8c9c873b4892f29de1f0528155926ff7d61a,",
-            "exportKey": "color"
-          }
-        }
-      },
       "_hover": {
         "description": "",
         "type": "color",

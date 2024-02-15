@@ -1,4 +1,4 @@
-@use 'scss/meta' as *;
+@use "scss/meta" as *;
 
 .features {
   display: flex;
@@ -18,7 +18,7 @@
   h2 {
     font-size: 2em;
     line-height: 1.5em;
-    color: $text-secondary;
+    color: $text-body-secondary;
     margin-top: 1rem;
     margin-bottom: 0;
   }
@@ -50,12 +50,12 @@
   margin-top: 7rem;
 
   padding-left: 8px;
-  border-left: 5px solid $interactive;
+  border-left: 5px solid $action-default-fill-primary-default;
 
   font-size: 1.5em;
   /*
   
-    border-left: 10px solid $interactive;
+    border-left: 10px solid $action-default-fill-primary-default;
     font-weight: 800;
    font-size: 2.5em;
   text-transform: uppercase;*/

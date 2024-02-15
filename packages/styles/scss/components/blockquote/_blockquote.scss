@@ -1,11 +1,11 @@
-@use '../../breakpoint' as *;
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../theme' as *;
-@use '../../spacing' as *;
-@use '../../type' as *;
-@use '../../utilities/component-reset';
-@use '../../utilities/convert';
+@use "../../breakpoint" as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../theme" as *;
+@use "../../spacing" as *;
+@use "../../type" as *;
+@use "../../utilities/component-reset";
+@use "../../utilities/convert";
 
 //TODO - handle customise icon showing different color
 
@@ -20,14 +20,14 @@
     align-items: center;
     border-radius: 3px;
 
-    pre[class*='language-'] {
+    pre[class*="language-"] {
       background: none;
       padding: 0;
     }
   }
 
   .#{$prefix}--blockquote__content {
-    color: $text-primary;
+    color: $text-body-default;
     padding: $spacing-05;
     line-height: 1.4;
     word-wrap: anywhere;
@@ -42,8 +42,8 @@
       cursor: pointer;
       user-select: none;
       &:after {
-        color: $interactive;
-        content: ' +';
+        color: $action-default-fill-primary-default;
+        content: " +";
         font-weight: 800;
       }
     }
@@ -62,14 +62,16 @@
     }
     .#{$prefix}--blockquote__title {
       &:after {
-        color: $interactive;
-        content: ' -';
+        color: $action-default-fill-primary-default;
+        content: " -";
       }
     }
   }
 
   .#{$prefix}--blockquote--no-content,
-  .#{$prefix}--blockquote--toggleable:not(.#{$prefix}--blockquote--toggle--open) {
+  .#{$prefix}--blockquote--toggleable:not(
+      .#{$prefix}--blockquote--toggle--open
+    ) {
     .#{$prefix}--blockquote__title {
       margin-bottom: 0;
     }
@@ -97,30 +99,30 @@
       line-height: 1.4;
 
       .#{$prefix}--blockquote__inside {
-        font-family: font-family('mono');
+        font-family: font-family("mono");
       }
     }
   }
 
   .#{$prefix}--blockquote--warning {
     border-left-color: $support-warning;
-    background: #fdedc9; //$support-warning-light;
+    background: #fdedc9; //$support-warning-background;
     .#{$prefix}--blockquote__icon {
       fill: $support-warning !important;
     }
   }
 
   .#{$prefix}--blockquote--error {
-    border-left-color: $support-error;
-    background: #f1c6cb; //$support-error-light;
+    border-left-color: $support-error-main;
+    background: #f1c6cb; //$support-error-background;
     .#{$prefix}--blockquote__icon {
-      fill: $support-error !important;
+      fill: $support-error-main !important;
     }
   }
 
   .#{$prefix}--blockquote--success {
-    border-left-color: $support-success;
-    background: #ccdbcd; //$support-success-light
+    border-left-color: $support-success-main;
+    background: #ccdbcd; //$support-success-background
     .#{$prefix}--blockquote__icon {
       fill: $support-success !important;
     }

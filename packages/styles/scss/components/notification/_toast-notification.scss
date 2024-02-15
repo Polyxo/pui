@@ -26,7 +26,7 @@
     margin-right: $spacing-05;
     margin-bottom: $spacing-03;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-    color: $text-inverse;
+    color: $text-inverse-default;
 
     &:first-child {
       margin-top: $spacing-05;
@@ -62,19 +62,19 @@
   }
 
   .#{$prefix}--toast-notification--low-contrast {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--toast-notification--error {
     @include notification--experimental(
-      $support-error-inverse,
+      $support-error-main-inverse,
       $background-inverse
     );
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--error {
     @include notification--experimental(
-      $support-error,
+      $support-error-main,
       get-token(var(--cds-background-error))
     );
   }
@@ -128,7 +128,7 @@
   .#{$prefix}--toast-notification--warning
     .#{$prefix}--toast-notification__icon
     path[opacity="0"] {
-    fill: $text-primary;
+    fill: $text-body-default;
     opacity: 1;
   }
 
@@ -150,7 +150,7 @@
 
     .#{$prefix}--toast-notification--low-contrast
       .#{$prefix}--toast-notification__content {
-      color: $text-primary;
+      color: $text-body-default;
     }
   } @else {
     .#{$prefix}--toast-notification__details {
@@ -211,13 +211,13 @@
 
       margin-top: 0;
       margin-bottom: $spacing-05;
-      color: $text-inverse;
+      color: $text-inverse-default;
       word-break: break-word;
     }
 
     .#{$prefix}--toast-notification--low-contrast
       .#{$prefix}--toast-notification__subtitle {
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     .#{$prefix}--toast-notification__caption {
@@ -225,12 +225,12 @@
 
       padding-top: $spacing-03;
       margin-bottom: $spacing-05;
-      color: $text-inverse;
+      color: $text-inverse-default;
     }
 
     .#{$prefix}--toast-notification--low-contrast
       .#{$prefix}--toast-notification__caption {
-      color: $text-primary;
+      color: $text-body-default;
     }
   }
 

@@ -33,10 +33,15 @@ import htmlParser from "prettier/parser-html";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckSquare,
+  faCode,
+  faLeftLong,
+  faLeftRight,
   faMinusSquare,
+  faRightLeft,
+  faRightLong,
 } from "@fortawesome/free-solid-svg-icons";
 import useGenerateCodeSandbox from "../../../PropTypes/useGenerateCodeSandbox";
-import { faCodepen } from "@fortawesome/free-brands-svg-icons";
+import { faCodepen, faHtml5 } from "@fortawesome/free-brands-svg-icons";
 
 const countLines = (str) => {
   return str.split("\n").length;
@@ -210,8 +215,8 @@ const CodeBlockLive = (props: any) => {
       [stylesModule.showWrapper]: !hideWrapper,
       [stylesModule.center]: center,
       [stylesModule.notCenter]: !center,
-      [stylesModule.fullWidth]: forceFullWidth,
-      [stylesModule.normalWidth]: !forceFullWidth,
+      [stylesModule.fullWidth]: forceFullWidth || width >= 800,
+      [stylesModule.normalWidth]: !forceFullWidth && (width < 800 || !width),
       [stylesModule.expandCode]: showAllCode,
       [stylesModule.collapseCode]: !showAllCode,
       [stylesModule.showExpandButton]: showExpandButton,
@@ -226,10 +231,9 @@ const CodeBlockLive = (props: any) => {
           <div className={stylesModule.buttons}>
             <Button
               className={stylesModule.showAllPropsButton}
+              kind="ghost"
               iconReverse
-              icon={
-                <FontAwesomeIcon icon={rtl ? faCheckSquare : faMinusSquare} />
-              }
+              icon={<FontAwesomeIcon icon={rtl ? faRightLong : faLeftLong} />}
               onClick={() => setRtl(!rtl)}
             >
               RTL
@@ -237,30 +241,24 @@ const CodeBlockLive = (props: any) => {
             <Button
               className={stylesModule.showAllPropsButton}
               onClick={() => setShowCode(!showCode)}
+              kind="ghost"
               iconReverse
-              icon={
-                <FontAwesomeIcon
-                  icon={showCode ? faCheckSquare : faMinusSquare}
-                />
-              }
+              icon={<FontAwesomeIcon icon={faCode} />}
             >
               code
             </Button>
             <Button
               className={stylesModule.showAllPropsButton}
               onClick={() => setShowHtml(!showHtml)}
+              kind="ghost"
               iconReverse
-              icon={
-                <FontAwesomeIcon
-                  icon={showHtml ? faCheckSquare : faMinusSquare}
-                />
-              }
+              icon={<FontAwesomeIcon icon={faHtml5} />}
             >
               html
             </Button>
 
             <Button
-              small
+              kind="ghost"
               iconReverse
               className={stylesModule.showAllPropsButton}
               onClick={generateCodeSandbox}
@@ -288,9 +286,9 @@ const CodeBlockLive = (props: any) => {
             <div className={stylesModule.previewWrapper}>
               <div className={stylesModule.previewInside}>
                 <LivePreview
-                  className={stylesModule.preview}
+                  className={`${stylesModule.preview}`} // ${width ? styles.scrollable : ""}
                   dir={rtl ? "rtl" : "ltr"}
-                  style={{ width: width ? width + "px" : undefined }}
+                  style={{ minWidth: width ? width + "px" : undefined }}
                 />
               </div>
             </div>
@@ -307,10 +305,17 @@ const CodeBlockLive = (props: any) => {
                     {showAllCode ? "Collapse code" : "Expand code"}
                   </div>
                 )}
-                <h3> Editable Example</h3>
+                <h3 className={stylesModule.exampleHeading}>
+                  Editable Example
+                </h3>
                 <LiveEditor theme={themes.vsDark} />
               </div>
-              {language === "jsx" && showHtml && <LiveHtmlHoc />}
+              {language === "jsx" && showHtml && (
+                <>
+                  <h3 className={stylesModule.exampleHeading}>HTML</h3>
+                  <LiveHtmlHoc />
+                </>
+              )}
             </>
           )}
           <LiveError />

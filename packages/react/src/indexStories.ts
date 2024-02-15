@@ -5,6 +5,7 @@ export * as Breadcrumb from "./components/Breadcrumb/Breadcrumb.stories.tsx";
 export * as Button from "./components/Button/Button.stories.tsx";
 export * as Card from "./components/Card/Card.stories.tsx";
 export * as Checkbox from "./components/Checkbox/Checkbox.stories.tsx";
+export * as ContentSwitcher from "./components/ContentSwitcher/ContentSwitcher.stories.tsx";
 export * as Credits from "./components/Credits/Credits.stories.tsx";
 export * as DatePicker from "./components/DatePicker/DatePicker.stories.tsx";
 export * as Empty from "./components/Empty/Empty.stories.tsx";

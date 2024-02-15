@@ -36,7 +36,7 @@
 
   .#{$prefix}--step-navigation__nav-item__text {
     text-decoration: underline;
-    color: $interactive;
+    color: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--step-navigation__nav-item__helper-text {
@@ -73,7 +73,7 @@
     justify-content: center;
     position: relative;
     //background: var(--ui-01);
-    border: 2px solid $interactive;
+    border: 2px solid $action-default-fill-primary-default;
     flex-shrink: 0;
     border-radius: 3em;
     width: 3em;
@@ -88,13 +88,13 @@
     margin: 0.7em 1em 0.7em 0;
     text-align: center;
     z-index: 2;
-    color: $interactive;
+    color: $action-default-fill-primary-default;
     transition: all 0.1s;
 
     > svg {
       position: relative;
       top: 1px;
-      fill: $interactive;
+      fill: $action-default-fill-primary-default;
       width: 1em;
       height: 1em;
 
@@ -142,7 +142,7 @@
   .#{$prefix}--step-navigation__nav-item {
     display: flex;
     align-items: center;
-    color: $text-primary;
+    color: $text-body-default;
     text-decoration: none;
     padding: $spacing-05;
     width: 100%;
@@ -159,7 +159,7 @@
 
       &:focus {
         background-color: transparent;
-        color: $text-primary;
+        color: $text-body-default;
         outline: 1px solid transparent;
       }
     }
@@ -171,7 +171,7 @@
       //background: var(--interactive-01);
       //color: var(--ui-01);
       &:after {
-        background-color: $interactive;
+        background-color: $action-default-fill-primary-default;
       }
     }
   }
@@ -180,20 +180,20 @@
   .#{$prefix}--step-navigation__nav-item--selected {
     .#{$prefix}--step-navigation__nav-item__text {
       text-decoration: none;
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     .#{$prefix}--step-navigation__nav-item__indicator {
-      background: $interactive;
+      background: $action-default-fill-primary-default;
       border-color: $border-interactive !important;
-      color: $field;
+      color: $fill-field;
 
       > svg {
         fill: $field !important;
       }
 
       &:after {
-        background-color: $interactive;
+        background-color: $action-default-fill-primary-default;
       }
     }
   }
@@ -231,11 +231,11 @@
 
   .#{$prefix}--step-navigation__nav-item--complete {
     .#{$prefix}--step-navigation__nav-item__indicator {
-      border-color: $support-success;
+      border-color: $support-success-main;
 
       .#{$prefix}--step-navigation--small & {
-        border-color: $support-success;
-        background: $support-success;
+        border-color: $support-success-main;
+        background: $support-success-main;
 
         > svg {
           fill: $field !important;
@@ -251,8 +251,8 @@
 
     /*&.#{$prefix}--step-navigation__nav-item--selected {
       .#{$prefix}--step-navigation__nav-item__indicator {
-        background: $support-success;
-        border-color: $support-success;
+        background: $support-success-main;
+        border-color: $support-success-main;
         > svg {
           fill: var(--ui-01) !important;
         }
@@ -275,7 +275,7 @@
     color: var(--ui-03);
 
     .#{$prefix}--step-navigation__nav-item__text {
-      color: $text-secondary;
+      color: $text-body-secondary;
       text-decoration: none;
     }
 
@@ -295,7 +295,7 @@
     //margin-top: 1rem;
 
     .#{$prefix}--step-navigation__nav-item__text {
-      //color: $text-secondary;
+      //color: $text-body-secondary;
       //text-decoration: none;
     }
 
@@ -317,7 +317,7 @@
     color: var(--ui-03);
 
     .#{$prefix}--step-navigation__nav-item__text {
-      color: $text-secondary;
+      color: $text-body-secondary;
       text-decoration: none;
     }
 
@@ -349,7 +349,7 @@
     color: var(--ui-03);
 
     .#{$prefix}--step-navigation__nav-item__text {
-      color: $text-secondary;
+      color: $text-body-secondary;
       text-decoration: none;
     }
 

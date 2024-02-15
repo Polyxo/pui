@@ -21,7 +21,7 @@
 
     display: block;
     margin-bottom: $spacing-03;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--progress-bar__track {
@@ -35,7 +35,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    background-color: $interactive;
+    background-color: $action-default-fill-primary-default;
     transform: scaleX(0);
     transform-origin: 0 50%;
     transition: transform $duration-fast-02 motion(standard, productive);
@@ -54,7 +54,7 @@
     animation-timing-function: linear;
     background-image: linear-gradient(
       90deg,
-      $interactive 12.5%,
+      $action-default-fill-primary-default 12.5%,
       transparent 12.5%
     );
     background-position-x: 0%;
@@ -66,7 +66,7 @@
     @include type-style("helper-text");
 
     margin-top: $spacing-02;
-    color: $text-secondary;
+    color: $text-body-secondary;
   }
 
   @keyframes progress-bar-indeterminate {

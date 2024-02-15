@@ -102,7 +102,7 @@
   "interactive-02": {
     "name": "interactive-02",
     "hex": "#085387",
-    "scss": "$interactive-02",
+    "scss": "$action-default-fill-primary-default-02",
     "css": "color__interactive-02",
     "type": "ui",
     "description": "BannerNavigation"

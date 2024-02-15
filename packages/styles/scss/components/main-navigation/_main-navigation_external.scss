@@ -1,8 +1,8 @@
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
 
 @mixin main_navigation_external {
   /* Custom local Sass variables */
@@ -22,8 +22,8 @@
       white-space: nowrap;
 
       > a {
-        color: $link-primary; // TODO change to $link_on_color token
-        @include type-style('body-short-02');
+        color: $action-default-link-default; // TODO change to $link_on_color token
+        @include type-style("body-short-02");
         text-decoration: none;
         &.active {
           border-bottom: 3px solid rgba(var(--ui-01), 0.5);
@@ -31,11 +31,11 @@
         &:hover,
         &:visited,
         &:active {
-          color: $link-primary;
+          color: $action-default-link-default;
           text-decoration: underline;
         }
         &:focus {
-          color: $link-primary;
+          color: $action-default-link-default;
         }
       }
     }
@@ -102,7 +102,7 @@
 
   // [1] Move the product name next to the WFP logo
   .#{$prefix}--main-navigation-ext__product-name {
-    @include type-style('expressive-heading-03');
+    @include type-style("expressive-heading-03");
 
     align-items: center;
     color: #0b77c2; //  TODO: Use $brand token
@@ -114,7 +114,7 @@
     text-transform: uppercase;
 
     @include breakpoint-down(md) {
-      @include type-style('expressive-heading-01');
+      @include type-style("expressive-heading-01");
 
       font-weight: 700;
       margin-left: $spacing-03;
@@ -146,7 +146,7 @@
   /* Block Language styles */
   // [1] TODO: Create a token for menu settings type-styles
   .#{$prefix}--language-ext {
-    color: $text-secondary;
+    color: $text-body-secondary;
     cursor: pointer;
     font-size: 12px; // [1]
     font-weight: 700; // [1]
@@ -166,7 +166,7 @@
     }
 
     @include breakpoint-down(md) {
-      color: $text-on-color;
+      color: $text-inverse-default;
       font-size: 14px;
       padding: 1rem;
     }
@@ -205,7 +205,7 @@
     padding: $spacing-03;
 
     @include breakpoint-down(md) {
-      @include type-style('body-short');
+      @include type-style("body-short");
 
       font-weight: 700;
       padding: $spacing-05 $spacing-03;
@@ -213,12 +213,12 @@
 
     &:hover {
       @include breakpoint-up(md) {
-        background-color: $link-primary;
+        background-color: $action-default-link-default;
       }
 
       & > a {
         @include breakpoint-up(md) {
-          color: $text-on-color;
+          color: $text-inverse-default;
         }
       }
     }
@@ -228,13 +228,13 @@
         background-color: #007dbc; // TODO: Create a token for this color
 
         & > a {
-          color: $text-on-color;
+          color: $text-inverse-default;
         }
       }
     }
 
     & > a {
-      color: $text-secondary;
+      color: $text-body-secondary;
     }
   }
   /* End block Language styles */
@@ -246,7 +246,7 @@
 
   .#{$prefix}--user-ext__trigger {
     align-items: center;
-    color: $text-secondary;
+    color: $text-body-secondary;
     cursor: pointer;
     display: flex;
     font-size: 12px;
@@ -260,7 +260,7 @@
     }
 
     @include breakpoint-down(md) {
-      color: $text-on-color;
+      color: $text-inverse-default;
       font-size: 14px;
       padding: 1rem;
     }
@@ -403,8 +403,8 @@
 
     // Styles to apply when the site link is the current page
     &.#{$prefix}--main-navigation-ext__site-link--current::after {
-      background-color: $interactive;
-      content: '';
+      background-color: $action-default-fill-primary-default;
+      content: "";
       height: 4px;
       left: 0;
       position: absolute;
@@ -426,16 +426,16 @@
     }
 
     & > a {
-      @include type-style('body-short');
+      @include type-style("body-short");
 
-      color: $text-primary;
+      color: $text-body-default;
       cursor: pointer;
       font-weight: 700;
       text-transform: uppercase;
 
       @include breakpoint-down(lg) {
         align-items: center;
-        color: $text-on-color;
+        color: $text-inverse-default;
         display: inline-flex;
         height: 50px;
         padding: 0 $spacing-05;
@@ -443,10 +443,10 @@
       }
 
       &:hover {
-        color: $interactive;
+        color: $action-default-fill-primary-default;
 
         @include breakpoint-down(lg) {
-          color: $text-on-color;
+          color: $text-inverse-default;
         }
       }
 

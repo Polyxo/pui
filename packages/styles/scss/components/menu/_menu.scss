@@ -5,15 +5,15 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../button/tokens' as button;
-@use '../../utilities/box-shadow' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/z-index' as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../button/tokens" as button;
+@use "../../utilities/box-shadow" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/z-index" as *;
 
 /// Menu styles
 /// @access public
@@ -23,7 +23,7 @@
     @include box-shadow;
 
     position: fixed;
-    z-index: z('modal');
+    z-index: z("modal");
     min-width: 13rem;
     max-width: 18rem;
     padding: $spacing-02 0;
@@ -35,7 +35,7 @@
     visibility: visible;
 
     &:focus {
-      @include focus-outline('border');
+      @include focus-outline("border");
     }
   }
 
@@ -48,12 +48,12 @@
     // $size-sm
     height: 2rem;
     background-color: $layer-primary;
-    color: $text-primary;
+    color: $text-body-default;
     cursor: pointer;
     transition: background-color $duration-fast-01 motion(standard, productive);
 
     &:focus {
-      @include focus-outline('outline');
+      @include focus-outline("outline");
     }
   }
 
@@ -65,7 +65,7 @@
   .#{$prefix}--menu-option--danger:hover,
   .#{$prefix}--menu-option--danger:focus {
     background-color: button.$button-danger-primary;
-    color: $text-on-color;
+    color: $text-inverse-default;
   }
 
   .#{$prefix}--menu-option > .#{$prefix}--menu {
@@ -97,7 +97,7 @@
   }
 
   .#{$prefix}--menu-option__label {
-    @include type-style('body-short');
+    @include type-style("body-short");
 
     overflow: hidden;
     flex-grow: 1;
@@ -130,9 +130,9 @@
 
   $supported-sizes: (
     // $size-md
-    'md': 2.5rem,
+    "md": 2.5rem,
     // $size-lg
-    'lg': 3rem
+    "lg": 3rem
   );
 
   @each $size, $value in $supported-sizes {

@@ -68,9 +68,9 @@ $copy-btn-feedback: $background-inverse !default;
     display: inline;
     padding: 0;
     border: 2px solid transparent;
-    background-color: $field;
+    background-color: $fill-field;
     border-radius: 4px;
-    color: $text-primary;
+    color: $text-body-default;
     cursor: pointer;
 
     &:hover {
@@ -131,7 +131,7 @@ $copy-btn-feedback: $background-inverse !default;
     display: inline-block;
 
     &:hover {
-      background-color: $field;
+      background-color: $fill-field;
       cursor: auto;
     }
   }
@@ -271,7 +271,7 @@ $copy-btn-feedback: $background-inverse !default;
     justify-content: center;
     padding: 0;
     border: none;
-    background-color: $field;
+    background-color: $fill-field;
     cursor: pointer;
     outline: none;
 
@@ -340,8 +340,8 @@ $copy-btn-feedback: $background-inverse !default;
 
     padding: $spacing-03 $spacing-05;
     border: 0;
-    background-color: $field;
-    color: $text-primary;
+    background-color: $fill-field;
+    color: $text-body-default;
   }
 
   .#{$prefix}--snippet-btn--expand .#{$prefix}--snippet-btn--text {
@@ -362,7 +362,7 @@ $copy-btn-feedback: $background-inverse !default;
 
   .#{$prefix}--snippet-btn--expand:hover {
     background: $field-hover;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--snippet-btn--expand:active {

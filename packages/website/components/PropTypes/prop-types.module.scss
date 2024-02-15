@@ -63,7 +63,8 @@
   > span {
     display: inline-block;
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.05);
+    font-family: $font-family-monospace;
+    background: $code-background;
     padding: 0.2em 0.5em;
     margin-bottom: 0.5em;
   }
@@ -85,4 +86,8 @@
 
 .propValue {
   width: 10%;
+}
+
+.tooltip {
+  font-family: $font-family-monospace;
 }

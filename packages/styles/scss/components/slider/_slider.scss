@@ -71,7 +71,7 @@
       height: 1.5rem;
       width: 1.5rem;
       border-radius: 50%;
-      background: $interactive;
+      background: $action-default-fill-primary-default;
       margin-top: -0.65rem;
       cursor: pointer;
       transition: transform 100ms $standard-easing,
@@ -83,7 +83,7 @@
       height: 1.5rem;
       width: 1.5rem;
       border-radius: 50%;
-      background: $interactive;
+      background: $action-default-fill-primary-default;
       margin-top: -0.65rem;
       cursor: pointer;
       transition: transform 100ms $standard-easing,
@@ -92,13 +92,13 @@
 
     &::-moz-range-progress {
       height: calcRem(4px);
-      background: $interactive;
+      background: $action-default-fill-primary-default;
     }
 
     /* IE*/
     &::-ms-fill-lower {
       height: calcRem(4px);
-      background: $interactive;
+      background: $action-default-fill-primary-default;
     }
 
     &:hover {
@@ -168,7 +168,7 @@
       outline: none;
     }
     &:active {
-      background: $interactive;
+      background: $action-default-fill-primary-default;
       transform: translate(-50%, -50%);
     }
   }
@@ -183,7 +183,7 @@
 
   .#{$prefix}--slider__range-label {
     @include type-style("label-02");
-    color: $text-secondary;
+    color: $text-body-secondary;
 
     &:last-of-type {
       margin-right: $spacing-05;
@@ -192,7 +192,7 @@
 
   .#{$prefix}--slider__range-before {
     height: 3px;
-    background: $interactive;
+    background: $action-default-fill-primary-default;
     position: absolute;
     top: 50%;
     transform: translateY(-1.5px);
@@ -226,7 +226,7 @@
     position: absolute;
     height: calcRem(24px);
     width: calcRem(24px);
-    background: $interactive;
+    background: $action-default-fill-primary-default;
     border-radius: 50%;
     top: 0;
     transform: translate(-50%, -50%);

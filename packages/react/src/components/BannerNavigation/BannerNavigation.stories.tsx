@@ -39,14 +39,6 @@ export const BannerNavigationDefault: Story = {
           Link 4
         </Link>
       </BannerNavigationItem>
-      <BannerNavigationItem>
-        <Search
-          id="search-2"
-          kind="banner"
-          placeholder="Search"
-          onChange={action("onChange")}
-        />
-      </BannerNavigationItem>
     </BannerNavigation>
   ),
   args: {
@@ -54,6 +46,16 @@ export const BannerNavigationDefault: Story = {
   },
 };
 
+/* 
+<BannerNavigationItem>
+  <Search
+    id="search-2"
+    kind="banner"
+    placeholder="Search"
+    onChange={action("onChange")}
+  />
+</BannerNavigationItem>
+*/
 export const BannerNavigationWithContentDefault: Story = {
   render: (args) => <BannerNavigationWithContent {...args} />,
   args: {

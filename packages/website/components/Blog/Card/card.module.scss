@@ -52,7 +52,7 @@
   }
 }
 .subTitle {
-  color: $text-primary;
+  color: $text-body-default;
   font-size: 0.9em;
   margin-top: 0.3em;
 }
@@ -107,7 +107,7 @@
 }
 
 .body {
-  color: $text-primary;
+  color: $text-body-default;
   margin-top: 0.1rem;
   transition: all 0.3s;
   //font-weight: 600;

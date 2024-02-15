@@ -82,7 +82,7 @@ $radio-border-width: 2px !default;
     @include reset;
     background-color: $background-main;
     border-radius: 50%;
-    border: $radio-border-width solid $border-inverse;
+    border: $radio-border-width solid $field-background-disabled;
     flex-shrink: 0;
     height: calcRem(18px);
     width: calcRem(18px);
@@ -161,7 +161,7 @@ $radio-border-width: 2px !default;
     @include reset;
     background-color: $background-main;
     border-radius: 50%;
-    border: $radio-border-width solid $border-inverse;
+    border: $radio-border-width solid $field-background-enabled;
     flex-shrink: 0;
     height: calcRem(18px);
     width: calcRem(18px);
@@ -174,7 +174,7 @@ $radio-border-width: 2px !default;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-color: $border-inverse;
+    border-color: $field-background-enabled;
 
     &:before {
       content: "";

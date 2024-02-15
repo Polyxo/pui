@@ -8,7 +8,7 @@
 @use '../../utilities/convert';*/
 
 @mixin globalDefaults() {
-  color: $text-primary;
+  color: $text-body-default;
   background: $background-main;
   font-family: $font-family-primary;
 }

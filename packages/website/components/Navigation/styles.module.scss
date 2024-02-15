@@ -15,7 +15,7 @@
 
 .bannerNavigation {
   text-align: center;
-  background: $support-error-light;
+  background: $support-error-background;
   padding: 1.3em;
   font-size: 1.2em;
   ul {
@@ -34,7 +34,7 @@
 
 .user {
   a {
-    //color: $text-primary !important;
+    //color: $text-body-default !important;
   }
   display: flex;
   align-items: center;

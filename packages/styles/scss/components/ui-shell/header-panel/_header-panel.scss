@@ -5,11 +5,11 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../functions' as *;
-@use '../../../config' as *;
-@use '../../../motion' as *;
-@use '../../../theme' as *;
-@use '../../../utilities/z-index' as *;
+@use "../functions" as *;
+@use "../../../config" as *;
+@use "../../../motion" as *;
+@use "../../../theme" as *;
+@use "../../../utilities/z-index" as *;
 
 /// UI shell side nav
 /// @access private
@@ -20,7 +20,7 @@
   //----------------------------------------------------------------------------
   .#{$prefix}--header-panel {
     position: fixed;
-    z-index: z('header');
+    z-index: z("header");
     top: mini-units(6);
     right: 0;
     bottom: 0;
@@ -28,7 +28,7 @@
     width: 0;
     border: none;
     background-color: $layer-primary;
-    color: $text-secondary;
+    color: $text-body-secondary;
     transition: width $duration-fast-02 motion(exit, productive);
     will-change: width;
   }

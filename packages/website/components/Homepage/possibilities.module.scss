@@ -39,7 +39,7 @@
     margin-bottom: 0.5rem;
     width: 1.2em;
     text-align: center;
-    //color: $interactive;
+    //color: $action-default-fill-primary-default;
     @include breakpoint-up(md) {
       font-size: 4em;
       margin-top: 1rem;
@@ -65,10 +65,10 @@
     grid-row-end: 3;
     background: #d5e8f2;
     .icon {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
     }
     a {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
     }
   }
   @include breakpoint-up(md) {

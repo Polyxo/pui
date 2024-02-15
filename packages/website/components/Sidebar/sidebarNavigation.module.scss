@@ -51,7 +51,7 @@
 }
 
 .icon {
-  color: $interactive;
+  color: $action-default-fill-primary-default;
   font-size: 0.8em;
   margin-top: 0.1em;
   //margin-right: 1em;
@@ -64,7 +64,7 @@
 }
 
 .iconOpen {
-  color: $interactive;
+  color: $action-default-fill-primary-default;
   font-size: 0.8em;
   margin-top: 0.1em;
   margin-left: 0;
@@ -78,7 +78,7 @@
       font-weight: 600;
     }
     .icon {
-      background: $interactive;
+      background: $action-default-fill-primary-default;
     }
   }
 }

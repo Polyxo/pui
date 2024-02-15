@@ -14,7 +14,7 @@
   height: 10em;
   margin: 0.2rem;
   text-decoration: none;
-  color: $text-primary;
+  color: $text-body-default;
   // padding: 0.3em;
   overflow: hidden;
   > * {
@@ -29,7 +29,7 @@
   background: $layer-primary;
   top: 0em;
   left: 0em;
-  color: $text-primary;
+  color: $text-body-default;
   padding: 0.3em 0.9em;
   font-size: 0.8em;
 }

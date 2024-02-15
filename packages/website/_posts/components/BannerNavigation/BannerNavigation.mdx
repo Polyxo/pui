@@ -27,6 +27,8 @@ Banner navigation layout follows the Main Navigation grid (Fixed VS Flexible)
 
 </Callout>
 
+The component should be used by the specific applications which are actually listed on the bar to crosslink between them.
+
 The internal applications are:
 
 - [WFPgo](https://newgo.wfp.org)
@@ -40,17 +42,7 @@ The internal applications are:
 - [UN Booking Hub](https://humanitarianbooking.wfp.org/)
 - [WFP.org](https://wfp.org)
 
-The **custom version** is used when the application has multiple pages to be visited by the user. This component allows these different pages to be easily accessible. Do not use `BannerNavigation` when you have only one page.
-
-There are two variants of `BannerNavigation` that can be used:
-
-### `BannerNavigationWithContent`
-
-Used exclusively by specific applications which are actually listed on the bar to crosslink between them.
-
-### `BannerNavigation`
-
-It allows you to use custom `BannerNavigationItem` components inside.
+The links can be customized to fit the specific needs of the application.
 
 <DoUse>
 
@@ -61,6 +53,6 @@ It allows you to use custom `BannerNavigationItem` components inside.
 <DoNotUse>
 
 - Don’t insert links present in the main navigation
-- Don’t use with less than 2 links TODO: Discuss more?
+- Don’t use with less than 3 links
 
 </DoNotUse>

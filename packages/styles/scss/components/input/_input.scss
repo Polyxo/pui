@@ -35,9 +35,9 @@ $input-border: 1px solid var(--neutral-100__color); // TODO
     height: $input-height;
     min-width: 7rem;
     padding: 0 $spacing-03;
-    color: $text-primary;
+    color: $text-body-default;
     appearance: none;
-    background-color: $field;
+    background-color: $fill-field;
     order: 2;
     //font-size: $typography-body-copy-16px-regular-font-size;
     border: $input-border;

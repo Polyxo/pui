@@ -22,7 +22,7 @@
   .#{$prefix}--tabs {
     @include type-style("body-short");
     @include font-family("sans");
-    color: $text-primary;
+    color: $text-body-default;
     font-weight: 600;
     height: auto;
     width: 100%;
@@ -34,7 +34,7 @@
   .#{$prefix}--tabs__nav__bar {
     position: absolute;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    background: $interactive;
+    background: $action-default-fill-primary-default;
     z-index: 10;
     height: 3px;
     bottom: 0;
@@ -43,7 +43,7 @@
   .#{$prefix}--tabs-trigger-text {
     text-decoration: none;
     font-weight: 600;
-    color: $text-primary;
+    color: $text-body-default;
 
     &:focus {
       //@include focus-outline('border');
@@ -96,7 +96,7 @@
 
   .#{$prefix}--tabs__nav-item--selected {
     .#{$prefix}--tabs__nav-link {
-      color: $link-primary;
+      color: $action-default-link-default;
 
       &:focus {
         color: $focus;
@@ -113,13 +113,13 @@
       position: relative;
     }
     .#{$prefix}--tabs__nav-item--selected {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
 
       &:after {
         content: "";
         display: block;
         position: absolute;
-        background: $interactive;
+        background: $action-default-fill-primary-default;
         height: 3px;
         bottom: 0;
         left: 0;
@@ -142,19 +142,19 @@
 
   .#{$prefix}--tabs__nav-link {
     display: inline-block;
-    color: $text-primary;
+    color: $text-body-default;
     text-decoration: none;
     padding: $spacing-05 $spacing-03 * 1.2;
     width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
     &:focus {
-      color: $text-primary;
+      color: $text-body-default;
       outline: 1px solid transparent;
     }
 
     &:hover {
-      color: $link-primary;
+      color: $action-default-link-default;
     }
   }
 

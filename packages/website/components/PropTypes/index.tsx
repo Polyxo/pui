@@ -350,7 +350,14 @@ export default function PropTypes({
 
   const componentList = componentsUsedInCode.join(", ");
 
+  console.log(
+    "componentsNew",
+    componentsNew,
+    componentsNew?.[propTypes?.displayName]?.width
+  );
+
   code = `import { ${componentList} } from "@wfp/react";
+
 
 
 () => { 

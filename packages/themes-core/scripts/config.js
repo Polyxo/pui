@@ -114,6 +114,13 @@ export const config = ({
   StyleDictionary.registerTransform({
     type: "name",
     transitive: true,
+    name: `name/jsonFlat`,
+    transformer: (token, options) => scssTokenName(token, options),
+  });
+
+  StyleDictionary.registerTransform({
+    type: "name",
+    transitive: true,
     name: `name/scssDarkName`,
     transformer: (token, options) =>
       scssTokenName(token, options).replace("dark-", ""),
@@ -193,6 +200,7 @@ export const config = ({
           "attribute/color",
           "attribute/variablenames",
           "size/rem",
+          "name/jsonFlat",
         ],
         files: [
           {

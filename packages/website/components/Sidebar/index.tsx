@@ -34,7 +34,7 @@ const statuses = {
   draft: { title: "Draft", type: "warning" },
   designOnly: { title: "Design only", type: "info" },
   published: { title: "Published", type: "success" },
-  deprecated: { title: "Deprecated", type: "danger" },
+  deprecated: { title: "Deprecated", type: "error" },
 };
 
 // Function to extract the main slug, excluding parts starting with "tab:"

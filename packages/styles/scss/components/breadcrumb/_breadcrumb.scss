@@ -75,8 +75,8 @@
     &:hover,
     &:focus {
       outline: none;
-      color: $interactive;
-      // border-bottom: 1px solid $interactive;
+      color: $action-default-fill-primary-default;
+      // border-bottom: 1px solid $action-default-fill-primary-default;
     }
 
     // Applies to Firefox only

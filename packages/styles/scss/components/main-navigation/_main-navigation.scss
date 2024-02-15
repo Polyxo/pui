@@ -39,7 +39,7 @@ $main-navigation-menu-width: calcRem(300px);
 /// @group main-navigation
 @mixin main-navigation {
   .#{$prefix}--main-navigation {
-    color: $link-primary;
+    color: $action-default-link-default;
     background: $background-main;
     height: $main-navigation-height;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
@@ -58,6 +58,7 @@ $main-navigation-menu-width: calcRem(300px);
     @include type-style("body-short-02");
     @include font-family("sans");
     font-weight: 600;
+
     &:last-child {
       padding-right: 0;
     }
@@ -73,11 +74,15 @@ $main-navigation-menu-width: calcRem(300px);
       user-select: none;
       display: flex;
       align-items: center;
-      justify-content: center; // TODO: Check if needed
+      @include breakpoint-down("md") {
+        width: 100%;
+        justify-content: space-between;
+      }
+      // justify-content: center; // TODO: Check if needed
       white-space: nowrap;
 
       > a {
-        color: $link-primary; // TODO change to $link_on_color token
+        color: $action-default-link-default; // TODO change to $link_on_color token
         @include type-style("body-short-02");
         text-decoration: none;
         &.active {
@@ -86,11 +91,11 @@ $main-navigation-menu-width: calcRem(300px);
         &:hover,
         &:visited,
         &:active {
-          color: $link-primary;
+          color: $action-default-link-default;
           text-decoration: underline;
         }
         &:focus {
-          color: $link-primary;
+          color: $action-default-link-default;
         }
       }
     }
@@ -129,17 +134,17 @@ $main-navigation-menu-width: calcRem(300px);
 
   .#{$prefix}--main-navigation__logo {
     a {
-      color: $link-primary;
+      color: $action-default-link-default;
       text-decoration: none;
       text-transform: uppercase;
       &:hover,
       &:visited,
       &:active {
-        color: $text-primary;
+        color: $text-body-default;
         text-decoration: underline;
       }
       &:focus {
-        color: $text-primary;
+        color: $text-body-default;
       }
     }
   }
@@ -149,6 +154,38 @@ $main-navigation-menu-width: calcRem(300px);
       padding: 0;
     }
   }
+
+  .#{$prefix}--main-navigation__logo__default {
+    padding-left: 5.7rem;
+    .#{$prefix}--main-navigation__logo__default__ribbon {
+      background: $brand-main;
+
+      @include breakpoint-down("md") {
+        margin-right: 0.5em;
+        width: 3.5rem;
+        margin-left: -5.7rem;
+        margin-bottom: -20em;
+      }
+      @include breakpoint-up("md") {
+        margin-right: 0.5em;
+        width: 4.7rem;
+        margin-left: -5.7rem;
+        margin-bottom: -20em;
+      }
+      position: absolute;
+      top: 0;
+      z-index: 10000; // TODO: Better value
+      padding: 0.5em 0em;
+    }
+
+    svg {
+      margin: 0 -0.2em;
+      width: calc(100% + 0.4em);
+      height: auto;
+      fill: $brand-inverse; // TODO: Always use color instead
+    }
+  }
+
   @include breakpoint("md") {
     .#{$prefix}--main-navigation__logo-wrapper {
       flex-grow: 1;
@@ -166,27 +203,6 @@ $main-navigation-menu-width: calcRem(300px);
       font-weight: 600;
       white-space: nowrap;
     }
-    .#{$prefix}--main-navigation__logo__default {
-      padding-left: 5.7rem;
-      .#{$prefix}--main-navigation__logo__default__ribbon {
-        background: $logo-blue;
-        margin-right: 0.5em;
-        width: 4.7rem;
-        margin-left: -5.7rem;
-
-        margin-bottom: -20em;
-        position: absolute;
-        top: 0;
-        padding: 0.5em 0em;
-      }
-
-      svg {
-        margin: 0 -0.2em;
-        width: calc(100% + 0.4em);
-        height: auto;
-        fill: $logo-white; // TODO: Always use color instead
-      }
-    }
 
     .#{$prefix}--main-navigation__logo__offShelf {
       margin-right: 0.5em;
@@ -197,7 +213,7 @@ $main-navigation-menu-width: calcRem(300px);
       //padding: 0.5em 0em;
       svg {
         font-size: 6.5em;
-        fill: $logo-blue; // TODO: Always use color instead
+        fill: $brand-main; // TODO: Always use color instead
       }
     }
 
@@ -248,7 +264,7 @@ $main-navigation-menu-width: calcRem(300px);
       overflow: auto;
       overflow-x: hidden;
       z-index: z("modal");
-      color: $text-primary; // TODO: Replace
+      color: $text-body-default; // TODO: Replace
       background: $background-main;
       box-shadow: rgba(desaturate(#0b77c2, 50%), 0.15) 0 3px 12px,
         //TODO - convert raw color hex into color token in figma
@@ -291,19 +307,24 @@ $main-navigation-menu-width: calcRem(300px);
     }
 
     .#{$prefix}--main-navigation__list--open {
+      position: absolute;
+      left: 0;
+      right: 0;
       display: flex;
       width: 100%;
       flex-direction: column;
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
     }
 
     .#{$prefix}--main-navigation__sub--open {
       display: block;
-      color: $text-primary;
+      color: $text-body-default;
       background: $background-main;
     }
 
     .#{$prefix}--main-navigation__trigger {
       justify-content: flex-start;
+
       a {
         display: block;
         width: 100%;

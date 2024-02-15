@@ -1,13 +1,13 @@
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
 
 @mixin footer_external {
   .#{$prefix}--footer-ext {
     background-color: #1a4262; // TODO: Use the token $brand-dark
-    color: $text-on-color;
+    color: $text-inverse-default;
     padding: $spacing-07 $spacing-03;
   }
 
@@ -28,7 +28,7 @@
   }
 
   .#{$prefix}--footer-ext__product-name {
-    @include type-style('expressive-heading-03');
+    @include type-style("expressive-heading-03");
 
     font-weight: 700;
     margin-left: $spacing-07;
@@ -36,19 +36,19 @@
   }
 
   .#{$prefix}--footer-ext__address {
-    @include type-style('body-short');
+    @include type-style("body-short");
 
     margin-top: $spacing-05;
   }
 
   .#{$prefix}--footer-ext__social-wrapper {
-    @include type-style('body-short');
+    @include type-style("body-short");
 
     margin-top: $spacing-06;
   }
 
   .#{$prefix}--footer-ext__logo {
-    fill: $text-on-color;
+    fill: $text-inverse-default;
     font-size: 4em;
   }
 
@@ -66,7 +66,7 @@
 
     // [1] Remove a small gap at the bottom of the svg that extends the <a> height
     & svg {
-      fill: $text-on-color;
+      fill: $text-inverse-default;
       vertical-align: bottom; // [1]
     }
   }
@@ -116,7 +116,7 @@
   /* End block LinksColumn */
 
   .#{$prefix}--footer-ext__legal {
-    @include type-style('body-short');
+    @include type-style("body-short");
 
     border-top: 1px solid rgba(255, 255, 255, 0.3); // TODO: use token
     display: grid;
@@ -137,16 +137,16 @@
   .#{$prefix}--footer-ext__legal-link,
   .#{$prefix}--links-column-link {
     & > a {
-      color: $text-on-color;
+      color: $text-inverse-default;
       text-decoration: none;
 
       &:hover {
         text-decoration: underline;
-        color: $text-on-color;
+        color: $text-inverse-default;
       }
       &:visited,
       &:active {
-        color: $text-on-color;
+        color: $text-inverse-default;
       }
     }
   }

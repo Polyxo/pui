@@ -105,7 +105,7 @@
   .#{$prefix}--toast-notification--info,
   .#{$prefix}--toast-notification--info-square {
     background: #393939;
-    border-left: 3px solid $interactive;
+    border-left: 3px solid $action-default-fill-primary-default;
   }
   .#{$prefix}--toast-notification--low-contrast
     .#{$prefix}--toast-notification__close-button
@@ -116,12 +116,12 @@
   .#{$prefix}--toast-notification--info-square
     .#{$prefix}--toast-notification__icon,
   .#{$prefix}--toast-notification--info {
-    fill: $interactive;
+    fill: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--info
     .#{$prefix}--toast-notification__icon {
-    fill: $interactive;
+    fill: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--toast-notification--warning-alt
@@ -144,21 +144,21 @@
     .#{$prefix}--inline-notification__icon,
   .#{$prefix}--toast-notification--success
     .#{$prefix}--toast-notification__icon {
-    fill: $support-success;
+    fill: $support-success-main;
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--success
     .#{$prefix}--inline-notification__icon,
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--success
     .#{$prefix}--toast-notification__icon {
-    fill: $support-success;
+    fill: $support-success-main;
   }
 
   .#{$prefix}--toast-notification--error {
     background: var(--cds-inverse-02, #393939);
     // border-left: 3px solid var(--cds-inverse-support-01, #fa4d56);
-    border-left: 3px solid $support-error;
-    color: $support-error;
+    border-left: 3px solid $support-error-main;
+    color: $support-error-main;
 
     .#{$prefix}--toast-notification__icon {
       fill: currentColor;
@@ -166,29 +166,29 @@
   }
   .#{$prefix}--toast-notification--low-contrast {
     .#{$prefix}--toast-notification__details {
-      color: $text-primary;
+      color: $text-body-default;
     }
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--error {
-    background: $support-error-light;
-    border-left: 3px solid $support-error;
+    background: $support-error-background;
+    border-left: 3px solid $support-error-main;
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--info,
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--info-square {
     background: var(--support-light-04);
-    border-left: 3px solid $interactive;
+    border-left: 3px solid $action-default-fill-primary-default;
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--success {
-    background: $support-success-light;
-    border-left: 3px solid $support-success;
+    background: $support-success-background;
+    border-left: 3px solid $support-success-main;
   }
 
   .#{$prefix}--toast-notification--success {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $support-success;
+    border-left: 3px solid $support-success-main;
   }
 
   .#{$prefix}--toast-notification--warning,
@@ -199,7 +199,7 @@
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--warning,
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--warning-alt {
-    background: $support-warning-light;
+    background: $support-warning-background;
     border-left: 3px solid $support-warning;
   }
   .#{$prefix}--toast-notification:first-child {
@@ -227,7 +227,7 @@
     height: auto;
     min-height: 3rem;
     margin: 1rem 0;
-    color: $text-primary; // var(--cds-inverse-01, var(--ui-01));
+    color: $text-body-default; // var(--cds-inverse-01, var(--ui-01));
 
     .#{$prefix}--inline-notification__details {
       display: flex;
@@ -284,51 +284,51 @@
   .#{$prefix}--inline-notification--info,
   .#{$prefix}--inline-notification--info-square {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $interactive;
+    border-left: 3px solid $action-default-fill-primary-default;
   }
 
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--info,
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--info-square {
     background: $layer-primary; //var(--support-light-04);
-    border-left: 3px solid $interactive;
+    border-left: 3px solid $action-default-fill-primary-default;
   }
   .#{$prefix}--inline-notification--info
     .#{$prefix}--inline-notification__icon {
-    fill: $interactive;
+    fill: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--inline-notification--success,
   .#{$prefix}--inline-notification--success-square {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $support-success;
+    border-left: 3px solid $support-success-main;
   }
 
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--success,
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--success-square {
-    background: $support-success-light;
-    border-left: 3px solid $support-success;
+    background: $support-success-background;
+    border-left: 3px solid $support-success-main;
   }
 
   .#{$prefix}--inline-notification--success
     .#{$prefix}--inline-notification__icon {
-    fill: $support-success;
+    fill: $support-success-main;
   }
 
   .#{$prefix}--inline-notification--error,
   .#{$prefix}--inline-notification--error-square {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $support-error;
+    border-left: 3px solid $support-error-main;
   }
 
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--error,
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--error-square {
-    background: $support-error-light;
-    border-left: 3px solid $support-error;
+    background: $support-error-background;
+    border-left: 3px solid $support-error-main;
   }
 
   .#{$prefix}--inline-notification--error
     .#{$prefix}--inline-notification__icon {
-    fill: $support-error;
+    fill: $support-error-main;
   }
 
   .#{$prefix}--inline-notification--warning,
@@ -339,7 +339,7 @@
 
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--warning,
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--warning-square {
-    background: $support-warning-light;
+    background: $support-warning-background;
     border-left: 3px solid $support-warning;
   }
 
@@ -360,7 +360,7 @@
     .#{$prefix}--inline-notification__action-button,
   .#{$prefix}--inline-notification--low-contrast
     .#{$prefix}--inline-notification__action-button:active {
-    color: $interactive;
+    color: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--inline-notification__close-button {

@@ -5,16 +5,16 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../utilities/component-reset';
-@use '../../utilities/convert';
-@use '../../utilities/z-index' as *;
-@use './vars' as *;
-@use './keyframes';
-@use './mixins' as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../utilities/component-reset";
+@use "../../utilities/convert";
+@use "../../utilities/z-index" as *;
+@use "./vars" as *;
+@use "./keyframes";
+@use "./mixins" as *;
 
 /// Loading styles
 /// @access private
@@ -31,7 +31,7 @@
   // Animation (Spin by default)
   .#{$prefix}--loading__svg {
     fill: transparent;
-    stroke: $interactive;
+    stroke: $action-default-fill-primary-default;
     stroke-width: 7;
     stroke-linecap: butt;
     stroke-dasharray: 240;
@@ -47,7 +47,7 @@
     height: 2rem;
 
     .#{$prefix}--loading__svg {
-      stroke: $interactive;
+      stroke: $action-default-fill-primary-default;
     }
   }
 
@@ -62,7 +62,7 @@
     justify-content: center;
     align-items: center;
     transition: background-color 1000ms $standard-easing;
-    z-index: z('overlay');
+    z-index: z("overlay");
   }
 
   .#{$prefix}--loading-overlay--stop {

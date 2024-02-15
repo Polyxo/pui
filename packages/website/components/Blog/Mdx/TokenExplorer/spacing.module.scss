@@ -1,4 +1,4 @@
-@use 'scss/meta' as *;
+@use "scss/meta" as *;
 
 .typesetListItem {
   background: $layer-primary;
@@ -13,8 +13,8 @@
 
 .spacingPreview {
   position: relative;
-  // background-color: $text-secondary;
-  border: 1px solid $text-secondary;
+  // background-color: $text-body-secondary;
+  border: 1px solid $text-body-secondary;
   background-color: rgba(#000, 0.03);
 }
 

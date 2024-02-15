@@ -20,6 +20,9 @@ components:
     "SubNavigationGroup",
     "SubNavigationItem",
   ]
+componentsNew:
+  MainNavigation:
+    width: 1000
 ---
 
 ### Usage
@@ -125,7 +128,38 @@ import {
 );
 ```
 
-### Components:
+### MainNavigation with BannerNavigation
+
+The `MainNavigation` can be used with a `BannerNavigation` to create a navigation with a banner on top.
+
+```jsx live forceFullWidth
+import {
+  BannerNavigation,
+  MainNavigation,
+  MainNavigationItem,
+} from "@wfp/react";
+
+() => (
+  <>
+    <BannerNavigation>
+      <BannerNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Communities
+        </Link>
+      </BannerNavigationItem>
+    </BannerNavigation>
+    <MainNavigation>
+      <MainNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Section 1
+        </Link>
+      </MainNavigationItem>
+    </MainNavigation>
+  </>
+);
+```
+
+### Components
 
 - **SubNavigation**: This is the main wrapper for the sub-navigation.
 - **SubNavigationHeader**: Use this component to set a header for your sub-navigation.

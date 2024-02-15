@@ -363,11 +363,11 @@
   .#{$prefix}--action-list .#{$prefix}--btn {
     min-width: 0;
     padding: $button-padding-ghost;
-    color: $text-on-color;
+    color: $text-inverse-default;
   }
 
   .#{$prefix}--action-list .#{$prefix}--btn:disabled {
-    color: $text-on-color-disabled;
+    color: $text-inverse-disabled;
   }
 
   .#{$prefix}--action-list .#{$prefix}--btn .#{$prefix}--btn__icon {
@@ -417,7 +417,7 @@
     width: calcRem(1px);
     height: $spacing-05;
     border: none;
-    background-color: $text-on-color;
+    background-color: $text-inverse-default;
     content: "";
     opacity: 1;
     transition: opacity $duration-fast-02 motion(standard, productive);
@@ -441,7 +441,7 @@
     display: flex;
     align-items: center;
     margin-left: $spacing-05;
-    color: $text-on-color;
+    color: $text-inverse-default;
   }
 
   .#{$prefix}--batch-summary__para {

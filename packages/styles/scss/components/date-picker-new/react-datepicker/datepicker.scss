@@ -407,7 +407,7 @@
   &--in-range {
     border-radius: $datepicker__border-radius;
     background-color: $datepicker__selected-color;
-    color: $text-inverse;
+    color: $text-inverse-default;
 
     &:hover {
       background-color: $datepicker__selected-color;
@@ -444,7 +444,7 @@
   &--highlighted {
     border-radius: $datepicker__border-radius;
     background-color: $datepicker__highlighted-color;
-    color: $text-inverse;
+    color: $text-inverse-default;
 
     &:hover {
       background-color: $datepicker__selected-color;
@@ -465,7 +465,7 @@
   &--in-range {
     border-radius: $datepicker__border-radius;
     background-color: $datepicker__selected-color;
-    color: $text-inverse;
+    color: $text-inverse-default;
 
     &:hover {
       background-color: $datepicker__selected-color;
@@ -476,7 +476,7 @@
   &--keyboard-selected {
     border-radius: $datepicker__border-radius;
     background-color: $datepicker__selected-color; //lighten($datepicker__selected-color, 10%);
-    color: $text-inverse;
+    color: $text-inverse-default;
 
     &:hover {
       background-color: $datepicker__selected-color;
@@ -485,7 +485,7 @@
   }
 
   &--in-selecting-range:not(&--in-range) {
-    background-color: $interactive;
+    background-color: $action-default-fill-primary-default;
     opacity: 0.5; //blue//rgba($datepicker__selected-color, 0.5);
   }
 
@@ -633,7 +633,7 @@
   &::after {
     cursor: pointer;
     background-color: $datepicker__selected-color;
-    color: $text-inverse;
+    color: $text-inverse-default;
     border-radius: 50%;
     height: 16px;
     width: 16px;

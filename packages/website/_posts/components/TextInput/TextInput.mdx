@@ -11,18 +11,38 @@ mainComponent: "TextInput"
 
 Text inputs enable users to enter free-form text data. The type of text field used should reflect the length of the content you expect the user to enter. The default text input is for short, one-line content, whereas text area is for longer, multi-line entries.
 
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=620%3A1379" />
+
+### Anatomy
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=620%3A1765" />
+
 <DoUse>
 
-- A user needs to input unique information that cannot be predicted with a preset of options.
-- A user needs to input memorable data that can be entered more quickly in a free-hand format versus a more complex control.
+- **User Input:** Utilize the Text Input component when users need to enter textual or numeric data, such as names, addresses, or search queries.
+- **Form Fields:** Incorporate the Text Input within forms for capturing user responses, enabling data submission or interaction with the system.
+- **Search Functionality:** Implement the Text Input for search bars or filters, allowing users to input search terms or refine results dynamically.
+- **Data Filtering:** Use Text Inputs in data-driven interfaces where users can filter or narrow down datasets based on specific criteria.
 
 </DoUse>
 
 <DoNotUse>
-  - If a user can only enter an option from a predefined list then avoid using a
-  free-form text input as it is likely to result in an error. Consider using a
-  selection control such as a dropdown, select, or radio button group instead.
+
+- **Non-Editable Content:** Avoid using Text Inputs for displaying non-editable text or content, as it may confuse users expecting interaction.
+- **Limited Input Options:** If users are expected to select options from a predefined set or make binary choices, consider using radio buttons, checkboxes, or dropdown menus instead.
+- **Data Display:** If the primary purpose is to display data rather than capture user input, explore alternatives such as text areas or read-only fields.
+- **Complex Data Input:** For complex data input requiring specialized formats or interactions, consider using dedicated components or multi-step forms to guide users through the process efficiently.
+
 </DoNotUse>
+
+### Accessibility
+
+- **Labeling:** Always associate Text Inputs with descriptive labels to provide context for screen reader users and users with cognitive disabilities.
+- **Input Type:** Utilize appropriate input types (e.g., text, email, number) to enable device-specific keyboards and enhance accessibility for users with motor impairments.
+- **Placeholder Text:** Use placeholder text sparingly and ensure it conveys additional information rather than replacing the label for users who rely on screen readers.
+- **Error Handling:** Clearly communicate any input errors or validation messages adjacent to the Text Input, ensuring users are aware of any issues and how to resolve them.
+- **Focus Management:** Implement clear focus indicators and ensure logical tab order within forms to assist users navigating with keyboards or assistive technologies.
+- **Testing with Assistive Technologies:** Regularly test Text Input components with screen readers, keyboard navigation, and other assistive technologies to identify and address accessibility barriers.
 
 ### Related
 

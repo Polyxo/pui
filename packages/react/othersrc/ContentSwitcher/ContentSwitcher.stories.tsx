@@ -1,8 +1,6 @@
 import React from "react";
 import ContentSwitcher from "./ContentSwitcher";
-import markdown from "./README.mdx";
 import Switch from "../Switch";
-import { Add16, AddCircle } from "@wfp/icons-react";
 
 export default {
   title: "Components/Content Related/ContentSwitcher",
@@ -11,7 +9,6 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
   },
 };
 

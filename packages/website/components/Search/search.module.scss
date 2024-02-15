@@ -1,4 +1,4 @@
-@use 'scss/meta' as *;
+@use "scss/meta" as *;
 
 .search {
   font-size: 1.5em;
@@ -20,13 +20,13 @@
 
   :global(.wfp--search-input) {
     &:focus {
-      outline: 3px solid var(--focus, '#0b77c2ff');
+      outline: 3px solid var(--focus, "#0b77c2ff");
       outline-offset: -3px;
     }
   }
 
   :global(.wfp--search-magnifier-icon) {
-    color: $interactive;
+    color: $action-default-fill-primary-default;
 
     top: 1.9rem;
     left: 0.6em;

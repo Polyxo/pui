@@ -54,7 +54,7 @@
     top: calc(50% - 9px);
     height: calcRem(18px);
     width: calcRem(18px);
-    border: 2px solid $field-border-color;
+    border: 2px solid $field-background-disabled;
     border-radius: 4px;
     background-color: $background-main;
   }
@@ -79,7 +79,7 @@
   .#{$prefix}--checkbox:indeterminate + .#{$prefix}--checkbox-label::before,
   .#{$prefix}--checkbox-label[data-contained-checkbox-state="true"]::before,
   .#{$prefix}--checkbox-label[data-contained-checkbox-state="mixed"]::before {
-    background-color: $background-brand;
+    background-color: $field-background-enabled;
     border-color: $action-default-fill-primary-default;
   }
 
@@ -126,7 +126,7 @@
     height: calcRem(18px);
     width: calcRem(18px);
     margin-right: $spacing-03;
-    background-color: $field;
+    background-color: $fill-field;
     border: 2px solid $field-border-color;
     min-width: calcRem(18px);
   }
@@ -144,8 +144,8 @@
     .#{$prefix}--checkbox-appearance {
     display: flex;
     align-items: baseline;
-    background-color: $interactive;
-    border-color: $border-interactive;
+    background-color: $action-default-fill-primary-default;
+    border-color: $field-background-enabled;
   }
 
   .#{$prefix}--checkbox:focus
@@ -178,7 +178,7 @@
 
     @-moz-document url-prefix() {
       & {
-        stroke: $interactive;
+        stroke: $action-default-fill-primary-default;
       }
     }
   }

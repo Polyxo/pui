@@ -48,7 +48,7 @@ $input-border: 1px solid $field-border;
 
     & ~ .#{$prefix}--form-requirement {
       order: 3;
-      color: $support-error; //TODO change $border-error
+      color: $support-error-main; //TODO change $border-error
       font-weight: 400;
       margin-top: $spacing-02;
       overflow: visible;
@@ -147,7 +147,7 @@ $input-border: 1px solid $field-border;
   }
 
   .#{$prefix}--number__controls svg {
-    fill: $interactive;
+    fill: $action-default-fill-primary-default;
 
     // Hover styles for use with old HTML w/o button
     &:hover {
@@ -165,7 +165,7 @@ $input-border: 1px solid $field-border;
     input[type="number"],
     input[type="number"]:focus {
       outline: none;
-      border-color: $support-error;
+      border-color: $support-error-main;
       //box-shadow: 0 2px 0px 0px var(--support-01);
     }
 
