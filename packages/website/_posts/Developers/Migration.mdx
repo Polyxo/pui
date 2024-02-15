@@ -1,0 +1,112 @@
+---
+title: "Migration"
+excerpt: "A list of recommended libraries that are commonly used inside WFP."
+subtitle: "Migration from WFP UI-Kit to Bridge"
+slug: "Documentation/Developing/Migration"
+---
+
+When you are migration from the original WFP UI-Kit to Bridge you will need to consider the following breaking changes:
+
+### Strategies for Migration
+
+#### 1. Full migration to Bridge 💨
+
+This approach is recommended for new projects or projects that are in the early stages of development.
+
+#### 2. Incremental migration to Bridge 🐌
+
+Recommended for existing projects that are already using the original WFP UI-Kit. It allows you to migrate to Bridge incrementally, one component at a time and
+allows you to use the original WFP UI-Kit and Bridge together in the same project.
+
+[Example in Code Sandbox](https://codesandbox.io/p/devbox/ui-kit-bridge-new-and-old-wv96l9?file=%2Fsrc%2FApp.tsx)
+
+### Breaking Changes 💥
+
+#### Design changes
+
+The overall design of components is currently in progress. Please be aware that the design is subject to change.
+
+#### Packages renamed
+
+- `import { Component } from "@wfp/ui"` becomes `import { Component } from "@wfp/react"` for React components
+- `@import '@wfp/react/scss/globals/scss/styles.scss';` becomes `@import '@wfp/styles';"` for styles
+
+#### Icon component (also affects Pictograms)
+
+`<Icon icon={iconName} />` becomes `<IconName />` imported from `import { IconName } from @wfp/icons-react`
+
+Make sure to look at the usage [Icons documentation](https://dev.designsystem.wfp.org/documentation/icons/core-icons).
+
+#### Renamed variables
+
+- Multiple variables have been renamed. We are now using a Token system. `$ui-01` becomes `$layer` to provide better readability. A full list can be found [here](/documentation/tokens/list).
+
+#### React components `inputRef`
+
+- `inputRef` is deprecated. Use `ref` instead.
+
+```jsx
+// Before
+<Input inputRef={yourRef} />
+
+// After
+<Input ref={yourRef} />
+```
+
+### Missing components
+
+Some components are not yet available in Bridge.
+
+- `ContentSwitcher`
+
+### Components with breaking changes
+
+#### Button
+
+Does no longer accept `kind` = `danger--primary`, `danger--secondary` or `tertiary`.
+
+```jsx
+// Before
+<Button kind="danger--primary" />
+
+// After
+<Button kind="danger" />
+```
+
+```jsx
+// Before
+<Button kind="tertiary" />
+
+// After
+<Button kind="secondary" />
+```
+
+#### MainNavigation
+
+Does no longer accept a function inside `<MainNavigation />` to handle the click event.
+Instead, use the `useMainNavigation` hook instead.
+This is to make the component more flexible and to allow for better customization.
+
+```jsx
+// Before
+<MainNavigation>
+  {({ onClick }) => (
+    <a onClick={toggleMenu}>Toogle Menu</a>
+  )}
+</MainNavigation>
+
+// After
+<MainNavigation>
+<YourComponent />
+</MainNavigation>
+
+// Inside YourComponent
+function YourComponent() {
+    const { toggleMenu } = useMainNavigation();
+    return (
+        <a onClick={toggleMenu}>Toogle Menu</a>
+    )
+}
+```
+
+#### Footer

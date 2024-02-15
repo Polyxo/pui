@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import {
   Button,
   MainNavigationItem,
-  BannerNavigation,
+  InfoBar,
   MainNavigation,
   useTheme,
 } from "@wfp/react";
@@ -34,9 +34,9 @@ export default function Navigation() {
 
   return (
     <>
-      <BannerNavigation className={styles.bannerNavigation}>
-        <span>🚧 This website is work in progress 👷</span>
-      </BannerNavigation>
+      <InfoBar className={styles.bannerNavigation}>
+        🚧 This website is work in progress 👷
+      </InfoBar>
       <MainNavigation
         logo={<NextLink href="./">Bridge</NextLink>}
         line={false}

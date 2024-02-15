@@ -38,33 +38,6 @@ yarn build
 
 For developing on Windows please use WSL by following this guide: https://github.com/carbon-design-system/carbon/blob/b5d615e05bc1c062337e8aca3a84e25a6f49b559/docs/guides/setup/windows.md
 
-### BREAKING CHANGES: Upgrade to 2.0 for existing solutions
-
-In version 2.0, due to the new monorepo architecture there are some breaking changes that will may affect your application.
-
-#### Design changes
-
-The overall design of components is currently in progress. Please be aware that the design is subject to change.
-
-#### Packages renamed
-
-- `import { Component } from "@wfp/ui"` becomes `import { Component } from "@wfp/react"` for React components
-- `@import '@wfp/react/scss/globals/scss/styles.scss';` becomes `@import '@wfp/styles';"` for styles
-
-#### Icon component (also affects Pictograms)
-
-`<Icon icon={iconName} />` becomes `<IconName />` imported from `import { IconName } from @wfp/icons-react``
-
-Make sure to look at the usage [Icons documentation](https://dev.designsystem.wfp.org/documentation/icons/core-icons).
-
-#### Renamed variables
-
-- Multiple variables like `$ui-01` becomes `$layer` to provide better readability. A full list can be found here. TODO:ENTERURLTOCOLOURS
-
-#### React components `inputRef`
-
-- `inputRef` is deprecated. Use `ref` instead.
-
 ### Packages
 
 All packages can be found inside `packages/`.

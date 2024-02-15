@@ -9,14 +9,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && build:runAlgoliaUpdate",
+    "build": "yarn cp:logos && next build && yarn build:runAlgoliaUpdate",
     "start": "next start -p 80",
     "build:theme": "node buildTheme.js",
     "build:runAlgoliaUpdate": "node runAlgoliaUpdate.mjs",
     "lint": "next lint",
     "dev:ts": "yarn dev & yarn ts:watch",
     "ts": "tsc --noEmit --incremental",
-    "ts:watch": "yarn ts --watch"
+    "ts:watch": "yarn ts --watch",
+    "cp:logos": "cp -r ../logos/src public/logos"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",

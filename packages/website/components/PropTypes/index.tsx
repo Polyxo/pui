@@ -146,7 +146,7 @@ export default function PropTypes({
             <SelectItem key="none" value="" text="None" />
           )}
           )
-          {prop.type.value.map((kind: string, i) => (
+          {prop.type.value.map((kind: { value: string }, i) => (
             <SelectItem
               key={i}
               value={kind.value.replaceAll('"', "").replaceAll(" ", "")}
