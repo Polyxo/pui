@@ -2,24 +2,17 @@
 import React, { useEffect } from "react";
 import NextLink from "next/link";
 import {
-  Button,
   MainNavigationItem,
   BannerNavigation,
   MainNavigation,
   useTheme,
   SubNavigation,
-  SubNavigationHeader,
-  SubNavigationLink,
   SubNavigationItem,
 } from "@wfp/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Search from "../Search";
 
 import styles from "./styles.module.scss";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-// import SidebarNavigation from "../Sidebar/SidebarNavigation";
+
 export default function Navigation() {
   //const { t } = useTranslation('website');
   const theme: any = useTheme();
@@ -73,12 +66,39 @@ export default function Navigation() {
         >
           <NextLink href="">Digital Assets</NextLink>
         </MainNavigationItem>
-        <MainNavigationItem>
-          <NextLink href="/documentation/overview">Resources</NextLink>
+        <MainNavigationItem
+          subNavigation={
+            <SubNavigation>
+              <SubNavigationItem>
+                <NextLink href="tokens/overview">Design Tokens</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/how-tos/overview">How-tos</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/best-practices/overview">
+                  Best Practices
+                </NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/libraries/overview">Libraries</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/accessibility/overview">
+                  Accessibility
+                </NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/productlist/overview">Products List</NextLink>
+              </SubNavigationItem>
+            </SubNavigation>
+          }
+        >
+          <NextLink href="">Resources</NextLink>
           {/* <SidebarNavigation path="documentation" /> */}
         </MainNavigationItem>
         <MainNavigationItem>
-          <NextLink href="/support/overview">Support</NextLink>
+          <NextLink href="/support/contact">Support</NextLink>
         </MainNavigationItem>
 
         <MainNavigationItem className={styles.darkModeSwitch}>
