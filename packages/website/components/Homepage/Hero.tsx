@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./hero.module.scss";
-import Link from "next/link";
 import { Wrapper } from "@wfp/react";
 import Image from "next/image";
 import screenImage from "../../public/homescreens.png";

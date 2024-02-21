@@ -1,20 +1,18 @@
 import React from "react";
 import styles from "./essentials.module.scss";
 import Link from "next/link";
-import MoreLink from "../MoreLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Wrapper } from "@wfp/react";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import gridDividerIcon from "../../public/grid-dividers-light.svg";
-import spacingIcon from "../../public/distribute-spacing-horizontal-light.svg";
-import flagIcon from "../../public/font-awesome-light.svg";
-import bellsIcon from "../../public/bells-light.svg";
-import lineChartIcon from "../../public/chart-column-light.svg";
-import bubbleChartIcon from "../../public/chart-scatter-bubble-light.svg";
-import installIcon from "../../public/sign-posts-wrench-light.svg";
-import eyeIcon from "../../public/eye-light.svg";
-import accessibilityIcon from "../../public/universal-access-light.svg";
+import gridDividerIcon from "./icons/grid-dividers-light.svg";
+import spacingIcon from "./icons/distribute-spacing-horizontal-light.svg";
+import flagIcon from "./icons/font-awesome-light.svg";
+import bellsIcon from "./icons/bells-light.svg";
+import lineChartIcon from "./icons/chart-column-light.svg";
+import bubbleChartIcon from "./icons/chart-scatter-bubble-light.svg";
+import installIcon from "./icons/sign-posts-wrench-light.svg";
+import eyeIcon from "./icons/eye-light.svg";
+import accessibilityIcon from "./icons/universal-access-light.svg";
 
 /* interface PossibilitiesContainerProps {
   title?: string;

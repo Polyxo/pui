@@ -104,32 +104,6 @@ export default function Navigation() {
         <MainNavigationItem className={styles.darkModeSwitch}>
           <div className={styles.meta}>
             <Search />
-            {/* <Button
-              kind="tertiary"
-              onClick={(e) => {
-                e.currentTarget.blur();
-                theme.setTheme(theme.actualTheme === "dark" ? "light" : "dark");
-              }}
-            >
-              {theme.actualTheme === "dark" ? (
-                <FontAwesomeIcon icon={faSun} />
-              ) : (
-                <FontAwesomeIcon icon={faMoon} />
-              )}
-            </Button> */}
-
-            {/* <NextLink
-              href="https://github.com/un-core/designsystem"
-              target="_blank"
-              legacyBehavior
-            >
-              <Button
-                icon={<FontAwesomeIcon icon={faGithub} />}
-                href="https://github.com/un-core/designsystem"
-              >
-                GitHub
-              </Button>
-            </NextLink> */}
           </div>
         </MainNavigationItem>
       </MainNavigation>
