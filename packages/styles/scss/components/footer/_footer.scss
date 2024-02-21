@@ -108,7 +108,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: end;
 
     @include rtl {
       margin-left: 0;
@@ -126,11 +126,11 @@
   }
 
   .#{$prefix}--footer__secondary {
-    display: none;
-    @media screen and (max-width: 600px) {
+    font-size: calc(10px);
+
+    @include breakpoint-down("md") {
       margin-bottom: calcRem(10px);
       display: inline;
-      font-size: calc(10px);
     }
   }
 
@@ -147,6 +147,7 @@
     }
     .#{$prefix}--footer__cta {
       margin: auto;
+      align-items: center;
     }
     .#{$prefix}--footer__meta {
       text-align: center;
