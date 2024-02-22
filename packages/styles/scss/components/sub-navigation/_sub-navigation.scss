@@ -36,7 +36,7 @@
     color: $text-body-default;
 
     @include breakpoint-down("lg") {
-      display: none;
+      // display: none;
     }
   }
 
@@ -68,10 +68,28 @@
     }
   }
 
-  .#{$prefix}--sub-navigation__group--columns {
-    @include breakpoint("lg") {
+  @include breakpoint("lg") {
+    .#{$prefix}--sub-navigation__group--columns {
       > div {
         column-count: 4;
+      }
+    }
+
+    .#{$prefix}--sub-navigation__group--columns--1 {
+      > div {
+        column-count: 1;
+      }
+    }
+
+    .#{$prefix}--sub-navigation__group--columns--2 {
+      > div {
+        column-count: 2;
+      }
+    }
+
+    .#{$prefix}--sub-navigation__group--columns--3 {
+      > div {
+        column-count: 3;
       }
     }
   }

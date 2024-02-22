@@ -2509,12 +2509,12 @@
     "warning": {
       "main": {
         "category": "system",
-        "value": "{Semantic.Alert.Alert40}",
+        "value": "{Semantic.Alert.Alert50}",
         "type": "color"
       },
       "background": {
         "category": "system",
-        "value": "{Semantic.Alert.Alert80}",
+        "value": "{Semantic.Alert.Alert90}",
         "type": "color"
       }
     },

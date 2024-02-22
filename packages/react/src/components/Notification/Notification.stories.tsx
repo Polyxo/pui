@@ -21,22 +21,23 @@ export default {
   },
 };
 
-export const Toast = (args) => (
-  <ToastNotification
-    {...args}
-    caption={"00:00:00 AM"}
-    style={{ minWidth: "30rem", marginBottom: ".5rem" }}
-  />
-);
-Toast.args = {
-  kind: "error",
-  lowContrast: false,
-  role: "alert",
-  title: "Notification title",
-  subtitle: "Subtitle text goes here.",
-  iconDescription: "describes the close button",
-  statusIconDescription: "describes the status icon",
-  hideCloseButton: false,
+export const ToastDefault: Story = {
+  render: (args) => (
+    <ToastNotification
+      {...args}
+      caption={"00:00:00 AM"}
+      style={{ minWidth: "30rem", marginBottom: ".5rem" }}
+    />
+  ),
+  args: {
+    kind: "error",
+    role: "alert",
+    title: "Notification title",
+    subtitle: "Subtitle text goes here.",
+    iconDescription: "describes the close button",
+    statusIconDescription: "describes the status icon",
+    hideCloseButton: false,
+  },
 };
 
 export const NotificationTypes = (args) => (

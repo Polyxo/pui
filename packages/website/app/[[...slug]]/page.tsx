@@ -3,6 +3,7 @@ import { getAllPosts } from "../../lib/getPost";
 import getPostContent from "../../components/Post/getPostContent";
 import slugify from "slugify";
 import Layout from "../../components/Blog/Layout";
+import slugifyWithSlashes from "lib/slugifyWithSlashes";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts(["slug"]);
@@ -26,15 +27,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!page?.title) return { title: "Not found" };
 
-  const postUrl = process.env.NEXT_PUBLIC_DOMAIN + page.slug;
+  const postUrl =
+    process.env.NEXT_PUBLIC_DOMAIN + slugifyWithSlashes(page.slug);
 
   return {
-    title: page.title,
-    description: page.description,
+    title: page.title + " | WFP Bridge",
+    description: page.description || page.excerpt,
+    alternates: {
+      canonical: postUrl,
+    },
     openGraph: {
       url: postUrl,
-      title: page.title || page.title,
-      description: page.description,
+      title: page.title + " | WFP Bridge",
+      description: page.description || page.excerpt,
       type: "article",
     },
   };

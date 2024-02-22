@@ -31,7 +31,10 @@ export const SubNavigationGroup = ({
     {
       className,
     },
-    { [`${prefix}--sub-navigation__group--columns`]: columns }
+    {
+      [`${prefix}--sub-navigation__group--columns`]: columns,
+      [`${prefix}--sub-navigation__group--columns--${columns}`]: columns,
+    }
   );
 
   return (

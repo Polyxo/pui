@@ -22,8 +22,20 @@ export default async function RootLayout({
   // const data: any = await getGlobalData();
 
   return (
-    <html>
+    <html lang="en">
       <head />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicons/wfp-favicon-png32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="/favicons/wfp-favicon-png512.png"
+      />
       <body className={openSans.variable}>
         <Layout>{children}</Layout>
       </body>

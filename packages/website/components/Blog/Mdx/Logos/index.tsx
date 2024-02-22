@@ -9,7 +9,7 @@ const capitalize = (word) => {
 };
 
 const LogoElement = ({ color, type, language }: any) => {
-  const fileTypes = [".svg", /*'.png', '@4x.png',*/ ".png"];
+  const fileTypes = [".svg" /*'.png', '@4x.png', ".png"*/];
   const backgroundColor = color === "white" ? "#454646" : "#FFFFFF";
   /*const width =
     logoKind === 'standard' || logoKind === 'extended' ? 'auto' : 'auto';

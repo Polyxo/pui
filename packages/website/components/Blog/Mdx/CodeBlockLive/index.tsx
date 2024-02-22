@@ -1,6 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 // src/components/CodeBlock.js
-import React, { useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
 import stylesModule from "./codeBlockLive.module.scss";
 import {
@@ -16,6 +16,7 @@ import { DoUse, DoNotUse } from "../DoUse";
 import { Controller, useForm } from "react-hook-form";
 import classNames from "classnames";
 import ReactDatePicker from "react-datepicker";
+import Frame from "react-frame-component";
 
 //import MDX from '@mdx-js/runtime';
 //import components from '../';
@@ -32,16 +33,18 @@ import babelParser from "prettier/parser-babel";
 import htmlParser from "prettier/parser-html";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheckSquare,
   faCode,
+  faDesktop,
   faLeftLong,
-  faLeftRight,
-  faMinusSquare,
-  faRightLeft,
+  faMobileAlt,
+  faMobilePhone,
+  faPhone,
+  faPhoneAlt,
   faRightLong,
 } from "@fortawesome/free-solid-svg-icons";
 import useGenerateCodeSandbox from "../../../PropTypes/useGenerateCodeSandbox";
 import { faCodepen, faHtml5 } from "@fortawesome/free-brands-svg-icons";
+import InnerFrame from "./InnerFrame";
 
 const countLines = (str) => {
   return str.split("\n").length;
@@ -88,10 +91,18 @@ const CodeBlockLive = (props: any) => {
     view,
     source,
     width,
+    size: sizeProp = "desktop",
     expandCode,
     reactHookForm,
   } = props;
 
+  const [isMounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const [size, setSize] = useState(sizeProp);
   const [showHtml, setShowHtml] = useState(false);
   const [showCode, setShowCode] = useState(
     noCode !== undefined ? !noCode : showEditor
@@ -215,20 +226,44 @@ const CodeBlockLive = (props: any) => {
       [stylesModule.showWrapper]: !hideWrapper,
       [stylesModule.center]: center,
       [stylesModule.notCenter]: !center,
-      [stylesModule.fullWidth]: forceFullWidth || width >= 800,
+      [stylesModule.fullWidth]:
+        (forceFullWidth || width >= 800) && size === "desktop",
       [stylesModule.normalWidth]: !forceFullWidth && (width < 800 || !width),
       [stylesModule.expandCode]: showAllCode,
       [stylesModule.collapseCode]: !showAllCode,
       [stylesModule.showExpandButton]: showExpandButton,
       [stylesModule.reactHookForm]: reactHookForm,
       [stylesModule.rtl]: rtl,
+      [`${stylesModule[size]}`]: size,
       [`${stylesModule[view]}`]: view,
     });
+
+    const livePreview = (
+      <LivePreview
+        className={`${stylesModule.preview}`} // ${width ? styles.scrollable : ""}
+        dir={rtl ? "rtl" : "ltr"}
+        style={{ minWidth: width ? width + "px" : undefined }}
+      />
+    );
 
     return (
       <div className={codeBlockClasses}>
         {view !== "smallPreview" && (
           <div className={stylesModule.buttons}>
+            <Button
+              className={stylesModule.showAllPropsButton}
+              kind="ghost"
+              iconReverse
+              icon={
+                <FontAwesomeIcon
+                  icon={size === "desktop" ? faDesktop : faMobileAlt}
+                />
+              }
+              onClick={() => setSize(size === "desktop" ? "mobile" : "desktop")}
+            >
+              Size
+            </Button>
+
             <Button
               className={stylesModule.showAllPropsButton}
               kind="ghost"
@@ -268,7 +303,6 @@ const CodeBlockLive = (props: any) => {
             </Button>
           </div>
         )}
-
         <LiveProvider
           code={formatedCode}
           scope={scope}
@@ -277,19 +311,30 @@ const CodeBlockLive = (props: any) => {
           transformCode={cleanCode}
         >
           {language === "mdx" || language === "md" ? (
-            <div className={stylesModule.preview}>
-              {/*<MDXProvider components={components}>
-                <MDX>{code}</MDX>
-          </MDXProvider> */}
-            </div>
+            <div className={stylesModule.preview}></div>
           ) : (
             <div className={stylesModule.previewWrapper}>
               <div className={stylesModule.previewInside}>
-                <LivePreview
-                  className={`${stylesModule.preview}`} // ${width ? styles.scrollable : ""}
-                  dir={rtl ? "rtl" : "ltr"}
-                  style={{ minWidth: width ? width + "px" : undefined }}
-                />
+                {size !== "desktop" ? (
+                  <>
+                    {isMounted && (
+                      <div className={stylesModule.mobileFrame}>
+                        <div
+                          className={stylesModule.mobileFrameButtonVolumeUp}
+                        />
+                        <div
+                          className={stylesModule.mobileFrameButtonVolumeDown}
+                        />
+                        <div className={stylesModule.powerButton} />
+                        <Frame>
+                          <InnerFrame />
+                        </Frame>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  livePreview
+                )}
               </div>
             </div>
           )}
@@ -368,6 +413,7 @@ interface PreProps {
   reactHookForm?: boolean;
   forceFullWidth?: boolean;
   noCode?: boolean;
+  size?: string;
   children?: /*| React.ReactElement<any, any>
     | JSX.Element
     | React.ReactFragment*/
@@ -382,6 +428,7 @@ export function Pre({
   forceFullWidth,
   noCode,
   children,
+  size,
   ...props
 }: PreProps) {
   if (React.isValidElement(children) /*&& children?.type?.name === 'code'*/) {
@@ -394,6 +441,7 @@ export function Pre({
           noInline={noInline}
           reactHookForm={reactHookForm}
           noCode={noCode}
+          size={size}
           forceFullWidth={forceFullWidth}
           {...childProps}
         />

@@ -130,14 +130,14 @@
     .#{$prefix}--inline-notification__icon,
   .#{$prefix}--toast-notification--warning
     .#{$prefix}--toast-notification__icon {
-    fill: $support-warning;
+    fill: $support-warning-main;
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--warning-alt
     .#{$prefix}--toast-notification__icon,
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--warning
     .#{$prefix}--toast-notification__icon {
-    fill: $support-warning;
+    fill: $support-warning-main;
   }
 
   .#{$prefix}--toast-notification--success
@@ -194,13 +194,13 @@
   .#{$prefix}--toast-notification--warning,
   .#{$prefix}--toast-notification--warning-alt {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $support-warning;
+    border-left: 3px solid $support-warning-main;
   }
 
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--warning,
   .#{$prefix}--toast-notification--low-contrast.#{$prefix}--toast-notification--warning-alt {
     background: $support-warning-background;
-    border-left: 3px solid $support-warning;
+    border-left: 3px solid $support-warning-main;
   }
   .#{$prefix}--toast-notification:first-child {
     margin-top: 1rem;
@@ -208,7 +208,7 @@
   .#{$prefix}--toast-notification--warning,
   .#{$prefix}--toast-notification--warning-alt {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $support-warning;
+    border-left: 3px solid $support-warning-main;
   }
 
   .#{$prefix}--inline-notification {
@@ -334,18 +334,18 @@
   .#{$prefix}--inline-notification--warning,
   .#{$prefix}--inline-notification--warning-square {
     background: var(--cds-inverse-02, #393939);
-    border-left: 3px solid $support-warning;
+    border-left: 3px solid $support-warning-main;
   }
 
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--warning,
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--warning-square {
     background: $support-warning-background;
-    border-left: 3px solid $support-warning;
+    border-left: 3px solid $support-warning-main;
   }
 
   .#{$prefix}--inline-notification--warning
     .#{$prefix}--inline-notification__icon {
-    fill: $support-warning;
+    fill: $support-warning-main;
   }
 
   .#{$prefix}--inline-notification--low-contrast {

@@ -2,22 +2,15 @@
 import React, { useEffect } from "react";
 import NextLink from "next/link";
 import {
-  Button,
   MainNavigationItem,
   InfoBar,
   MainNavigation,
   useTheme,
 } from "@wfp/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Search from "../Search";
 
 import styles from "./styles.module.scss";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-// import SidebarNavigation from "../Sidebar/SidebarNavigation";
 export default function Navigation() {
-  //const { t } = useTranslation('website');
   const theme: any = useTheme();
 
   useEffect(() => {
@@ -60,7 +53,7 @@ export default function Navigation() {
         <MainNavigationItem className={styles.darkModeSwitch}>
           <div className={styles.meta}>
             <Search />
-            <Button
+            {/* <Button
               kind="tertiary"
               onClick={(e) => {
                 e.currentTarget.blur();
@@ -72,9 +65,9 @@ export default function Navigation() {
               ) : (
                 <FontAwesomeIcon icon={faMoon} />
               )}
-            </Button>
+              </Button> */}
 
-            <NextLink
+            {/* <NextLink
               href="https://github.com/un-core/designsystem"
               target="_blank"
               legacyBehavior
@@ -85,7 +78,7 @@ export default function Navigation() {
               >
                 GitHub
               </Button>
-            </NextLink>
+            </NextLink> */}
           </div>
         </MainNavigationItem>
       </MainNavigation>

@@ -170,6 +170,7 @@ export default function SidebarWrapper({
                   <h3
                     id={createSlug(p.displayName)}
                     className={styles.propTitle}
+                    key={i}
                   >
                     {p.displayName}
                   </h3>

@@ -19,13 +19,23 @@
     //height: calcRem(25px);
     border-radius: 50%;
     overflow: hidden;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    width: 1em;
+    height: 1em;
 
     > img {
       display: block;
       object-fit: cover;
       width: 1.2em;
       height: 1.2em;
+    }
+  }
+
+  .#{$prefix}--avatar--letter {
+    background: $border-subtle;
+
+    > text {
+      font-size: 0.6em;
     }
   }
 

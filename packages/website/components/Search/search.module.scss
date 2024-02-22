@@ -20,7 +20,7 @@
 
   :global(.wfp--search-input) {
     &:focus {
-      outline: 3px solid var(--focus, "#0b77c2ff");
+      outline: 3px solid $action-default-fill-primary-default;
       outline-offset: -3px;
     }
   }

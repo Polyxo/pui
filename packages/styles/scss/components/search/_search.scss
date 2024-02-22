@@ -381,6 +381,7 @@ $input-border: 1px solid var(--neutral-100__color);
   }
 
   // MainNavigation styles
+  // TODO: Move to MainNavigation
 
   .#{$prefix}--search--main .#{$prefix}--search-input {
     border-radius: calcRem(4px);
@@ -403,8 +404,13 @@ $input-border: 1px solid var(--neutral-100__color);
     .#{$prefix}--search-input {
     height: calcRem(32px);
     border: none;
+    background-color: $border-subtle;
+    font-size: 0.8em;
     &:hover {
       @include focus-outline("reset");
+    }
+    &::placeholder {
+      color: $text-body-default;
     }
 
     // 8px padding on either side of icon + 16px icon (32px)

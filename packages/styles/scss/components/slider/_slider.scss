@@ -52,7 +52,7 @@
     &::-webkit-slider-runnable-track {
       width: 250px;
       height: 4px;
-      background: $border-subtle; //TODO create new token
+      background: $field-background-disabled;
       transition: all 300ms $standard-easing;
       border: none;
       border-radius: 1px;
@@ -60,7 +60,7 @@
     }
 
     &::-moz-range-track {
-      background: $border-subtle;
+      background: $field-background-disabled;
       height: 4px;
       cursor: pointer;
     }
@@ -123,12 +123,12 @@
       outline: none;
 
       &::-webkit-slider-runnable-track {
-        background: $border-subtle;
+        background: $field-background-disabled;
       }
 
       // firefox
       &::-moz-range-track {
-        background-color: $border-subtle;
+        background-color: $field-background-disabled;
         overflow: hidden;
       }
     }
@@ -207,7 +207,7 @@
     position: absolute;
     width: 100%;
     height: calcRem(4px);
-    background: var(--ui-05);
+    background: $field-background-disabled;
     cursor: pointer;
     transform: translate(0%, -50%);
   }
@@ -216,7 +216,7 @@
     position: absolute;
     width: 100%;
     height: calcRem(4px);
-    background: var(--interactive-01);
+    background: $action-default-fill-primary-default;
     transform-origin: left;
     pointer-events: none;
     transform: translate(0%, -50%);

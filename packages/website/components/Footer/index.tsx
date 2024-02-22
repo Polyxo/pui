@@ -19,12 +19,14 @@ export default function FooterWrapper() {
       <>
         <LinksColumn title="UN Core">
           <li className={`wfp--links-column-link`}>
-            <NextLink href="/" legacyBehavior>
+            <NextLink href="https://designsystem.wfp.org" legacyBehavior>
               <Link>Documentation</Link>
             </NextLink>
           </li>
           <li className={`wfp--links-column-link`}>
-            <Link href="#">Storybook</Link>
+            <Link href="https://feat-docs-ui-components.d2wxsj5e2v9riy.amplifyapp.com">
+              Storybook
+            </Link>
           </li>
         </LinksColumn>
         <LinksColumn title="UN Core">

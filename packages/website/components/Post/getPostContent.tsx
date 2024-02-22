@@ -171,27 +171,15 @@ export default async function getPostContent(params: any) {
     },
   });
 
-  //let data = {};
-  //let query = {};
-
-  //const filename = 'Naming/Naming';
-  //let variables = { relativePath: `${filename}.mdx` };
-  //try {
-  // const res = await dbConnection.queries.post(variables);
-  //query = res.query;
-  // data = res.data;
-  //  variables = res.variables;
-  //} catch {
-  // swallow errors related to document creation
-  // }
-
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkStringify)
     .use(remarkHeadings);
 
-  const vfile = await processor.process(post.content);
+  console.log("wwwaaahhh", post.content);
+
+  // const vfile = await processor.process(post.content ? post.content : "Hello");
 
   return {
     props: {
@@ -202,7 +190,7 @@ export default async function getPostContent(params: any) {
       posts,
       post: {
         ...post,
-        headings: vfile.data.headings,
+        // headings: vfile.data.headings,
         content,
         mdxSource,
         mdxToC,
