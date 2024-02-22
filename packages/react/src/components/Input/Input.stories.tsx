@@ -37,7 +37,7 @@ import { Input  } from "@wfp/react";
 </Input>
 `;
 
-Regular.story = {
+InputDefault.story = {
   parameters: {
     docs: {
       source: {

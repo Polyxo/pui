@@ -22,21 +22,6 @@ mainComponent: "Button"
 - Use a button group to show additional actions.
 - When the button label is not visible, a tooltip will appear when the user hovers over the button. The tooltip will show the label text and, if applicable, a keyboard shortcut.
 
-### Types
-
-| kind               | When to use                                                                                  |
-| ------------------ | -------------------------------------------------------------------------------------------- |
-| `primary`          | the principle call to action on the page                                                     |
-| `secondary`        | secondary actions on each page                                                               |
-| `tertiary`         | simple actions on the page                                                                   |
-| `accent`           | very important actions and only once or twice on each page **Outdated:** Do not use anymore! |
-| `danger`           | a negative action (such as Delete) on the page                                               |
-| `danger--primary`  | a negative principle call to action (such as Delete) on the page                             |
-| `ghost`            | in places where a regular button would draw too much attention and look similar to links     |
-| `inverse--primary` | should be used on dark backgrounds                                                           |
-| `inverse`          | should be used on dark backgrounds                                                           |
-| `navigation`       | should be only used in the main navigation **Outdated:** Do not use anymore!                 |
-
 ### Primary
 
 ```jsx live noCode
@@ -52,24 +37,6 @@ Primary buttons are used for the main action on a page.
 ```
 
 Secondary buttons are used for secondary actions on each page. There can be multiple secondary buttons on a page.
-
-### Tertiary
-
-```jsx live noCode
-<Button kind="tertiary">Tertiary</Button>
-```
-
-Tertiary buttons are used for simple actions on the page. There can be multiple tertiary buttons on a page.
-
-### Danger
-
-<Callout kind="warning" title="Only use with caution">
-
-They should be only used when the action is destructive and cannot be undone.
-
-</Callout>
-
-Danger buttons are used for negative actions on the page. There should only be one danger button on a page.
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=233%3A1779" />
 

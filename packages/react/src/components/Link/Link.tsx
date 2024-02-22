@@ -28,6 +28,10 @@ export interface LinkProps extends React.ComponentPropsWithRef<"a"> {
    */
   size?: "sm" | "md" | "lg";
   /**
+   * Use a solid prop for link element on a solid background @design
+   */
+  linkSolid?: boolean;
+  /**
    * Use an icon with the link element @design
    */
   icon?: React.ReactNode | React.ComponentType | React.ElementType;
@@ -44,6 +48,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       visited,
       icon,
       size,
+      linkSolid,
       ...other
     } = props;
 
@@ -55,6 +60,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       [`${prefix}--link--visited`]: visited,
       [`${prefix}--link--${size}`]: size,
       [`${prefix}--link--icon`]: icon,
+      [`${prefix}--link--solid`]: linkSolid,
     });
 
     const rel = other.target === "_blank" ? "noopener" : undefined;

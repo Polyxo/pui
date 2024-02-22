@@ -73,6 +73,10 @@ $input-border: 1px solid var(--neutral-100__color);
     }
   }
 
+  .#{$prefix}--search-input--rounded {
+    border-radius: 22px;
+  }
+
   .#{$prefix}--search-input[disabled] {
     border-bottom: 1px solid transparent;
     background-color: $fill-field;

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+    "jsx": "react",
     "module": "es6",
     "moduleResolution": "node",
     "outDir": "./dist",
