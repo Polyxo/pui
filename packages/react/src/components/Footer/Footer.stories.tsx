@@ -36,6 +36,7 @@ export const FooterDefault: Story = {
   args: {
     external: false,
     metaContent: "2023 © World Food Programme",
+    secondary: "Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy",
   },
 };
 
@@ -64,129 +65,129 @@ FooterDefault.story = {
   },
 };
 
-export const External = (args) => (
-  <FooterExternal
-    {...args}
-    metaLinks={
-      <>
-        <FooterMetaLink href="hh.com">First legal link</FooterMetaLink>
-        <FooterMetaLink href="hh.com">Second legal link</FooterMetaLink>
-      </>
-    }
-  >
-    <>
-      <LinksColumn title="Title">
-        <li className={`wfp--links-column-link`}>
-          <Link>First link</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Second link</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Third link</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Fourth link</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Fifth link</Link>
-        </li>
-      </LinksColumn>
+// export const External = (args) => (
+//   <FooterExternal
+//     {...args}
+//     metaLinks={
+//       <>
+//         <FooterMetaLink href="hh.com">First legal link</FooterMetaLink>
+//         <FooterMetaLink href="hh.com">Second legal link</FooterMetaLink>
+//       </>
+//     }
+//   >
+//     <>
+//       <LinksColumn title="Title">
+//         <li className={`wfp--links-column-link`}>
+//           <Link>First link</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Second link</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Third link</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Fourth link</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Fifth link</Link>
+//         </li>
+//       </LinksColumn>
 
-      <LinksColumn title="Title 2">
-        <li className={`wfp--links-column-link`}>
-          <Link>First link 2</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Second link 2</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Third link 2</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Fourth link 2</Link>
-        </li>
-        <li className={`wfp--links-column-link`}>
-          <Link>Fifth link 2</Link>
-        </li>
-      </LinksColumn>
-    </>
-  </FooterExternal>
-);
+//       <LinksColumn title="Title 2">
+//         <li className={`wfp--links-column-link`}>
+//           <Link>First link 2</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Second link 2</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Third link 2</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Fourth link 2</Link>
+//         </li>
+//         <li className={`wfp--links-column-link`}>
+//           <Link>Fifth link 2</Link>
+//         </li>
+//       </LinksColumn>
+//     </>
+//   </FooterExternal>
+// );
 
-External.args = {
-  productName: (
-    <span>
-      Service <br /> Marketplace
-    </span>
-  ),
-  metaContent: "Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy",
-};
+// External.args = {
+//   productName: (
+//     <span>
+//       Service <br /> Marketplace
+//     </span>
+//   ),
+//   metaContent: "Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy",
+// };
 
-const externalsourcecode = `
-import { FooterExternal, Link  } from "@wfp/react";
+// const externalsourcecode = `
+// import { FooterExternal, Link  } from "@wfp/react";
 
-<FooterExternal
-    metaContent="Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy"
-    metaLinks={
-      <>
-        <FooterMetaLink href="hh.com">First legal link</FooterMetaLink>
-        <FooterMetaLink href="hh.com">Second legal link</FooterMetaLink>
-      </>
-    }
-    productName={<span>Service{' '}<br />{' '}Marketplace</span>
-    >
-    <>
-      <LinksColumn title="Title">
-        <li className="wfp--links-column-link">
-          <Link>First link</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Second link</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Third link</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Fourth link</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Fifth link</Link>
-        </li>
-      </LinksColumn>
+// <FooterExternal
+//     metaContent="Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy"
+//     metaLinks={
+//       <>
+//         <FooterMetaLink href="hh.com">First legal link</FooterMetaLink>
+//         <FooterMetaLink href="hh.com">Second legal link</FooterMetaLink>
+//       </>
+//     }
+//     productName={<span>Service{' '}<br />{' '}Marketplace</span>
+//     >
+//     <>
+//       <LinksColumn title="Title">
+//         <li className="wfp--links-column-link">
+//           <Link>First link</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Second link</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Third link</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Fourth link</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Fifth link</Link>
+//         </li>
+//       </LinksColumn>
 
-      <LinksColumn title="Title 2">
-        <li className="wfp--links-column-link">
-          <Link>First link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Second link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Third link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Fourth link 2</Link>
-        </li>
-        <li className="wfp--links-column-link">
-          <Link>Fifth link 2</Link>
-        </li>
-      </LinksColumn>
-    </>
-  </FooterExternal>
-`;
+//       <LinksColumn title="Title 2">
+//         <li className="wfp--links-column-link">
+//           <Link>First link 2</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Second link 2</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Third link 2</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Fourth link 2</Link>
+//         </li>
+//         <li className="wfp--links-column-link">
+//           <Link>Fifth link 2</Link>
+//         </li>
+//       </LinksColumn>
+//     </>
+//   </FooterExternal>
+// `;
 
-External.story = {
-  parameters: {
-    docs: {
-      storyDescription:
-        "External Footer is used for external applications facing the public audience. It should contain WFP logo, HQ address and metadata like copyright.",
-      source: {
-        code: externalsourcecode,
-      },
-    },
-  },
-};
+// External.story = {
+//   parameters: {
+//     docs: {
+//       storyDescription:
+//         "External Footer is used for external applications facing the public audience. It should contain WFP logo, HQ address and metadata like copyright.",
+//       source: {
+//         code: externalsourcecode,
+//       },
+//     },
+//   },
+// };
 
 export const Internal = (args) => (
   <Footer

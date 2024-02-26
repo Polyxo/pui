@@ -35,7 +35,7 @@ export default function Possiblities() {
           title="Are you a Designer?"
           content={
             <>
-              <Link href="./documentation/designing/intro" legacyBehavior>
+              <Link href="/how-tos/start-designing" legacyBehavior>
                 <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
                   Start designing
                 </Button>

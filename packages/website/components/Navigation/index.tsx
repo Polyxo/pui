@@ -2,19 +2,17 @@
 import React, { useEffect } from "react";
 import NextLink from "next/link";
 import {
-  Button,
   MainNavigationItem,
   BannerNavigation,
   MainNavigation,
   useTheme,
-  Wrapper,
+  SubNavigation,
+  SubNavigationItem,
 } from "@wfp/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Search from "../Search";
 
 import styles from "./styles.module.scss";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-// import SidebarNavigation from "../Sidebar/SidebarNavigation";
+
 export default function Navigation() {
   //const { t } = useTranslation('website');
   const theme: any = useTheme();
@@ -44,45 +42,68 @@ export default function Navigation() {
         pageWidth="full"
       >
         <MainNavigationItem>
-          <NextLink href="/components/overview">Components</NextLink>
+          <NextLink href="/brand/overview">Brand</NextLink>
         </MainNavigationItem>
-        <MainNavigationItem>
-          <NextLink href="/documentation/overview">Resources</NextLink>
+        <MainNavigationItem
+          subNavigation={
+            <SubNavigation>
+              <SubNavigationItem>
+                <NextLink href="/foundations/overview">Foundations</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/icons/overview">Icons</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/components/overview">
+                  Design Components
+                </NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/templates/overview">Templates</NextLink>
+              </SubNavigationItem>
+            </SubNavigation>
+          }
+        >
+          <NextLink href="">Digital Assets</NextLink>
+        </MainNavigationItem>
+        <MainNavigationItem
+          subNavigation={
+            <SubNavigation>
+              <SubNavigationItem>
+                <NextLink href="tokens/overview">Design Tokens</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/how-tos/overview">How-tos</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/best-practices/overview">
+                  Best Practices
+                </NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/libraries/overview">Libraries</NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/accessibility/overview">
+                  Accessibility
+                </NextLink>
+              </SubNavigationItem>
+              <SubNavigationItem>
+                <NextLink href="/productlist/overview">Products List</NextLink>
+              </SubNavigationItem>
+            </SubNavigation>
+          }
+        >
+          <NextLink href="">Resources</NextLink>
           {/* <SidebarNavigation path="documentation" /> */}
         </MainNavigationItem>
         <MainNavigationItem>
-          <NextLink href="/support/overview">Support</NextLink>
+          <NextLink href="/support/contact">Support</NextLink>
         </MainNavigationItem>
 
         <MainNavigationItem className={styles.darkModeSwitch}>
           <div className={styles.meta}>
             <Search />
-            <Button
-              kind="tertiary"
-              onClick={(e) => {
-                e.currentTarget.blur();
-                theme.setTheme(theme.actualTheme === "dark" ? "light" : "dark");
-              }}
-            >
-              {theme.actualTheme === "dark" ? (
-                <FontAwesomeIcon icon={faSun} />
-              ) : (
-                <FontAwesomeIcon icon={faMoon} />
-              )}
-            </Button>
-
-            {/* <NextLink
-              href="https://github.com/un-core/designsystem"
-              target="_blank"
-              legacyBehavior
-            >
-              <Button
-                icon={<FontAwesomeIcon icon={faGithub} />}
-                href="https://github.com/un-core/designsystem"
-              >
-                GitHub
-              </Button>
-            </NextLink> */}
           </div>
         </MainNavigationItem>
       </MainNavigation>

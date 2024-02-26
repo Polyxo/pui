@@ -33,6 +33,5 @@ export const ModalDefault: Story = {
     modalHeading: "Modal heading",
     modalText: "Modal text",
     className: "some-class",
-    open: false,
   },
 };

@@ -80,6 +80,19 @@ SmallSearch.story = {
   },
 };
 
+export const RoundedSearch = (args) => <Search {...args} />;
+RoundedSearch.args = {
+  id: "roundedsearch",
+  rounded: true,
+};
+RoundedSearch.story = {
+  parameters: {
+    docs: {
+      storyDescription: `You can make the search input rounded by adding the prop \`rounded\``,
+    },
+  },
+};
+
 export const MainNavigationSearch = (args) => <Search {...args} />;
 
 MainNavigationSearch.args = {

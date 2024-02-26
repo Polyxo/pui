@@ -52,6 +52,7 @@ interface SearchProps extends InputProps, React.ComponentPropsWithRef<"input"> {
   small?: boolean;
   value?: string;
   className?: string;
+  rounded?: boolean;
 }
 
 /** Search enables users to specify a word or a phrase to find relevant pieces of content without the use of navigation. */
@@ -73,6 +74,7 @@ const Search: React.FC<SearchProps> = React.forwardRef((props, ref) => {
     onSearchIconClick = () => {},
     helperText,
     light,
+    rounded,
   } = props;
 
   const initialValue = props.value;
@@ -126,13 +128,21 @@ const Search: React.FC<SearchProps> = React.forwardRef((props, ref) => {
     "wfp--search-close--hidden": !value,
   });
 
+  const searchInputClassName = classNames(
+    `${prefix}--search-input`,
+    className,
+    {
+      [`${prefix}--search-input--rounded`]: rounded,
+    }
+  );
+
   const useInputProps = props as UseInputProps;
 
   const { wrapperProps, inputProps } = useInput({
     ...useInputProps,
     onChange: handleChange,
     className: `${prefix}--search-input__wrapper`,
-    inputClassName: `${prefix}--search-input`,
+    inputClassName: searchInputClassName,
   });
 
   return (

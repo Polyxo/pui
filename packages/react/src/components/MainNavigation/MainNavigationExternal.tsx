@@ -230,7 +230,7 @@ const MainNavigationExternal = ({
               className={`${prefix}--main-navigation-ext__mobile-menu-button`}
             >
               <Button
-                kind="tertiary"
+                kind="secondary"
                 small
                 onClick={() =>
                   navTogglable.isOpen
