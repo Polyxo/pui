@@ -101,6 +101,11 @@ steps:
   - script: |
       yarn build
     displayName: "yarn build"
+    env:
+      NEXT_PUBLIC_API: $(NEXT_PUBLIC_API)
+      NEXT_PUBLIC_ALGOLIA_APP_ID: $(NEXT_PUBLIC_ALGOLIA_APP_ID)
+      NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: $(NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
+      ALGOLIA_SEARCH_ADMIN_KEY: $(ALGOLIA_SEARCH_ADMIN_KEY) 
 
   - script: |
       yarn test
