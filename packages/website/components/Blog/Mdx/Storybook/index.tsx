@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./figma.module.scss";
 // import IframeResizer from 'iframe-resizer-react';
 
-export default function Storybook({ path }: any) {
+// TODO: Remove this
+
+export default function Storybook() {
   // const src = `http://localhost:9000/${path}&documentation=true`;
 
   //  src={src}

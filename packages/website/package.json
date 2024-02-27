@@ -42,7 +42,7 @@
     "@wfp/pictograms-react": "^11.17.12",
     "@wfp/react": "^1.21.10",
     "@wfp/styles": "^10.29.10",
-    "@wfp/themes-core": "0.3.6",
+    "@wfp/themes-core": "0.3.12",
     "algoliasearch": "^4.13.1",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
@@ -73,6 +73,7 @@
     "remark-stringify": "^10.0.3",
     "sass": "^1.69.0",
     "slugify": "^1.6.5",
+    "unified": "^11.0.4",
     "unist-util-visit": "^4.1.2",
     "wcag-contrast": "^3.0.0"
   }

@@ -1,6 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 // src/components/CodeBlock.js
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
 import stylesModule from "./codeBlockLive.module.scss";
 import {
@@ -37,9 +37,6 @@ import {
   faDesktop,
   faLeftLong,
   faMobileAlt,
-  faMobilePhone,
-  faPhone,
-  faPhoneAlt,
   faRightLong,
 } from "@fortawesome/free-solid-svg-icons";
 import useGenerateCodeSandbox from "../../../PropTypes/useGenerateCodeSandbox";

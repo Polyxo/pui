@@ -60,6 +60,7 @@ $main-navigation-menu-width: calcRem(300px);
 
   .#{$prefix}--main-navigation {
     .#{$prefix}--main-navigation__trigger {
+      color: $action-default-link-default;
       cursor: pointer;
       user-select: none;
       display: flex;
@@ -261,6 +262,17 @@ $main-navigation-menu-width: calcRem(300px);
     }
   }
 
+  .#{$prefix}--main-navigation__sub--open {
+    display: block;
+    color: $text-body-default;
+    background: $background-main;
+  }
+
+  @include breakpoint-down("md") {
+    .#{$prefix}--main-navigation__sub--open {
+      background: $layer-primary;
+    }
+  }
   @include breakpoint-up("md") {
     .#{$prefix}--main-navigation__sub--open {
       display: block;
@@ -297,6 +309,7 @@ $main-navigation-menu-width: calcRem(300px);
       left: inherit;
       right: inherit;
       width: inherit;
+      margin-left: -0.9em;
     }
   }
 
@@ -330,12 +343,6 @@ $main-navigation-menu-width: calcRem(300px);
       height: auto;
       flex-direction: column;
       box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
-    }
-
-    .#{$prefix}--main-navigation__sub--open {
-      display: block;
-      color: $text-body-default;
-      background: $background-main;
     }
 
     .#{$prefix}--main-navigation__trigger {

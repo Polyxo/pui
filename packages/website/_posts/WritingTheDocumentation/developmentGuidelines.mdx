@@ -1,0 +1,124 @@
+---
+title: "Developing components"
+excerpt: "Guidelines for developing components"
+coverImage: "../sample-image.jpg"
+slug: "How Tos/Developing components"
+---
+
+## Component common props
+
+When developing a component, you should always document the props. This is done by using TypeScript's `interface` syntax.
+
+```tsx
+interface CommonProps {
+  /**
+   * The ID of the component
+   */
+  id: string;
+  /**
+   * The class name of the component
+   */
+  className: string;
+  /**
+   * The style of the component
+   */
+  style: React.CSSProperties;
+}
+```
+
+The following props are common to a lot of components and should be reused as much as possible.
+
+### `kind`
+
+The kind of the component is used to define a behavior of the component
+
+TODO: Currenty called type in Figma, but should be renamed to kind
+
+```tsx
+/**
+ * The kind of the component is used to define a behavior or a style of the component
+ */
+kind: "primary" | "secondary" | "tertiary";
+```
+
+#### `type`
+
+The type of the component is used to define a style of the component. It is used to define for example the color of the component.
+
+```tsx
+/**
+ * The type of the component is used to define a style of the component. It is used to define for example the color of the component.
+ */
+type: "default" | "success" | "warning" | "error";
+```
+
+The difference between `kind` and `type` is that `kind` is used to define a behavior of the component, while `type` is used to define a style of the component.
+
+### `size`
+
+The size of the component is used to define the size of the component.
+
+```tsx
+/**
+ * The size of the component is used to define the size of the component
+ */
+size: "small" | "medium" | "large";
+```
+
+### `disabled`
+
+The disabled prop is used to define if the component is disabled or not.
+
+```tsx
+/**
+ * The disabled prop is used to define if the component is disabled or not
+ */
+disabled: boolean;
+```
+
+### `loading`
+
+The loading prop is used to define if the component is in a loading state or not.
+
+```tsx
+/**
+ * The loading prop is used to define if the component is in a loading state or not
+ */
+loading: boolean;
+```
+
+### `onClick`
+
+The onClick prop is used to define the click event of the component.
+
+```tsx
+/**
+ * The onClick prop is used to define the click event of the component
+ */
+onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+```
+
+### `onChange`
+
+The onChange prop is used to define the change event of the component.
+
+```tsx
+
+/**
+ * The onChange prop is used to define the change event of the component
+ */
+onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+```
+
+Other `onAction` events should be documented in the same way.
+
+### `pageWidth`
+
+The pageWidth prop is used to define the width of the page and is usually using the `Wrapper` component internally.
+
+```tsx
+/**
+ * The pageWidth prop is used to define the width of the page
+ */
+pageWidth: "small" | "medium" | "large";
+```

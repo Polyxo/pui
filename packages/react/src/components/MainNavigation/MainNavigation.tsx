@@ -118,7 +118,13 @@ const MainNavigation = ({
   return (
     <div id={id} className={wrapperClasses}>
       <MainNavigationContext.Provider
-        value={{ activeMenuItem, openMobileMenu, toggleMenu, onChangeSub }}
+        value={{
+          activeMenuItem,
+          openMobileMenu,
+          toggleMenu,
+          onChangeSub,
+          setOpenMobileMenu,
+        }}
       >
         <Wrapper
           pageWidth={pageWidth}

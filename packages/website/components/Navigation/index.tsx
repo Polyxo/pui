@@ -3,15 +3,31 @@ import React, { useEffect } from "react";
 import NextLink from "next/link";
 import {
   MainNavigationItem,
-  BannerNavigation,
   MainNavigation,
   useTheme,
   SubNavigation,
   SubNavigationItem,
+  InfoBar,
+  SubNavigationContent,
+  useMainNavigation,
 } from "@wfp/react";
 import Search from "../Search";
 
 import styles from "./styles.module.scss";
+import LinkWithNext from "components/LinkWithNext";
+import { useParams } from "next/navigation";
+
+function CloseNavigationTrigger() {
+  const params = useParams();
+  const { onChangeSub, setOpenMobileMenu } = useMainNavigation();
+
+  useEffect(() => {
+    onChangeSub("close");
+    setOpenMobileMenu(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+  return null;
+}
 
 export default function Navigation() {
   //const { t } = useTranslation('website');
@@ -31,9 +47,9 @@ export default function Navigation() {
 
   return (
     <>
-      <BannerNavigation className={styles.bannerNavigation}>
+      <InfoBar className={styles.bannerNavigation}>
         <span>🚧 This website is work in progress 👷</span>
-      </BannerNavigation>
+      </InfoBar>
 
       <MainNavigation
         logo={<NextLink href="/">Bridge</NextLink>}
@@ -41,60 +57,80 @@ export default function Navigation() {
         className={styles.mainNavigation}
         pageWidth="full"
       >
+        <CloseNavigationTrigger />
         <MainNavigationItem>
           <NextLink href="/brand/overview">Brand</NextLink>
         </MainNavigationItem>
         <MainNavigationItem
+          kind="callout"
           subNavigation={
             <SubNavigation>
-              <SubNavigationItem>
-                <NextLink href="/foundations/overview">Foundations</NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/icons/overview">Icons</NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/components/overview">
-                  Design Components
-                </NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/templates/overview">Templates</NextLink>
-              </SubNavigationItem>
+              <SubNavigationContent>
+                <SubNavigationItem>
+                  <LinkWithNext href="/foundations/overview">
+                    Foundations
+                  </LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/icons/overview">Icons</LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/components/overview">
+                    Design Components
+                  </LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/templates/overview">
+                    Templates
+                  </LinkWithNext>
+                </SubNavigationItem>
+              </SubNavigationContent>
             </SubNavigation>
           }
         >
-          <NextLink href="">Digital Assets</NextLink>
+          <span>Digital Assets</span>
         </MainNavigationItem>
         <MainNavigationItem
+          kind="callout"
           subNavigation={
             <SubNavigation>
-              <SubNavigationItem>
-                <NextLink href="tokens/overview">Design Tokens</NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/how-tos/overview">How-tos</NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/best-practices/overview">
-                  Best Practices
-                </NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/libraries/overview">Libraries</NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/accessibility/overview">
-                  Accessibility
-                </NextLink>
-              </SubNavigationItem>
-              <SubNavigationItem>
-                <NextLink href="/productlist/overview">Products List</NextLink>
-              </SubNavigationItem>
+              {/* <SubNavigationHeader>
+                <SubNavigationTitle>Welcome Max!</SubNavigationTitle>
+          </SubNavigationHeader> */}
+              <SubNavigationContent>
+                <SubNavigationItem>
+                  <LinkWithNext href="tokens/overview">
+                    Design Tokens
+                  </LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/how-tos/overview">How-tos</LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/best-practices/overview">
+                    Best Practices
+                  </LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/libraries/overview">
+                    Libraries
+                  </LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/accessibility/overview">
+                    Accessibility
+                  </LinkWithNext>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <LinkWithNext href="/productlist/overview">
+                    Products List
+                  </LinkWithNext>
+                </SubNavigationItem>
+              </SubNavigationContent>
             </SubNavigation>
           }
         >
-          <NextLink href="">Resources</NextLink>
+          <span>Resources</span>
           {/* <SidebarNavigation path="documentation" /> */}
         </MainNavigationItem>
         <MainNavigationItem>
