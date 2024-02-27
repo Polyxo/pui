@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 10.37.15 (2024-02-27)
+
+
+### Bug Fixes
+
+* **release:** develop release ([1e2847a](https://github.com/wfp/designsystem/commit/1e2847a2879d1c988f8af87adb307272aeaf2c63))
+
+
+
+
+
 ## 10.37.14 (2024-02-27)
 
 **Note:** Version bump only for package @wfp/icons
