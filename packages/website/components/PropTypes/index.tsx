@@ -83,8 +83,6 @@ export default function PropTypes({
         : mainComponent
     ]?.default[`${propTypes?.displayName}Default`];
 
-  console.log("componentsSourceText", componentsSourceText);
-
   const componentsSourceProps = componentsSourceText?.args
     ? componentsSourceText.args
     : componentsSource[mainComponent]?.default[
