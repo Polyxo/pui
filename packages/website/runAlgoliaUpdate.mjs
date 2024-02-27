@@ -104,7 +104,6 @@ const runAlgoliaUpdate = async () => {
 
   // initialize the index in Algolia
   const index = client.initIndex("ui-docs");
-
   await index.clearObjects();
 
   const algoliaResponse = await index.saveObjects(transformed);
