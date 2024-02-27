@@ -18,6 +18,10 @@ interface MainNavigationItemProps extends React.ComponentPropsWithRef<"a"> {
    */
   subNavWideAsContent?: boolean;
   /**
+   * Specify the kind of the subNavigation
+   */
+  kind?: "fullWidth" | "callout";
+  /**
    * Specify a callback that will be called when the subNavigation is opened or closed
    */
   onChangeSub?: (action: string, id?: number, e?: any) => void;
@@ -30,6 +34,7 @@ interface MainNavigationItemProps extends React.ComponentPropsWithRef<"a"> {
 const MainNavigationItem = ({
   className,
   children,
+  kind,
   subNavigation,
   subNavWideAsContent,
 }: MainNavigationItemProps) => {
@@ -77,6 +82,7 @@ const MainNavigationItem = ({
 
   const subClasses = classNames({
     [`${prefix}--main-navigation__sub`]: true,
+    [`${prefix}--main-navigation__sub--${kind}`]: kind,
     [`${prefix}--main-navigation__sub--open`]: menuItemId === activeMenuItem,
   });
 
@@ -90,8 +96,9 @@ const MainNavigationItem = ({
         {subNavigation && (
           <Icon
             className={`${prefix}--main-navigation__trigger__icon`}
-            fill="#FFFFFF"
-            description="expand icon"
+            description={
+              menuItemId === activeMenuItem ? "close icon" : "expand icon"
+            }
           />
         )}
       </div>

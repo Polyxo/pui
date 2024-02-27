@@ -1,11 +1,4 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-
 @use "../../config" as *;
-@use "../../colors" as *;
 @use "../../theme" as *;
 @use "../../type" as *;
 @use "../../breakpoint" as *;
@@ -46,7 +39,7 @@ $main-navigation-menu-width: calcRem(300px);
 /// @group main-navigation
 @mixin main-navigation {
   .#{$prefix}--main-navigation {
-    color: $link-primary;
+    color: $action-default-link-default;
     background: $background-main;
     height: $main-navigation-height;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
@@ -61,30 +54,26 @@ $main-navigation-menu-width: calcRem(300px);
     border-top: 12px solid #0d295c;
   }
 
-  .#{$prefix}--main-navigation__item {
-    @include type-style("body-short-02");
-    @include font-family("sans");
-    font-weight: 600;
-    &:last-child {
-      padding-right: 0;
-    }
-  }
-
   .#{$prefix}--main-navigation__sub {
     display: none;
   }
 
   .#{$prefix}--main-navigation {
     .#{$prefix}--main-navigation__trigger {
+      color: $action-default-link-default;
       cursor: pointer;
       user-select: none;
       display: flex;
       align-items: center;
-      justify-content: center; // TODO: Check if needed
+      @include breakpoint-down("md") {
+        width: 100%;
+        justify-content: space-between;
+      }
+      // justify-content: center; // TODO: Check if needed
       white-space: nowrap;
 
       > a {
-        color: $link-primary; // TODO change to $link_on_color token
+        color: $action-default-link-default; // TODO change to $link_on_color token
         @include type-style("body-short-02");
         text-decoration: none;
         &.active {
@@ -93,11 +82,11 @@ $main-navigation-menu-width: calcRem(300px);
         &:hover,
         &:visited,
         &:active {
-          color: $link-primary;
+          color: $action-default-link-default;
           text-decoration: underline;
         }
         &:focus {
-          color: $link-primary;
+          color: $action-default-link-default;
         }
       }
     }
@@ -110,8 +99,8 @@ $main-navigation-menu-width: calcRem(300px);
     > a,
     > span {
       white-space: nowrap;
-      padding-left: 0.3em;
-      padding-right: 0.3em;
+      // padding-left: 0.3em;
+      // padding-right: 0.3em;
     }
   }
 
@@ -120,8 +109,9 @@ $main-navigation-menu-width: calcRem(300px);
     position: relative;
     top: calcRem(0px);
     //vertical-align: middle;
-    margin-left: 0.5em;
+    margin-left: 0.2em;
     font-size: 0.8em;
+    margin-right: $spacing-05;
     @include rtl {
       margin-left: 0;
       margin-right: 0.5em;
@@ -131,22 +121,26 @@ $main-navigation-menu-width: calcRem(300px);
   .#{$prefix}--main-navigation__trigger--has-sub.#{$prefix}--main-navigation__trigger--open {
     .#{$prefix}--main-navigation__trigger__icon {
       //top: calcRem(0px);
+      font-size: 0.6em;
+      position: relative;
+      left: -2px;
+      margin-left: 0.57em;
     }
   }
 
   .#{$prefix}--main-navigation__logo {
     a {
-      color: $link-primary;
+      color: $action-default-link-default;
       text-decoration: none;
       text-transform: uppercase;
       &:hover,
       &:visited,
       &:active {
-        color: $text-primary;
+        color: $text-body-default;
         text-decoration: underline;
       }
       &:focus {
-        color: $text-primary;
+        color: $text-body-default;
       }
     }
   }
@@ -156,106 +150,141 @@ $main-navigation-menu-width: calcRem(300px);
       padding: 0;
     }
   }
-  @include breakpoint("md") {
-    .#{$prefix}--main-navigation__logo-wrapper {
-      flex-grow: 1;
-    }
 
-    .#{$prefix}--main-navigation--line {
-      .#{$prefix}--main-navigation__logo__default__ribbon {
-        margin-top: -12px;
-      }
-    }
-
-    .#{$prefix}--main-navigation__logo {
-      display: flex;
-      flex-grow: 1;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .#{$prefix}--main-navigation__logo__default {
-      padding-left: 5.7rem;
-      .#{$prefix}--main-navigation__logo__default__ribbon {
-        background: $logo-blue;
-        margin-right: 0.5em;
-        width: 4.7rem;
-        margin-left: -5.7rem;
-
-        margin-bottom: -20em;
-        position: absolute;
-        top: 0;
-        padding: 0.5em 0em;
-      }
-
-      svg {
-        margin: 0 -0.2em;
-        width: calc(100% + 0.4em);
-        height: auto;
-        fill: $logo-white; // TODO: Always use color instead
-      }
-    }
-
-    .#{$prefix}--main-navigation__logo__offShelf {
+  .#{$prefix}--main-navigation__logo__default {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    .#{$prefix}--main-navigation__logo__default__ribbon {
+      background: $brand-main;
+      align-self: flex-start;
       margin-right: 0.5em;
-      height: $main-navigation-height;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      //padding: 0.5em 0em;
-      svg {
-        font-size: 6.5em;
-        fill: $logo-blue; // TODO: Always use color instead
+      width: 3.1rem;
+      @include breakpoint-up("md") {
+        width: 4.7rem;
       }
+      //position: absolute;
+      //top: 0;
+      z-index: 100000;
+      padding: 0.3em 0em;
     }
 
-    .#{$prefix}--main-navigation__wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      position: relative;
-      height: 100%;
+    svg {
+      margin: 0 -0.2em;
+      width: calc(100% + 0.4em);
+      height: auto;
+      fill: $brand-inverse; // TODO: Always use color instead
     }
+  }
+  .#{$prefix}--main-navigation__logo-wrapper {
+    // display: flex;
+    align-self: flex-start;
+    height: 100%;
+    flex-grow: 1;
+  }
 
-    .#{$prefix}--main-navigation__item {
+  .#{$prefix}--main-navigation__logo {
+    display: flex;
+    flex-grow: 1;
+    font-weight: 600;
+    white-space: nowrap;
+    height: 100%;
+  }
+
+  .#{$prefix}--main-navigation__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .#{$prefix}--main-navigation__button {
+    display: none !important;
+    @include breakpoint-down("md") {
+      display: block !important;
+    }
+  }
+
+  .#{$prefix}--main-navigation--line {
+    .#{$prefix}--main-navigation__logo__default__ribbon {
+      margin-top: -12px;
+    }
+  }
+
+  .#{$prefix}--main-navigation__logo__offShelf {
+    margin-right: 0.5em;
+    height: $main-navigation-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //padding: 0.5em 0em;
+    svg {
+      font-size: 6.5em;
+      fill: $brand-main; // TODO: Always use color instead
+    }
+  }
+  .#{$prefix}--main-navigation__list {
+    display: flex;
+    justify-content: flex-end;
+    height: calcRem(55px);
+    align-items: center;
+  }
+
+  .#{$prefix}--main-navigation__item {
+    @include breakpoint-down("md") {
+      width: 100%;
+    }
+    @include breakpoint-up("md") {
       padding: 0 $spacing-04;
+    }
+    @include type-style("body-short-02");
+    @include font-family("sans");
+    font-weight: 600;
 
-      // Relate the sub navigation dropdown to the parent navigation item
-      &.#{$prefix}--content-width {
-        position: relative;
+    &:last-child {
+      padding-right: 0;
+    }
 
-        // Get the width from its navigation content
-        & > .#{$prefix}--main-navigation__sub--open {
-          left: inherit;
-          min-width: 100%;
-          right: 0;
-          top: 2.5rem;
-          width: auto;
-        }
+    // Relate the sub navigation dropdown to the parent navigation item
+    &.#{$prefix}--content-width {
+      position: relative;
+
+      // Get the width from its navigation content
+      & > .#{$prefix}--main-navigation__sub--open {
+        left: inherit;
+        min-width: 100%;
+        right: 0;
+        top: 2.5rem;
+        width: auto;
       }
     }
+  }
 
-    .#{$prefix}--main-navigation__button {
-      display: none !important;
+  .#{$prefix}--main-navigation__sub--open {
+    display: block;
+    color: $text-body-default;
+    background: $background-main;
+  }
+
+  @include breakpoint-down("md") {
+    .#{$prefix}--main-navigation__sub--open {
+      background: $layer-primary;
     }
-
-    .#{$prefix}--main-navigation__list {
-      display: flex;
-      justify-content: flex-end;
-      height: calcRem(55px);
-      align-items: center;
-    }
-
+  }
+  @include breakpoint-up("md") {
     .#{$prefix}--main-navigation__sub--open {
       display: block;
       position: absolute;
       top: calcRem(55px);
-      left: 0;
-      width: 100%;
+      right: 0;
+      width: 80%;
       max-height: 80vh;
       overflow: auto;
       overflow-x: hidden;
       z-index: z("modal");
-      color: $text-primary; // TODO: Replace
+      color: $text-body-default; // TODO: Replace
       background: $background-main;
       box-shadow: rgba(desaturate(#0b77c2, 50%), 0.15) 0 3px 12px,
         //TODO - convert raw color hex into color token in figma
@@ -276,44 +305,55 @@ $main-navigation-menu-width: calcRem(300px);
         }
       }
     }
+    .#{$prefix}--main-navigation__sub--callout {
+      left: inherit;
+      right: inherit;
+      width: inherit;
+      margin-left: -0.9em;
+    }
+  }
+
+  .#{$prefix}--main-navigation__logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    //  height: calcRem(55px);
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    // padding: 0 $spacing-03 0 $spacing-05;
   }
 
   @include breakpoint-down("md") {
-    .#{$prefix}--main-navigation__logo-wrapper {
-      display: flex;
-      align-items: center;
-      height: calcRem(55px);
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      padding: 0 $spacing-03 0 $spacing-05;
-    }
-
     .#{$prefix}--main-navigation__logo {
       font-weight: 600;
     }
 
     .#{$prefix}--main-navigation__list {
       display: none;
-    }
-
-    .#{$prefix}--main-navigation__list--open {
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-    }
-
-    .#{$prefix}--main-navigation__sub--open {
-      display: block;
-      color: $text-primary;
       background: $background-main;
     }
 
+    .#{$prefix}--main-navigation__list--open {
+      position: absolute;
+      top: calcRem(61px);
+      left: 0;
+      right: 0;
+      display: flex;
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    }
+
     .#{$prefix}--main-navigation__trigger {
-      a {
-        display: block;
-        width: 100%;
+      justify-content: flex-start;
+
+      > :nth-child(1) {
+        // display: block;
+        // width: 100%;
+        padding: $spacing-05 1em;
       }
-      padding: $spacing-05 1em;
+      // padding: $spacing-05 1em;
       //background-color: #005e8d; // TODO create a token for this color
       //border-bottom: 1px solid lighten(#085387, 5); //TODO create color in figma
     }

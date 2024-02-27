@@ -116,7 +116,7 @@
     > .#{$prefix}--structured-list-td,
   .#{$prefix}--structured-list-row.#{$prefix}--structured-list-row--selected
     > .#{$prefix}--structured-list-td {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--structured-list--selection
@@ -143,7 +143,7 @@
 
     display: table-cell;
     height: calcRem(40px);
-    color: $text-primary;
+    color: $text-body-default;
     font-weight: 600;
     text-align: left;
     text-transform: $structured-list-text-transform;
@@ -163,7 +163,7 @@
     position: relative;
     display: table-cell;
     max-width: 36rem;
-    color: $text-secondary;
+    color: $text-body-secondary;
     @if enabled("enable-v11-release") {
       border-top: 1px solid $border-subtle;
     }

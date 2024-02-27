@@ -57,15 +57,15 @@
   // TODO create new token for support-dark-color
 
   .#{$prefix}--tag--error {
-    @include tag-theme($support-error-light, var(--support-dark-01));
+    @include tag-theme($support-error-background, var(--support-dark-01));
   }
 
   .#{$prefix}--tag--success {
-    @include tag-theme($support-success-light, var(--support-dark-02));
+    @include tag-theme($support-success-background, var(--support-dark-02));
   }
 
   .#{$prefix}--tag--warning {
-    @include tag-theme($support-warning-light, var(--support-dark-03));
+    @include tag-theme($support-warning-background, var(--support-dark-03));
   }
 
   .#{$prefix}--tag--wrap {

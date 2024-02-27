@@ -5,15 +5,15 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../button/tokens' as button;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/visually-hidden' as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../button/tokens" as button;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/visually-hidden" as *;
 
 /// Tile styles
 /// @access public
@@ -34,7 +34,7 @@
     outline-offset: -2px;
 
     &:focus {
-      @include focus-outline('outline');
+      @include focus-outline("outline");
     }
   }
 
@@ -57,7 +57,7 @@
   .#{$prefix}--tile--clickable,
   .#{$prefix}--tile--expandable {
     &:focus {
-      @include focus-outline('outline');
+      @include focus-outline("outline");
     }
 
     &:hover,
@@ -75,9 +75,9 @@
 
   .#{$prefix}--tile--clickable {
     @include reset;
-    @include type-style('body-short');
+    @include type-style("body-short");
 
-    color: $text-primary;
+    color: $text-body-default;
     text-decoration: none;
   }
 
@@ -85,7 +85,7 @@
   .#{$prefix}--tile--clickable:active,
   .#{$prefix}--tile--clickable:visited,
   .#{$prefix}--tile--clickable:visited:hover {
-    color: $text-primary;
+    color: $text-body-default;
     text-decoration: none;
   }
 
@@ -122,7 +122,7 @@
     }
 
     &:focus {
-      @include focus-outline('outline');
+      @include focus-outline("outline");
     }
   }
 
@@ -238,7 +238,7 @@
   }
 
   .#{$prefix}--tile-input:focus + .#{$prefix}--tile {
-    @include focus-outline('outline');
+    @include focus-outline("outline");
   }
 
   .#{$prefix}--tile--disabled.#{$prefix}--tile--selectable {
@@ -264,6 +264,6 @@
   .#{$prefix}--tile__chevron svg,
   .#{$prefix}--tile__checkmark svg,
   .#{$prefix}--tile--is-selected .#{$prefix}--tile__checkmark svg {
-    @include high-contrast-mode('icon-fill');
+    @include high-contrast-mode("icon-fill");
   }
 }

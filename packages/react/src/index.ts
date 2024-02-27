@@ -28,7 +28,7 @@ export {
 
 export { default as Checkbox } from "./components/Checkbox";
 export { default as Credits } from "./components/Credits";
-//export { default as ContentSwitcher } from './components/ContentSwitcher';
+export { default as ContentSwitcher } from "./components/ContentSwitcher";
 export {
   ContextMenu,
   ContextMenuGroup,

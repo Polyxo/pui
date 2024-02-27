@@ -115,7 +115,7 @@
       margin-right: auto;
     }
     .#{$prefix}--footer__cta-logo {
-      fill: $text-on-color; // TODO: use new text color white token;
+      fill: $text-inverse-default; // TODO: use new text color white token;
       width: calcRem(90px);
       height: calcRem(90px);
 

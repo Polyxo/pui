@@ -72,7 +72,7 @@
       // @include font-smoothing;
       letter-spacing: 0;
       font-weight: 600;
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     .#{$prefix}--module__content {
@@ -152,7 +152,7 @@
     .#{$prefix}--module__inner {
       box-shadow: none;
       background: $background-brand;
-      color: $text-on-color;
+      color: $text-inverse-default;
     }
 
     .#{$prefix}--module__header {
@@ -164,7 +164,7 @@
     }
 
     .#{$prefix}--module__title {
-      color: $text-on-color;
+      color: $text-inverse-default;
     }
   }
 }

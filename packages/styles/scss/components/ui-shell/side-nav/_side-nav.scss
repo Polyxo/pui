@@ -37,7 +37,7 @@
     width: mini-units(6);
     max-width: mini-units(32);
     background-color: $background-main;
-    color: $text-secondary;
+    color: $text-body-secondary;
     // TODO: sync with motion work
     transition: width 0.11s cubic-bezier(0.2, 0, 1, 0.9);
     will-change: width;
@@ -165,7 +165,7 @@
     .#{$prefix}--header__menu-title[aria-expanded="true"]:hover {
     // TODO: sync color
     background-color: $background-hover;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--side-nav__item:not(.#{$prefix}--side-nav__item--active)
@@ -175,7 +175,7 @@
     .#{$prefix}--side-nav__menu-item
     > .#{$prefix}--side-nav__link:hover
     > span {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--side-nav__item--large {
@@ -204,7 +204,7 @@
     align-items: center;
 
     padding: 0 mini-units(2);
-    color: $text-secondary;
+    color: $text-body-secondary;
     transition: color $duration-fast-02, background-color $duration-fast-02,
       outline $duration-fast-02;
     user-select: none;
@@ -212,7 +212,7 @@
 
   .#{$prefix}--side-nav__submenu:hover {
     background-color: $background-hover;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--side-nav__submenu:focus {
@@ -250,14 +250,14 @@
   .#{$prefix}--side-nav__item--active .#{$prefix}--side-nav__submenu:hover {
     //the active className is used for selected styles, hence using the selected tokens
     background-color: $background-selected;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--side-nav__item--active
     .#{$prefix}--side-nav__submenu[aria-expanded="false"] {
     position: relative;
     background-color: $background-selected;
-    color: $text-primary;
+    color: $text-body-default;
     &::before {
       position: absolute;
       top: 0;
@@ -270,7 +270,7 @@
   }
 
   .#{$prefix}--side-nav__item--active .#{$prefix}--side-nav__submenu-title {
-    color: $text-primary;
+    color: $text-body-default;
     font-weight: 600;
   }
 
@@ -307,7 +307,7 @@
     background-color: $background-selected;
 
     > span {
-      color: $text-primary;
+      color: $text-body-default;
       font-weight: 600;
     }
   }
@@ -343,7 +343,7 @@
     .#{$prefix}--text-truncate-end {
     @include text-overflow();
 
-    color: $text-secondary;
+    color: $text-body-secondary;
     font-size: calcRem(14px);
     letter-spacing: 0.1px;
     line-height: 1.25rem;
@@ -364,7 +364,7 @@
   a.#{$prefix}--side-nav__link[aria-current="page"]
     .#{$prefix}--side-nav__link-text,
   a.#{$prefix}--side-nav__link--current .#{$prefix}--side-nav__link-text {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   a.#{$prefix}--side-nav__link[aria-current="page"]::before,
@@ -463,7 +463,7 @@
   //header menu items overrides
   .#{$prefix}--side-nav a.#{$prefix}--header__menu-item {
     justify-content: space-between;
-    color: $text-secondary;
+    color: $text-body-secondary;
     white-space: nowrap;
 
     &[aria-expanded="true"] {
@@ -492,7 +492,7 @@
 
     a.#{$prefix}--header__menu-item:hover {
       background-color: $background-hover;
-      color: $text-primary;
+      color: $text-body-default;
     }
   }
 

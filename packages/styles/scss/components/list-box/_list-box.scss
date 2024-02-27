@@ -1,16 +1,8 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
-
 @use "../button/tokens" as *;
 @use "../text-input";
 @use "../tag";
 @use "../tag/mixins" as *;
 @use "../../config" as *;
-@use "../../colors" as *;
 @use "../../theme" as *;
 @use "../../type" as *;
 @use "../../spacing" as *;
@@ -82,8 +74,8 @@ $list-box-menu-width: calcRem(300px);
     max-height: calcRem(40px);
     border: none;
     border-bottom: 1px solid $border-strong;
-    background-color: $field;
-    color: $text-primary;
+    background-color: $fill-field;
+    color: $text-body-default;
     cursor: pointer;
     transition: all $duration-fast-01 motion(standard, productive);
 
@@ -109,7 +101,7 @@ $list-box-menu-width: calcRem(300px);
   }
 
   .#{$prefix}--list-box--expanded:hover {
-    background-color: $field;
+    background-color: $fill-field;
   }
 
   // V11: Possibly deprecate
@@ -127,7 +119,7 @@ $list-box-menu-width: calcRem(300px);
     position: absolute;
     top: 50%;
     right: $spacing-08;
-    fill: $support-error;
+    fill: $support-error-main;
     transform: translateY(-50%);
   }
 
@@ -178,7 +170,7 @@ $list-box-menu-width: calcRem(300px);
 
   // Disabled state for `list-box`
   .#{$prefix}--list-box--disabled:hover {
-    background-color: $field;
+    background-color: $fill-field;
   }
 
   // V11: Possibly deprecate
@@ -273,7 +265,7 @@ $list-box-menu-width: calcRem(300px);
   }
 
   .#{$prefix}--list-box--inline .#{$prefix}--list-box__label {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--list-box--inline .#{$prefix}--list-box__field {
@@ -376,7 +368,7 @@ $list-box-menu-width: calcRem(300px);
     @include type-style("body-short");
 
     overflow: hidden;
-    color: $text-primary;
+    color: $text-body-default;
     text-overflow: ellipsis;
     user-select: none;
     white-space: nowrap;
@@ -460,7 +452,7 @@ $list-box-menu-width: calcRem(300px);
     margin-right: calcRem(10px);
     background-color: $background-inverse;
     border-radius: calcRem(12px);
-    color: $text-inverse;
+    color: $text-inverse-default;
     line-height: 0;
     transform: none;
   }
@@ -545,7 +537,7 @@ $list-box-menu-width: calcRem(300px);
 
     position: relative;
     height: calcRem(40px);
-    color: $text-secondary;
+    color: $text-body-secondary;
     cursor: pointer;
     transition: background $duration-fast-01 motion(standard, productive);
     user-select: none;
@@ -596,7 +588,7 @@ $list-box-menu-width: calcRem(300px);
 
   .#{$prefix}--list-box__menu-item:hover
     .#{$prefix}--list-box__menu-item__option {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--list-box__menu-item:hover
@@ -624,7 +616,7 @@ $list-box-menu-width: calcRem(300px);
     border-top-color: $border-subtle;
     border-bottom: 1px solid transparent;
     margin: 0 $spacing-05;
-    color: $text-secondary;
+    color: $text-body-secondary;
     font-weight: normal;
     line-height: 1rem;
     text-decoration: none;
@@ -643,7 +635,7 @@ $list-box-menu-width: calcRem(300px);
 
     &:hover {
       border-color: transparent;
-      color: $text-primary;
+      color: $text-body-default;
     }
   }
 
@@ -682,7 +674,7 @@ $list-box-menu-width: calcRem(300px);
   .#{$prefix}--list-box__menu-item--highlighted {
     border-color: transparent;
     background-color: $layer-hover;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--list-box__menu-item--highlighted
@@ -695,13 +687,13 @@ $list-box-menu-width: calcRem(300px);
 
   .#{$prefix}--list-box__menu-item--highlighted
     .#{$prefix}--list-box__menu-item__option {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--list-box__menu-item--active {
     border-bottom-color: $layer-selected;
     background-color: $layer-selected;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   // V11: Possibly deprecate
@@ -719,7 +711,7 @@ $list-box-menu-width: calcRem(300px);
 
   .#{$prefix}--list-box__menu-item--active
     .#{$prefix}--list-box__menu-item__option {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   // Hide top border if previous list item is selected

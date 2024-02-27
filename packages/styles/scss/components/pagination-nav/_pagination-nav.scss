@@ -5,17 +5,17 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../spacing' as *;
-@use '../../type' as *;
-@use '../../theme' as *;
-@use '../../utilities/button-reset';
-@use '../../utilities/convert' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/visually-hidden' as *;
-@use 'mixins' as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../spacing" as *;
+@use "../../type" as *;
+@use "../../theme" as *;
+@use "../../utilities/button-reset";
+@use "../../utilities/convert" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/visually-hidden" as *;
+@use "mixins" as *;
 
 /// Pagination nav base styles
 /// @access public
@@ -32,8 +32,8 @@
 /// @param {Number} $select-icon-top-position [$spacing-05]
 /// @param {Number} $select-icon-left-position [$spacing-05]
 @mixin pagination-nav(
-  $color: $text-secondary,
-  $text-color-active: $text-secondary,
+  $color: $text-body-secondary,
+  $text-color-active: $text-body-secondary,
   $background-color-hover: $background-hover,
   $background-color-active: initial,
   $font-weight: 400,
@@ -46,7 +46,7 @@
 ) {
   .#{$prefix}--pagination-nav {
     @include reset;
-    @include type-style('body-short');
+    @include type-style("body-short");
 
     line-height: 0;
   }
@@ -70,7 +70,7 @@
   }
 
   .#{$prefix}--pagination-nav__page {
-    @include type-style('body-short');
+    @include type-style("body-short");
     @include button-reset.reset($width: false);
 
     position: relative;
@@ -78,7 +78,7 @@
     min-width: $button-min-width;
     padding: $button-padding;
     border-radius: 0;
-    color: $text-secondary;
+    color: $text-body-secondary;
     font-weight: $font-weight;
     line-height: 1;
     outline: 0;
@@ -90,17 +90,17 @@
 
     &:hover {
       background-color: $background-color-hover;
-      color: $text-secondary;
+      color: $text-body-secondary;
     }
 
     &:focus {
-      @include focus-outline('outline');
+      @include focus-outline("outline");
     }
 
     &:disabled,
     &.#{$prefix}--pagination-nav__page--disabled {
       background: none;
-      color: rgba($text-secondary, 0.5);
+      color: rgba($text-body-secondary, 0.5);
       outline: none;
       pointer-events: none;
     }

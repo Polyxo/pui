@@ -5,13 +5,12 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../utilities/convert' as *;
-@use '../../utilities/skeleton' as *;
-
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../utilities/convert" as *;
+@use "../../utilities/skeleton" as *;
 
 @mixin form-hint {
   .#{$prefix}--form-hint {
@@ -20,10 +19,10 @@
     margin: 0 $spacing-02;
     user-select: none;
     svg {
-      fill: $interactive;
+      fill: $action-default-fill-primary-default;
     }
     &:hover {
-      box-shadow: 0 1px 0 $interactive;
+      box-shadow: 0 1px 0 $action-default-fill-primary-default;
     }
   }
 }

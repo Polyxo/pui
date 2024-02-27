@@ -1,17 +1,15 @@
-@use '../form' as *;
-@use '../../breakpoint' as *;
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../theme' as *;
-@use '../../spacing' as *;
-@use '../../type' as *;
-@use '../../utilities/button-reset';
-@use '../../utilities/component-reset';
-@use '../../utilities/convert';
+@use "../form" as *;
+@use "../../breakpoint" as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../theme" as *;
+@use "../../spacing" as *;
+@use "../../type" as *;
+@use "../../utilities/button-reset";
+@use "../../utilities/component-reset";
+@use "../../utilities/convert";
 
-
-@mixin sub-navigation{
-
+@mixin sub-navigation {
   .#{$prefix}--sub-navigation__header {
     width: 100%;
     padding: $spacing-05;
@@ -23,7 +21,7 @@
   }
 
   .#{$prefix}--sub-navigation__link {
-    @include breakpoint('lg') {
+    @include breakpoint("lg") {
       margin-left: $spacing-05;
       flex-grow: 1;
     }
@@ -31,14 +29,14 @@
 
   .#{$prefix}--sub-navigation__title {
     //font-weight: bold;
-    @include type-style('heading-02');
+    @include type-style("heading-02");
     // @include font-smoothing;
     letter-spacing: 0;
     font-weight: 600;
-    color: $text-primary;
+    color: $text-body-default;
 
-    @include breakpoint-down('lg') {
-      display: none;
+    @include breakpoint-down("lg") {
+      // display: none;
     }
   }
 
@@ -46,7 +44,7 @@
     display: flex;
     align-items: center;
 
-    @include breakpoint-down('lg') {
+    @include breakpoint-down("lg") {
       width: 35%;
     }
   }
@@ -70,16 +68,34 @@
     }
   }
 
-  .#{$prefix}--sub-navigation__group--columns {
-    @include breakpoint('lg') {
+  @include breakpoint("lg") {
+    .#{$prefix}--sub-navigation__group--columns {
       > div {
         column-count: 4;
+      }
+    }
+
+    .#{$prefix}--sub-navigation__group--columns--1 {
+      > div {
+        column-count: 1;
+      }
+    }
+
+    .#{$prefix}--sub-navigation__group--columns--2 {
+      > div {
+        column-count: 2;
+      }
+    }
+
+    .#{$prefix}--sub-navigation__group--columns--3 {
+      > div {
+        column-count: 3;
       }
     }
   }
 
   .#{$prefix}--sub-navigation__group__title {
-    @include type-style('heading-02');
+    @include type-style("heading-02");
     margin-top: $spacing-05;
     margin-bottom: $spacing-03;
   }

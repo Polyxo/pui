@@ -51,7 +51,7 @@ TODO: Check this, shall we call it Component level instead or would this add unn
 Alias Tokens can also reference each other:
 
 ```scss
-primary-button-color: $interactive;
+primary-button-color: $action-default-fill-primary-default;
 ```
 
 TODO/CHANGE: Check with Mauro if this is correct. Using multiple values should avoided since it will make it harder to change the values and also make it harder for usage across plattforms.
@@ -87,7 +87,7 @@ We are using `scss` to define the css/styles of the components. This level is no
 
 ```scss
 @mixin page-title {
-  color: $text-primary;
+  color: $text-body-default;
   font-size: $font-size-02;
   @include breakpointUp("md") {
     font-size: $font-size-03;

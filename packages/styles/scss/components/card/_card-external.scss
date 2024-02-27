@@ -1,9 +1,9 @@
-@use '../tag/mixins' as *;
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
+@use "../tag/mixins" as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
 
 @mixin card-external {
   @include reset;
@@ -18,13 +18,13 @@
   }
 
   .#{$prefix}--card-ext__label {
-    @include type-style('caption-01');
+    @include type-style("caption-01");
 
     padding: $spacing-02 $spacing-05;
 
     &.#{$prefix}--card-ext__label--neutral {
       background-color: $layer-primary; // Provide its own token
-      color: $text-secondary;
+      color: $text-body-secondary;
     }
 
     &.#{$prefix}--card-ext__label--success {
@@ -73,9 +73,9 @@
   }
 
   .#{$prefix}--card-ext__subheading {
-    @include type-style('caption-01');
+    @include type-style("caption-01");
 
-    color: $text-secondary;
+    color: $text-body-secondary;
     font-weight: 700;
     margin-bottom: $spacing-02;
     overflow: hidden;
@@ -85,17 +85,17 @@
   }
 
   .#{$prefix}--card-ext__heading {
-    @include type-style('expressive-heading-03');
+    @include type-style("expressive-heading-03");
 
-    color: $text-primary;
+    color: $text-body-default;
     font-weight: 700;
     line-height: 1.25;
   }
 
   .#{$prefix}--card-ext__supportive-text {
-    @include type-style('body-short');
+    @include type-style("body-short");
 
-    color: $text-secondary;
+    color: $text-body-secondary;
     flex-grow: 1;
     padding-top: $spacing-03;
 
@@ -117,7 +117,7 @@
     & .#{$prefix}--card-ext__tag {
       @include tag-theme(
         $layer-primary,
-        $text-secondary
+        $text-body-secondary
       ); // Provide its own token in replacement of 'layer'
 
       display: block;

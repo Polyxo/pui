@@ -7,14 +7,14 @@
  * @jest-environment node
  */
 
-'use strict';
+"use strict";
 
-const { SassRenderer } = require('@carbon/test-utils/scss');
+const { SassRenderer } = require("@carbon/test-utils/scss");
 
 const { render } = SassRenderer.create(__dirname);
 
-describe('@carbon/styles/scss/compat', () => {
-  it('should export white, g10, g90, and g100 themes', async () => {
+describe("@carbon/styles/scss/compat", () => {
+  it("should export white, g10, g90, and g100 themes", async () => {
     const { unwrap } = await render(`
       @use 'sass:map';
       @use 'sass:meta';
@@ -22,11 +22,11 @@ describe('@carbon/styles/scss/compat', () => {
 
       $_: get('variables', map.keys(meta.module-variables('themes')));
     `);
-    const themes = unwrap('variables').sort();
-    expect(themes).toEqual(['white', 'g10', 'g90', 'g100'].sort());
+    const themes = unwrap("variables").sort();
+    expect(themes).toEqual(["white", "g10", "g90", "g100"].sort());
   });
 
-  it('should export v10 tokens as Sass Variables', async () => {
+  it("should export v10 tokens as Sass Variables", async () => {
     const { unwrap } = await render(`
       @use '../scss/config' with ( $prefix: 'wfp' );
       @use '../scss/compat/themes';
@@ -35,17 +35,17 @@ describe('@carbon/styles/scss/compat', () => {
       );
 
       $_: get('theme', themes.$white);
-      $_: get('variable', theme.$interactive-01);
+      $_: get('variable', theme.$action-default-fill-primary-default-01);
     `);
-    const theme = unwrap('theme');
-    const variable = unwrap('variable');
+    const theme = unwrap("theme");
+    const variable = unwrap("variable");
 
     expect(variable).toEqual(
-      `var(--cds-interactive-01, ${theme['interactive-01']})`
+      `var(--cds-interactive-01, ${theme["interactive-01"]})`
     );
   });
 
-  it('should export v11 tokens that match the fallback theme', async () => {
+  it("should export v11 tokens that match the fallback theme", async () => {
     const { unwrap } = await render(`
       @use '../scss/config' with ( $prefix: 'wfp' );
       @use '../scss/themes';
@@ -59,9 +59,9 @@ describe('@carbon/styles/scss/compat', () => {
       $_: get('variable', theme.$background);
     `);
 
-    const theme = unwrap('theme');
-    const variable = unwrap('variable');
+    const theme = unwrap("theme");
+    const variable = unwrap("variable");
 
-    expect(variable).toEqual(`var(--cds-background, ${theme['background']})`);
+    expect(variable).toEqual(`var(--cds-background, ${theme["background"]})`);
   });
 });

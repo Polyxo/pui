@@ -55,13 +55,13 @@ $css--body: true;
 
 .wfp--main-navigation {
   //background: #fff;
-  color: $text-primary;
+  color: $text-body-default;
   font-size: 1.2em;
 }
 
 body {
   background: $background-main;
-  color: $text-primary;
+  color: $text-body-default;
 }
 
 .wfp--main-navigation__list {
@@ -124,9 +124,8 @@ html {
 }
 
 .prism-code {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace !important;
-  border-radius: 6px;
+  font-family: $font-family-monospace !important;
+  //border-radius: 6px;
   font-size: 0.9em;
   line-height: 1.6em;
   overflow: auto;

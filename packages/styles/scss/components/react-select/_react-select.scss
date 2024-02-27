@@ -33,7 +33,7 @@ $input-border: 1px solid var(--neutral-100__color);
     .#{$prefix}--react-select__control {
       border-radius: 0;
       min-height: $input-height;
-      background-color: $field;
+      background-color: $fill-field;
       border: $input-border;
 
       &:hover {
@@ -43,7 +43,7 @@ $input-border: 1px solid var(--neutral-100__color);
 
     .#{$prefix}--react-select__single-value {
       overflow: visible;
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     .#{$prefix}--react-select__control--is-focused,
@@ -61,7 +61,7 @@ $input-border: 1px solid var(--neutral-100__color);
     }
 
     .#{$prefix}--react-select__input {
-      color: $text-primary !important;
+      color: $text-body-default !important;
     }
 
     .#{$prefix}--react-select__menu {
@@ -75,11 +75,11 @@ $input-border: 1px solid var(--neutral-100__color);
 
     .#{$prefix}--react-select__option--is-focused {
       background: $layer-primary;
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     .#{$prefix}--react-select__dropdown-indicator {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
     }
 
     //TODO: Check

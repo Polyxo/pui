@@ -2,7 +2,7 @@
 title: "Writing documentation"
 excerpt: "How to edit and write the documentation"
 coverImage: "../sample-image.jpg"
-slug: "how-tos/Write documentation"
+slug: "How Tos/Write documentation"
 ---
 
 ## Editing pages
@@ -130,4 +130,167 @@ Embeed the different available Typefaces. Only used on the Typography page.
 
 ```jsx
 <Typeset />
+```
+
+### Code blocks
+
+Use code blocks to show examples of code. You can specify the language of the code block to enable syntax highlighting.
+
+````bash
+```jsx
+<Button>Button</Button>
+```;
+````
+
+#### Live code example
+
+Live code blocks allow you to show a preview of the code. The code is executed and the result is shown below the code block. This will also autoformate the code.
+
+`````bash
+```jsx live
+
+````bash
+```jsx live preview
+<Button>Button</Button>
+```
+`````
+
+```jsx live preview
+<Button>Button</Button>
+```
+
+### ReactHookForm example
+
+Use the `reactHookForm` language to show a live example of a form using the React Hook Form library.
+
+````bash
+```jsx live reactHookForm
+<InputGroup labelText="Input group" helperText="Describing the input group">
+  <Checkbox
+    id="1"
+    name="check-1"
+    labelText="Option 1"
+    {...register("check-1")}
+  />
+  <Checkbox
+    id="2"
+    name="check-2"
+    labelText="Option 2"
+    {...register("check-2")}
+  />
+</InputGroup>
+```
+````
+
+```jsx live reactHookForm
+<InputGroup labelText="Input group" helperText="Describing the input group">
+  <Checkbox
+    id="1"
+    name="check-1"
+    labelText="Option 1"
+    {...register("check-1")}
+  />
+  <Checkbox
+    id="2"
+    name="check-2"
+    labelText="Option 2"
+    {...register("check-2")}
+  />
+</InputGroup>
+```
+
+#### Mobile preview
+
+Use the `size` attribute (`live size="mobile"`)to show a mobile preview of the code block.
+
+````
+```jsx live size="mobile"
+<MainNavigation showLogo logo="Product name">
+  <MainNavigationItem>
+    <Link href="https://go.docs.wfp.org" target="_blank">
+      Section 3
+    </Link>
+  </MainNavigationItem>
+  <MainNavigationItem>
+    <Link href="http://opweb.wfp.org" target="_blank">
+      Section 4
+    </Link>
+  </MainNavigationItem>
+</MainNavigation>
+```
+````
+
+```jsx live size="mobile"
+<MainNavigation showLogo logo="Product name">
+  <MainNavigationItem>
+    <Link href="https://go.docs.wfp.org" target="_blank">
+      Section 3
+    </Link>
+  </MainNavigationItem>
+  <MainNavigationItem>
+    <Link href="http://opweb.wfp.org" target="_blank">
+      Section 4
+    </Link>
+  </MainNavigationItem>
+</MainNavigation>
+```
+
+#### forceFullWidth
+
+Use the `forceFullWidth` attribute (`live forceFullWidth`) to force the code block to take the full width of the page.
+
+````
+```jsx live forceFullWidth
+import {
+  BannerNavigation,
+  MainNavigation,
+  MainNavigationItem,
+} from "@wfp/react";
+
+() => (
+  <>
+    <BannerNavigation>
+      <BannerNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Communities
+        </Link>
+      </BannerNavigationItem>
+    </BannerNavigation>
+    <MainNavigation>
+      <MainNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Section 1
+        </Link>
+      </MainNavigationItem>
+    </MainNavigation>
+  </>
+);
+```
+````
+
+```jsx live forceFullWidth
+import {
+  BannerNavigation,
+  MainNavigation,
+  MainNavigationItem,
+} from "@wfp/react";
+
+() => (
+  <>
+    <BannerNavigation>
+      <BannerNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Communities
+        </Link>
+      </BannerNavigationItem>
+    </BannerNavigation>
+    <MainNavigation>
+      <MainNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Section 1
+        </Link>
+      </MainNavigationItem>
+    </MainNavigation>
+  </>
+);
 ```

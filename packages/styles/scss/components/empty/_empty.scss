@@ -1,9 +1,9 @@
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../breakpoint' as *;
-@use '../../type' as *;
-@use '../../utilities/convert' as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../breakpoint" as *;
+@use "../../type" as *;
+@use "../../utilities/convert" as *;
 
 /// Empty styles
 /// @access public
@@ -26,11 +26,11 @@
       flex-direction: row;
       justify-content: space-between;
       h2 {
-        @include type-style('heading-02');
+        @include type-style("heading-02");
       }
       p {
         opacity: 0.6;
-        @include type-style('label');
+        @include type-style("label");
       }
       .#{$prefix}--empty__icon {
         margin-bottom: 1em;
@@ -57,7 +57,7 @@
       }
 
       h2 {
-        @include type-style('story-h4');
+        @include type-style("story-h4");
         margin-bottom: $spacing-03;
       }
 
@@ -74,13 +74,13 @@
   }
 
   .#{$prefix}--empty__icon {
-    color: $interactive;
+    color: $action-default-fill-primary-default;
     svg,
     .svg-inline--fa {
       //width: 5rem;
       //height: 5rem;
       path {
-        //fill: $interactive-01;
+        //fill: $action-default-fill-primary-default-01;
       }
       margin-bottom: $spacing-03;
     }

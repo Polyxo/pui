@@ -1,10 +1,3 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//3
-
 @use "../../config" as *;
 @use "../../feature-flags" as *;
 @use "../../motion" as *;
@@ -48,7 +41,7 @@
       height: calcRem(28px);
       top: calcRem(-14px);
       border-radius: calcRem(28px);
-      background-color: $border-inverse; //TODO create token for ui-05 to cater for background
+      background-color: $field-background-disabled;
       transition: $transition--base $standard-easing;
       cursor: pointer;
     }
@@ -57,12 +50,12 @@
       box-sizing: border-box;
       position: absolute;
       display: block;
-      border: 3px solid $border-inverse;
+      border: 3px solid $field-background-disabled;
       cursor: pointer;
       top: -14px;
       width: calcRem(28px);
       height: calcRem(28px);
-      background-color: $background-main;
+      background-color: $background-main; // TODO: Replace
       border-radius: 50%;
       content: "";
       transition: $transition--base $standard-easing;
@@ -85,14 +78,14 @@
       width: calcRem(32px);
       border-radius: 0.9375rem;
       background-color: transparent;
-      border: 2px solid $border-inverse;
+      border: 2px solid $field-background-enabled;
       top: 0;
     }
 
     &:after {
       width: calcRem(10px);
       height: calcRem(10px);
-      background-color: $border-inverse; //TODO create token for ui-05 to cater for background
+      background-color: $field-background-enabled;
       border: none;
       top: 3px;
       left: 3px;
@@ -112,7 +105,7 @@
   .#{$prefix}--toggle--small:checked
     + .#{$prefix}--toggle__label
     .#{$prefix}--toggle__check {
-    fill: $interactive;
+    fill: $action-default-fill-primary-default;
     transform: scale(1) translateX(16px);
   }
 
@@ -134,14 +127,14 @@
     + .#{$prefix}--toggle__label
     .#{$prefix}--toggle__appearance {
     &:before {
-      background-color: $interactive;
+      background-color: $action-default-fill-primary-default; // TODO: Replace
     }
 
     &:after {
       transform: translateX(24px);
       background-color: $background-main;
       box-shadow: none;
-      border-color: $border-interactive;
+      border-color: $field-background-enabled; // TODO: Replace
     }
   }
 
@@ -149,8 +142,8 @@
     + .#{$prefix}--toggle__label
     .#{$prefix}--toggle__appearance {
     &:before {
-      background-color: $interactive;
-      border-color: $border-interactive;
+      background-color: $action-default-fill-primary-default; // $action-default-fill-primary-default;
+      border-color: $field-background-enabled;
     }
 
     &:after {

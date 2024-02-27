@@ -44,8 +44,8 @@ $content-switcher-option-border: 2px solid $focus !default;
     margin: 0;
     font-weight: 600;
     text-decoration: none;
-    border: 2px solid $interactive;
-    color: $interactive;
+    border: 2px solid $action-default-fill-primary-default;
+    color: $action-default-fill-primary-default;
 
     &:focus {
       outline: 1px solid transparent;
@@ -119,8 +119,8 @@ $content-switcher-option-border: 2px solid $focus !default;
   }
 
   .#{$prefix}--content-switcher-btn.#{$prefix}--content-switcher--selected {
-    background-color: $interactive;
-    color: $text-on-color;
+    background-color: $action-default-fill-primary-default;
+    color: $text-inverse-default;
     outline: 1px solid transparent;
 
     &:hover,

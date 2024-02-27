@@ -5,17 +5,17 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../motion' as *;
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../utilities/layer' as *;
-@use './vars';
-@use './mixins';
-@import './animations/fade.scss';
-@import './themes/light.scss';
-@import './themes/light-border.scss';
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../motion" as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../utilities/layer" as *;
+@use "./vars";
+@use "./mixins";
+@import "./animations/fade.scss";
+@import "./themes/light.scss";
+@import "./themes/light-border.scss";
 
 // TODO: deprecate legacy tooltip mixins
 // Tooltip Icon
@@ -46,10 +46,10 @@
     max-width: 300px;
     border-radius: 7px;
     line-height: 1.5rem;
-    @include layer('pop-out');
+    @include layer("pop-out");
     z-index: 1000;
-    @include type-style('body-short-02');
-    &[data-popper-placement*='bottom'] {
+    @include type-style("body-short-02");
+    &[data-popper-placement*="bottom"] {
       .#{$prefix}--tooltip__arrow {
         top: 0;
         left: 0;
@@ -60,7 +60,7 @@
       }*/
       }
     }
-    &[data-popper-placement*='top'] {
+    &[data-popper-placement*="top"] {
       .#{$prefix}--tooltip__arrow {
         bottom: 0;
         left: 0;
@@ -71,7 +71,7 @@
       }*/
       }
     }
-    &[data-popper-placement*='right'] {
+    &[data-popper-placement*="right"] {
       .#{$prefix}--tooltip__arrow {
         left: 0;
         margin-left: -4px;
@@ -81,7 +81,7 @@
       }*/
       }
     }
-    &[data-popper-placement*='left'] {
+    &[data-popper-placement*="left"] {
       .#{$prefix}--tooltip__arrow {
         right: 0;
         margin-right: -4px;
@@ -94,7 +94,7 @@
   }
 
   .#{$prefix}--tooltip--dark {
-    color: $text-on-color;
+    color: $text-inverse-default;
     background: var(--ui-06);
     .#{$prefix}--tooltip__arrow {
       &:before {
@@ -114,7 +114,7 @@
     position: absolute;
     z-index: -1;
     &:before {
-      content: '';
+      content: "";
       transform: rotate(45deg);
       background: $background-main;
       top: 0px;

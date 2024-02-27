@@ -63,7 +63,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
   }
 
   .#{$prefix}--modal--danger {
-    @include modal--color($support-error);
+    @include modal--color($support-error-main);
   }
 
   .#{$prefix}--modal__wrapper {
@@ -94,7 +94,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
       right: 0;
       height: 4px;
       content: "";
-      background: $interactive;
+      background: $action-default-fill-primary-default;
     }
     //border-top: $modal-border-top;
     // border-radius: $modal-border-radius;
@@ -151,7 +151,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
   .#{$prefix}--modal-header__label {
     @include reset;
     @include type-style("label");
-    color: $text-secondary;
+    color: $text-body-secondary;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -162,13 +162,13 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     @include reset;
     @include type-style("productive-heading-04");
     font-weight: 600;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--modal-content {
     //overflow-y: auto;
     margin-bottom: $spacing-08;
-    color: $text-primary;
+    color: $text-body-default;
 
     > * {
       @include reset;
@@ -215,7 +215,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     // fill: var(--ui-05); // TODO change $field-border
     width: calcRem(12px);
     height: calcRem(12px);
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--modal--background-image {

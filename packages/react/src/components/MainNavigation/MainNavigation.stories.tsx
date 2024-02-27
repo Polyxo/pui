@@ -36,14 +36,45 @@ export const MainNavigationDefault = (args) => (
   <MainNavigation {...args}>
     <MainNavigationItem>
       <Link href="http://communities.wfp.org" target="_blank">
-        Section 1
+        Section Link
       </Link>
+    </MainNavigationItem>
+    <MainNavigationItem
+      kind="callout"
+      subNavigation={
+        <SubNavigation>
+          <SubNavigationHeader>
+            <SubNavigationTitle>The Title</SubNavigationTitle>
+            <SubNavigationLink>
+              <Button small>The SubPage Link</Button>
+            </SubNavigationLink>
+          </SubNavigationHeader>
+          <SubNavigationContent>
+            <SubNavigationList>
+              <SubNavigationGroup title="First List" columns={1}>
+                <SubNavigationItem>
+                  <Link href="https://go.docs.wfp.org" target="_blank">
+                    Lorem Ipsum et jomen
+                  </Link>
+                </SubNavigationItem>
+                <SubNavigationItem>
+                  <Link href="https://go.docs.wfp.org" target="_blank">
+                    Lorem Ipsum et jomen
+                  </Link>
+                </SubNavigationItem>
+              </SubNavigationGroup>
+            </SubNavigationList>
+          </SubNavigationContent>
+        </SubNavigation>
+      }
+    >
+      <Link>Float small</Link>
     </MainNavigationItem>
     <MainNavigationItem
       subNavigation={
         <SubNavigation>
           <SubNavigationHeader>
-            <SubNavigationTitle>The Title</SubNavigationTitle>
+            <SubNavigationTitle>Full</SubNavigationTitle>
             <SubNavigationLink>
               <Button small>The SubPage Link</Button>
             </SubNavigationLink>
@@ -74,9 +105,7 @@ export const MainNavigationDefault = (args) => (
         </SubNavigation>
       }
     >
-      <Link href="http://manuals.wfp.org" target="_blank">
-        Section 2
-      </Link>
+      <Link>Section 2</Link>
     </MainNavigationItem>
     <MainNavigationItem>
       <Search

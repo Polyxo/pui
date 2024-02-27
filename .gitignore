@@ -44,5 +44,6 @@ actions/copy-carbon/output/*
 .npmrc
 packages/styles/styles.css
 packages/website/types/*
+packages/website/public/logos/*
 packages/react/.temp
 packages/react/stats.html

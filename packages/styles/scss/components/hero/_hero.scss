@@ -34,7 +34,7 @@
     &.#{$prefix}--photo-card--link:hover {
       @include layer(pop-out--hover);
     }
-    color: $text-primary;
+    color: $text-body-default;
     background-size: cover;
     background-position: 50% 50%;
     overflow: hidden;
@@ -56,7 +56,7 @@
   }
 
   .#{$prefix}--photo-card--no-background {
-    background: $link-primary-hover; //interactive-02 new token name
+    background: $action-default-link-default-hover; //interactive-02 new token name
   }
 
   .#{$prefix}--photo-card__info {
@@ -108,7 +108,7 @@
   .#{$prefix}--photo-card--landscape,
   .#{$prefix}--photo-card--hero {
     .#{$prefix}--photo-card__info {
-      color: $text-on-color;
+      color: $text-inverse-default;
       background: rgba(#000000, 0.5);
     }
     .#{$prefix}--photo-card__info__background {
@@ -142,7 +142,7 @@
       }
       .#{$prefix}--photo-card__info__background {
         &:after {
-          background: $interactive;
+          background: $action-default-fill-primary-default;
           opacity: 1;
         }
       }
@@ -176,9 +176,9 @@
     height: calcRem(300px);
     display: flex;
     align-items: center;
-    color: $text-on-color;
+    color: $text-inverse-default;
     a {
-      color: $text-on-color;
+      color: $text-inverse-default;
     }
     @include breakpoint("lg") {
       height: calcRem(500px);
@@ -246,7 +246,7 @@
   }
 
   .#{$prefix}--photo-card--emergencies {
-    background: $support-error;
+    background: $support-error-main;
     .#{$prefix}--photo-card__info__title {
       font-weight: normal;
       @include type.type-style("heading-02");
@@ -261,7 +261,7 @@
       display: none;
     }
     .#{$prefix}--photo-card__info__title {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
     }
     &.#{$prefix}--photo-card--link:hover {
       .#{$prefix}--photo-card__info__title {
@@ -295,7 +295,7 @@
       @include text-gradient();
     }
     .#{$prefix}--photo-card__info__title {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
     }
     .#{$prefix}--photo-card__info__background {
       filter: blur(40px);

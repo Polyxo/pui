@@ -1,20 +1,19 @@
-@use '../form' as *;
-@use '../../breakpoint' as *;
-@use '../../config' as *;
-@use '../../motion' as *;
-@use '../../theme' as *;
-@use '../../spacing' as *;
-@use '../../type' as *;
-@use '../../utilities/button-reset';
-@use '../../utilities/component-reset';
-@use '../../utilities/convert';
+@use "../form" as *;
+@use "../../breakpoint" as *;
+@use "../../config" as *;
+@use "../../motion" as *;
+@use "../../theme" as *;
+@use "../../spacing" as *;
+@use "../../type" as *;
+@use "../../utilities/button-reset";
+@use "../../utilities/component-reset";
+@use "../../utilities/convert";
 
-
-@mixin anchor-navigation{
+@mixin anchor-navigation {
   .#{$prefix}--anchor-navigation {
     width: 300px;
     min-height: 350px;
-    border: 2px solid $border-strong; 
+    border: 2px solid $border-strong;
     border-radius: 5px;
   }
 
@@ -23,7 +22,7 @@
     border-bottom: 1px solid $border-strong;
     padding: $spacing-05;
     font-weight: 600;
-    color: $interactive;
+    color: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--anchor-content {

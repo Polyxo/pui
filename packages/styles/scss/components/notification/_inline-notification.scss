@@ -1,12 +1,5 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
 @use "mixins" as *;
 @use "../../breakpoint" as *;
-@use "../../colors" as *;
 @use "../../config" as *;
 @use "../../feature-flags" as *;
 @use "../../motion" as *;
@@ -36,7 +29,7 @@
     flex-wrap: wrap;
     margin-top: $spacing-05;
     margin-bottom: $spacing-05;
-    color: $text-inverse;
+    color: $text-inverse-default;
 
     @include breakpoint(md) {
       max-width: calcRem(608px);
@@ -77,7 +70,7 @@
   }
 
   .#{$prefix}--inline-notification--low-contrast {
-    color: $text-primary;
+    color: $text-body-default;
 
     &::before {
       position: absolute;
@@ -96,19 +89,19 @@
 
   .#{$prefix}--inline-notification--error {
     @include notification--experimental(
-      $support-error-inverse,
+      $support-error-main-inverse,
       $background-inverse
     );
   }
 
   .#{$prefix}--inline-notification--low-contrast.#{$prefix}--inline-notification--error {
     @include notification--experimental(
-      $support-error,
+      $support-error-main,
       get-token(var(--cds-background-error))
     );
 
     &::before {
-      border-color: $support-error;
+      border-color: $support-error-main;
     }
   }
 
@@ -126,7 +119,7 @@
     );
 
     &::before {
-      border-color: $support-success;
+      border-color: $support-success-main;
     }
   }
 
@@ -173,7 +166,7 @@
   .#{$prefix}--inline-notification--warning
     .#{$prefix}--inline-notification__icon
     path[opacity="0"] {
-    fill: $text-primary;
+    fill: $text-body-default;
     opacity: 1;
   }
 

@@ -1,4 +1,3 @@
-@use "../../colors" as *;
 @use "../../config" as *;
 @use "../../motion" as *;
 @use "../../theme" as *;
@@ -21,10 +20,10 @@
 $datepicker__background-color: $background !default;
 $datepicker__border-color: #aeaeae !default;
 $datepicker__highlighted-color: #3dcc4a !default;
-$datepicker__muted-color: $text-secondary !default;
+$datepicker__muted-color: $text-body-secondary !default;
 $datepicker__selected-color: #216ba5 !default;
-$datepicker__text-color: $text-primary !default;
-$datepicker__header-color: $text-primary !default;
+$datepicker__text-color: $text-body-default !default;
+$datepicker__header-color: $text-body-default !default;
 $datepicker__navigation-disabled-color: lighten(
   $datepicker__muted-color,
   10%
@@ -66,7 +65,7 @@ $datepicker__triangle-size: 8px !default;
     width: 0.9em;
     height: auto;
     pointer-events: none;
-    color: $interactive;
+    color: $action-default-fill-primary-default;
   }
 
   /* Date Range Picker */
@@ -96,6 +95,6 @@ $datepicker__triangle-size: 8px !default;
     width: 0.9em;
     height: auto;
     pointer-events: none;
-    color: $interactive;
+    color: $action-default-fill-primary-default;
   }
 }

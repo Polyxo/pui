@@ -1,11 +1,3 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
-
-@use "../../colors" as *;
 @use "../../config" as *;
 @use "../../motion" as *;
 @use "../../spacing" as *;
@@ -56,7 +48,7 @@ $input-border: 1px solid $field-border;
 
     & ~ .#{$prefix}--form-requirement {
       order: 3;
-      color: $support-error; //TODO change $border-error
+      color: $support-error-main; //TODO change $border-error
       font-weight: 400;
       margin-top: $spacing-02;
       overflow: visible;
@@ -105,18 +97,21 @@ $input-border: 1px solid $field-border;
     position: relative;
     min-width: $input-height;
     max-width: $input-height;
-    height: $input-height;
-    margin-left: -1px;
+    // height: $input-height;
+    //  margin-left: -2px;
     font-weight: 600;
     font-size: 1.5rem;
     // border: 1px solid $input-border-color;
     opacity: 0;
     transition: all 0.1s;
-    border-left: $input-border;
+    border-left: 1px solid $field-border-color;
+    color: $action-default-fill-primary-default;
     //position: absolute;
     order: 3;
     position: absolute;
-    right: 0;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
 
     @include rtl {
       left: 0;
@@ -130,7 +125,7 @@ $input-border: 1px solid $field-border;
     }
 
     &:focus {
-      border-left-color: transparent;
+      border-left-color: transparent !important;
       @include focus-outline;
       z-index: 100;
     }
@@ -143,16 +138,16 @@ $input-border: 1px solid $field-border;
       //TODO: fill: $hover-primary;
     }
     &:nth-child(1) {
-      right: $input-height - 1px;
+      right: $input-height + 1px;
       @include rtl {
         right: initial;
-        left: $input-height - 1px;
+        left: $input-height + 1px;
       }
     }
   }
 
   .#{$prefix}--number__controls svg {
-    fill: $interactive;
+    fill: $action-default-fill-primary-default;
 
     // Hover styles for use with old HTML w/o button
     &:hover {
@@ -170,7 +165,7 @@ $input-border: 1px solid $field-border;
     input[type="number"],
     input[type="number"]:focus {
       outline: none;
-      border-color: $support-error;
+      border-color: $support-error-main;
       //box-shadow: 0 2px 0px 0px var(--support-01);
     }
 

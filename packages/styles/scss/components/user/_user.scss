@@ -44,13 +44,6 @@
         margin-right: inherit;
       }
     }
-
-    margin-right: var(--spacing-100);
-
-    @include rtl {
-      margin-left: var(--spacing-100);
-      margin-right: inherit;
-    }
   }
 
   .#{$prefix}--user__description {
@@ -64,6 +57,14 @@
     @include type-style("productive-heading-03");
     font-size: calcRem(18px);
     //color: var(--text-02);
+  }
+
+  .#{$prefix}--avatar + .#{$prefix}--user__title {
+    margin-left: var(--spacing-100);
+    @include rtl {
+      margin-right: var(--spacing-100);
+      margin-left: inherit;
+    }
   }
 
   .#{$prefix}--user__title {

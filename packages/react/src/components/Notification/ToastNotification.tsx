@@ -27,7 +27,7 @@ export const ToastNotification: React.FC<ToastNotificationProps> = ({
   subtitle,
   title = "provide a title",
   kind = "error",
-  lowContrast,
+  lowContrast = true,
   hideCloseButton = false,
   children,
   timeout = 0,

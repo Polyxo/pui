@@ -359,17 +359,17 @@
 
   .#{$prefix}--btn--danger--primary {
     @include button-theme(
-      $support-error,
+      $support-error-main,
       transparent,
-      $text-on-color,
+      $text-inverse-default,
       $button-danger-hover,
       $icon-on-color
     );
 
     &:hover:disabled,
     &:focus:disabled {
-      color: $text-on-color;
-      border: $button-border-width solid $support-error;
+      color: $text-inverse-default;
+      border: $button-border-width solid $support-error-main;
     }
   }
 
@@ -412,15 +412,15 @@
     @include button-theme(
       $support-warning,
       transparent,
-      $text-primary,
+      $text-body-default,
       $support-warning,
-      $text-primary
+      $text-body-default
     );
 
     .#{$prefix}--btn__icon,
     &:hover > .#{$prefix}--btn__icon,
     &:focus > .#{$prefix}--btn__icon {
-      fill: $text-primary;
+      fill: $text-body-default;
     }
   }
 
@@ -428,7 +428,7 @@
     @include button-theme(
       saturate(#34a2d9, 10%),
       transparent,
-      $text-on-color,
+      $text-inverse-default,
       saturate(lighten(#34a2d9, 5), 10%),
       $icon-on-color
     );
@@ -438,14 +438,14 @@
     @include button-theme(
       $button-tertiary,
       transparent,
-      $text-primary,
+      $text-body-default,
       $button-tertiary-hover,
-      $text-primary
+      $text-body-default
     );
 
     &:hover,
     &:focus {
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     &:active {
@@ -459,7 +459,7 @@
 
     &:hover > .#{$prefix}--btn__icon,
     &:focus > .#{$prefix}--btn__icon {
-      fill: $text-primary;
+      fill: $text-body-default;
     }
   }
 
@@ -469,7 +469,7 @@
       $field,
       $button-primary,
       $background-main,
-      $text-primary
+      $text-body-default
     );
 
     &:hover {
@@ -478,14 +478,14 @@
     }
 
     &:focus {
-      background: $field;
+      background: $fill-field;
       color: $button-primary-hover;
     }
 
     &:hover:disabled,
     &:focus:disabled {
-      color: $support-error;
-      border: $button-border-width solid $support-error;
+      color: $support-error-main;
+      border: $button-border-width solid $support-error-main;
     }
   }
 
@@ -493,24 +493,24 @@
     @include button-theme(
       transparent,
       $field,
-      $text-on-color,
+      $text-inverse-default,
       rgba(#ffffff, 0.1),
       $icon-on-color
     );
 
     &:hover {
-      color: $text-on-color;
-      border: $button-border-width solid $field;
+      color: $text-inverse-default;
+      border: $button-border-width solid $fill-field;
     }
 
     &:focus {
-      color: $text-on-color;
+      color: $text-inverse-default;
     }
 
     &:hover:disabled,
     &:focus:disabled {
-      color: $support-error;
-      border: $button-border-width solid $support-error;
+      color: $support-error-main;
+      border: $button-border-width solid $support-error-main;
     }
   }
 }

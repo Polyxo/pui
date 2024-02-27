@@ -5,28 +5,47 @@ mainComponent: "BannerNavigation"
 previewScale: 0.3
 components: ["BannerNavigationWithContent", "BannerNavigationItem", "Link"]
 storybook: true
+status: "published"
+componentsNew:
+  BannerNavigationWithContent:
+    width: 900
+  BannerNavigationItem:
+    width: 900
 ---
 
-### Default version
+There are two variants of `BannerNavigation` that can be used:
+
+### `BannerNavigationWithContent`
+
+Used exclusively by specific applications which are actually listed on the bar to crosslink between them.
 
 ```jsx live forceFullWidth
 import { BannerNavigationWithContent } from "@wfp/react";
 <BannerNavigationWithContent pageWidth="lg" />;
 ```
 
-### Custom version
+### `BannerNavigation`
+
+It allows you to use custom `BannerNavigationItem` components inside.
 
 ```jsx live forceFullWidth
 import { BannerNavigation } from "@wfp/react";
 
 <BannerNavigation>
   <BannerNavigationItem>
+    <Link href="http://wfp.org" target="_blank">
+      wfp.org
+    </Link>
+  </BannerNavigationItem>
+  <BannerNavigationItem>
     <Link href="http://communities.wfp.org" target="_blank">
       Communities
     </Link>
   </BannerNavigationItem>
   <BannerNavigationItem>
-    <Search banner id="search-2" labelText="Search" placeholder="Search" />
+    <Link href="http://go.wfp.org" target="_blank">
+      Another link
+    </Link>
   </BannerNavigationItem>
 </BannerNavigation>;
 ```

@@ -1,4 +1,4 @@
-@use 'scss/meta' as *;
+@use "scss/meta" as *;
 
 .hits {
   position: relative;
@@ -27,13 +27,13 @@
   padding: 0.5em 1.2em;
   line-height: 1.5;
   display: block;
-  color: $text-primary;
+  color: $text-body-default;
   //border-radius: 5px;
   text-decoration: none;
   border-bottom: 1px solid $border-strong;
   &:hover {
     background: $layer-primary;
-    color: $text-primary;
+    color: $text-body-default;
     text-decoration: none;
   }
   h4 {
@@ -44,10 +44,10 @@
   }
   :global(.ais-Highlight-highlighted),
   :global(.ais-Snippet-highlighted) {
-    color: $interactive;
+    color: $action-default-fill-primary-default;
     background: $layer-primary;
   }
 }
 .hit:focus {
-  background: $interactive;
+  background: $action-default-fill-primary-default;
 }

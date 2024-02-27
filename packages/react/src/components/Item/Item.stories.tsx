@@ -1,34 +1,35 @@
-import React from 'react';
-import markdown from './README.mdx';
-import Item from '.';
-import Tag from '../Tag';
+import React from "react";
+import markdown from "./README.mdx";
+import Item from ".";
+import Tag from "../Tag";
 
 export default {
-  title: 'Components/UI Elements/Item',
+  title: "Components/UI Elements/Item",
   component: Item,
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'experimental',
+    componentSubtitle: "Component",
+    status: "experimental",
     mdx: markdown,
   },
 };
 
-export const Regular = (args) => <Item {...args} />;
-
-Regular.args = {
-  title: 'A title is shown',
-  children: `nonumy eirmod tempor invidunt`,
-  subContent: `This is the subContent. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. `,
-  icon: (
-    <img
-      alt="Moving van"
-      src="https://www.wfp.org/sites/default/files/styles/medium/public/images/publication/YiR_banner.jpg"
-    />
-  ),
-  showAdditionalIcon: true,
-  additional: 'Yesterday',
-  hint: <Tag type="wfp">Hint</Tag>,
-  wrapper: 'button',
+export const ItemDefault: Story = {
+  render: (args) => <Item {...args} />,
+  args: {
+    title: "A title is shown here",
+    children: `nonumy eirmod tempor invidunt`,
+    subContent: `This is the subContent. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. `,
+    icon: (
+      <img
+        alt="Moving van"
+        src="https://www.wfp.org/sites/default/files/styles/medium/public/images/publication/YiR_banner.jpg"
+      />
+    ),
+    showAdditionalIcon: true,
+    additional: "Yesterday",
+    hint: <Tag type="wfp">Hint</Tag>,
+    wrapper: "button",
+  },
 };
 
 const itemsourcecode = (kind, wrapper) => `
@@ -53,7 +54,7 @@ Regular.story = {
   parameters: {
     docs: {
       source: {
-        code: itemsourcecode('large', 'button'),
+        code: itemsourcecode("large", "button"),
       },
     },
   },
@@ -66,7 +67,7 @@ export const Horizontal = (args) => (
     <Item
       {...args}
       unread
-      style={{ marginTop: '10px' }}
+      style={{ marginTop: "10px" }}
       additional={undefined}
       hint={undefined}
       image={
@@ -89,10 +90,10 @@ export const Horizontal = (args) => (
 );
 
 Horizontal.args = {
-  title: 'A title is shown',
+  title: "A title is shown",
   children: `nonumy eirmod tempor invidunt`,
   subContent: `This is the subContent. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. `,
-  kind: 'horizontal',
+  kind: "horizontal",
   icon: (
     <img
       alt="Moving van"
@@ -100,16 +101,16 @@ Horizontal.args = {
     />
   ),
   showAdditionalIcon: true,
-  additional: 'Yesterday',
+  additional: "Yesterday",
   hint: <Tag type="wfp">Hint</Tag>,
-  wrapper: 'sidebar',
+  wrapper: "sidebar",
 };
 
 Horizontal.story = {
   parameters: {
     docs: {
       source: {
-        code: itemsourcecode('horizontal', 'sidebar'),
+        code: itemsourcecode("horizontal", "sidebar"),
       },
     },
   },
@@ -117,7 +118,7 @@ Horizontal.story = {
 
 export const HorizontalRepeater = (args) => (
   <>
-    <Item {...args} />{' '}
+    <Item {...args} />{" "}
     <Item
       {...args}
       title="A very long title title title title title title title title title title title title title title title title title title title title title title title title title title title title title title is shown"
@@ -130,10 +131,10 @@ export const HorizontalRepeater = (args) => (
 );
 
 HorizontalRepeater.args = {
-  title: 'A title is shown',
+  title: "A title is shown",
   children: `nonumy eirmod tempor invidunt`,
   subContent: `This is the subContent. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.`,
-  kind: 'horizontal',
+  kind: "horizontal",
   icon: (
     <img
       alt="Moving van"
@@ -141,16 +142,16 @@ HorizontalRepeater.args = {
     />
   ),
   showAdditionalIcon: true,
-  additional: 'Yesterday',
+  additional: "Yesterday",
   hint: <Tag type="wfp">Hint</Tag>,
-  wrapper: 'repeater',
+  wrapper: "repeater",
 };
 
 HorizontalRepeater.story = {
   parameters: {
     docs: {
       source: {
-        code: itemsourcecode('horizontal', 'repeater'),
+        code: itemsourcecode("horizontal", "repeater"),
       },
     },
   },

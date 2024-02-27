@@ -1,0 +1,39 @@
+---
+category: "Core"
+title: "Item"
+coverImage: "../sample-image.jpg"
+slug: "Components/Structure/Item/tab:Code"
+storybook: true
+mainComponent: "Item"
+---
+
+The `Item` component is a flexible and customizable component to be used inside lists.
+
+## Usage
+
+Item inside a Sidebar
+
+```jsx live
+<Item
+  title="Confirmation of additional lorem ipsum"
+  subtitle="Your subtitle"
+  kind="sidebar"
+  hint={<Tag type="success">Hint</Tag>}
+  image={<img src="https://via.placeholder.com/40" alt="placeholder" />}
+>
+  We would like to inform you that your order has been shipped. You can track
+  your order with the following tracking number: 1234567890
+</Item>
+```
+
+### Accessibility
+
+- The Item component should be used with the `role="listitem"` attribute
+- The Item component should be used with the `aria-selected` attribute when the `active` state is used
+- The Item component should be used with the `aria-disabled` attribute when the `disabled` state is used
+
+TODO: Automatically add the attributes to the component
+
+### Reference
+
+- [Apple Mobile Lists](https://developer.apple.com/design/human-interface-guidelines/lists-and-tables)

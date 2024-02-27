@@ -9,13 +9,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn cp:logos && next build && yarn build:runAlgoliaUpdate",
     "start": "next start -p 80",
     "build:theme": "node buildTheme.js",
+    "build:runAlgoliaUpdate": "node runAlgoliaUpdate.mjs",
     "lint": "next lint",
     "dev:ts": "yarn dev & yarn ts:watch",
     "ts": "tsc --noEmit --incremental",
-    "ts:watch": "yarn ts --watch"
+    "ts:watch": "yarn ts --watch",
+    "cp:logos": "cp -r ../logos/src public/logos"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -40,7 +42,7 @@
     "@wfp/pictograms-react": "^11.17.13",
     "@wfp/react": "^1.21.11",
     "@wfp/styles": "^10.29.11",
-    "@wfp/themes-core": "0.3.6",
+    "@wfp/themes-core": "0.3.12",
     "algoliasearch": "^4.13.1",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
@@ -50,8 +52,6 @@
     "gray-matter": "^4.0.3",
     "hast-util-select": "^5.0.2",
     "html-react-parser": "^5.0.6",
-    "iframe-resizer": "^4.3.6",
-    "iframe-resizer-react": "^1.1.0",
     "next": "^13.5.4",
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^4.19.0",
@@ -60,6 +60,7 @@
     "react-docgen-typescript": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
+    "react-frame-component": "^5.2.6",
     "react-hook-form": "^7.47.0",
     "react-instantsearch-dom": "^6.26.0",
     "react-instantsearch-hooks-web": "^6.42.0",
@@ -72,6 +73,7 @@
     "remark-stringify": "^10.0.3",
     "sass": "^1.69.0",
     "slugify": "^1.6.5",
+    "unified": "^11.0.4",
     "unist-util-visit": "^4.1.2",
     "wcag-contrast": "^3.0.0"
   }

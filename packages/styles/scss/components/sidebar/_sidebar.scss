@@ -5,11 +5,11 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../breakpoint' as *;
-@use '../../theme' as *;
-@use '../../utilities/component-reset' as *;
-@use '../../utilities/convert' as *;
+@use "../../config" as *;
+@use "../../breakpoint" as *;
+@use "../../theme" as *;
+@use "../../utilities/component-reset" as *;
+@use "../../utilities/convert" as *;
 
 @mixin sidebar-content {
   .#{$prefix}--sidebar-content__container {
@@ -45,13 +45,13 @@
     @media print {
       display: none;
     }
-    @include breakpoint('lg') {
+    @include breakpoint("lg") {
       width: 30%;
       min-width: 20rem;
       max-width: 30rem;
       border-right: 1px solid $border-strong;
     }
-    @include breakpoint('lg') {
+    @include breakpoint("lg") {
       //min-width: auto;
       max-width: 30rem;
     }
@@ -59,7 +59,7 @@
     flex-direction: column;
     height: 100%;
 
-    @include breakpoint-down('lg') {
+    @include breakpoint-down("lg") {
       top: 0;
       overflow: auto;
     }
@@ -70,7 +70,7 @@
     align-items: stretch;
     //height: 100vh;
     flex: 1;
-    @include breakpoint-down('lg') {
+    @include breakpoint-down("lg") {
       .#{$prefix}--sidebar-content__container--active & {
         transform: translateX(0%);
       }
@@ -87,7 +87,7 @@
   }
   .#{$prefix}--sidebar-content-mobile-header {
     display: none;
-    @include breakpoint-down('lg') {
+    @include breakpoint-down("lg") {
       display: block;
       padding: 1em;
       display: flex;
@@ -104,14 +104,14 @@
 
   .#{$prefix}--sidebar-content__back-button {
     font-weight: 500;
-    color: $interactive;
+    color: $action-default-fill-primary-default;
     cursor: pointer;
     display: inline-block;
     text-decoration: none i !important;
     svg {
       margin-right: 0.3em;
       path {
-        fill: $interactive;
+        fill: $action-default-fill-primary-default;
       }
     }
   }

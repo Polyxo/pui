@@ -1,18 +1,18 @@
 // .components/Search/index.js
 
-import algoliasearch from 'algoliasearch/lite';
-import CustomSearchBox from './CustomSearchBox';
-import CustomHits from './CustomHits';
-import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import styles from './styles.module.scss';
+import algoliasearch from "algoliasearch/lite";
+import CustomSearchBox from "./CustomSearchBox";
+import CustomHits from "./CustomHits";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import styles from "./styles.module.scss";
 
-import { InstantSearch } from 'react-instantsearch-hooks-web';
-import { Search } from '@wfp/react';
+import { InstantSearch } from "react-instantsearch-hooks-web";
+import { Search } from "@wfp/react";
 
-const appId: string = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '';
+const appId: string = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "";
 const searchApiKey: string =
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || '';
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || "";
 
 const searchClient: any = algoliasearch(appId, searchApiKey);
 
@@ -24,10 +24,10 @@ export const useOutsideAlerter = ({ ref, setOpen }: any) => {
       }
     };
     // Bind the event listener
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       // Unbind the event listener on clean up
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref]);
@@ -47,7 +47,8 @@ export const Portal = (props: any) => {
         <div
           className={`${styles.overlay} ${
             props.open ? styles.open : styles.closed
-          }`}>
+          }`}
+        >
           <div className={styles.overlayBackground} />
           <div className={styles.overlayContent}>{props.children}</div>
         </div>,
@@ -74,14 +75,14 @@ export default function SearchWrapper() {
     const callback = (event: KeyboardEvent) => {
       // event.metaKey - pressed Command key on Macs
       // event.ctrlKey - pressed Control key on Linux or Windows
-      if ((event.metaKey || event.ctrlKey) && event.code === 'KeyK') {
-        console.log('Pressed Command/Control + C');
+      if ((event.metaKey || event.ctrlKey) && event.code === "KeyK") {
+        console.log("Pressed Command/Control + C");
         setOpen(true);
       }
     };
-    document.addEventListener('keydown', callback);
+    document.addEventListener("keydown", callback);
     return () => {
-      document.removeEventListener('keydown', callback);
+      document.removeEventListener("keydown", callback);
     };
   }, []);
 
@@ -90,6 +91,7 @@ export default function SearchWrapper() {
       <Search
         onClick={() => setOpen(true)}
         className={styles.search}
+        kind="main"
         placeholder="Search..."
         components={{ AddonAfter }}
       />

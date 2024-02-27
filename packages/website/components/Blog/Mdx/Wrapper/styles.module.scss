@@ -1,4 +1,4 @@
-@use 'scss/meta' as *;
+@use "scss/meta" as *;
 
 .wrapper {
   line-height: 1.7em;
@@ -50,8 +50,7 @@
   }
   code,
   pre {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-      'Courier New', monospace;
+    font-family: $font-family-monospace;
     font-size: 0.9em;
     padding: 0.3em;
     border-radius: 0.3em;

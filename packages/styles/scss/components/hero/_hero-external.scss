@@ -1,9 +1,9 @@
-@use '../tag/mixins' as *;
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
+@use "../tag/mixins" as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
 
 @mixin hero-external {
   @include reset;
@@ -23,7 +23,7 @@
 
   // [1] TODO: Create new type-style token for the Hero heading
   .#{$prefix}--hero-ext__heading {
-    color: $text-on-color;
+    color: $text-inverse-default;
     font-size: 48px; // [1]
     font-weight: 800; // [1]
     line-height: 1.15; // [1]
@@ -45,7 +45,7 @@
   }
 
   .#{$prefix}--hero-ext__body-copy {
-    color: $text-on-color;
+    color: $text-inverse-default;
     margin-top: $spacing-05;
     text-align: center;
 
@@ -59,7 +59,7 @@
     }
 
     & > a {
-      color: $text-on-color;
+      color: $text-inverse-default;
       cursor: pointer;
       text-decoration: underline;
     }

@@ -6,6 +6,7 @@ import {
   NumberInput,
   Tag,
   Table,
+  Tooltip,
   Text,
   TextInput,
 } from "@wfp/react";
@@ -13,18 +14,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as wfpComponents from "@wfp/react";
 import ReactDatePicker from "react-datepicker";
-
 import reactElementToJSXString from "react-element-to-jsx-string";
-
 import styles from "./prop-types.module.scss";
 import CodeBlockLive from "../Blog/Mdx/CodeBlockLive";
 import Markdown from "react-markdown";
 import formatTypes from "./formatTypes";
-// import parse from "html-react-parser";
 import { transform } from "@babel/standalone";
 import { AddCircle, CloseCircle, Settings, StarSolid } from "@wfp/icons-react";
-
 import * as componentsSource from "@../../../demoCode/dist/bundle";
+import { extractComponentNames } from "./extractComponentNames";
 
 declare const window: any;
 
@@ -36,11 +34,6 @@ const filterEmptyValues = (obj) => {
     return acc;
   }, {});
 };
-/*
-const clean = (obj) => {
-  for (const propName in obj) obj[propName] ?? delete obj[propName];
-  return obj;
-};*/
 
 function extractJSX(code) {
   // Regular expression to match the pattern of the function and extract JSX
@@ -81,11 +74,6 @@ export default function PropTypes({
   hideWrapper,
   view,
 }: any) {
-  // const [showAllProps, setShowAllProps] = useState(true);
-  // const [rtl, setRtl] = useState(false);
-
-  //console.log("componentsNew", name, propTypes, componentsNew);
-
   const currentComponentsSettings = componentsNew?.[propTypes?.displayName];
 
   const componentsSourceText =
@@ -94,6 +82,8 @@ export default function PropTypes({
         ? currentComponentsSettings.demo
         : mainComponent
     ]?.default[`${propTypes?.displayName}Default`];
+
+  console.log("componentsSourceText", componentsSourceText);
 
   const componentsSourceProps = componentsSourceText?.args
     ? componentsSourceText.args
@@ -135,6 +125,38 @@ export default function PropTypes({
   const options = "primary | secondary | tertiary".replaceAll(" ", "");
 
   const renderInput = (prop) => {
+    if (prop.type.raw === "boolean") {
+      return (
+        <Checkbox
+          {...register(prop.name)}
+          labelText={prop.name}
+          type="checkbox"
+          defaultChecked={prop.defaultValue && prop.defaultValue.value}
+        />
+      );
+    }
+    // Imported interfaces like buttonKind
+    if (prop.type.name === "enum" && prop.type.raw !== "ReactNode") {
+      return (
+        <Select
+          {...register(prop.name, { required: prop.required })}
+          defaultValue={prop.defaultValue && prop.defaultValue.value}
+        >
+          {prop.required === false && (
+            <SelectItem key="none" value="" text="None" />
+          )}
+          )
+          {prop.type.value.map((kind: { value: string }, i) => (
+            <SelectItem
+              key={i}
+              value={kind.value.replaceAll('"', "").replaceAll(" ", "")}
+              text={kind.value.replaceAll('"', "").replaceAll(" ", "")}
+            />
+          ))}
+        </Select>
+      );
+    }
+
     if (
       /*( prop.name === "kind" ||
         prop.name === "type" ||
@@ -202,7 +224,7 @@ export default function PropTypes({
         </Select>
       );
     }
-    if (prop.type.name === "ReactNode" || prop.type.name === "string") {
+    if (prop.type.raw === "ReactNode" || prop.type.raw === "string") {
       return (
         <TextInput
           {...register(prop.name, { required: prop.required })}
@@ -210,20 +232,11 @@ export default function PropTypes({
           defaultValue={prop.defaultValue && prop.defaultValue.value}
         />
       );
-    } else if (prop.type.name === "number") {
+    } else if (prop.type.raw === "number") {
       return (
         <NumberInput
           {...register(prop.name, { required: prop.required })}
           defaultValue={prop.defaultValue && prop.defaultValue.value}
-        />
-      );
-    } else if (prop.type.name === "boolean") {
-      return (
-        <Checkbox
-          {...register(prop.name)}
-          labelText={prop.name}
-          type="checkbox"
-          defaultChecked={prop.defaultValue && prop.defaultValue.value}
         />
       );
     }
@@ -237,12 +250,15 @@ export default function PropTypes({
       if (name === "icon") {
         componentProps.icon = iconsList[propValues[name]]?.icon;
       } else {
-        componentProps[name] = propValues[name] || defaultValue?.value;
+        componentProps[name] =
+          propValues[name] !== undefined
+            ? propValues[name]
+            : defaultValue?.value;
       }
     });
   }
 
-  const MyComponent = wfpComponents[mainComponent];
+  const MyComponent = wfpComponents[propTypes?.displayName || mainComponent];
   if (!MyComponent) return null;
 
   let propsAsList: any = [];
@@ -251,10 +267,14 @@ export default function PropTypes({
     propsAsList = Object.values(propList);
   }
 
-  let code = reactElementToJSXString(
-    <MyComponent {...defaultProps} {...componentProps} />,
-    { filterProps: (val) => (val === undefined ? false : true) }
-  );
+  const filteredPropsList = {
+    ...filterEmptyValues(defaultProps),
+    ...filterEmptyValues(componentProps),
+  };
+
+  let code = reactElementToJSXString(<MyComponent {...filteredPropsList} />, {
+    filterProps: (val) => (val === undefined ? false : true),
+  });
 
   if (sampleCode) {
     try {
@@ -276,10 +296,6 @@ export default function PropTypes({
 
       const codeNew: any = eval(transformedCode.code);
 
-      // const
-
-      /*const codeNew = parse(sampleCode.replace("{...args}", ""), options);*/
-
       const enhancedElement = React.cloneElement(codeNew, {
         ...filterEmptyValues(defaultProps),
         ...filterEmptyValues(componentProps),
@@ -292,14 +308,6 @@ export default function PropTypes({
           //fn().length > 1000 ? "ReactDatePicker" : fn;
         }, // TODO: Replace with better universal solution
       });
-
-      // Raw JSX without transpilation
-      //  code = sampleCode;
-      /*
-      React.createElement(DatePicker, {
-  hello: DatePicker
-});
-*/
     } catch (error) {
       console.log("Transform failed", error);
     }
@@ -340,10 +348,16 @@ export default function PropTypes({
     }
   });
 
-  const componentList =
-    /* [mainComponent, ...components] */ componentsUsedInCode.join(", ");
+  const componentList = componentsUsedInCode.join(", ");
+
+  console.log(
+    "componentsNew",
+    componentsNew,
+    componentsNew?.[propTypes?.displayName]?.width
+  );
 
   code = `import { ${componentList} } from "@wfp/react";
+
 
 
 () => { 
@@ -391,6 +405,7 @@ export default function PropTypes({
         // hideWrapper
         center
         view={view}
+        componentName={propTypes?.displayName}
         // showEditor={!showAllProps}
       />
       {/*
@@ -406,9 +421,9 @@ export default function PropTypes({
                 <tr>
                   <th>Prop</th>
 
-                  <th>Default</th>
-                  <th>Description</th>
-                  <th>Value</th>
+                  <th className={styles.default}>Default</th>
+                  <th className={styles.description}>Description</th>
+                  <th className={styles.propValue}>Value</th>
                 </tr>
               </thead>
               <tbody>
@@ -417,14 +432,38 @@ export default function PropTypes({
                     <tr key={prop.name}>
                       <td>
                         <h3 className={styles.propName}>{prop.name}</h3>
-
-                        <Text kind="code" className={styles.types}>
-                          {formatTypes(prop.type.name).map(
-                            (line, lineIndex) => (
-                              <div key={lineIndex}>{line}</div>
-                            )
-                          )}
-                        </Text>
+                        <div className={styles.typesWrapper}>
+                          <Tooltip
+                            className={styles.tooltip}
+                            content={
+                              <div>
+                                {prop.type.raw ? prop.type.raw : prop.type.name}
+                              </div>
+                            }
+                          >
+                            <div>
+                              <Text kind="code" className={styles.types}>
+                                {prop.name === "components" ? (
+                                  <>
+                                    {extractComponentNames(prop.type.name).map(
+                                      (component, i) => (
+                                        <span key={i}>{component}</span>
+                                      )
+                                    )}
+                                  </>
+                                ) : (
+                                  formatTypes(
+                                    prop.type.raw
+                                      ? prop.type.raw
+                                      : prop.type.name
+                                  ).map((line, lineIndex) => (
+                                    <span key={lineIndex}>{line}</span>
+                                  ))
+                                )}
+                              </Text>
+                            </div>
+                          </Tooltip>
+                        </div>
                       </td>
 
                       <td>
@@ -448,7 +487,7 @@ export default function PropTypes({
                           <div>default: {prop.defaultValue.value}</div>
                         )}
                       </td>
-                      <td>{renderInput(prop)}</td>
+                      <td className={styles.propValue}>{renderInput(prop)}</td>
                     </tr>
                   );
                 })}

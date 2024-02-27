@@ -20,6 +20,9 @@ components:
     "SubNavigationGroup",
     "SubNavigationItem",
   ]
+componentsNew:
+  MainNavigation:
+    width: 1000
 ---
 
 ### Usage
@@ -55,6 +58,25 @@ The `MainNavigation` can be used with a custom logo. The logo can be passed as a
 </MainNavigation>
 ```
 
+### Mobile Navigation
+
+The `MainNavigation` can be used as a mobile navigation. It is automatically displayed when the screen size is smaller than `md`.
+
+```jsx live size="mobile"
+<MainNavigation showLogo logo="Product name">
+  <MainNavigationItem>
+    <Link href="https://go.docs.wfp.org" target="_blank">
+      Section 3
+    </Link>
+  </MainNavigationItem>
+  <MainNavigationItem>
+    <Link href="http://opweb.wfp.org" target="_blank">
+      Section 4
+    </Link>
+  </MainNavigationItem>
+</MainNavigation>
+```
+
 ### Components:
 
 - **SubNavigation**: This is the main wrapper for the sub-navigation.
@@ -66,6 +88,8 @@ The `MainNavigation` can be used with a custom logo. The logo can be passed as a
 - **SubNavigationList**: This component wraps a list of items or links within the sub-navigation.
 - **SubNavigationGroup**: This allows you to group multiple items or links under a single heading. The group can have a title and is ideal for categorizing sub-navigation elements.
 - **SubNavigationItem**: These are individual items within the sub-navigation.
+
+Each of these components can accept a `className` prop to override or add additional classes. They also spread other properties to their root element, allowing you to pass other props like `id`, `style`, etc.
 
 ### MainNavigationItem
 
@@ -125,19 +149,36 @@ import {
 );
 ```
 
-### Components:
+### MainNavigation with BannerNavigation
 
-- **SubNavigation**: This is the main wrapper for the sub-navigation.
-- **SubNavigationHeader**: Use this component to set a header for your sub-navigation.
-- **SubNavigationTitle**: This component sets a title for your sub-navigation.
-- **SubNavigationLink**: This component creates links within the sub-navigation. They can be used similar to the traditional anchor links.
-- **SubNavigationFilter**: This is used to integrate a filter mechanism within your sub-navigation.
-- **SubNavigationContent**: This is a wrapper for the content that should be displayed within the sub-navigation.
-- **SubNavigationList**: This component wraps a list of items or links within the sub-navigation.
-- **SubNavigationGroup**: This allows you to group multiple items or links under a single heading. The group can have a title and is ideal for categorizing sub-navigation elements.
-- **SubNavigationItem**: These are individual items within the sub-navigation.
+The `MainNavigation` can be used with a `BannerNavigation` to create a navigation with a banner on top.
 
-Each of these components can accept a `className` prop to override or add additional classes. They also spread other properties to their root element, allowing you to pass other props like `id`, `style`, etc.
+```jsx live forceFullWidth
+import {
+  BannerNavigation,
+  MainNavigation,
+  MainNavigationItem,
+} from "@wfp/react";
+
+() => (
+  <>
+    <BannerNavigation>
+      <BannerNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Communities
+        </Link>
+      </BannerNavigationItem>
+    </BannerNavigation>
+    <MainNavigation>
+      <MainNavigationItem>
+        <Link href="http://communities.wfp.org" target="_blank">
+          Section 1
+        </Link>
+      </MainNavigationItem>
+    </MainNavigation>
+  </>
+);
+```
 
 #### Building a SubNavigation
 

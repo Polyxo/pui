@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import type { PropsWithChildren } from 'react';
-import classNames from 'classnames';
-import useSettings from '../../src/hooks/useSettings';
+import React, { useState } from "react";
+import classNames from "classnames";
+import useSettings from "../../src/hooks/useSettings";
 
 /** ContentSwitcher manipulates the content shown following an exclusive or “either/or” pattern. It is used to toggle between two or more content sections within the same space on screen. Only one section can be shown at a time.
  */
 
-type ContentSwitcherProps = PropsWithChildren<{
-  className?: string;
+interface ContentSwitcherProps extends React.ComponentPropsWithRef<"div"> {
+  /* The Selected index of the ContentSwitcher */
   selectedIndex?: number;
+  /* Small variant of the ContentSwitcher */
   small?: boolean;
+  /* Callback function to be called when the selected index is changed */
   onChange: (data?: object) => void;
-}>;
+}
 
-const ContentSwitcher: React.FC<ContentSwitcherProps> = ({
+const ContentSwitcher: ContentSwitcherProps = ({
   children,
   className,
   selectedIndex,

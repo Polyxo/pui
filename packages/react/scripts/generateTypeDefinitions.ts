@@ -6,6 +6,8 @@ const distUrl = path.resolve(__dirname, "../../website/types/");
 
 const options = {
   savePropValueAsString: true,
+  shouldExtractLiteralValuesFromEnum: true,
+  shouldExtractValuesFromUnion: true,
   propFilter: (prop, component) => {
     if (prop.declarations !== undefined && prop.declarations.length > 0) {
       const hasPropAdditionalDescription = prop.declarations.find(

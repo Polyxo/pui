@@ -34,7 +34,7 @@ const statuses = {
   draft: { title: "Draft", type: "warning" },
   designOnly: { title: "Design only", type: "info" },
   published: { title: "Published", type: "success" },
-  deprecated: { title: "Deprecated", type: "danger" },
+  deprecated: { title: "Deprecated", type: "error" },
 };
 
 // Function to extract the main slug, excluding parts starting with "tab:"
@@ -170,6 +170,7 @@ export default function SidebarWrapper({
                   <h3
                     id={createSlug(p.displayName)}
                     className={styles.propTitle}
+                    key={i}
                   >
                     {p.displayName}
                   </h3>
@@ -195,7 +196,7 @@ export default function SidebarWrapper({
             target="_blank"
             className={styles.editOnGitHub}
           >
-            Edit this page on GitHub <FontAwesomeIcon icon={faArrowRight} />
+            Edit this page <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>
         <div className={styles.sidebarAddition}>

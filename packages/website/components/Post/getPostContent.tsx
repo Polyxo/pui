@@ -1,18 +1,13 @@
 import { getAllPosts, getPostByPath, getPostSlugs } from "../../lib/getPost";
-// import { dbConnection } from '../../lib/databaseConnection.ts.new';
 import slugify from "slugify";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkMdxCodeMeta from "remark-mdx-code-meta";
 import remarkGfm from "remark-gfm";
 import rehypeCode from "../../lib/rehypeCode";
 import rehypeImgSize from "rehype-img-size";
-import { unified } from "unified";
 import rehypeFigmaImage from "../../lib/rehypeFigmaImage";
-import rehypeToC from "../../lib/rehypeToC";
 import rehypeComponentsList from "../../lib/rehypeComponentsList";
-import remarkHeadings from "../../lib/remarkHeadings";
-import remarkParse from "remark-parse";
-import remarkStringify from "remark-stringify";
+import { getHeadings } from "../../lib/getHeadingsFromMarkdown";
 
 export default async function getPostContent(params: any) {
   const posts = await getAllPosts([
@@ -74,13 +69,6 @@ export default async function getPostContent(params: any) {
 
   const content = post?.content || "";
 
-  const mdxToC = await serialize(post.content, {
-    //components,
-    mdxOptions: {
-      rehypePlugins: [rehypeToC],
-    },
-  });
-
   const mdxExcerptSource = await serialize(post.excerpt, {
     // components,
   });
@@ -127,8 +115,6 @@ export default async function getPostContent(params: any) {
 
   if (post.slug === "Components/Overview") {
     posts.forEach((p) => {
-      // console.log(posts);
-
       if (p.mainComponent) {
         try {
           // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -171,27 +157,7 @@ export default async function getPostContent(params: any) {
     },
   });
 
-  //let data = {};
-  //let query = {};
-
-  //const filename = 'Naming/Naming';
-  //let variables = { relativePath: `${filename}.mdx` };
-  //try {
-  // const res = await dbConnection.queries.post(variables);
-  //query = res.query;
-  // data = res.data;
-  //  variables = res.variables;
-  //} catch {
-  // swallow errors related to document creation
-  // }
-
-  const processor = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkStringify)
-    .use(remarkHeadings);
-
-  const vfile = await processor.process(post.content);
+  const vfile = await getHeadings(post.content);
 
   return {
     props: {
@@ -202,10 +168,9 @@ export default async function getPostContent(params: any) {
       posts,
       post: {
         ...post,
-        headings: vfile.data.headings,
+        headings: vfile,
         content,
         mdxSource,
-        mdxToC,
         mdxExcerptSource,
       },
     },

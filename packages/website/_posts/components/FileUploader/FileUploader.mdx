@@ -1,0 +1,41 @@
+---
+category: "Core"
+title: "FileUploader"
+excerpt: "Simple input to upload files via drag and drop or file selection."
+slug: "Components/Forms/FileUploader"
+storybook: true
+status: "draft"
+mainComponent: "FileUploader"
+---
+
+The `FileUploader` component allows users to select and upload files to a system, enabling the transfer of documents, images, or other types of files.
+
+<DoUse>
+
+- **Content Submission:** Employ the `FileUploader` when users need to submit files as part of a form or data entry process.
+- **Bulk File Upload:** Use `FileUploader` for scenarios where users may need to upload multiple files simultaneously.
+- **Media Management:** When managing and organizing files within an application, `FileUploader` provides a user-friendly way to add new content.
+
+</DoUse>
+
+<DoNotUse>
+
+- **Text Input Only:** For situations where users only need to input text data without attaching files, consider regular text input fields.
+- **Single Data Point:** If users are providing a single piece of data that doesn't involve file attachments, using a simple input field may be more straightforward.
+- **Complex Data Structures:** For highly structured data or complex form submissions, explore alternative methods to organize and capture information effectively.
+
+</DoNotUse>
+
+### Alternative Components
+
+- **Text Input Fields:** When users need to provide simple text-based inputs without file attachments.
+- **Image Pickers:** For cases specifically dealing with image selection and upload.
+- **Data Import Tools:** When handling large datasets or complex data structures, consider tools designed for data importation.
+
+### Accessibility
+
+- **Labeling:** Clearly label the `FileUploader` to indicate its purpose, guiding users with visual impairments.
+- **Accessible Error Messaging:** Ensure that any error messages related to file uploads are clearly communicated through text and accessible to screen readers.
+- **Keyboard Accessibility:** Make sure the `FileUploader` can be navigated and used entirely via keyboard controls.
+- **Acceptable File Types:** Clearly specify and communicate the acceptable file types and sizes to users.
+- **Feedback and Progress:** Provide clear feedback on the status of file uploads, including progress indicators and success/error messages, making it accessible for all users.

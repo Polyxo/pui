@@ -5,12 +5,12 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use './keyframes';
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../utilities/convert' as *;
+@use "./keyframes";
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../utilities/convert" as *;
 
 /// inline-loading style
 /// @access private
@@ -27,7 +27,7 @@
   }
 
   .#{$prefix}--inline-loading__text {
-    @include type-style('body-short');
+    @include type-style("body-short");
   }
 
   .#{$prefix}--inline-loading__animation {
@@ -51,7 +51,7 @@
 
   .#{$prefix}--inline-loading__checkmark {
     fill: none;
-    stroke: $interactive;
+    stroke: $action-default-fill-primary-default;
     transform-origin: 50% 50%;
     stroke-width: 2.1;
     stroke-dasharray: 12;
@@ -62,7 +62,7 @@
   }
 
   .#{$prefix}--loading--small .#{$prefix}--inline-loading__svg {
-    stroke: $interactive;
+    stroke: $action-default-fill-primary-default;
   }
   /* If IE11 Don't show check animation */
   @media screen and (-ms-high-contrast: active),
@@ -96,8 +96,8 @@
   }
 
   .#{$prefix}--inline-loading__text {
-    @include type-style('body-short');
-    color: $text-secondary;
+    @include type-style("body-short");
+    color: $text-body-secondary;
   }
 
   .#{$prefix}--inline-loading__animation {
@@ -121,7 +121,7 @@
 
   .#{$prefix}--inline-loading__checkmark {
     fill: none;
-    stroke: $interactive;
+    stroke: $action-default-fill-primary-default;
     transform-origin: 50% 50%;
     stroke-width: 2.1;
     stroke-dasharray: 12;
@@ -132,7 +132,7 @@
   }
 
   .#{$prefix}--loading--small .#{$prefix}--inline-loading__svg {
-    stroke: $interactive;
+    stroke: $action-default-fill-primary-default;
   }
   /* If IE11 Don't show check animation */
   @media screen and (-ms-high-contrast: active),

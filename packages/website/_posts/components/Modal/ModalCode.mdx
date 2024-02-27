@@ -4,22 +4,16 @@ title: "Modal"
 excerpt: "Modal are surfaces that display content and actions on a single topic."
 slug: "Components/Overlay/Modal/tab:Code"
 storybook: true
+status: "published"
 mainComponent: "Modal"
 components: ["ModalWrapper"]
 componentsNew:
   ModalWrapper:
     path: "ModalWrapper/ModalWrapper"
+    demo: "ModalWrapper"
 ---
 
-##### Custom footer
-
-To display custom footer content, pass a function (or React component) to `modalFooter` prop
-
-```js
-<Modal open modalFooter={() => <div>The Modal Footer content</div>} />
-```
-
-#### Full screen Dialog (`Dialog` example)
+### Full screen Dialog (`Dialog` example)
 
 Full screen dialogs only show the Modal element without any other content like the navigation. They can be used for login, password reset or very important dialogs.
 
@@ -27,7 +21,7 @@ Full screen dialogs only show the Modal element without any other content like t
 <Modal open hideClose backgroundImage={yourBackgroundImage.jpg} />
 ```
 
-#### Handle the `open` state
+### Handling the `open` state
 
 Modal allows you to control the `open` State on your own. Use the Modal Wrapper component to use a controlled version of Modal.
 
@@ -40,9 +34,13 @@ Modal allows you to control the `open` State on your own. Use the Modal Wrapper 
     setOpen(false);
   };
 
+  toggleModal = () => {
+    setOpen(!open);
+  };
+
   return (
     <div>
-      <button onClick={() => setOpen(!open)}>Open Modal</button>
+      <Button onClick={() => setOpen(!open)}>Open Modal</Button>
       <Modal
         open={open}
         primaryButtonText="Submit"
@@ -50,15 +48,40 @@ Modal allows you to control the `open` State on your own. Use the Modal Wrapper 
         secondaryButtonText="Cancel Modal"
         onSecondarySubmit={this.toggleModal}
         onRequestClose={this.toggleModal}
+        modalHeading="Title"
       >
-        <p className="wfp--modal-content__text">Nothing to see here</p>
+        Nothing to see here
       </Modal>
     </div>
   );
 };
 ```
 
+### ModalWrapper
+
+The ModalWrapper component is a wrapper around the Modal component. It provides a button to open the Modal and handles the `open` state for you.
+
+#### Basic Usage
+
+```jsx live
+() => {
+  const [open, setOpen] = useState();
+
+  return (
+    <ModalWrapper
+      modalHeading="Title"
+      buttonTriggerText="Open Modal"
+      primaryButtonText="Close Modal"
+    >
+      Nothing to see here
+    </ModalWrapper>
+  );
+};
+```
+
 #### Disable closing the Modal if the user clicks on the background
+
+To disable closing the Modal if the user clicks on the background, you can use the `onRequestClose` prop to handle the event and decide if the Modal should be closed or not.
 
 ```js
 onRequestClose={(evt, trigger) => {
@@ -69,7 +92,30 @@ onRequestClose={(evt, trigger) => {
 }}
 
 <Modal
-  onRequestClose={this.onRequestClose}
+  onRequestClose={onRequestClose}
   {...otherProps}
 />
+```
+
+##### Component overrides
+
+To display custom footer content, pass a function (or React component) to `modalFooter` prop
+
+You can use all the props of the `Modal` component and the following additional props:
+
+- `prefix`: The prefix used in the global class names.
+- `onSecondaryButtonClick`: The function to call when the secondary button is clicked
+- `primaryButtonRef`: The ref to the primary button
+- `secondaryButtonRef`: The ref to the secondary button
+
+```jsx
+() => {
+  const ModalFooter = () => (
+    <a onSecondaryButtonClick={() => console.log("secondary button clicked")}>
+      Custom Footer
+    </a>
+  );
+
+  return <Modal open components={{ ModalFooter }} />;
+};
 ```

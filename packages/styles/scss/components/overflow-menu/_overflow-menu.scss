@@ -297,7 +297,7 @@
   .#{$prefix}--overflow-menu-options__option--danger
     .#{$prefix}--overflow-menu-options__btn:focus {
     background-color: button.$button-danger-primary;
-    color: $text-on-color;
+    color: $text-inverse-default;
 
     svg {
       fill: currentColor;

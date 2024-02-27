@@ -18,6 +18,10 @@ export interface MainNavigationContextType {
    * Toggle the mobile menu
    */
   toggleMenu: () => void;
+  /**
+   * Set the mobile menu to open or closed
+   */
+  setOpenMobileMenu: (open: boolean) => void;
 }
 
 const MainNavigationContext = React.createContext<MainNavigationContextType>({
@@ -25,5 +29,6 @@ const MainNavigationContext = React.createContext<MainNavigationContextType>({
   activeMenuItem: null,
   openMobileMenu: false,
   toggleMenu: () => {},
+  setOpenMobileMenu: () => {},
 });
 export default MainNavigationContext;

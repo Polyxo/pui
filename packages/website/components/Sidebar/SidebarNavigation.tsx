@@ -112,7 +112,6 @@ export const createPathTree = (paths: any) => {
 };
 
 export default function SidebarNavigation({ post, posts, slug }: any) {
-  console.log("posts", posts);
   const postSplit = posts.map((p) => {
     return {
       key: "/" + p.slug,
@@ -123,7 +122,6 @@ export default function SidebarNavigation({ post, posts, slug }: any) {
   });
 
   const split: any = createPathTree(postSplit) || [];
-  console.log("split", split);
 
   deepSortByName(split.children);
 

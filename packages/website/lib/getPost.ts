@@ -1,6 +1,5 @@
 import fs from 'fs'
 import matter from 'gray-matter';
-
 import { extname, resolve, join }  from 'path';
 
 const fsPromises = fs.promises;
@@ -38,9 +37,6 @@ export async function getPostSlugs() {
 
 
 export function getPostByPath(path:any, fields:any = []) {
-
-  //const realSlug = slug.replace(/\.mdx$/, '')
- // const fullPath = foundSlug.path // join(postsDirectory, `${slug.joi}.mdx`);
   const fileContents = fs.readFileSync(path, 'utf8')
   const { data, content } = matter(fileContents);
 
@@ -48,9 +44,6 @@ export function getPostByPath(path:any, fields:any = []) {
 
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
-    /*if (field === 'slug') {
-      items[field] = realSlug
-    }*/
     if (field === 'content') {
       items[field] = content
     }

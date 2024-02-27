@@ -37,8 +37,8 @@ $input-border: 1px solid var(--neutral-100__color);
     min-width: none;
     width: 100%;
     padding: 0 $spacing-06 0 $spacing-03;
-    color: $text-primary;
-    background-color: $field;
+    color: $text-body-default;
+    background-color: $fill-field;
     border: $input-border;
     order: 2;
     border-radius: 0;
@@ -63,7 +63,7 @@ $input-border: 1px solid var(--neutral-100__color);
     }
 
     &[data-invalid]:focus ~ .#{$prefix}--label {
-      color: $support-error;
+      color: $support-error-main;
     }
 
     &:disabled {
@@ -92,8 +92,8 @@ $input-border: 1px solid var(--neutral-100__color);
     top: 0em;
     right: 0.7em;
     height: 100%;
-    color: $interactive;
-    //stroke: $interactive;
+    color: $action-default-fill-primary-default;
+    //stroke: $action-default-fill-primary-default;
     //stroke-width: 0.8px;
     overflow: visible;
     pointer-events: none;
@@ -110,7 +110,7 @@ $input-border: 1px solid var(--neutral-100__color);
 
   .#{$prefix}--select-optgroup,
   .#{$prefix}--select-option {
-    color: $text-primary; // For the options to show in IE11
+    color: $text-body-default; // For the options to show in IE11
   }
 
   .#{$prefix}--select-option[disabled] {
@@ -122,11 +122,11 @@ $input-border: 1px solid var(--neutral-100__color);
   @-moz-document url-prefix() {
     .#{$prefix}--select-option {
       background-color: $background-main;
-      color: $text-primary;
+      color: $text-body-default;
     }
 
     .#{$prefix}--select-optgroup {
-      color: $text-primary;
+      color: $text-body-default;
     }
   }
 
@@ -163,7 +163,7 @@ $input-border: 1px solid var(--neutral-100__color);
 
     .#{$prefix}--select-input {
       background-color: transparent;
-      color: $interactive;
+      color: $action-default-fill-primary-default;
       font-weight: 600;
       box-shadow: none;
 
@@ -181,11 +181,11 @@ $input-border: 1px solid var(--neutral-100__color);
       }
 
       &[data-invalid] {
-        color: $text-primary;
+        color: $text-body-default;
         outline-offset: 2px;
 
         &:focus {
-          outline: 1px solid $support-error;
+          outline: 1px solid $support-error-main;
           box-shadow: none;
         }
       }

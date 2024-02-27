@@ -1,15 +1,15 @@
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../motion' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
-@use '../../theme' as *;
-@use '../../utilities/component-reset';
-@use '../../utilities/convert' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/high-contrast-mode' as *;
-@use '../../utilities/skeleton' as *;
-@use '../link';
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../motion" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
+@use "../../theme" as *;
+@use "../../utilities/component-reset";
+@use "../../utilities/convert" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/high-contrast-mode" as *;
+@use "../../utilities/skeleton" as *;
+@use "../link";
 
 /// Story styles
 /// @access public
@@ -84,6 +84,10 @@
     margin-top: $spacing-06;
   }
 
+  ul + div {
+    margin-top: $spacing-07;
+  }
+
   ul + h2 {
     margin-top: $spacing-07;
   }
@@ -105,6 +109,10 @@
   }
 
   p + div {
+    margin-top: $spacing-05;
+  }
+
+  > div + div {
     margin-top: $spacing-05;
   }
 
@@ -205,9 +213,9 @@
   }
 
   .#{$prefix}--story__sub-heading {
-    @include type-style('heading-01');
+    @include type-style("heading-01");
     font-weight: normal;
-    color: $text-secondary;
+    color: $text-body-secondary;
     margin-top: $spacing-02 !important;
     margin-bottom: $spacing-02;
     font-style: italic;
@@ -223,7 +231,7 @@
 
   .#{$prefix}--markup {
     font-style: italic;
-    @include type-style('heading-02');
+    @include type-style("heading-02");
     margin-bottom: $spacing-06;
   }
 
@@ -257,7 +265,7 @@
 @mixin story {
   .#{$prefix}--story {
     @include reset;
-    @include font-family('sans');
+    @include font-family("sans");
     //-webkit-font-smoothing: antialiased;
     //-moz-osx-font-smoothing: grayscale;
     &__center {
@@ -278,7 +286,7 @@
   }
 
   .#{$prefix}--story__a {
-    color: $link-primary;
+    color: $action-default-link-default;
     &:hover {
       text-decoration: underline;
     }
@@ -298,46 +306,46 @@
   }
 
   .#{$prefix}--text__story-title {
-    @include type-style('story-title');
+    @include type-style("story-title");
     margin-bottom: $spacing-07;
     margin-left: -0.058em;
     font-weight: 500;
   }
 
   .#{$prefix}--helper {
-    @include type-style('helper');
+    @include type-style("helper");
   }
 
   .#{$prefix}--text__body-regular {
-    @include type-style('body-regular');
+    @include type-style("body-regular");
   }
 
   .#{$prefix}--text__input {
-    @include type-style('input');
+    @include type-style("input");
   }
 
   .#{$prefix}--story__content-title {
-    @include type-style('productive-heading-05');
+    @include type-style("productive-heading-05");
     margin-bottom: $spacing-06;
     margin-left: -0.058em;
   }
 
   .#{$prefix}--text__story-sub-title {
-    @include type-style('story-sub-title');
-    color: $interactive;
+    @include type-style("story-sub-title");
+    color: $action-default-fill-primary-default;
     margin-top: $spacing-07;
     margin-bottom: $spacing-02;
   }
 
   .#{$prefix}--story__code {
-    @include type-style('code-02');
-    @include font-family('code');
+    @include type-style("code-02");
+    @include font-family("code");
     padding: 0.1rem 0.4em;
     margin: 0;
     font-size: 95%;
     border-radius: 0.2em;
-    background: $layer-primary;
-    background: rgba(#111f30, 0.08);
+    background: $code-background;
+    //background: rgba(#111f30, 0.08);
   }
 
   .#{$prefix}--story__pre {
@@ -345,12 +353,12 @@
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
-    background: $layer-primary;
+    background: $code-background;
     border-radius: 6px;
     .#{$prefix}--story__code,
     code {
-      @include type-style('code-02');
-      @include font-family('code');
+      @include type-style("code-02");
+      @include font-family("code");
       display: inline;
       max-width: auto;
       padding: 0;
@@ -378,11 +386,11 @@
   }
 
   .#{$prefix}--text__story-h1 {
-    @include type-style('story-h1');
+    @include type-style("story-h1");
   }
 
   .#{$prefix}--text__story-h2 {
-    @include type-style('story-h2');
+    @include type-style("story-h2");
     margin-top: $spacing-07;
 
     &.before--img {
@@ -392,28 +400,28 @@
 
   .#{$prefix}--text__story-h3 {
     margin-top: $spacing-07;
-    @include type-style('story-h3');
+    @include type-style("story-h3");
     // font-size: $typography-body-copy-16px-bold-font-weight;
     // font-weight: $typography-body-copy-16px-bold-font-weight;
   }
 
   .#{$prefix}--text__story-h4 {
     margin-top: $spacing-06;
-    @include type-style('story-h4');
+    @include type-style("story-h4");
   }
 
   .#{$prefix}--text__story-h5 {
     margin-top: $spacing-06;
-    @include type-style('story-h5');
+    @include type-style("story-h5");
   }
 
   .#{$prefix}--text__story-h6 {
     margin-top: $spacing-06;
-    @include type-style('story-h6');
+    @include type-style("story-h6");
   }
 
   .#{$prefix}--story__caption {
-    @include type-style('caption');
+    @include type-style("caption");
   }
 
   .#{$prefix}--story__sup {
@@ -427,11 +435,11 @@
       text-decoration: none;
 
       &:before {
-        content: '[';
+        content: "[";
       }
 
       &:after {
-        content: ']';
+        content: "]";
       }
     }
   }
@@ -471,19 +479,19 @@
   $spacing-6xl: $spacing-baseline * 6 !default;
 
   $spacing-map: (
-    'none': 0,
-    '3xs': $spacing-3xs,
-    '2x': $spacing-2xs,
-    'xs': $spacing-xs,
-    'sm': $spacing-sm,
-    'md': $spacing-md,
-    'lg': $spacing-lg,
-    'xl': $spacing-xl,
-    '2xl': $spacing-2xl,
-    '3xl': $spacing-3xl,
-    '4xl': $spacing-4xl,
-    '5xl': $spacing-5xl,
-    '6xl': $spacing-6xl,
+    "none": 0,
+    "3xs": $spacing-3xs,
+    "2x": $spacing-2xs,
+    "xs": $spacing-xs,
+    "sm": $spacing-sm,
+    "md": $spacing-md,
+    "lg": $spacing-lg,
+    "xl": $spacing-xl,
+    "2xl": $spacing-2xl,
+    "3xl": $spacing-3xl,
+    "4xl": $spacing-4xl,
+    "5xl": $spacing-5xl,
+    "6xl": $spacing-6xl,
   );
 
   /*

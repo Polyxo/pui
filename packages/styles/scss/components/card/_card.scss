@@ -13,7 +13,7 @@
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.15);
 
     a {
-      color: $text-primary;
+      color: $text-body-default;
       text-decoration: none;
     }
   }
@@ -33,7 +33,7 @@
       display: none;
     }
     .#{$prefix}--photo-cardnew__info__title {
-      color: $interactive;
+      color: $action-default-fill-primary-default;
 
       &:hover {
         text-decoration: underline;
@@ -47,7 +47,7 @@
     @include type-style("caption");
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    // color: $text-primary;
+    // color: $text-body-default;
   }
 
   .#{$prefix}--photo-cardnew__info__subtitle {
@@ -86,7 +86,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: $text-on-color;
+      color: $text-inverse-default;
       background: rgba(#0b1923, 0.9); // hex is for $overlay token
     }
     // .#{$prefix}--photo-cardnew__info {

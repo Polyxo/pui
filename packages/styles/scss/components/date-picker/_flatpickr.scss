@@ -338,13 +338,13 @@
     }
 
     &:hover::after {
-      border-top-color: $interactive-01;
-      border-bottom-color: $interactive-01;
+      border-top-color: $action-default-fill-primary-default-01;
+      border-bottom-color: $action-default-fill-primary-default-01;
     }
 
     &:active::after {
-      border-top-color: $interactive-04;
-      border-bottom-color: $interactive-04;
+      border-top-color: $action-default-fill-primary-default-04;
+      border-bottom-color: $action-default-fill-primary-default-04;
     }
   }
 
@@ -434,7 +434,7 @@
     &:focus {
       @include focus-outline("outline");
 
-      outline-color: $interactive-01;
+      outline-color: $action-default-fill-primary-default-01;
     }
   }
 
@@ -479,7 +479,7 @@
   }
 
   .flatpickr-day.selected {
-    background-color: $interactive-01;
+    background-color: $action-default-fill-primary-default-01;
     color: $text-04;
     @include high-contrast-mode("focus") {
       outline-style: dotted;
@@ -512,7 +512,7 @@
   }
 
   .flatpickr-day.endRange.inRange.selected {
-    background: $interactive-01;
+    background: $action-default-fill-primary-default-01;
     color: $text-04;
   }
 

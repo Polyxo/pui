@@ -29,7 +29,7 @@
 
   .#{$prefix}--file--invalid {
     margin-right: $spacing-05;
-    fill: $support-error;
+    fill: $support-error-main;
   }
 
   // TODO: sync with type
@@ -38,7 +38,7 @@
     // @include type-style('productive-heading-01');
 
     margin-bottom: $spacing-05;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   // .#{$prefix}--file--label--disabled {
@@ -80,7 +80,7 @@
     }
 
     &:active {
-      color: $text-primary;
+      color: $text-body-default;
     }
   }
 
@@ -106,7 +106,7 @@
     // @include type-style('body-short');
 
     margin-bottom: $spacing-05;
-    color: $text-secondary;
+    color: $text-body-secondary;
   }
 
   // .#{$prefix}--label-description--disabled {
@@ -133,7 +133,7 @@
     min-height: $spacing-05;
     align-items: center;
     margin-bottom: $spacing-05;
-    background-color: $field;
+    background-color: $fill-field;
     gap: calcRem(12px) $spacing-05;
     grid-auto-rows: auto;
     grid-template-columns: 1fr auto;
@@ -177,7 +177,7 @@
 
     max-width: calcRem(320px);
     margin-bottom: $spacing-05;
-    background-color: $field;
+    background-color: $fill-field;
     outline-width: 1px;
   }
 
@@ -211,7 +211,7 @@
 
   .#{$prefix}--file__selected-file--invalid
     .#{$prefix}--form-requirement__supplement {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   // TODO: deprecate
@@ -230,7 +230,7 @@
     + .#{$prefix}--form-requirement
     .#{$prefix}--form-requirement__supplement {
     padding-bottom: $spacing-05;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--file__state-container {
@@ -247,7 +247,7 @@
 
   .#{$prefix}--file__state-container .#{$prefix}--file-complete {
     cursor: pointer;
-    // fill: $interactive;
+    // fill: $action-default-fill-primary-default;
 
     &:focus {
       @include focus-outline("border");
@@ -263,7 +263,7 @@
   .#{$prefix}--file__state-container .#{$prefix}--file-invalid {
     width: $spacing-05;
     height: $spacing-05;
-    fill: $support-error;
+    fill: $support-error-main;
     margin-right: $spacing-05;
   }
 

@@ -53,8 +53,8 @@
     height: calcRem(40px);
     border: none;
     border-bottom: 1px solid $border-strong;
-    background-color: $field;
-    color: $text-primary;
+    background-color: $fill-field;
+    color: $text-body-default;
     cursor: pointer;
     list-style: none;
     outline: 2px solid transparent;
@@ -114,12 +114,12 @@
     position: absolute;
     top: 50%;
     right: $spacing-08;
-    fill: $support-error;
+    fill: $support-error-main;
     transform: translateY(-50%);
   }
 
   .#{$prefix}--dropdown--open:hover {
-    background-color: $field;
+    background-color: $fill-field;
   }
 
   .#{$prefix}--dropdown--open:focus {
@@ -162,7 +162,7 @@
     border: none;
     // button-reset mixin contradicts with bx--dropdown-text styles
     background: none;
-    color: $text-primary;
+    color: $text-body-default;
     text-align: left;
 
     &:focus {
@@ -253,7 +253,7 @@
     border: 1px solid transparent;
     border-top-color: $border-subtle;
     margin: 0 $spacing-05;
-    color: $text-secondary;
+    color: $text-body-secondary;
     font-weight: normal;
     line-height: 1rem;
     text-decoration: none;
@@ -349,7 +349,7 @@
     border-bottom-color: transparent;
 
     &:hover {
-      background-color: $field;
+      background-color: $fill-field;
     }
 
     &:focus {
@@ -415,7 +415,7 @@
     overflow: visible;
     height: calcRem(32px);
     padding: calcRem(7px) $spacing-07 calcRem(7px) $spacing-04;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--dropdown--inline.#{$prefix}--dropdown--disabled
@@ -450,7 +450,7 @@
   .#{$prefix}--dropdown--show-selected .#{$prefix}--dropdown--selected {
     display: block;
     background-color: $layer-hover;
-    color: $text-primary;
+    color: $text-body-default;
 
     &:hover {
       background-color: $layer-selected;

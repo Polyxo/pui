@@ -17,7 +17,11 @@ const baseConfig = {
   external: [
     ...Object.keys(packageJson.peerDependencies),
     ...Object.keys(packageJson.dependencies),
+    ...Object.keys(packageJson.devDependencies),
     "prop-types",
+    "react",
+    "react-dom",
+    "classnames",
   ],
 
   plugins: [
@@ -67,18 +71,13 @@ const baseConfig = {
   ],
 };
 
-const umdExternalDependencies = [
-  ...Object.keys(packageJson.peerDependencies),
-  ...Object.keys(packageJson.devDependencies),
-].filter((dependency) => dependency !== "carbon-components");
-
 const umdBundleConfig = {
   input: baseConfig.input,
   treeshake: {
     propertyReadSideEffects: false,
     moduleSideEffects: "no-external",
   },
-  external: [...umdExternalDependencies, "prop-types"],
+  external: baseConfig.external,
   output: {
     file: "es/index.js",
     format: "es",
@@ -108,7 +107,7 @@ module.exports = [
   // CommonJS: lib/index.js
   {
     ...baseConfig,
-    external: umdBundleConfig.external,
+    external: baseConfig.external,
     output: [
       /*{
         format: 'esm',
@@ -131,7 +130,6 @@ module.exports = [
         preventAssignment: true,
         "process.env.NODE_ENV": JSON.stringify("development"),
       }),
-      visualizer(),
     ],
     output: {
       ...umdBundleConfig.output,
@@ -147,7 +145,6 @@ module.exports = [
         preventAssignment: true,
         "process.env.NODE_ENV": JSON.stringify("development"),
       }),
-      visualizer(),
     ],
     output: {
       ...umdBundleConfig.output,
@@ -166,7 +163,7 @@ module.exports = [
         "process.env.NODE_ENV": JSON.stringify("production"),
       }),
       terser(),
-      visualizer(),
+      visualizer({ template: "sunburst" }),
     ],
     output: {
       ...umdBundleConfig.output,

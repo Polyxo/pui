@@ -1,6 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 // src/components/CodeBlock.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
 import stylesModule from "./codeBlockLive.module.scss";
 import {
@@ -16,6 +16,7 @@ import { DoUse, DoNotUse } from "../DoUse";
 import { Controller, useForm } from "react-hook-form";
 import classNames from "classnames";
 import ReactDatePicker from "react-datepicker";
+import Frame from "react-frame-component";
 
 //import MDX from '@mdx-js/runtime';
 //import components from '../';
@@ -32,9 +33,15 @@ import babelParser from "prettier/parser-babel";
 import htmlParser from "prettier/parser-html";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheckSquare,
-  faMinusSquare,
+  faCode,
+  faDesktop,
+  faLeftLong,
+  faMobileAlt,
+  faRightLong,
 } from "@fortawesome/free-solid-svg-icons";
+import useGenerateCodeSandbox from "../../../PropTypes/useGenerateCodeSandbox";
+import { faCodepen, faHtml5 } from "@fortawesome/free-brands-svg-icons";
+import InnerFrame from "./InnerFrame";
 
 const countLines = (str) => {
   return str.split("\n").length;
@@ -72,6 +79,7 @@ const CodeBlockLive = (props: any) => {
     className = "",
     live,
     center,
+    componentName,
     forceFullWidth,
     noCode,
     hideWrapper,
@@ -80,10 +88,18 @@ const CodeBlockLive = (props: any) => {
     view,
     source,
     width,
+    size: sizeProp = "desktop",
     expandCode,
     reactHookForm,
   } = props;
 
+  const [isMounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const [size, setSize] = useState(sizeProp);
   const [showHtml, setShowHtml] = useState(false);
   const [showCode, setShowCode] = useState(
     noCode !== undefined ? !noCode : showEditor
@@ -155,6 +171,11 @@ const CodeBlockLive = (props: any) => {
 
   let formatedCode = code;
 
+  const { generateCodeSandbox } = useGenerateCodeSandbox({
+    componentName,
+    formatedCode,
+  });
+
   try {
     formatedCode =
       language === "jsx" || 1 === 1
@@ -202,15 +223,25 @@ const CodeBlockLive = (props: any) => {
       [stylesModule.showWrapper]: !hideWrapper,
       [stylesModule.center]: center,
       [stylesModule.notCenter]: !center,
-      [stylesModule.fullWidth]: forceFullWidth,
-      [stylesModule.normalWidth]: !forceFullWidth,
+      [stylesModule.fullWidth]:
+        (forceFullWidth || width >= 800) && size === "desktop",
+      [stylesModule.normalWidth]: !forceFullWidth && (width < 800 || !width),
       [stylesModule.expandCode]: showAllCode,
       [stylesModule.collapseCode]: !showAllCode,
       [stylesModule.showExpandButton]: showExpandButton,
       [stylesModule.reactHookForm]: reactHookForm,
       [stylesModule.rtl]: rtl,
+      [`${stylesModule[size]}`]: size,
       [`${stylesModule[view]}`]: view,
     });
+
+    const livePreview = (
+      <LivePreview
+        className={`${stylesModule.preview}`} // ${width ? styles.scrollable : ""}
+        dir={rtl ? "rtl" : "ltr"}
+        style={{ minWidth: width ? width + "px" : undefined }}
+      />
+    );
 
     return (
       <div className={codeBlockClasses}>
@@ -218,10 +249,23 @@ const CodeBlockLive = (props: any) => {
           <div className={stylesModule.buttons}>
             <Button
               className={stylesModule.showAllPropsButton}
+              kind="ghost"
               iconReverse
               icon={
-                <FontAwesomeIcon icon={rtl ? faCheckSquare : faMinusSquare} />
+                <FontAwesomeIcon
+                  icon={size === "desktop" ? faDesktop : faMobileAlt}
+                />
               }
+              onClick={() => setSize(size === "desktop" ? "mobile" : "desktop")}
+            >
+              Size
+            </Button>
+
+            <Button
+              className={stylesModule.showAllPropsButton}
+              kind="ghost"
+              iconReverse
+              icon={<FontAwesomeIcon icon={rtl ? faRightLong : faLeftLong} />}
               onClick={() => setRtl(!rtl)}
             >
               RTL
@@ -229,30 +273,33 @@ const CodeBlockLive = (props: any) => {
             <Button
               className={stylesModule.showAllPropsButton}
               onClick={() => setShowCode(!showCode)}
+              kind="ghost"
               iconReverse
-              icon={
-                <FontAwesomeIcon
-                  icon={showCode ? faCheckSquare : faMinusSquare}
-                />
-              }
+              icon={<FontAwesomeIcon icon={faCode} />}
             >
               code
             </Button>
             <Button
               className={stylesModule.showAllPropsButton}
               onClick={() => setShowHtml(!showHtml)}
+              kind="ghost"
               iconReverse
-              icon={
-                <FontAwesomeIcon
-                  icon={showHtml ? faCheckSquare : faMinusSquare}
-                />
-              }
+              icon={<FontAwesomeIcon icon={faHtml5} />}
             >
               html
             </Button>
+
+            <Button
+              kind="ghost"
+              iconReverse
+              className={stylesModule.showAllPropsButton}
+              onClick={generateCodeSandbox}
+              icon={<FontAwesomeIcon icon={faCodepen} />}
+            >
+              Codesandbox
+            </Button>
           </div>
         )}
-
         <LiveProvider
           code={formatedCode}
           scope={scope}
@@ -261,19 +308,30 @@ const CodeBlockLive = (props: any) => {
           transformCode={cleanCode}
         >
           {language === "mdx" || language === "md" ? (
-            <div className={stylesModule.preview}>
-              {/*<MDXProvider components={components}>
-                <MDX>{code}</MDX>
-          </MDXProvider> */}
-            </div>
+            <div className={stylesModule.preview}></div>
           ) : (
             <div className={stylesModule.previewWrapper}>
               <div className={stylesModule.previewInside}>
-                <LivePreview
-                  className={stylesModule.preview}
-                  dir={rtl ? "rtl" : "ltr"}
-                  style={{ width: width ? width + "px" : undefined }}
-                />
+                {size !== "desktop" ? (
+                  <>
+                    {isMounted && (
+                      <div className={stylesModule.mobileFrame}>
+                        <div
+                          className={stylesModule.mobileFrameButtonVolumeUp}
+                        />
+                        <div
+                          className={stylesModule.mobileFrameButtonVolumeDown}
+                        />
+                        <div className={stylesModule.powerButton} />
+                        <Frame>
+                          <InnerFrame />
+                        </Frame>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  livePreview
+                )}
               </div>
             </div>
           )}
@@ -289,10 +347,17 @@ const CodeBlockLive = (props: any) => {
                     {showAllCode ? "Collapse code" : "Expand code"}
                   </div>
                 )}
-                <h3> Editable Example</h3>
+                <h3 className={stylesModule.exampleHeading}>
+                  Editable Example
+                </h3>
                 <LiveEditor theme={themes.vsDark} />
               </div>
-              {language === "jsx" && showHtml && <LiveHtmlHoc />}
+              {language === "jsx" && showHtml && (
+                <>
+                  <h3 className={stylesModule.exampleHeading}>HTML</h3>
+                  <LiveHtmlHoc />
+                </>
+              )}
             </>
           )}
           <LiveError />
@@ -345,6 +410,7 @@ interface PreProps {
   reactHookForm?: boolean;
   forceFullWidth?: boolean;
   noCode?: boolean;
+  size?: string;
   children?: /*| React.ReactElement<any, any>
     | JSX.Element
     | React.ReactFragment*/
@@ -359,6 +425,7 @@ export function Pre({
   forceFullWidth,
   noCode,
   children,
+  size,
   ...props
 }: PreProps) {
   if (React.isValidElement(children) /*&& children?.type?.name === 'code'*/) {
@@ -371,6 +438,7 @@ export function Pre({
           noInline={noInline}
           reactHookForm={reactHookForm}
           noCode={noCode}
+          size={size}
           forceFullWidth={forceFullWidth}
           {...childProps}
         />

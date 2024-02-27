@@ -9,13 +9,13 @@ import { ModalProps } from "../Modal/Modal";
 interface ModalWrapperProps
   extends ModalProps,
     React.ComponentPropsWithRef<"div"> {
+  /**
+   * ID of the trigger button.
+   */
   id?: string;
   /*status?: string;
    */
-  disabled?: boolean /*
-  components?: {
-    Wrapper?: React.ReactNode;
-  };*/;
+  disabled?: boolean;
   /**
    * Specify a custom trigger `Button`.
    */
@@ -28,17 +28,6 @@ interface ModalWrapperProps
    * Specify a `class` for the trigger `Button`.
    */
   buttonTriggerClassName?: string;
-  /*modalLabel?: React.ReactNode;
-  modalHeading?: React.ReactNode;
-  modalText?: React.ReactNode;
-  passiveModal?: boolean;
-  withHeader?: boolean;
-  danger?: boolean;
-  modalBeforeContent?: boolean;
-  primaryButtonText?: React.ReactNode;
-  width?: 'wide' | 'narrow';
-  secondaryButtonText?: React.ReactNode;
-  */
   /**
    * @param handle - function to open the modal
    */
@@ -51,12 +40,22 @@ interface ModalWrapperProps
    * @param handle - function to close the modal
    */
   handleClose?: () => void;
+  /**
+   * Specify the kind of trigger `Button`.
+   */
   triggerButtonKind?: ButtonKind;
+  /**
+   * Specify whether the Modal should be closed after submit
+   */
   shouldCloseAfterSubmit?: boolean;
+  /**
+   * Specify whether the primary button should be disabled or not
+   */
   primaryButtonDisabled?: boolean;
+  /**
+   * A function that is called when the user presses the `Esc` key to close the modal.
+   */
   onKeyDown?: (evt: React.KeyboardEvent<HTMLDivElement>) => void;
-  /*primaryButtonRef?: React.RefObject<HTMLButtonElement>;
-  secondaryButtonRef?: React.RefObject<HTMLButtonElement>*/
 }
 
 const ModalWrapper: React.FC<ModalWrapperProps> = ({

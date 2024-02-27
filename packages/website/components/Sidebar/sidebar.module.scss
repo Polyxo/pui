@@ -66,7 +66,7 @@
   font-weight: 600;
   font-size: 1em;
   position: relative;
-  color: $link-primary;
+  color: $action-default-link-default;
   text-decoration: none;
   > svg {
     margin-right: 0.3em;
@@ -83,7 +83,7 @@
     font-size: 2em;
   }
   position: relative;
-  color: $link-primary;
+  color: $action-default-link-default;
   text-decoration: none;
   > svg {
     margin-right: 0.3em;
@@ -165,7 +165,7 @@
 
 .excerpt {
   font-size: 1.1em;
-  color: $text-secondary;
+  color: $text-body-secondary;
   font-style: italic;
 }
 
@@ -181,5 +181,5 @@
 .propTitle {
   font-weight: 600;
   margin-top: 2em;
-  margin-bottom: 0.1em;
+  margin-bottom: 0.3em;
 }

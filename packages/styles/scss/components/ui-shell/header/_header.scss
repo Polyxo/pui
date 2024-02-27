@@ -149,7 +149,7 @@
 
   a.#{$prefix}--header__name,
   a.#{$prefix}--header__name:hover {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--header__menu-toggle:not(.#{$prefix}--header__menu-toggle__hidden)
@@ -202,7 +202,7 @@
     // Used for focus styles
     border: 2px solid transparent;
     background-color: $background-main;
-    color: $text-secondary;
+    color: $text-body-secondary;
     // Text styles
     font-size: calcRem(14px);
     font-weight: 400;
@@ -217,13 +217,13 @@
 
   a.#{$prefix}--header__menu-item:hover {
     background-color: $background-hover;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--header__action:active,
   a.#{$prefix}--header__menu-item:active {
     background-color: $background-active;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   a.#{$prefix}--header__menu-item:focus {
@@ -240,7 +240,7 @@
 
   a.#{$prefix}--header__menu-item[aria-current="page"],
   .#{$prefix}--header__menu-item--current {
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   a.#{$prefix}--header__menu-item[aria-current="page"]::after,
@@ -278,7 +278,7 @@
     // the next level.
     z-index: #{z("header") + 1};
     background-color: $layer-primary;
-    color: $text-secondary;
+    color: $text-body-secondary;
   }
 
   .#{$prefix}--header__menu-title[aria-expanded="true"]
@@ -317,14 +317,14 @@
     + .#{$prefix}--header__menu
     .#{$prefix}--header__menu-item:hover {
     background-color: $layer-hover;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--header__menu-title[aria-expanded="true"]
     + .#{$prefix}--header__menu
     .#{$prefix}--header__menu-item:active {
     background-color: $layer-active;
-    color: $text-primary;
+    color: $text-body-default;
   }
 
   .#{$prefix}--header__menu .#{$prefix}--header__menu-item {
@@ -375,7 +375,7 @@
     border: 4px solid $focus;
     background-color: $background-main;
     clip: auto;
-    color: $text-secondary;
+    color: $text-body-secondary;
     //TO-DO: double check with design that these tokens are correct, missing spec for it
     outline: none;
   }
