@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 11.17.17 (2024-02-27)
+
+
+### Bug Fixes
+
+* **release:** env release vars ([ad6a891](https://github.com/wfp/designsystem/commit/ad6a89125796c7d31d993dacaa0597918a006cba))
+
+
+
+
+
 ## 11.17.16 (2024-02-27)
 
 **Note:** Version bump only for package @wfp/pictograms
