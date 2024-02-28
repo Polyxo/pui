@@ -205,7 +205,7 @@ export default function SidebarWrapper({
               lastUrlPath !== "props"
                 ? post.headings
                 : propTypes.map((p: any) => {
-                    return { value: p.displayName };
+                    return p.displayName;
                   })
             }
           />
