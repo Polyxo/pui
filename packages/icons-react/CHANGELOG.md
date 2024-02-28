@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 10.37.17 (2024-02-28)
+
+
+### Bug Fixes
+
+* **website:** PropTypes table updated ([96c632a](https://github.com/wfp/designsystem/commit/96c632a4fe5c32399eb020af685811eb3b07d360))
+
+
+
+
+
 ## 10.37.16 (2024-02-27)
 
 **Note:** Version bump only for package @wfp/icons-react
