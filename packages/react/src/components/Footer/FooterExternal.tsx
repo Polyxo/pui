@@ -2,7 +2,7 @@ import * as React from "react";
 import Wrapper from "../Wrapper";
 import type { PropsWithChildren } from "react";
 import classNames from "classnames";
-import { WfpLogoVerticalEn } from "@wfp/pictograms-react";
+import { WfpLogoVerticalEn } from "@wfp/icons-react";
 import {
   LinkedIn,
   Facebook,

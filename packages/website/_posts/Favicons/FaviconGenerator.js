@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
   Button,
   TextInput,
   Module,
   ModuleBody,
   ReduxFormWrapper,
-} from '@wfp/react';
+} from "@wfp/react";
 
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import centerjs from './favicon/center';
+import centerjs from "./favicon/center";
 
 //import { Package } from './favicon/favicon.js';
 
@@ -24,7 +24,7 @@ const canvas = {
   height: 128,
 };
 
-function FaviconCanvas({ name = 'WFP', updateUrl }) {
+function FaviconCanvas({ name = "WFP", updateUrl }) {
   const canvasRef = useRef();
 
   useEffect(() => {
@@ -32,22 +32,22 @@ function FaviconCanvas({ name = 'WFP', updateUrl }) {
   }, [name]);
 
   const updateCanvas = () => {
-    const context = canvasRef.current.getContext('2d');
+    const context = canvasRef.current.getContext("2d");
     context.clearRect(0, 0, 300, 300);
 
-    var mainColor = '#0b77c2'; //colors.main.hex;
+    var mainColor = "#0b77c2"; //colors.main.hex;
 
-    const nameString = name.length >= 1 ? name : '–';
+    const nameString = name.length >= 1 ? name : "–";
     centerjs({
       canvas: canvasRef.current,
       width: canvas.width,
       height: canvas.height,
-      shape: 'square',
-      fontColor: '#ffffff',
+      shape: "square",
+      fontColor: "#ffffff",
       backgroundColor: mainColor,
       text: nameString.toUpperCase(),
-      fontFamily: 'Open Sans',
-      fontWeight: 'bold',
+      fontFamily: "Open Sans",
+      fontWeight: "bold",
       fontSize: 15 + (120 * 1) / nameString.length,
     });
   };
@@ -60,14 +60,14 @@ const onSubmit = async (values) => {
 };
 
 export default function FaviconGenerator() {
-  const [name, setName] = useState('WFP');
+  const [name, setName] = useState("WFP");
   const [dataUrl, setDataUrl] = useState([]);
   const faviconRef = useRef();
 
   const generateFiles = async () => {
-    const canvas = document.getElementById('canvas');
+    const canvas = document.getElementById("canvas");
 
-    const { Package } = await import('./favicon/favicon.js');
+    const { Package } = await import("./favicon/favicon.js");
 
     const dataurl = Package.generate(canvas);
     //const dataurl = ico.generate([16, 32, 48]);
@@ -84,24 +84,26 @@ export default function FaviconGenerator() {
     <React.Fragment key={i}>
       <Button
         download={`wfp-favicon-${file}.${file.substring(0, 3)}`}
-        kind="tertiary"
+        kind="secondary"
         small
-        href={dataUrl[file]}>
+        href={dataUrl[file]}
+      >
         {file}
-      </Button>{' '}
+      </Button>{" "}
     </React.Fragment>
   ));
 
   return (
     <div>
       <form>
-        <Module light className="some-class" style={{ padding: '1em 0' }}>
+        <Module light className="some-class" style={{ padding: "1em 0" }}>
           <ModuleBody>
             <div
               style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}>
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <div className="wfp--form-long">
                 <TextInput
                   type="text"
@@ -117,7 +119,7 @@ export default function FaviconGenerator() {
                     Generate files
                   </Button>
                 </div>
-                <div style={{ marginBottom: '1rem' }}>
+                <div style={{ marginBottom: "1rem" }}>
                   {Object.keys(dataUrl).length > 0 && (
                     <React.Fragment>
                       <h4>Download</h4>

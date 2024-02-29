@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Checkbox,
   Select,
@@ -9,6 +11,7 @@ import {
   Tooltip,
   Text,
   TextInput,
+  useMediaQuery,
 } from "@wfp/react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -75,6 +78,10 @@ export default function PropTypes({
   view,
 }: any) {
   const currentComponentsSettings = componentsNew?.[propTypes?.displayName];
+
+  const isDesktop = useMediaQuery("(min-width: 768px)", {
+    defaultValue: true,
+  });
 
   const componentsSourceText =
     componentsSource[
@@ -309,35 +316,7 @@ export default function PropTypes({
     } catch (error) {
       console.log("Transform failed", error);
     }
-
-    // console.log("codeNew", reactElementToJSXString(enhancedElement));
-    /*const codeFiltered = reactElementToJSXString(
-      <MyComponent
-        {...defaultProps}
-        {...componentProps}
-        children={<div>ddsadsa</div>}
-      />,
-      { filterProps: (val) => (val === undefined ? false : true) }
-    ); */
-    // .replace(`<${mainComponent}`, ``)
-    // .replace(`</${mainComponent}>`, ``);
-
-    //code = codeFiltered
-    /* sampleCode
-      .replace("PROPS_HERE", codeFiltered)
-      .replace("{...args}", codeFiltered) */
   }
-
-  //if (componentProps.children) {
-  //code = code.replace("/>", `</${mainComponent}>`);
-  //  }
-
-  // TODO: MainNavigation replace improve string replace
-  /* code = code
-    .replaceAll(`/>>`, `>`)
-    .replaceAll(` /> />`, `/>`)
-    .replaceAll(`/> />`, `/>`); */
-  //.replaceAll(`/>`, ``);
 
   const componentsUsedInCode: any = [];
   Object.entries(wfpComponents).forEach(([index]) => {
@@ -349,6 +328,7 @@ export default function PropTypes({
   const componentList = componentsUsedInCode.join(", ");
 
   code = `import { ${componentList} } from "@wfp/react";
+  
 
 
 
@@ -414,16 +394,41 @@ export default function PropTypes({
                   <th>Prop</th>
 
                   <th className={styles.default}>Default</th>
-                  <th className={styles.description}>Description</th>
+                  {isDesktop && (
+                    <th className={styles.description}>Description</th>
+                  )}
                   <th className={styles.propValue}>Value</th>
                 </tr>
               </thead>
               <tbody>
                 {propsAsList.map((prop: any) => {
+                  const description = (
+                    <>
+                      {prop.description.includes("@deprecated") && (
+                        <Tag type="warning" className={styles.deprecated}>
+                          Deprecated
+                        </Tag>
+                      )}
+
+                      <Markdown>
+                        {prop.description
+                          .replace("@design", "")
+                          .replace("@deprecated", "")
+                          .replaceAll("\\", "")}
+                      </Markdown>
+
+                      {prop.defaultValue && (
+                        <div>default: {prop.defaultValue.value}</div>
+                      )}
+                    </>
+                  );
+
                   return (
                     <tr key={prop.name}>
                       <td>
                         <h3 className={styles.propName}>{prop.name}</h3>
+
+                        {!isDesktop && description}
                         <div className={styles.typesWrapper}>
                           <Tooltip
                             className={styles.tooltip}
@@ -462,23 +467,7 @@ export default function PropTypes({
                         {prop.defaultValue ? prop.defaultValue.value : "–"}
                       </td>
 
-                      <td>
-                        {prop.description.includes("@deprecated") && (
-                          <Tag type="warning" className={styles.deprecated}>
-                            Deprecated
-                          </Tag>
-                        )}
-                        <Markdown>
-                          {prop.description
-                            .replace("@design", "")
-                            .replace("@deprecated", "")
-                            .replaceAll("\\", "")}
-                        </Markdown>
-
-                        {prop.defaultValue && (
-                          <div>default: {prop.defaultValue.value}</div>
-                        )}
-                      </td>
+                      {isDesktop && <td>{description}</td>}
                       <td className={styles.propValue}>{renderInput(prop)}</td>
                     </tr>
                   );

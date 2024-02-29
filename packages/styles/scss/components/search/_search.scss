@@ -393,12 +393,8 @@ $input-border: 1px solid var(--neutral-100__color);
     height: calcRem(30px);
     padding: 0 $spacing-07; //xl
     @include type.type-style("body-short-02");
-    transition: max-width 0.2s;
     @include breakpoint(lg) {
       max-width: calcRem(150px);
-      &:focus {
-        max-width: calcRem(230px);
-      }
     }
   }
 

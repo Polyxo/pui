@@ -140,7 +140,7 @@ const CodeBlockLive = (props: any) => {
         ${code}
   
         <Button type="submit">Submit</Button>{" "}
-        <Button onClick={resetInputs} kind="tertiary">Reset</Button>
+        <Button onClick={resetInputs} kind="secondary">Reset</Button>
 
         <h4>Submitted form data</h4>
         <pre>{JSON.stringify(data, null, 2)}</pre>

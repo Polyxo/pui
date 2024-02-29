@@ -111,17 +111,22 @@
   overflow: auto;
   max-height: 100vh;
   width: 220px;
+  @include breakpoint-down(md) {
+    display: none;
+  }
 }
 
 .sidebarAddition {
-  position: sticky;
-  top: 0;
-  margin: 2em;
-  margin-top: 4em;
   padding-top: 1em;
   //margin-left: 2em;
-  margin-inline-start: 2em;
-  width: 15em;
+  @include breakpoint-up(md) {
+    position: sticky;
+    top: 0;
+    margin: 2em;
+    margin-inline-start: 2em;
+    margin-top: 4em;
+    width: 15em;
+  }
 }
 
 .sidebarWrapper {
@@ -129,6 +134,9 @@
   align-items: flex-start;
   justify-content: space-between;
   max-width: 1500px;
+  @include breakpoint-down(md) {
+    flex-direction: column;
+  }
 }
 
 .meta {

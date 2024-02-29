@@ -174,15 +174,20 @@
 }
 
 .buttons {
-  position: absolute;
-  right: 0;
-  top: -2em;
+  @include breakpoint-up("md") {
+    position: absolute;
+    right: 0;
+    top: -2em;
+  }
 }
 
 .showAllPropsButton {
   margin-left: 0.3em;
   padding: 0.5em;
   height: 2em;
+  @include breakpoint-down("md") {
+    margin-left: -0.3em;
+  }
 }
 
 .reactHookForm {

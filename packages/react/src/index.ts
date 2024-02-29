@@ -174,8 +174,12 @@ export {
   WFPCoreContext,
   withWFPCoreSettings,
   useTheme,
+  defaultWFPContext,
 } from "./components/WFPCoreSettings";
 
 export { default as SkeletonText } from "./components/SkeletonText";
 
 export { default as colors } from "./globals/data/colors";
+
+export { useMediaQuery } from "./hooks/useMediaQuery";
+export { useIsomorphicLayoutEffect } from "./hooks/useIsomorphicLayoutEffect";

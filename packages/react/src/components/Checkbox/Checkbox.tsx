@@ -1,5 +1,4 @@
 import * as React from "react";
-import { PropsWithChildren } from "react";
 import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";
 
@@ -35,8 +34,8 @@ interface CheckboxProps
   ): void;
 }
 
-const Checkbox: React.FC<PropsWithChildren<CheckboxProps>> = React.forwardRef(
-  function Checkbox(
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  (
     {
       className,
       id,
@@ -51,7 +50,7 @@ const Checkbox: React.FC<PropsWithChildren<CheckboxProps>> = React.forwardRef(
       ...other
     },
     ref
-  ) {
+  ) => {
     const { prefix } = useSettings();
     const labelClasses = classNames(`${prefix}--checkbox-label`, className);
     const innerLabelClasses = classNames(`${prefix}--checkbox-label-text`, {
@@ -81,7 +80,7 @@ const Checkbox: React.FC<PropsWithChildren<CheckboxProps>> = React.forwardRef(
             }
             if (typeof ref === "function") {
               ref(el);
-            } else if (Object(ref) === ref) {
+            } else if (Object(ref) === ref && ref) {
               ref.current = el;
             }
           }}

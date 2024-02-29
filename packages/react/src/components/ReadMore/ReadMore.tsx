@@ -3,13 +3,19 @@ import classNames from "classnames";
 import Link from "../Link";
 import { CaretUp, CaretDown } from "@wfp/icons-react";
 import useSettings from "../../hooks/useSettings";
+import { useId } from "../../hooks/useId";
 
-const MoreLink = ({ handleToggleClick, link, text, showMore }) => {
+const MoreLink = ({ handleToggleClick, link, text, showMore, contentId }) => {
   const { prefix } = useSettings();
+  const ariaProps = {
+    "aria-expanded": showMore,
+    "aria-controls": contentId,
+  };
 
   if (link) {
     const clonedLink = React.cloneElement(link, {
       onClick: handleToggleClick,
+      ...ariaProps, // Spread ariaProps into the clone
     });
     return clonedLink;
   } else {
@@ -19,6 +25,7 @@ const MoreLink = ({ handleToggleClick, link, text, showMore }) => {
         className={`${prefix}--read-more__trigger`}
         size="sm"
         onClick={handleToggleClick}
+        {...ariaProps} // Add aria attributes to the link
       >
         {text}
         <Icon
@@ -88,6 +95,10 @@ function ReadMore({
   const [innerHeight, setInnerHeight] = useState(0);
   const readMoreRef = useRef<HTMLInputElement>(null);
   const readMoreFakeRef = useRef<HTMLInputElement>(null);
+  const internalId = useId();
+
+  // Generate a unique ID for the content container
+  const contentId = `${internalId}-read-more-content`;
 
   const handleToggleClick = (e) => {
     e.preventDefault();
@@ -137,7 +148,11 @@ function ReadMore({
 
   return (
     <div className={classes}>
-      <div className={`${prefix}--read-more__content`} style={contentStyle}>
+      <div
+        className={`${prefix}--read-more__content`}
+        style={contentStyle}
+        id={contentId}
+      >
         <div
           className={`${prefix}--read-more__fake-height`}
           ref={readMoreFakeRef}
@@ -153,6 +168,7 @@ function ReadMore({
         showMore={showMore}
         link={showMore ? collapseLink : expandLink}
         text={showMore ? collapseText : expandText}
+        contentId={contentId}
       />
     </div>
   );

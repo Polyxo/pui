@@ -166,21 +166,15 @@ export default function SidebarWrapper({
           {post.mainComponent && lastUrlPath === "props" && (
             <>
               {propTypes.map((p: any, i: number) => (
-                <>
+                <div key={i}>
                   <h3
                     id={createSlug(p.displayName)}
                     className={styles.propTitle}
-                    key={i}
                   >
                     {p.displayName}
                   </h3>
-                  <PropTypes
-                    key={i}
-                    propTypes={p}
-                    {...post}
-                    view="propsTable"
-                  />
-                </>
+                  <PropTypes propTypes={p} {...post} view="propsTable" />
+                </div>
               ))}
             </>
           )}

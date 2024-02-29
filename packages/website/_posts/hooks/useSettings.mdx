@@ -1,0 +1,74 @@
+---
+category: "Core"
+title: "useSettings"
+excerpt: "Provides access to global settings of the WFP Digital Design System."
+slug: "Components/Hooks/useSettings"
+status: "published"
+mainComponent: "useSettings"
+---
+
+The `useSettings` custom hook is designed to provide an easy and efficient way to access global settings.
+
+## Overview
+
+`useSettings` allows components to consume application settings defined in the `WFPCoreContext` without directly interacting with the context itself. It ensures that any component within the application can easily access and react to changes in global settings.
+
+## Importing
+
+```jsx
+import { useSettings } from "@wfp/react";
+```
+
+## Usage
+
+Make sure your component is wrapped by `<WFPCoreProvider>` to provide the settings to the context.
+
+Here's a simple example of how to use the `useSettings` hook within a component:
+
+```jsx
+import React from "react";
+import { useSettings } from "@wfp/react";
+
+const MyComponent = () => {
+  const settings = useSettings();
+
+  return (
+    <div>
+      <p>Current theme: {settings.theme}</p>
+      {/* Other component logic */}
+    </div>
+  );
+};
+
+export const App = () => {
+  return (
+    <WFPCoreProvider theme="dark">
+      <MyComponent />
+    </WFPCoreProvider>
+  );
+};
+```
+
+## Return Value
+
+- **Type**: `AppContextInterface`
+- **Description**: An object containing the current application settings, including:
+  - `prefix`: A string prefix used for CSS class naming.
+  - `selectorTabbable`: A string selector for tabbable elements.
+  - `selectorFocusable`: A string selector for focusable elements.
+  - `theme`: The current theme name (e.g., `"light"`, `"dark"`).
+  - `actualTheme`: The actual theme being used, which could differ from `theme` if the theme is set to `"auto"` and depends on the system preference.
+  - `initialized`: A boolean indicating whether the `WFPCoreContext` has been properly initialized.
+  - `setTheme`: A function to change the current theme.
+  - `wrapperElement`: An optional HTML element that serves as the wrapper for applying theme classes.
+
+## Context and Provider
+
+`useSettings` is part of a system alongside `WFPCoreContext` and `WFPCoreProvider`:
+
+- **`WFPCoreContext`**: A React context created with `createContext`, initialized with default settings.
+- **`WFPCoreProvider`**: A component that wraps the application or parts of it, providing the `WFPCoreContext` to all its children. It allows initializing the context with custom settings, including an initial theme, a CSS prefix, and a wrapper element for applying the theme.
+
+## Related components
+
+- [WFPCoreProvider](/components/core/wfp-core-provider)

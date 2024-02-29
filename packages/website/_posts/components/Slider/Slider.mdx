@@ -1,7 +1,7 @@
 ---
 category: "Core"
 title: "Slider"
-excerpt: "The slider in its basic form should be accompanied by a label and a number input that doubles as a display for the slider’s current value."
+excerpt: "A Slider component allows users to select a value from a range by dragging a handle along a track."
 coverImage: "../sample-image.jpg"
 slug: "Components/Forms/Slider"
 storybook: true
@@ -14,18 +14,44 @@ The basic slider does not include discrete values, as the slider represents a pe
 
 The more complex versions should be used for selecting a specific value within a value range.
 
-#### Users can choose a numerical value by
+The slider in its basic form should be accompanied by a label and a number input that doubles as a display for the slider’s current value.
 
-- Entering the exact value into the text field.
-- Moving the slider handle with their mouse, which automatically updates the value in the text input.
-- Using the `↑` `↓` arrow keys automatically updates the value in the text input and moves the slider handle to the corresponding value.
-- The step size increment is how many increments the inputted value and slider handle will jump when using the arrow keys. Make sure to set the step size increments to reasonable values.
+#### Example
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=629%3A643" />
+
+### Anatomy
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=629%3A1307" />
 
 <DoUse>
 
+- Use the `Slider` component when users need to select a value from a continuous range, such as choosing a price range, setting volume, or adjusting brightness.
+- Use it when the range of values is known and relatively small, making it feasible for users to select a specific value by sliding the handle.
+- Moving the slider handle with their mouse, which automatically updates the value in the text input.
+- Using the `↑` `↓` arrow keys automatically updates the value in the text input and moves the slider handle to the corresponding value.
+- The step size increment is how many increments the inputted value and slider handle will jump when using the arrow keys. Make sure to set the step size increments to reasonable values.
 - The slider label should indicate what value the slider is changing.
-- Range values are used to describe the range in numbers.
+
+</DoUse>
+
+<DoNotUse>
+
+- Avoid using the `Slider` component for selecting values from a discrete set, such as choosing from a list of predefined options. Instead, consider using a `Select` or `Radio Buttons`.
+- Avoid using it when the range of values is extremely large or unknown, as it may be difficult for users to navigate or select specific values accurately.
+
 - Do not use for ranges that are extremely large i.e. `1-1000`.
 - Do not use for ranges that are too small i.e. `1-3`.
 
-</DoUse>
+</DoNotUse>
+
+### Alternative Components
+
+- For selecting values from a discrete set, consider using `Radio Buttons`, `Checkboxes`, or a `Select Menu`.
+- For selecting values from a large or unknown range, consider using an Input Field with validation or specialized components like a `Date Picker` or `Time Picker`.
+
+### Accessibility
+
+- Ensure the Slider component is operable via keyboard inputs, allowing users to navigate, select, and adjust values using arrow keys and other standard keyboard controls.
+- Provide clear and descriptive labels for the Slider's minimum and maximum values to assist users with screen readers in understanding the range being selected.
+- Implement ARIA roles and attributes to enhance the accessibility of the Slider, including aria-valuemin, aria-valuemax, and aria-valuenow to convey the current value to assistive technologies.

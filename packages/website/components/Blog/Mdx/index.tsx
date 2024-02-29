@@ -13,7 +13,7 @@ import Typeset from "./Typeset";
 import Spacing from "./Typeset/Spacing";
 import ComponentsList from "./ComponentsList";
 import { H1, H2, H3, H4, H5 } from "./Headings";
-import IconList from "./Icons/IconListNew";
+import IconList from "./Icons/IconList";
 import PropTypes from "../../PropTypes";
 import TokenExplorer from "./TokenExplorer";
 import {

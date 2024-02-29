@@ -1,0 +1,68 @@
+---
+category: "Core"
+title: "WFPCoreProvider"
+slug: "Components/Structure/WFPCoreProvider"
+mainComponent: "WFPCoreProvider"
+---
+
+The `WFPCoreProvider` component in React serves as a context provider, encapsulating and distributing application-wide settings, such as theming preferences.
+
+## Importing
+
+To use `WFPCoreProvider`, import it along with its context and default settings:
+
+```jsx
+import { WFPCoreProvider, WFPCoreContext, defaultWFPContext } from "@wfp/react";
+```
+
+## Usage
+
+Wrap your application or component tree with `WFPCoreProvider` to provide all children access to the context:
+
+```jsx
+import React from "react";
+import { WFPCoreProvider } from "@wfp/react";
+
+const App = () => (
+  <WFPCoreProvider>{/* Rest of the application */}</WFPCoreProvider>
+);
+```
+
+## Props
+
+`WFPCoreProvider` accepts the following props to customize its behavior:
+
+- **`children`**: ReactNode - The child components that will have access to the context.
+- **`initialTheme`**: string (optional) - The initial theme for the application, with `"auto"` as the default value to automatically match the system's theme.
+- **`prefix`**: string (optional) - A prefix for CSS class naming, with `"wfp"` as the default value.
+- **`wrapperElement`**: HTMLElement (optional) - A DOM element to which the theme-specific classes will be applied. If not specified, it defaults to the `document.body` or a similar high-level element in your application.
+
+## Functionality
+
+### Theme Management
+
+- **Automatic Theme Detection**: `WFPCoreProvider` automatically detects the user's system preference for light or dark mode if the `initialTheme` is set to `"auto"`.
+- **Theme Switching**: It allows dynamic switching of themes via the `setTheme` function provided in the context. This function updates both the internal state and the class name of the `wrapperElement`, facilitating CSS-based theming.
+
+### Context Values
+
+The context provided by `WFPCoreProvider` includes:
+
+- `prefix`: For CSS class naming.
+- `selectorTabbable` and `selectorFocusable`: Selectors for managing focusable and tabbable elements.
+- `theme` and `actualTheme`: Current theme settings.
+- `initialized`: A boolean indicating if the context has been initialized.
+- `setTheme`: A function to change the theme.
+- `wrapperElement`: The DOM element used for applying theme classes.
+
+## Accessing the Context
+
+`WFPCoreProvider` utilizes `WFPCoreContext` to pass down the application settings. Components within the provider's child tree can access these settings using the `useSettings` hook or the `Context.Consumer` pattern.
+
+<DoUse>
+
+- Place `WFPCoreProvider` at the top level of your application to ensure all components can access the context.
+- Utilize the provided `setTheme` function to change themes dynamically in response to user actions or preferences.
+- Use the `prefix` from the context for consistent naming of CSS classes and easier theme management.
+
+</DoUse>

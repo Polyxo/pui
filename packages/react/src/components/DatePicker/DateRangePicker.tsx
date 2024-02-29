@@ -18,8 +18,13 @@ interface DateRangePickerProps
 
 const DateRangePicker: React.FC<DateRangePickerProps> = React.forwardRef(
   (props, ref) => {
-    const { fromProps, toProps, hideLabel, helperText, pattern, required } =
-      props;
+    const {
+      fromProps,
+      toProps,
+      hideLabel,
+      helperText,
+      /* pattern, */ required,
+    } = props;
 
     const { prefix } = useSettings();
 
@@ -42,7 +47,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = React.forwardRef(
     return (
       <Input {...wrapperProps}>
         <DateRangePickerInput
-          pattern={pattern}
+          // pattern={pattern}
           {...inputProps}
           ref={ref}
           fromProps={fromProps}

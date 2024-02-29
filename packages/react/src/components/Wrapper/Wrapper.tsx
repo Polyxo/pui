@@ -63,7 +63,7 @@ const Wrapper: React.FC<WrapperProps> = (props) => {
     [`${prefix}--wrapper--spacing-xl`]: spacing === "xl",
     [`${className}`]: className,
   });
-  if (background || backgroundStyle) {
+  if (background || backgroundStyle || backgroundClassName) {
     const backgroundClasses = classNames(backgroundClassName, {
       [`${prefix}--wrapper--background-${background}`]: background,
     });

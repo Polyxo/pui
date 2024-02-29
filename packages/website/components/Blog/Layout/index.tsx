@@ -19,9 +19,7 @@ const Layout = ({ posts, post, propTypes, head }: LayoutProps) => (
     <div className={styles.layout}>
       {!post?.slug && <Homepage />}
 
-      <article>
-        <SidebarWrapper posts={posts} post={post} propTypes={propTypes} />
-      </article>
+      <SidebarWrapper posts={posts} post={post} propTypes={propTypes} />
     </div>
   </>
 );
