@@ -16,7 +16,6 @@ export default function ErrorNotice() {
           Return to Homepage
         </MoreLink>
       }
-      pageWidth="lg"
       icon={<Parachute />}
       title="Page not found"
     >

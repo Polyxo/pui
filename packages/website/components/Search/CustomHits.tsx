@@ -4,6 +4,7 @@ import { Highlight, Snippet, useHits } from "react-instantsearch-hooks-web";
 import slugifyWithSlashes from "../../lib/slugifyWithSlashes";
 import styles from "./customHits.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
+import EmptyResults from "./EmptyResults";
 
 function Hit({ hit, setOpen, count, index }: any) {
   const ref = useRef<any>(null);
@@ -89,9 +90,7 @@ function Hits(props: any) {
           <p className={styles.noResults}>No results found</p>
         )}
 
-        {!validQuery /*&& focus*/ && (
-          <p className={styles.noResults}>Type to show results...</p>
-        )}
+        {!validQuery /*&& focus*/ && <EmptyResults />}
 
         {results && results.hits.length > 0 && validQuery && (
           <>

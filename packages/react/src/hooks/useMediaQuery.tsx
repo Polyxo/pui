@@ -9,7 +9,6 @@ type UseMediaQueryOptions = {
 
 const IS_SERVER = typeof window === "undefined";
 
-export function useMediaQuery(query: string, defaultValue: boolean): boolean; // defaultValue should be false by default
 /**
  * Custom hook for tracking the state of a media query.
  * @param {string} query - The media query to track.

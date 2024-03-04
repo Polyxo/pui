@@ -354,7 +354,7 @@
 
   .#{$prefix}--inline-notification--low-contrast
     .#{$prefix}--inline-notification__action-button.#{$prefix}--btn--ghost {
-    color: $button-primary;
+    color: $action-default-fill-primary-default;
   }
   .#{$prefix}--inline-notification--low-contrast
     .#{$prefix}--inline-notification__action-button,

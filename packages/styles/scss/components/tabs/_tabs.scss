@@ -99,7 +99,7 @@
       color: $action-default-link-default;
 
       &:focus {
-        color: $focus;
+        color: $action-default-link-focus;
       }
     }
   }
@@ -130,12 +130,12 @@
 
   .#{$prefix}--tabs__nav-item--disabled {
     .#{$prefix}--tabs__nav-link {
-      color: $border-inverse;
+      color: $action-default-fill-primary-disable;
       cursor: not-allowed;
 
       &:hover,
       &:focus {
-        color: $border-inverse !important;
+        color: $action-default-fill-primary-disable !important;
       }
     }
   }

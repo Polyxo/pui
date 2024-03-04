@@ -79,9 +79,7 @@ export default function PropTypes({
 }: any) {
   const currentComponentsSettings = componentsNew?.[propTypes?.displayName];
 
-  const isDesktop = useMediaQuery("(min-width: 768px)", {
-    defaultValue: true,
-  });
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
 
   const componentsSourceText =
     componentsSource[
