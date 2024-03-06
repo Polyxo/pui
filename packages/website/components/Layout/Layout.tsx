@@ -12,7 +12,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <WFPCoreProvider>
+    <WFPCoreProvider initialTheme="light">
       <Navigation />
       {children}
       <Footer />

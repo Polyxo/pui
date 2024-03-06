@@ -40,7 +40,7 @@ export const WFPCoreProvider: React.FC<WFPCoreProps> = ({
   children,
   wrapperElement /* = document?.body*/,
   prefix = "wfp",
-  initialTheme = "auto",
+  initialTheme = "light",
   ...props
 }) => {
   const setElementTheme = (theme: string) => {
