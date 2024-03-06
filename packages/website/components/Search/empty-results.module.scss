@@ -1,0 +1,11 @@
+.emptyResults {
+  display: flex;
+  > * {
+    margin: 1em 0;
+    width: 50%;
+  }
+  a {
+    display: inline-block;
+    padding: 0.5em 1em;
+  }
+}

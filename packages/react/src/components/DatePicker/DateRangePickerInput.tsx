@@ -40,52 +40,67 @@ export interface DateRangePickerInputProps {
    */
   toProps?: object;
 }
-export const DateRangePickerInput: React.FC<DateRangePickerInputProps> = ({
-  startDate,
-  endDate,
-  setStartDate,
-  setEndDate,
-  datePicker,
-  fromProps = {},
-  toProps = {},
-}) => {
-  const { prefix } = useSettings();
-  const DatePicker = datePicker;
-  if (!DatePicker) {
-    return "Add a datepicker component";
+
+export const DateRangePickerInput = React.forwardRef<
+  HTMLInputElement,
+  DateRangePickerInputProps
+>(
+  (
+    {
+      startDate,
+      endDate,
+      setStartDate,
+      setEndDate,
+      datePicker,
+      fromProps = {},
+      toProps = {},
+    },
+    ref
+  ) => {
+    const { prefix } = useSettings();
+    const DatePicker = datePicker;
+    if (!DatePicker) {
+      return <div>Add a datepicker component</div>;
+    }
+    return (
+      <div className={`${prefix}--date-ranger-picker`}>
+        <div className={`${prefix}--date-ranger-picker__input`}>
+          <DatePicker
+            selected={startDate}
+            className={`${prefix}--input ${prefix}--date-ranger__input__start-date`}
+            onChange={setStartDate}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            wrapperClassName={`${prefix}--date-picker__wrapper`}
+            {...fromProps}
+            ref={ref}
+          />
+          <CalendarAltRegular
+            className={`${prefix}--date-ranger-picker__icon`}
+          />
+        </div>
+        <ArrowRight className={`${prefix}--date-ranger-picker__arrow`} />
+        <div className={`${prefix}--date-ranger-picker__input`}>
+          <DatePicker
+            selected={endDate}
+            className={`${prefix}--input ${prefix}--date-ranger__input__start-date`}
+            onChange={setEndDate}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            wrapperClassName={`${prefix}--date-picker__wrapper`}
+            {...toProps}
+            // TODO: Add ref to the end date picker
+          />
+          <CalendarAltRegular
+            className={`${prefix}--date-ranger-picker__icon`}
+          />
+        </div>
+      </div>
+    );
   }
-  return (
-    <div className={`${prefix}--date-ranger-picker`}>
-      <div className={`${prefix}--date-ranger-picker__input`}>
-        <DatePicker
-          selected={startDate}
-          className={`${prefix}--input ${prefix}--date-ranger__input__start-date`}
-          onChange={setStartDate}
-          selectsStart
-          startDate={startDate}
-          endDate={endDate}
-          wrapperClassName={`${prefix}--date-picker__wrapper`}
-          {...fromProps}
-        />
-        <CalendarAltRegular className={`${prefix}--date-ranger-picker__icon`} />
-      </div>
-      <ArrowRight className={`${prefix}--date-ranger-picker__arrow`} />
-      <div className={`${prefix}--date-ranger-picker__input`}>
-        <DatePicker
-          selected={endDate}
-          className={`${prefix}--input ${prefix}--date-ranger__input__start-date`}
-          onChange={setEndDate}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-          wrapperClassName={`${prefix}--date-picker__wrapper`}
-          {...toProps}
-        />
-        <CalendarAltRegular className={`${prefix}--date-ranger-picker__icon`} />
-      </div>
-    </div>
-  );
-};
+);
 
 DateRangePickerInput.displayName = "DateRangePickerInput";

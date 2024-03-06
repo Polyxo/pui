@@ -4,6 +4,7 @@ import getPostContent from "../../components/Post/getPostContent";
 import slugify from "slugify";
 import Layout from "../../components/Blog/Layout";
 import slugifyWithSlashes from "lib/slugifyWithSlashes";
+import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts(["slug"]);
@@ -48,6 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page(args: any) {
   const data: any = await getPostContent(args.params);
   const { post, posts, propTypes } = data.props;
+
+  if (!post?.slug && args.params.slug !== undefined) notFound();
 
   return <Layout posts={posts} post={post} propTypes={propTypes} />;
 }

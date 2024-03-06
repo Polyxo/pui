@@ -21,6 +21,11 @@ export interface ListItemProps
    * a React node for more complex content. @content
    */
   title?: React.ReactNode;
+  /**
+   * Icon to be displayed in the list item. This can be a React node or a string
+   * representing the name of a pictogram. @content
+   */
+  icon?: React.ReactNode;
 }
 
 const ListItem: React.FC<ListItemProps> = ({
@@ -28,6 +33,7 @@ const ListItem: React.FC<ListItemProps> = ({
   className,
   title,
   kind,
+  icon,
   ...other
 }) => {
   const classes = classNames("wfp--list__element", className, {
@@ -38,6 +44,7 @@ const ListItem: React.FC<ListItemProps> = ({
     <li className={classes} {...other}>
       {kind === "cross" && <Cross className="wfp--list-item__icon" />}
       {kind === "checkmark" && <Check className="wfp--list-item__icon" />}
+      {icon && <span className="wfp--list__element__icon">{icon}</span>}
       {title && <span className="wfp--list__element__title">{title}</span>}
       <span className="wfp--list__element__content">{children}</span>
     </li>

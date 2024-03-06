@@ -27,6 +27,7 @@ const LinkWithNext: React.FC<LinkWithNextProps> = ({
       replace={replace}
       scroll={scroll}
       passHref
+      legacyBehavior
       {...props}
     >
       <Link>{children}</Link>

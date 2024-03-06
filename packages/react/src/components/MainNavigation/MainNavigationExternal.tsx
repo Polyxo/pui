@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-import { WfpLogoVerticalEn } from "@wfp/pictograms-react";
+import { WfpLogoVerticalEn } from "@wfp/icons-react";
 import { ChevronDown, ChevronUp } from "@wfp/icons-react";
 
 import Button from "../Button";

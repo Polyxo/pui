@@ -1,0 +1,39 @@
+---
+category: "Core"
+title: "Card"
+excerpt: "It is a multi usage component which creates boxes that are usually teasing some kind of content."
+slug: "Components/Structure/Card/tab:Code"
+storybook: true
+status: "published"
+mainComponent: "Card"
+---
+
+## Usage
+
+The `Card` component can be used in various ways depending on the provided props. For example, it can serve as a clickable link to external content, display an image with a title and subtitle, or simply showcase additional metadata. The component supports different styles or kinds, such as overlay images or simple cards, which can be specified using the `kind` prop.
+
+### Example
+
+Simple card with an image, title, subtitle, and metadata:
+
+```jsx live
+<Card
+  image="https://www.wfp.org/sites/default/files/styles/card_featured/public/images/HughRutherford-1872.jpg"
+  isExternal={true}
+  isLink={true}
+  subTitle="This is a card subtitle."
+  title="Card Title"
+  metadata="Metadata example"
+  alt="Alternative text for the image"
+  kind="simple-card"
+  url="https://wfp.org"
+/>
+```
+
+Overlay card with an image, title, subtitle, and metadata:
+
+TODO: Unify with Hero component
+
+## Styling
+
+The component uses a combination of its own styles and those passed through `className`. It dynamically applies classes based on the card's type (`kind`), whether it's a link (`isLink`), and additional user-defined classes (`className`). The card's dimensions can be customized using `cardWidth` and `cardHeight` props.

@@ -19,16 +19,19 @@ export default {
   },
 };
 
-export const SimpleCard = (args) => <Card {...args} />;
-
-SimpleCard.args = {
-  subTitle:
-    "Food security and climate change analyses, adaptation planning, and good practices in food security adaptation programming.",
-  title: "The Climate Adaption Mangement and Innovation Initiative",
-  kind: "simple-card",
-  metadata: "Publication",
-  url: "https://www.wfp.org",
-  isExternal: true,
+export const CardDefault: Story = {
+  render: (args) => <Card {...args} />,
+  args: {
+    subTitle:
+      "Food security and climate change analyses, adaptation planning, and good practices in food security adaptation programming.",
+    title: "The Climate Adaption Mangement and Innovation Initiative",
+    kind: "simple-card",
+    metadata: "Publication",
+    url: "https://www.wfp.org",
+    image:
+      "https://www.wfp.org/sites/default/files/styles/card_featured/public/images/HughRutherford-1872.jpg",
+    isExternal: true,
+  },
 };
 
 export const SimpleCardWithImage = (args) => <Card {...args} />;

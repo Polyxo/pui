@@ -1,0 +1,49 @@
+---
+category: "Core"
+title: "useId"
+excerpt: "Provides unique identifier strings for components"
+slug: "Components/Hooks/useId"
+status: "published"
+mainComponent: "useId"
+---
+
+The custom `useId` hook is designed to provide unique identifier strings for components, with a fallback (`useIdShim`) for environments where React's built-in `useId` hook might not be available (react.js < 18).
+
+## Overview
+
+This hook is particularly useful for assigning unique IDs to components such as accordions or list items, which may require distinct identifiers for accessibility reasons or for associating labels with control elements. It ensures compatibility across different versions of React, including those versions that do not support the built-in `useId` hook.
+
+## Importing
+
+To use the `useId` hook in your project, import it as follows:
+
+```jsx
+import { useId } from "@wfp/react";
+```
+
+## Usage
+
+```jsx
+const Component = () => {
+  const id = useId();
+
+  return <div id={id}>{/* Content goes here */}</div>;
+};
+```
+
+## How It Works
+
+- **Built-in `useId` Check**: The hook first checks if React's built-in `useId` hook is available. If it is, it uses that directly.
+- **Fallback (`useIdShim`)**: If the built-in `useId` is not available, it uses a custom implementation `useIdShim`.
+  - `useIdShim` generates a unique ID by incrementing a counter (`current`) each time a component using it is mounted.
+
+## Parameters and Return Value
+
+- **Parameters**: None. The hook does not accept any parameters.
+- **Return Value**: A unique string identifier or `undefined`. The identifier is prefixed with a constant string (`ACCORDION_PREFIX`) and suffixed with a unique number. If the component has not yet been mounted (and thus the ID has not been set), it returns `undefined`.
+
+## Notes
+
+- **Re-rendering and ID Stability**: The unique ID is generated and set during the initial render/mount of the component. Subsequent re-renders of the component do not affect the ID, ensuring that each component instance maintains a stable identifier throughout its lifecycle.
+- **Prefix Customization**: The prefix used in the generated IDs is imported from a constants file associated with the `Accordion` component. This can be customized as needed for different types of components or applications.
+- **Counter Incrementation**: The counter (`current`) used in the fallback implementation is shared across all instances of components using the hook. This ensures uniqueness across the entire application but also means the counter will continually increase as new components are mounted.

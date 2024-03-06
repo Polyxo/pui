@@ -99,7 +99,7 @@ export default function Navigation() {
           </SubNavigationHeader> */}
               <SubNavigationContent>
                 <SubNavigationItem>
-                  <LinkWithNext href="tokens/overview">
+                  <LinkWithNext href="/tokens/overview">
                     Design Tokens
                   </LinkWithNext>
                 </SubNavigationItem>

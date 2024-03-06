@@ -24,17 +24,44 @@ allows you to use the original WFP UI-Kit and Bridge together in the same projec
 
 #### Design changes
 
+<Callout title="Design changes" kind="warning">
+
 The overall design of components is currently in progress. Please be aware that the design is subject to change.
+
+</Callout>
 
 #### Packages renamed
 
-`import { Component } from "@wfp/ui"` becomes `import { Component } from "@wfp/react"` for React components
+The `@wfp/ui` package has been split up into multiple packages like `@wfp/react` and `@wfp/styles`.
 
-`@import '@wfp/react/scss/globals/scss/styles.scss';` becomes `@import '@wfp/styles';"` for styles
+```jsx
+// Before
+import { Component } from "@wfp/ui";
+
+// After: Replace @wfp/ui with @wfp/react for React components
+import { Component } from "@wfp/react";
+```
+
+```css
+// Before
+@import '@wfp/react/scss/globals/scss/styles.scss';
+
+// After: importing styles
+becomes `@import '@wfp/styles';
+```
+
+More information about importing styles can be found [here](/how-tos/install-ui-kit).
 
 #### Icon component (also affects Pictograms)
 
-`<Icon icon={iconName} />` becomes `<IconName />` imported from `import { IconName } from @wfp/icons-react`
+```jsx
+//Before
+<Icon icon={iconName} />;
+
+// After: Each Icon is now a separate component and can be imported directly from the package:
+import { IconName } from "@wfp/icons-react";
+<IconName />;
+```
 
 Make sure to look at the usage [Icons documentation](https://dev.designsystem.wfp.org/documentation/icons/core-icons).
 
