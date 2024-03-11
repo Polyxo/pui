@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import markdown from "./README.mdx";
 import Search from ".";
 import Button from "../Button";
@@ -17,6 +17,7 @@ export const SearchDefault: Story = {
   render: (args) => <Search {...args} />,
   args: {
     name: "search",
+    placeholder: "search here",
   },
 };
 
@@ -42,20 +43,23 @@ const AddonAfter = () => {
   return <div>After</div>;
 };
 
-export const SearchWithComponents = (args) => (
-  <div style={{ width: "50%", display: "flex" }}>
-    <Search
-      {...args}
-      components={{ AddonBefore, AddonAfter }}
-      onChange={(e, value) => {
-        console.log("onChange", e, value);
-      }}
-    />
-    <Button kind="primary" style={{ margin: "0 0.5rem" }}>
-      Apply search
-    </Button>
-  </div>
-);
+export const SearchWithComponents = (args) => {
+  const [value, setValue] = useState("");
+  return (
+    <div style={{ width: "50%", display: "flex" }}>
+      <Search
+        onChange={(evt) => {
+          setValue(evt.target.value);
+        }}
+        {...args}
+        components={{ AddonBefore, AddonAfter }}
+      />
+      <Button kind="primary" style={{ margin: "0 0.5rem" }}>
+        Apply search
+      </Button>
+    </div>
+  );
+};
 
 SearchWithButton.story = {
   parameters: {

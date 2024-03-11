@@ -127,6 +127,7 @@
 
   .#{$prefix}--footer__secondary {
     font-size: calc(10px);
+    text-align: end;
 
     @include breakpoint-down("md") {
       margin-bottom: calcRem(10px);

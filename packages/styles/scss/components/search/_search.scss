@@ -15,7 +15,7 @@
 @use "../../utilities/button-reset";
 
 $input-height: 40px !default;
-$input-border: 1px solid var(--neutral-100__color);
+$input-border: 1px solid $field-border-color;
 
 /// Search styles
 /// @access public
@@ -78,13 +78,11 @@ $input-border: 1px solid var(--neutral-100__color);
   }
 
   .#{$prefix}--search-input[disabled] {
-    border-bottom: 1px solid transparent;
-    background-color: $fill-field;
-    color: $text-disabled;
+    opacity: 0.5;
     cursor: not-allowed;
 
     &::placeholder {
-      color: $fill-field;
+      // color: $fill-field; no color needed to be set. It should inheret
     }
   }
   .#{$prefix}--search--light .#{$prefix}--search-input {
@@ -173,7 +171,7 @@ $input-border: 1px solid var(--neutral-100__color);
       border-bottom: 1px solid $border-strong;
 
       &::before {
-        background-color: $field-hover;
+        // background-color: $field-hover;
       }
     }
   }
@@ -213,7 +211,7 @@ $input-border: 1px solid var(--neutral-100__color);
     visibility: inherit;
 
     &:hover {
-      background-color: $field-hover;
+      // background-color: $field-hover;
     }
 
     &:focus {
@@ -223,7 +221,7 @@ $input-border: 1px solid var(--neutral-100__color);
     &:active {
       @include focus-outline("outline");
 
-      background-color: $background-selected;
+      // background-color: $background-selected;
     }
   }
 
@@ -250,7 +248,7 @@ $input-border: 1px solid var(--neutral-100__color);
   .#{$prefix}--search-close:focus,
   .#{$prefix}--search-close:active {
     &::before {
-      background-color: $focus;
+      background-color: transparent;
     }
   }
 

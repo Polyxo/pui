@@ -16,6 +16,7 @@
   }
   h2 {
     font-size: 2.125em;
+    font-weight: 400;
     line-height: 1.5em;
     margin-top: 1rem;
     margin-bottom: 0;
@@ -65,10 +66,19 @@
   background-color: $background-secondary;
   margin-top: 5rem;
 
+  @include breakpoint-down(430px) {
+    height: 145px;
+  }
+
   .screenImage {
-    width: 92%;
+    width: 95%;
     height: auto;
-    margin-top: -9rem;
+    margin-top: -4rem;
+
+    @include breakpoint-down(768px) {
+      width: 100%;
+      margin-top: 0;
+    }
   }
 }
 

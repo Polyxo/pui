@@ -4,7 +4,7 @@ import { WFPCoreProvider } from "@wfp/react";
 import React from "react";
 import Footer from "../Footer";
 import Navigation from "../Navigation";
-import SearchWrapper from "../Search";
+// import SearchWrapper from "../Search";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -16,7 +16,7 @@ export default function Layout({ children }: LayoutProps) {
       <Navigation />
       {children}
       <Footer />
-      <SearchWrapper />
+      {/* <SearchWrapper />  is there a reason for this search here? @Robert */}
     </WFPCoreProvider>
   );
 }

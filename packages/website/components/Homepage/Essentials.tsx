@@ -26,10 +26,11 @@ import accessibilityIcon from "./icons/universal-access-light.svg";
 function PossibilitiesContainer({ title, content, type, link = "" }: any) {
   return (
     <div className={styles.container}>
-      <div className={type == "howto" ? styles.contentOther : styles.content}>
-        {content}
-      </div>
       <Link href={link}>
+        <div className={type == "howto" ? styles.contentOther : styles.content}>
+          {content}
+        </div>
+
         <div className={type == "howto" ? styles.footerOther : styles.footer}>
           <p>{title}</p>
           <div className={styles.icon}>
@@ -54,7 +55,7 @@ export default function Essentials() {
         <div className={styles.essentialWrapper}>
           <PossibilitiesContainer
             title="Spacing Units"
-            link="./documentation/guidelines/spacing"
+            link="/foundations/spacing"
             content={
               <div className={styles.flexDisplay}>
                 <Image
@@ -72,7 +73,7 @@ export default function Essentials() {
           />
           <PossibilitiesContainer
             title="Awesome icons"
-            link="./documentation/icons/core-icons"
+            link="/icons/core-icons"
             content={
               <Image
                 src={flagIcon}
@@ -83,7 +84,7 @@ export default function Essentials() {
           />
           <PossibilitiesContainer
             title="Notifications"
-            link="./components/overlay/notification"
+            link="/components/overlay/notification"
             content={
               <Image
                 src={bellsIcon}
@@ -126,7 +127,7 @@ export default function Essentials() {
         <div className={styles.essentialWrapper2}>
           <PossibilitiesContainer
             title="Install the UI-KIT"
-            link="./documentation/developing/installation"
+            link="/how-tos/install-ui-kit"
             type="howto"
             content={
               <Image
@@ -138,7 +139,7 @@ export default function Essentials() {
           />
           <PossibilitiesContainer
             title="Design for Accessibility"
-            link="./support/accessibility"
+            link="/accessibility/overview"
             type="howto"
             content={
               <div className={styles.flexDisplay}>

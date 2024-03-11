@@ -49,10 +49,7 @@ export default function Possiblities() {
           title="Are you a Developer?"
           content={
             <>
-              <Link
-                href="./documentation/developing/installation"
-                legacyBehavior
-              >
+              <Link href="/how-tos/install-ui-kit" legacyBehavior>
                 <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
                   Start coding
                 </Button>

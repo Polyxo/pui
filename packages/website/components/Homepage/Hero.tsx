@@ -20,7 +20,7 @@ export default function Hero() {
       </Wrapper>
 
       <div className={styles.screenImageWrapper}>
-        <Wrapper pageWidth="lg">
+        <Wrapper pageWidth="md">
           <Image
             src={screenImage}
             alt="Bridge screen"

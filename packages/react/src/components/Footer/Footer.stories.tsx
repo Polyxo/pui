@@ -22,7 +22,14 @@ export default {
 
 export const FooterDefault: Story = {
   render: (args) => (
-    <Footer {...args}>
+    <Footer
+      {...args}
+      secondary={
+        <>
+          Via C. G. Viola 68 Parco dei Medici, <br /> 00148 Rome, Italy
+        </>
+      }
+    >
       <div className="wfp--footer__info">
         <div className="wfp--footer__info__item">
           <p className="wfp--footer__label">Label 1</p>
@@ -36,14 +43,19 @@ export const FooterDefault: Story = {
   args: {
     external: false,
     metaContent: "2023 © World Food Programme",
-    secondary: "Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy",
   },
 };
 
 const regularsourcecode = `
 import { Footer } from "@wfp/react";
         
-<Footer metaContent="2023 © World Food Programme">
+<Footer 
+metaContent="2023 © World Food Programme"
+secondary={
+  <>
+    Via C. G. Viola 68 Parco dei Medici, <br /> 00148 Rome, Italy
+  </>
+}>
   <div className="wfp--footer__info">
     <div className="wfp--footer__info__item">
       <p className="wfp--footer__label">Label 1</p>
@@ -193,8 +205,11 @@ export const Internal = (args) => (
   <Footer
     {...args}
     metaContent="2023 © World Food Programme"
-    secondary="Via C. G. Viola 68 Parco dei Medici
-    00148 Rome, Italy"
+    secondary={
+      <>
+        Via C. G. Viola 68 Parco dei Medici, <br /> 00148 Rome, Italy
+      </>
+    }
   >
     <div className="wfp--footer__info">
       <div className="wfp--footer__info__item">
@@ -226,7 +241,14 @@ export const Internal = (args) => (
 const intersourcecode = `
 import { Footer, Link } from "@wfp/react";
 
-<Footer>
+<Footer
+    metaContent="2023 © World Food Programme"
+    secondary={
+      <>
+        Via C. G. Viola 68 Parco dei Medici, <br /> 00148 Rome, Italy
+      </>
+    }
+  >
   <div className="wfp--footer__info">
     <div className="wfp--footer__info__item">
       <p className="wfp--footer__label">A label</p>

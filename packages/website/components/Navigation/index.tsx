@@ -76,7 +76,7 @@ export default function Navigation() {
                 </SubNavigationItem>
                 <SubNavigationItem>
                   <LinkWithNext href="/components/overview">
-                    Design Components
+                    Components
                   </LinkWithNext>
                 </SubNavigationItem>
                 <SubNavigationItem>

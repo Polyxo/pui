@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import * as React from 'react';
-import classNames from 'classnames';
-import useSettings from '../../src/hooks/useSettings';
+import * as React from "react";
+import classNames from "classnames";
+import useSettings from "../../src/hooks/useSettings";
 
-interface SwitchProps extends React.ComponentPropsWithRef<'a'> {
+interface SwitchProps extends React.ComponentPropsWithRef<"a"> {
   className?: string;
   index?: number;
-  kind: 'button' | 'anchor';
+  kind: "button" | "anchor";
   name?: string | number;
   onClick?: (
     e?: Event,
@@ -22,7 +22,7 @@ interface SwitchProps extends React.ComponentPropsWithRef<'a'> {
   ) => void;
   selected?: boolean;
   text: string;
-  icon: React.ReactElement;
+  icon?: React.ReactElement;
   href: string;
 }
 
@@ -51,7 +51,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
   const handleKeyDown = (e) => {
     const key = e.key || e.which;
 
-    if (key === 'Enter' || key === 13 || key === ' ' || key === 32) {
+    if (key === "Enter" || key === 13 || key === " " || key === 32) {
       //   ({ index, name, text }) => onKeyDown(index, name, text);
       onKeyDown(e, index, name, text);
     }
@@ -76,7 +76,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
       })
     : null;
 
-  if (kind === 'button') {
+  if (kind === "button") {
     return (
       <button {...other} {...commonProps}>
         {btnIcon}
@@ -93,6 +93,6 @@ const Switch: React.FC<SwitchProps> = (props) => {
   );
 };
 
-Switch.displayName = 'Switch';
+Switch.displayName = "Switch";
 
 export default Switch;

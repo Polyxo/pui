@@ -1,7 +1,7 @@
 import React from "react";
 import ContentSwitcher from "./ContentSwitcher";
 import markdown from "./README.mdx";
-import Switch from "../Switch";
+import Switch from "../../../othersrc/Switch";
 import { Add16, AddCircle } from "@wfp/icons-react";
 
 export default {
@@ -17,10 +17,10 @@ export default {
 
 export const ContentSwitcherDefault: Story = {
   render: (args) => (
-    <ContentSwitcher {...args} onChange={handleChange}>
-      <Switch name="one" text="First section" />
-      <Switch name="two" text="Second section" />
-      <Switch name="three" text="Third section" />
+    <ContentSwitcher {...args}>
+      <Switch name="one" text="First section" kind="button" />
+      <Switch name="two" text="Second section" kind="button" />
+      <Switch name="three" text="Third section" kind="button" />
     </ContentSwitcher>
   ),
   args: {

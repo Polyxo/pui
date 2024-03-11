@@ -98,9 +98,11 @@ const Search: React.FC<SearchProps> = React.forwardRef((props, ref) => {
   };
 
   const clearSearch = () => {
-    const valueState = "";
-    setValue(valueState);
-    // onChange(valueState); // TODO: why are we calling onChange
+    setValue("");
+    // setTimeout(() => {
+    //   console.log("value", value);
+    // }, 1000);
+    // onChange(evt, "");
   };
 
   const searchInputWrapperClasses = classNames(`${prefix}--number`, className, {
@@ -153,7 +155,11 @@ const Search: React.FC<SearchProps> = React.forwardRef((props, ref) => {
         onClick={onSearchIconClick}
       />
 
-      <input {...inputProps} ref={_inputRef as React.Ref<HTMLInputElement>} />
+      <input
+        {...inputProps}
+        ref={_inputRef as React.Ref<HTMLInputElement>}
+        value={value}
+      />
       <button
         className={clearClasses}
         onClick={clearSearch}
