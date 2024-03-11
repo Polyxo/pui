@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 10.37.22 (2024-03-11)
+
+**Note:** Version bump only for package @wfp/icons
+
+
+
+
+
 ## 10.37.21 (2024-03-11)
 
 **Note:** Version bump only for package @wfp/icons
