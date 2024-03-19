@@ -1,11 +1,28 @@
+@use "scss/meta" as *;
+
 .emptyResults {
   display: flex;
+  margin: 2em 0;
+  @include breakpoint-down(md) {
+    flex-direction: column;
+  }
   > * {
-    margin: 1em 0;
     width: 50%;
+    min-width: 13em;
   }
   a {
     display: inline-block;
     padding: 0.5em 1em;
+    white-space: nowrap;
+    color: $action-default-fill-primary-default;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    > svg {
+      color: $text-body-default;
+      margin-right: 1em;
+      opacity: 0.95; //TODO: better color
+    }
   }
 }

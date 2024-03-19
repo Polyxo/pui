@@ -50,6 +50,7 @@
   }
 }
 
+/*
 .user {
   max-width: 30em;
   font-weight: 500;
@@ -93,38 +94,9 @@
       margin-left: 0.4em;
       top: 0;
     }
-  }*/
-}
-
-.language {
-  @include breakpoint-up(md) {
-    max-width: 5em;
-    :global(.wfp--main-navigation__sub--open) {
-      min-width: 120px;
-      width: 18%;
-    }
   }
 }
-
-.languageMobile {
-  @include breakpoint-up(md) {
-    display: none;
-  }
-}
-.languageDesktop {
-  @include breakpoint-down(md) {
-    display: none;
-  }
-}
-
-.darkModeSwitch {
-  :global(.wfp--main-navigation__trigger) {
-    display: flex;
-    > * {
-      margin-left: 0.3em;
-    }
-  }
-}
+*/
 
 .meta {
   display: flex;

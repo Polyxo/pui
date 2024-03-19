@@ -104,7 +104,7 @@ export interface InputProps {
     AddonAfter?: ComponentType<InputPropsForReplacementComponents>;
     Label?: ComponentType<InputPropsForReplacementComponents>;
     HelperText?: ComponentType<InputPropsForReplacementComponents>;
-    Error?: ComponentType<InputPropsForReplacementComponents>;
+    InlineErrorMessage?: ComponentType<InputPropsForReplacementComponents>;
   };
 }
 
@@ -164,7 +164,7 @@ export function AddonAfter({
 
 /**
  * Shows the error message underneath the element */
-export function Error({
+export function InlineErrorMessage({
   errorId,
   errorClasses,
   invalid,
@@ -295,7 +295,7 @@ const Input: React.FC<PropsWithChildren<InputPropsI>> = ({
     AddonBefore,
     Label,
     Helper,
-    Error,
+    InlineErrorMessage,
     ...componentsOverride,
   };
   const AddonAfterComponent =
@@ -306,8 +306,8 @@ const Input: React.FC<PropsWithChildren<InputPropsI>> = ({
     components.Label as React.FC<InputPropsForReplacementComponents>;
   const HelperComponent =
     components.Helper as React.FC<InputPropsForReplacementComponents>;
-  const ErrorComponent =
-    components.Error as React.FC<InputPropsForReplacementComponents>;
+  const InlineErrorMessageComponent =
+    components.InlineErrorMessage as React.FC<InputPropsForReplacementComponents>;
 
   const componentProps = {
     labelText,
@@ -323,6 +323,7 @@ const Input: React.FC<PropsWithChildren<InputPropsI>> = ({
     addonAfter,
     addonBefore,
     hideLabel,
+    prefix,
   };
 
   return (
@@ -335,7 +336,7 @@ const Input: React.FC<PropsWithChildren<InputPropsI>> = ({
         {children}
         <AddonAfterComponent {...componentProps} />
       </div>
-      <ErrorComponent {...componentProps} />
+      <InlineErrorMessageComponent {...componentProps} />
     </FormItem>
   );
 };

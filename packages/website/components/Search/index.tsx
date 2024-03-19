@@ -1,36 +1,34 @@
-// .components/Search/index.js
-
 import algoliasearch from "algoliasearch/lite";
-import CustomSearchBox from "./CustomSearchBox";
-import CustomHits from "./CustomHits";
+import CustomSearchBox from "./SearchBox";
+import CustomHits from "./Hits";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.scss";
+import { InstantSearch } from "react-instantsearch-hooks";
+import { usePathname, useRouter /* useSearchParams*/ } from "next/navigation";
+import { useURLSearchParams } from "./useUrlSearchParams";
 
-import { InstantSearch } from "react-instantsearch-hooks-web";
-import { Search } from "@wfp/react";
+const searchClient = algoliasearch(
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID as string,
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY as string
+);
 
-const appId: string = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "";
-const searchApiKey: string =
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY || "";
-
-const searchClient: any = algoliasearch(appId, searchApiKey);
-
-export const useOutsideAlerter = ({ ref, setOpen }: any) => {
+export const useOutsideAlerter = ({ ref, setOpen, open, pathname }) => {
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setOpen(false);
-      }
-    };
-    // Bind the event listener
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (open) {
+      const handleClickOutside = (event) => {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setOpen(false);
+        }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref]);
+  }, [ref, setOpen, open, pathname]);
 };
 
 export const Portal = (props: any) => {
@@ -42,34 +40,41 @@ export const Portal = (props: any) => {
     setMounted(true);
   }, []);
 
-  return mounted && ref.current
-    ? createPortal(
-        <div
-          className={`${styles.overlay} ${
-            props.open ? styles.open : styles.closed
-          }`}
-        >
-          <div className={styles.overlayBackground} />
-          <div className={styles.overlayContent}>{props.children}</div>
-        </div>,
-        ref.current
-      )
-    : null;
+  if (!mounted || !ref.current) return null;
+
+  return createPortal(
+    (
+      <div
+        className={`${styles.overlay} ${
+          props.open ? styles.open : styles.closed
+        }`}
+      >
+        <div className={styles.overlayBackground} />
+        <div className={styles.overlayContent}>{props.children}</div>
+      </div>
+    ) as any,
+    ref.current
+  );
 };
 
-function AddonAfter() {
-  return (
-    <div className={styles.searchShortcuts}>
-      <span>⌘</span> <span>K</span>
-    </div>
-  );
-}
-
-export default function SearchWrapper() {
+function SearchModal({ className }: any) {
   const [focus] = useState(false);
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useOutsideAlerter({ ref, setOpen });
+  const ref = useRef<any>(null);
+
+  /* Open handler */
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const searchParams = useURLSearchParams();
+  const search = searchParams?.get("search");
+  const open = search ? true : false;
+  //const searchParams = useSearchParams();
+  const setOpen = (open) => {
+    if (open) router.push(`${pathname}?search=true`, { scroll: false });
+    else router.push(`${pathname}`, { scroll: false });
+  };
+
+  useOutsideAlerter({ ref, open, setOpen, pathname });
 
   useEffect(() => {
     const callback = (event: KeyboardEvent) => {
@@ -84,29 +89,26 @@ export default function SearchWrapper() {
     return () => {
       document.removeEventListener("keydown", callback);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (!open) return null;
   return (
-    <>
-      <Search
-        onClick={() => setOpen(true)}
-        className={styles.search}
-        kind="main"
-        placeholder="Search..."
-        components={{ AddonAfter }}
-      />
-      <Portal open={open}>
-        <div ref={ref}>
-          <InstantSearch indexName="ui-docs" searchClient={searchClient}>
-            {open && (
-              <>
-                <CustomSearchBox /*setFocus={setFocus} */ open={open} />
-                <CustomHits focus={focus} setOpen={setOpen} open={open} />
-              </>
-            )}
-          </InstantSearch>
-        </div>
-      </Portal>
-    </>
+    <Portal open={search}>
+      <div ref={ref} className={className}>
+        <InstantSearch indexName="ui-docs" searchClient={searchClient}>
+          {search && (
+            <>
+              <CustomSearchBox open={open} search={search} />
+              <CustomHits focus={focus} setOpen={setOpen} open={open} />
+            </>
+          )}
+        </InstantSearch>
+      </div>
+    </Portal>
   );
+}
+export default function SearchWrapper(props: any) {
+  /* </Suspense> */
+  return <SearchModal {...props} />;
 }

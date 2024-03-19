@@ -29,30 +29,13 @@ componentsNew:
 previewScale: 0.7
 ---
 
-<PropTypes mainComponent="Accordion">
+### Usage
 
-```jsx
-<Accordion>
-  <AccordionItem header="What is Lorem Ipsum?">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
-  </AccordionItem>
+An accordion is created by wrapping any number of `AccordionItem` components inside an `Accordion` component.
 
-  <AccordionItem header="Where does it come from?">
-    Quisque eget luctus mi, vehicula mollis lorem. Proin fringilla vel erat quis
-    sodales. Nam ex enim, eleifend venenatis lectus vitae, accumsan auctor mi.
-  </AccordionItem>
+By default, only one accordion item can be expanded at one time.
 
-  <AccordionItem header="Why do we use it?">
-    Suspendisse massa risus, pretium id interdum in, dictum sit amet ante. Fusce
-    vulputate purus sed tempus feugiat.
-  </AccordionItem>
-</Accordion>
-```
-
-</PropTypes>
-
-```jsx live
+```jsx live width="500"
 import { Accordion, AccordionItem } from "@wfp/react";
 
 <Accordion>
@@ -72,12 +55,6 @@ import { Accordion, AccordionItem } from "@wfp/react";
   </AccordionItem>
 </Accordion>;
 ```
-
-### Usage
-
-An accordion is created by wrapping any number of `AccordionItem` components inside an `Accordion` component.
-
-By default, only one accordion item can be expanded at one time.
 
 ### Allowing multiple
 

@@ -49,5 +49,9 @@
   }
 }
 .hit:focus {
-  background: $action-default-fill-primary-default;
+  background: $layer-primary;
+}
+
+.emptyResults {
+  margin: 1em;
 }

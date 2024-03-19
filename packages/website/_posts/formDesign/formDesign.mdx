@@ -1,6 +1,6 @@
 ---
 title: "Form Design"
-excerpt: "How to use the UI Kit"
+excerpt: "How to design forms for the best user experience."
 coverImage: "../sample-image.jpg"
 slug: "How Tos/Form Design"
 order: [1, 5]
@@ -89,22 +89,49 @@ Apply to these rules when developing a wizard form:
 - Use checkmark indicator once wizard page is filled completely.
 - Use warning indicator if some content is filled
 
+## Validation
+
+### Validation summary
+
+Always provide a validation summary at the top of the form. This is
+especially important for longer forms.
+
+Mention the number of errors and provide a list of the fields with
+errors. Each error should be a link to the field with the error. This will help the user to quickly find and fix the errors.
+
+```jsx live
+<Callout title="Something went wrong" kind="warning">
+  <p>There are errors in the form. Please fix them before submitting.</p>
+  <ul>
+    <li>General error that is not related to a specific field</li>
+    <li>
+      <Link href="#field1">Your password must be at least 6 characters</Link>
+    </li>
+    <li>
+      <Link href="#field2">Field 2 needs to be a valid user</Link>
+    </li>
+  </ul>
+</Callout>
+```
+
+### Use inline validation
+
+Also add a validaton message to the input field itself. This is especially
+important for longer forms.
+
 ### Be clear with your error messages
 
-It doesn’t matter what type of validation you use, you should always use
-inline errors. Use them ‘just right here’, in context. But not somewhere
-else on the pages. The natural mapping here is your best friend.
+Always try to explain the root of the problem. Try to use a human language and explain what exactly the user/the system made wrong, and what exactly should be fixed/filled.
 
 ```jsx live
 <TextInput
   type="password"
   required
   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-  className="some-class"
-  id="test4"
+  id="field1"
   labelText="Password"
   invalid={true}
-  invalidText="Your password must be at least 6 characters."
+  invalidText="Your password must be at least 6 characters"
 />
 ```
 
@@ -116,3 +143,8 @@ made wrong, and what exactly should be fixed/filled.
 
 Always ask the user before submitting input. Do not ask if the user only
 saves the input.
+
+### After submitting
+
+Always provide a feedback message after submitting the form. This
+message should be displayed at the top of the form or in a dialog [modal](/components/overlay/modal).

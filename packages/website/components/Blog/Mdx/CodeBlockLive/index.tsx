@@ -239,7 +239,7 @@ const CodeBlockLive = (props: any) => {
       <LivePreview
         className={`${stylesModule.preview}`} // ${width ? styles.scrollable : ""}
         dir={rtl ? "rtl" : "ltr"}
-        style={{ minWidth: width ? width + "px" : undefined }}
+        style={{ width: width ? width + "px" : undefined }}
       />
     );
 
@@ -411,6 +411,7 @@ interface PreProps {
   forceFullWidth?: boolean;
   noCode?: boolean;
   size?: string;
+  width?: number;
   children?: /*| React.ReactElement<any, any>
     | JSX.Element
     | React.ReactFragment*/
@@ -424,6 +425,7 @@ export function Pre({
   reactHookForm,
   forceFullWidth,
   noCode,
+  width,
   children,
   size,
   ...props
@@ -439,6 +441,7 @@ export function Pre({
           reactHookForm={reactHookForm}
           noCode={noCode}
           size={size}
+          width={width}
           forceFullWidth={forceFullWidth}
           {...childProps}
         />

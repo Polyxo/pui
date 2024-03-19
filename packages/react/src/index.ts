@@ -70,7 +70,7 @@ export {
   default as Input,
   useInput,
   Label,
-  Error,
+  InlineErrorMessage,
   Helper,
   AddonBefore,
   AddonAfter,

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Highlight, Snippet, useHits } from "react-instantsearch-hooks-web";
 import slugifyWithSlashes from "../../lib/slugifyWithSlashes";
-import styles from "./customHits.module.scss";
+import styles from "./hits.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
 import EmptyResults from "./EmptyResults";
 
@@ -90,7 +90,9 @@ function Hits(props: any) {
           <p className={styles.noResults}>No results found</p>
         )}
 
-        {!validQuery /*&& focus*/ && <EmptyResults />}
+        {!validQuery /*&& focus*/ && (
+          <EmptyResults className={styles.emptyResults} />
+        )}
 
         {results && results.hits.length > 0 && validQuery && (
           <>

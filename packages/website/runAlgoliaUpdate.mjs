@@ -15,6 +15,19 @@ const fsPromises = fs.promises;
 
 export const postsDirectory = join(process.cwd(), "_posts");
 
+function extractTabName(path) {
+  // Split the string by '/tab:' delimiter
+  const parts = path.split("/tab:");
+  // Check if the array has at least two elements
+  if (parts.length >= 2) {
+    // The part after '/tab:' is the name of the tab
+    return parts[1];
+  } else {
+    // Return false if '/tab:' is not found
+    return false;
+  }
+}
+
 async function getFiles(dir) {
   const dirents = await fsPromises.readdir(dir, { withFileTypes: true });
 
@@ -36,10 +49,17 @@ export async function getPostSlugs() {
   filesFiltered.map((f) => {
     const fileContents = fs.readFileSync(f, "utf8");
     const { data } = matter(fileContents);
-    results.push({ slug: data.slug.replace("tab:", ""), path: f });
-    if (data.slug.includes("/tab:Code")) {
-      results.push({ slug: data.slug.replace("tab:Code", "Props"), path: f });
-    }
+    results.push({
+      slug: data.slug.replace("tab:", ""),
+      path: f,
+    });
+    /* if (data.slug.includes("/tab:Code")) {
+      results.push({
+        slug: data.slug.replace("tab:Code", "Props"),
+        path: f,
+        originalSlug: data.slug,
+      });
+    } */
   });
 
   return results;
@@ -65,6 +85,7 @@ export function getPostByPath(path, fields = []) {
 
 export async function getAllPosts(fields = []) {
   const slugs = await getPostSlugs();
+
   const posts = slugs
     .map((slug) => getPostByPath(slug.path, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
@@ -75,7 +96,9 @@ function transformPostsToSearchObjects(posts) {
   return posts.map((post) => {
     return {
       objectID: post.slug,
-      title: post.title,
+      title: extractTabName(post.slug)
+        ? `${post.title} ${extractTabName(post.slug)}`
+        : post.title,
       excerpt: post.excerpt,
       slug: post.slug,
       date: post.date,

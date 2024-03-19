@@ -1,6 +1,7 @@
 import * as React from "react";
 import { User as UserIcon } from "@wfp/icons-react";
 import useSettings from "../../hooks/useSettings";
+import classNames from "classnames";
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
@@ -32,6 +33,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 function Avatar({
   alt,
+  className,
   image,
   missingImage = "avatar",
   name,
@@ -41,19 +43,34 @@ function Avatar({
   const { prefix } = useSettings();
 
   if (!image && missingImage === "avatar") {
+    const classes = classNames(
+      `${prefix}--avatar`,
+      `${prefix}--avatar--empty`,
+      `${prefix}--avatar--missing`,
+      className
+    );
+
     return (
       <UserIcon
         fill="#ffffff"
         description={alt}
-        className={`${prefix}--avatar ${prefix}--avatar--empty`}
+        className={classes}
         {...userIconProps}
+        {...other}
       />
     );
   } else if (image === undefined && missingImage === "letter") {
+    const classes = classNames(
+      `${prefix}--avatar`,
+      `${prefix}--avatar--empty`,
+      `${prefix}--avatar--letter`,
+      className
+    );
+
     return (
       <svg
-        id="Layer_1"
-        className={`${prefix}--avatar ${prefix}--avatar--empty ${prefix}--avatar--letter`}
+        id="avatar-layer"
+        className={classes}
         x="0px"
         y="0px"
         viewBox="0 0 25 25"
@@ -66,8 +83,10 @@ function Avatar({
       </svg>
     );
   } else {
+    const classes = classNames(`${prefix}--avatar`, className);
+
     return (
-      <div className={`${prefix}--avatar`} {...other}>
+      <div {...other} className={classes}>
         <img alt={alt} src={image} />
       </div>
     );
