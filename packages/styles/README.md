@@ -1,21 +1,21 @@
-# @carbon/styles
+# @wfp/styles
 
-> Styles for the Carbon Design System
+> Styles for the Bridge Design System
 
 ## Getting started
 
-To install `@carbon/styles` in your project, you will need to run the following
+To install `@wfp/styles` in your project, you will need to run the following
 command using [npm](https://www.npmjs.com/):
 
 ```bash
-npm install -S @carbon/styles
+npm install -S @wfp/styles
 ```
 
 If you prefer [Yarn](https://yarnpkg.com/en/), use the following command
 instead:
 
 ```bash
-yarn add @carbon/styles
+yarn add @wfp/styles
 ```
 
 This package requires [Dart Sass](http://npmjs.com/package/sass) in order to
@@ -42,97 +42,37 @@ docs.
 ## Usage
 
 You can bring in all the styles for the Carbon Design System by including
-`@carbon/styles` in your Sass files. For example:
+`@wfp/styles` in your Sass files. For example:
 
 ```scss
-@use '@carbon/styles';
+@use "@wfp/styles";
 ```
 
-If you only would like to bring in specific components from Carbon, you can
+If you only would like to bring in specific components, you can
 import them in a similar way:
 
 ```scss
-@use '@carbon/styles/scss/reset';
-@use '@carbon/styles/scss/components/accordion';
-@use '@carbon/styles/scss/components/button';
-@use '@carbon/styles/scss/components/checkbox';
+@use "@wfp/styles/scss/reset";
+@use "@wfp/styles/scss/components/accordion";
+@use "@wfp/styles/scss/components/button";
+@use "@wfp/styles/scss/components/checkbox";
 ```
 
-There are various helpers that you can include from Carbon, as well, such as a
+There are various helpers that you can include, as well, such as a
 CSS reset, grid, breakpoint helpers, and more. You can include these similar to
 how you bring in components:
 
 ```scss
 // Bring in the CSS Reset
-@use '@carbon/styles/scss/reset';
+@use "@wfp/styles/scss/reset";
 
 // Bring in the CSS Grid
-@use '@carbon/styles/scss/grid';
+@use "@wfp/styles/scss/grid";
 ```
 
-To learn more about the various helpers that `@carbon/styles` provides, checkout
+To learn more about the various helpers that `@wfp/styles` provides, checkout
 the overview of the files available to use in our
 [Sass docs](./docs/sass.md#files).
-
-## Theming
-
-You can change the default theme of Carbon by doing the following:
-
-```scss
-@use '@carbon/styles/scss/themes';
-@use '@carbon/styles/scss/theme' with (
-  $theme: themes.$g100,
-);
-```
-
-This example uses a built-in theme from Carbon provided by the `scss/themes`
-entrypoint. You can also use a custom theme, or add your own custom tokens to
-extend the theme.
-
-```scss
-// Configure with a custom theme
-@use '@carbon/styles/scss/theme' with (
-  $theme: (
-    background: #e2e2e2,
-    text-primary: #ffffff,
-  ),
-);
-```
-
-```scss
-// Extend the g100 theme with your own tokens
-@use '@carbon/styles/scss/themes';
-@use '@carbon/styles/scss/theme' with (
-  $fallback: themes.$g100,
-  $theme: (
-    custom-token-01: #000000,
-  ),
-);
-```
-
-### Design tokens
-
-You can access the design tokens defined by the Carbon Design System through the
-`@carbon/styles/scss/theme` entrypoint. This file will allow you to refer to
-tokens using Sass Variables as well as get the current value for any token in
-the current theme. For example:
-
-```scss
-@use '@carbon/styles/scss/theme';
-
-body {
-  background: theme.$background-main;
-}
-```
-
-For a full list of tokens available for you to use, check out our
-[theming documentation](../themes/docs/sass.md#tokens).
-
-## 📖 API Documentation
-
-If you're looking for `@carbon/styles` API documentation, check out:
-
-- [Sass](./docs/sass.md)
 
 ## 🙌 Contributing
 

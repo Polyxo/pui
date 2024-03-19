@@ -1,4 +1,4 @@
-React implementation of the UI-Kit
+React implementation of the [Bridge Design System](https://designsystem.wfp.org)
 
 ### Run development
 
