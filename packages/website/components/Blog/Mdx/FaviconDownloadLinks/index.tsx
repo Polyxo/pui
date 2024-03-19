@@ -23,7 +23,7 @@ export default function FaviconDownloadLinks() {
   return (
     <List kind="bullets">
       {files.map((file, i) => (
-        <ListItem key={i} download>
+        <ListItem key={i}>
           <Link
             href={`${process.env.NEXT_PUBLIC_DOMAIN}logos/favicons/${file}`}
             target="_blank"

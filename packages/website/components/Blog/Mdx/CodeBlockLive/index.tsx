@@ -411,6 +411,7 @@ interface PreProps {
   forceFullWidth?: boolean;
   noCode?: boolean;
   size?: string;
+  width?: number;
   children?: /*| React.ReactElement<any, any>
     | JSX.Element
     | React.ReactFragment*/

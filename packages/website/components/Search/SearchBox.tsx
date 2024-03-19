@@ -12,7 +12,6 @@ interface SearchBoxProps {
 const SearchBox: React.FC<SearchBoxProps> = ({
   open,
   search,
-  kind = "main",
 }: SearchBoxProps) => {
   const { refine } = useSearchBox(/*{ search }*/);
   const searchRef = useRef<HTMLInputElement>(null);

@@ -49,9 +49,9 @@ export default function Navigation() {
 
   return (
     <>
-      {/* <InfoBar className={styles.bannerNavigation}>
-        <div>🚧 This website is work in progress 👷</div>
-  </InfoBar> */}
+      <InfoBar className={styles.bannerNavigation}>
+        🚧 This website is work in progress 👷
+      </InfoBar>
 
       <MainNavigation
         logo={<NextLink href="/">Bridge</NextLink>}

@@ -86,7 +86,6 @@ export function getPostByPath(path, fields = []) {
 export async function getAllPosts(fields = []) {
   const slugs = await getPostSlugs();
 
-  console.log("slugs", JSON.stringify(slugs, null, 2));
   const posts = slugs
     .map((slug) => getPostByPath(slug.path, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));

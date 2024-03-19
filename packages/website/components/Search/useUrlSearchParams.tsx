@@ -22,6 +22,7 @@ export function useURLSearchParams() {
     ["pushState", "replaceState"].forEach((eventName) => {
       const originalFunction = history[eventName];
       history[eventName] = function () {
+        // eslint-disable-next-line prefer-rest-params
         originalFunction.apply(this, arguments);
         window.dispatchEvent(new Event(eventName));
       };
