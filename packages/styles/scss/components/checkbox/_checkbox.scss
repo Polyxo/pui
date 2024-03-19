@@ -167,6 +167,16 @@
     height: 100%;
   }
 
+  .#{$prefix}--checkbox-wrapper--invalid {
+    .#{$prefix}--checkbox-label::before {
+      border-color: $support-error-main;
+    }
+    .#{$prefix}--checkbox:checked + .#{$prefix}--checkbox-label::before {
+      background-color: $support-error-main;
+      border-color: $support-error-main;
+    }
+  }
+
   .#{$prefix}--checkbox:checked
     + .#{$prefix}--checkbox-appearance
     .#{$prefix}--checkbox-checkmark,

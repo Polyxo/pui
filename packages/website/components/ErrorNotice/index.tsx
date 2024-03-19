@@ -5,6 +5,7 @@ import styles from "./errorNotice.module.scss";
 import { Empty } from "@wfp/react";
 import MoreLink from "../MoreLink";
 import { Parachute } from "@wfp/pictograms-react";
+import EmptyResults from "components/Search/EmptyResults";
 
 export default function ErrorNotice() {
   return (
@@ -20,6 +21,7 @@ export default function ErrorNotice() {
       title="Page not found"
     >
       404 – The requested page was not found.
+      <EmptyResults />
     </Empty>
   );
 }

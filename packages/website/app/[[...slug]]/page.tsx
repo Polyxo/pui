@@ -51,7 +51,6 @@ export default async function Page(args: any) {
   const { post, posts, propTypes } = data.props;
 
   if (!post?.slug && args.params.slug !== undefined) notFound();
-
   return <Layout posts={posts} post={post} propTypes={propTypes} />;
 }
 

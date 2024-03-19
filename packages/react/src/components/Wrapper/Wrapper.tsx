@@ -75,13 +75,12 @@ const Wrapper: React.FC<WrapperProps> = (props) => {
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className={wrapperClasses} {...other}>
-        {children}
-      </div>
-    );
   }
+  return (
+    <div className={wrapperClasses} {...other}>
+      {children}
+    </div>
+  );
 };
 
 export default Wrapper;

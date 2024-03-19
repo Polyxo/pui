@@ -16,6 +16,7 @@ import { H1, H2, H3, H4, H5 } from "./Headings";
 import IconList from "./Icons/IconList";
 import PropTypes from "../../PropTypes";
 import TokenExplorer from "./TokenExplorer";
+import FaviconDownloadLinks from "./FaviconDownloadLinks";
 import {
   AddonBefore,
   AddonAfter,
@@ -40,6 +41,7 @@ const components = {
   Colors,
   Storybook,
   FaviconsGenerator: FaviconGenerator,
+  FaviconDownloadLinks,
   //CodeBlockLive,
   DoUse,
   DoNotUse,

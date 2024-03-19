@@ -109,22 +109,21 @@ $main-navigation-menu-width: calcRem(300px);
     position: relative;
     top: calcRem(0px);
     //vertical-align: middle;
-    margin-left: 0.2em;
+    margin-left: 0.3em;
     font-size: 0.8em;
     margin-right: $spacing-05;
+    flex-shrink: 0;
+
     @include rtl {
       margin-left: 0;
-      margin-right: 0.5em;
+      margin-right: 0.3em;
     }
   }
 
   .#{$prefix}--main-navigation__trigger--has-sub.#{$prefix}--main-navigation__trigger--open {
     .#{$prefix}--main-navigation__trigger__icon {
       //top: calcRem(0px);
-      font-size: 0.6em;
-      position: relative;
-      left: -2px;
-      margin-left: 0.57em;
+      //transform: scale(1.1);
     }
   }
 

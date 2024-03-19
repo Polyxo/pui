@@ -1,0 +1,39 @@
+---
+title: "Breakpoints"
+excerpt: "List of breakpoints used in the WFP design system."
+slug: "best-practices/Breakpoints"
+---
+
+## Introduction
+
+The breakpoints are based on the design system of the WFP.
+
+| Breakpoint | Columns | Margin | Width  |
+| ---------- | ------- | ------ | ------ |
+| sm         | 4       | 0      | 320px  |
+| md         | 8       | 16px   | 672px  |
+| lg         | 16      | 16px   | 1056px |
+| xlg        | 16      | 16px   | 1312px |
+| max        | 16      | 24px   | 1584px |
+
+### Breakpoint mixins
+
+The breakpoints are used in the following way:
+
+```scss
+// Example
+@include breakpoint-up(md) {
+  // Your styles here
+}
+```
+
+The following mixins are available for use:
+
+- `breakpoint-up`
+- `breakpoint-down`
+- `breakpoint-between`
+- `breakpoint-only`
+
+### Reference
+
+- [Carbon Design System Grid](https://www.npmjs.com/package/@carbon/grid)

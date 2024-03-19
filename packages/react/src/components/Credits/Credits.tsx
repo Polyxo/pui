@@ -1,18 +1,13 @@
-import * as React from 'react';
-import type { PropsWithChildren } from 'react';
-import classNames from 'classnames';
-import useSettings from '../../hooks/useSettings';
+import * as React from "react";
+import classNames from "classnames";
+import useSettings from "../../hooks/useSettings";
 
-type CreditsProps = PropsWithChildren<{
+interface CreditsProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
  Specifiy the info content
 */
-  info?: string;
-  /**
- Additional className which will be added
-*/
-  className?: string;
-}>;
+  info?: React.ReactNode;
+}
 
 /** Credits are mostly used when a photo need a source attribution. */
 const Credits: React.FC<CreditsProps> = ({
@@ -31,6 +26,6 @@ const Credits: React.FC<CreditsProps> = ({
   );
 };
 
-Credits.displayName = 'Credits';
+Credits.displayName = "Credits";
 
 export default Credits;

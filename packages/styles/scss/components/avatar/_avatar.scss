@@ -15,8 +15,6 @@
 @mixin avatar {
   .#{$prefix}--avatar {
     @include reset;
-    //width: calcRem(25px);
-    //height: calcRem(25px);
     border-radius: 50%;
     overflow: hidden;
     font-size: 1.3em;
@@ -26,8 +24,16 @@
     > img {
       display: block;
       object-fit: cover;
-      width: 1.2em;
-      height: 1.2em;
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  .#{$prefix}--avatar--missing {
+    color: $neutral-neutral50;
+    > path {
+      transform: scale(0.9);
+      transform-origin: center bottom;
     }
   }
 

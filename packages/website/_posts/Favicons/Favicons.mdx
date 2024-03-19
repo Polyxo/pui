@@ -18,15 +18,22 @@ Use the generator to create favicons with an acronym of the applications name. T
 
 <FaviconsGenerator />
 
-### External Applications: Usage with CDN
+### External Applications
 
-TODO: Fix urls The favicons can be found in the{' '}
-https://github.com/wfp/ui-assets/tree/master/src/favicons
-@wfp/react-assets
+For external applications, use the WFP logo as the favicon. Make sure to use the Acronym for very small sizes.
 
-repository and the Figma source in the [Figma Community](https://www.figma.com/community/file/1161607551763121097).
+### Favicon Download Links
+
+<FaviconDownloadLinks />
+
+Figma source in the [Figma Community](https://www.figma.com/community/file/1161607551763121097).
 
 ### Full sizes catalog which can be added to the HTML Head
+
+<Callout kind="warning" title="Legacy">
+  Please avoid using the CDN for the favicons. It's better to use the internal
+  generator to create the favicons.
+</Callout>
 
 ```html
 <link

@@ -8,14 +8,14 @@ import {
   SubNavigation,
   SubNavigationItem,
   InfoBar,
+  Search,
   SubNavigationContent,
   useMainNavigation,
 } from "@wfp/react";
-import Search from "../Search";
 
 import styles from "./styles.module.scss";
 import LinkWithNext from "components/LinkWithNext";
-import { useParams } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 function CloseNavigationTrigger() {
   const params = useParams();
@@ -32,6 +32,8 @@ function CloseNavigationTrigger() {
 export default function Navigation() {
   //const { t } = useTranslation('website');
   const theme: any = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const wrapperElement = document.body;
@@ -47,9 +49,9 @@ export default function Navigation() {
 
   return (
     <>
-      <InfoBar className={styles.bannerNavigation}>
-        <span>🚧 This website is work in progress 👷</span>
-      </InfoBar>
+      {/* <InfoBar className={styles.bannerNavigation}>
+        <div>🚧 This website is work in progress 👷</div>
+  </InfoBar> */}
 
       <MainNavigation
         logo={<NextLink href="/">Bridge</NextLink>}
@@ -137,10 +139,18 @@ export default function Navigation() {
           <NextLink href="/support/contact">Support</NextLink>
         </MainNavigationItem>
 
-        <MainNavigationItem className={styles.darkModeSwitch}>
-          <div className={styles.meta}>
-            <Search />
-          </div>
+        <MainNavigationItem className={styles.meta}>
+          <figure>
+            <Search
+              kind="main"
+              className={styles.searchLink}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push(`${pathname}?search=true`, { scroll: false });
+              }}
+              placeholder="Search..."
+            />
+          </figure>
         </MainNavigationItem>
       </MainNavigation>
     </>

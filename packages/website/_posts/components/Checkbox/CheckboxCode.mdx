@@ -62,6 +62,19 @@ mainComponent: "Checkbox"
 
 The checkbox control allows for three states: **selected**, **unselected**, and **indeterminate**. The indeterminate state comes into play when the checkbox contains a sublist of selections, some of which are selected, and some unselected.
 
+#### Invalid
+
+When the checkbox is in an invalid state, the user will be notified by an error message.
+
+```jsx live
+<Checkbox
+  id="check-invalid"
+  labelText="Accept terms and conditions"
+  invalid
+  invalidText="Please accept the terms and conditions"
+/>
+```
+
 ## Actions
 
 #### Click target

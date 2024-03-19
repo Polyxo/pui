@@ -4,7 +4,7 @@ export {
   AddonAfter,
   Label,
   Helper,
-  Error,
+  InlineErrorMessage,
   // TODO: Check how to make the Types avaliable InputProps,
 } from "./Input";
 

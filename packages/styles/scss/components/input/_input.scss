@@ -68,13 +68,14 @@ $input-border: 1px solid var(--neutral-100__color); // TODO
     height: $input-height;
     line-height: $input-height;
     padding: 0 $spacing-03;
-    background-color: $border-strong;
-    border: $input-border;
+    background-color: $layer-primary;
+    //border: $input-border;
     order: 2;
   }
 
   .#{$prefix}--input-addon-after {
     border-left: 0;
+    margin-left: -2px;
   }
 
   .#{$prefix}--input-addon-before {

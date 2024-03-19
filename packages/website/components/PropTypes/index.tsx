@@ -227,7 +227,12 @@ export default function PropTypes({
         </Select>
       );
     }
-    if (prop.type.raw === "ReactNode" || prop.type.raw === "string") {
+
+    if (
+      prop.type.raw === "ReactNode" ||
+      prop.type.raw === "string" ||
+      prop.type.name === "string"
+    ) {
       return (
         <TextInput
           {...register(prop.name, { required: prop.required })}
@@ -235,7 +240,7 @@ export default function PropTypes({
           defaultValue={prop.defaultValue && prop.defaultValue.value}
         />
       );
-    } else if (prop.type.raw === "number") {
+    } else if (prop.type.raw === "number" || prop.type.name === "number") {
       return (
         <NumberInput
           {...register(prop.name, { required: prop.required })}

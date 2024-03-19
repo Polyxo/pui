@@ -1,6 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";
+import { InlineErrorMessage } from "../Input";
 
 interface CheckboxProps
   extends Omit<React.ComponentPropsWithRef<"input">, "onChange"> {
@@ -17,6 +18,14 @@ interface CheckboxProps
    * Specify whether the label should be hidden, or not
    */
   hideLabel?: boolean;
+  /**
+   * Invalid state for the checkbox
+   */
+  invalid?: boolean;
+  /**
+   * Provide the text that is displayed when the checkbox is in an invalid state
+   */
+  invalidText?: string;
   /**
    * The CSS class name to be placed on the wrapping element
    */
@@ -44,6 +53,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       onChange = () => {},
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       indeterminate,
+      invalid,
+      invalidText,
       hideLabel,
       wrapperClassName,
       title = "",
@@ -59,6 +70,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const wrapperClasses = classNames(
       `${prefix}--form-item`,
       `${prefix}--checkbox-wrapper`,
+      {
+        [`${prefix}--checkbox-wrapper--invalid`]: invalid,
+      },
       wrapperClassName
     );
 
@@ -66,6 +80,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       <div className={wrapperClasses}>
         <input
           {...other}
+          aria-invalid={invalid}
+          data-invalid={invalid}
           type="checkbox"
           onChange={(evt) => {
             onChange(evt, evt.target.checked, id);
@@ -92,6 +108,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         >
           <span className={innerLabelClasses}>{labelText}</span>
         </label>
+        <InlineErrorMessage
+          errorClasses={`${prefix}--form-requirement`}
+          invalid={invalid}
+          invalidText={invalidText}
+        />
       </div>
     );
   }

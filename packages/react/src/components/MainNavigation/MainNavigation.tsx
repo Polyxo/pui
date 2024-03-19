@@ -116,7 +116,7 @@ const MainNavigation = ({
   const MobileButton = components.MobileButton as React.FC<MobileButtonProps>;
 
   return (
-    <div id={id} className={wrapperClasses}>
+    <nav id={id} className={wrapperClasses}>
       <MainNavigationContext.Provider
         value={{
           activeMenuItem,
@@ -162,7 +162,7 @@ const MainNavigation = ({
           <ul className={listClasses}>{children}</ul>
         </Wrapper>
       </MainNavigationContext.Provider>
-    </div>
+    </nav>
   );
 };
 

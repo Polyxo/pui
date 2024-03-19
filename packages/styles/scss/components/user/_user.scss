@@ -27,13 +27,14 @@
 
   .#{$prefix}--avatar {
     font-size: 1.2em;
+    background: $layer-primary;
 
-    > img {
+    /* > img {
       display: block;
       object-fit: cover;
       width: 1.2em;
       height: 1.2em;
-    }
+    } */
 
     .#{$prefix}--user--has-description & {
       //width: calcRem(60px);
