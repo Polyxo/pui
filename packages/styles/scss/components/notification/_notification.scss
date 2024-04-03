@@ -294,7 +294,7 @@
   }
   .#{$prefix}--inline-notification--info
     .#{$prefix}--inline-notification__icon {
-    fill: $action-default-fill-primary-default;
+    color: $action-default-fill-primary-default;
   }
 
   .#{$prefix}--inline-notification--success,
@@ -311,7 +311,7 @@
 
   .#{$prefix}--inline-notification--success
     .#{$prefix}--inline-notification__icon {
-    fill: $support-success-main;
+    color: $support-success-main;
   }
 
   .#{$prefix}--inline-notification--error,
@@ -328,7 +328,7 @@
 
   .#{$prefix}--inline-notification--error
     .#{$prefix}--inline-notification__icon {
-    fill: $support-error-main;
+    color: $support-error-main;
   }
 
   .#{$prefix}--inline-notification--warning,
@@ -345,7 +345,7 @@
 
   .#{$prefix}--inline-notification--warning
     .#{$prefix}--inline-notification__icon {
-    fill: $support-warning-main;
+    color: $support-warning-main;
   }
 
   .#{$prefix}--inline-notification--low-contrast {

@@ -57,7 +57,7 @@ export const Portal = (props: any) => {
   );
 };
 
-function SearchModal({ className }: any) {
+export default function SearchModal({ className }: any) {
   const [focus] = useState(false);
   const ref = useRef<any>(null);
 
@@ -107,8 +107,4 @@ function SearchModal({ className }: any) {
       </div>
     </Portal>
   );
-}
-export default function SearchWrapper(props: any) {
-  /* </Suspense> */
-  return <SearchModal {...props} />;
 }

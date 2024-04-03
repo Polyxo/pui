@@ -31,14 +31,16 @@ export default async function getPostContent(params: any) {
     "order",
   ]);
 
+  const slug = params.slug || ["homepage"];
+
   const slugs: any = await getPostSlugs();
-  const foundSlug = params.slug
+  const foundSlug = slug
     ? slugs.find(
         (f) =>
           f.slug
             .split("/")
             .map((e) => slugify(e, { lower: true }))
-            .join("/") === params.slug.join("/")
+            .join("/") === slug.join("/")
       )
     : null;
 

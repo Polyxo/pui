@@ -135,7 +135,7 @@ $main-navigation-menu-width: calcRem(300px);
       &:hover,
       &:visited,
       &:active {
-        color: $text-body-default;
+        color: $action-default-link-default;
         text-decoration: underline;
       }
       &:focus {

@@ -1,31 +1,33 @@
-import React from 'react';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
-import styles from './headings.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import styles from "./headings.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { componentToString } from "./componentToString";
 
 const convertToSlug = function (str) {
-  str = str.replace(/^\s+|\s+$/g, ''); // trim
+  str = str.replace(/^\s+|\s+$/g, ""); // trim
   str = str.toLowerCase();
 
   // remove accents, swap ñ for n, etc
-  const from = 'ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;';
-  const to = 'aaaaaeeeeeiiiiooooouuuunc------';
+  const from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
+  const to = "aaaaaeeeeeiiiiooooouuuunc------";
   for (let i = 0, l = from.length; i < l; i++) {
-    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
   }
 
   str = str
-    .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-'); // collapse dashes
+    .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+    .replace(/\s+/g, "-") // collapse whitespace and replace by -
+    .replace(/-+/g, "-"); // collapse dashes
 
   return str;
 };
 
 export function createSlug(children) {
-  return children && typeof children === 'string'
+  console.log("children", children);
+  return children && typeof children === "string"
     ? convertToSlug(children.substring(0, 24))
-    : 'none';
+    : convertToSlug(componentToString(children).substring(0, 24));
 }
 
 export default function Heading({ level, ...other }: any) {

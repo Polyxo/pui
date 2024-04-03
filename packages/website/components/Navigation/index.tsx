@@ -50,7 +50,7 @@ export default function Navigation() {
   return (
     <>
       <InfoBar className={styles.bannerNavigation}>
-        🚧 This website is work in progress 👷
+        <span>🚧 This website is work in progress 👷</span>
       </InfoBar>
 
       <MainNavigation

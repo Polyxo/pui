@@ -4,7 +4,7 @@ import { WFPCoreProvider } from "@wfp/react";
 import React from "react";
 import Footer from "../Footer";
 import Navigation from "../Navigation";
-// import SearchWrapper from "../Search";
+import SearchModal from "components/Search";
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -13,10 +13,10 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <WFPCoreProvider initialTheme="light">
+      <SearchModal />
       <Navigation />
       {children}
       <Footer />
-      {/* <SearchWrapper />  is there a reason for this search here? @Robert */}
     </WFPCoreProvider>
   );
 }

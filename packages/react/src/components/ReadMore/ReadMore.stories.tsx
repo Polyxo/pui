@@ -31,6 +31,7 @@ export const ReadMoreDefault: Story = {
   ),
   args: {
     colon: true,
+    fade: true,
     maxHeight: 50,
   },
 };

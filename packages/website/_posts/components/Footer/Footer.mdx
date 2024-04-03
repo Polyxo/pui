@@ -1,7 +1,7 @@
 ---
 category: "Core"
 title: "Footer"
-coverImage: "../sample-image.jpg"
+excerpt: "A section typically located at the bottom of a webpage or application layout, containing navigational links, copyright information, and other relevant content."
 slug: "Components/Navigation/Footer"
 storybook: true
 status: "draft"
@@ -12,58 +12,33 @@ componentsNew:
   width: 800
 ---
 
-## Usage
+It is the second most important place where your basic site information and links should live. Users turn often to the footer to look for important information, such as contact details, or links to less prominent sections of the website (privacy policy, terms of use, etc).
 
-Footer is the second most important place where your basic site information and links should live. Users turn often to the footer to look for important information, such as contact details, or links to less prominent sections of the website (privacy policy, terms of use, etc).
+### Example
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=829%3A7371" />
+
+### Anatomy
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=829%3A8107" />
 
 <DoUse>
 
-- Use when you want to share information like contacts details, privacy policy, terms of use, copyright.
+- Use to provide supplementary information such as contact details, legal links, or social media links.
+- Utilize it to enhance navigation by including links to important sections or pages within the application or website.
 
 </DoUse>
 
 <DoNotUse>
 
 - The Footer component should only be used once per page at the end of the page.
+- Do not overload the `Footer` with excessive links or content, as it may overwhelm users and diminish its effectiveness.
 
 </DoNotUse>
 
-### Footer
+### Alternative components
 
-```jsx live forceFullWidth
-import { Footer, Link } from "@wfp/react";
-
-<Footer
-  metaContent="2023 © World Food Programme"
-  secondary="Via C. G. Viola 68 Parco dei Medici
-    00148 Rome, Italy"
->
-  <div className="wfp--footer__info">
-    <div className="wfp--footer__info__item">
-      <p className="wfp--footer__label">A label</p>
-      <ul className="wfp--footer__list">
-        <li>
-          <Link href="http://www.wfp.org">First Link</Link>
-        </li>
-        <li>
-          <Link href="http://www.wfp.org">Second Link</Link>
-        </li>
-      </ul>
-    </div>
-    <div className="wfp--footer__info__item">
-      <p className="wfp--footer__label">Another label</p>
-      <ul className="wfp--footer__list">
-        <li>
-          <Link href="http://www.wfp.org">First Link</Link>
-        </li>
-        <li>
-          <Link href="http://www.wfp.org">Second Link</Link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</Footer>;
-```
+If the `Footer` component does not suit the context, consider using a sticky navigation bar or a collapsible sidebar to house supplementary information and navigation links.
 
 ## Related
 

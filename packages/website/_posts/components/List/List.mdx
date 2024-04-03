@@ -2,6 +2,7 @@
 category: "Core"
 title: "List"
 coverImage: "../sample-image.jpg"
+excerpt: "The List component is a versatile tool for displaying collections of items in a structured format, facilitating easy navigation and comprehension."
 slug: "Components/Structure/List"
 storybook: true
 status: "published"
@@ -9,7 +10,15 @@ mainComponent: "List"
 components: ["ListItem"]
 ---
 
-The `List` component is designed to display a set of connected items consecutively, either one below the other or inline. It offers flexible rendering options, including ordered lists, unordered lists, and other styles, while also allowing for visual customizations, such as adding colons to list items or rendering them with smaller font sizes.
+It displays a set of connected items consecutively, either one below the other or inline. It offers flexible rendering options, including ordered lists, unordered lists, and other styles, while also allowing for visual customizations, such as adding colons to list items or rendering them with smaller font sizes.
+
+### Example
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=902%3A1601" />
+
+### Anatomy
+
+<FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=902%3A1848" />
 
 <DoUse>
 
@@ -19,26 +28,23 @@ The `List` component is designed to display a set of connected items consecutive
   priority, hierarchy, or sequence between list items.
 - Use the `colon` prop
   when you want to emphasize list items, especially for short, critical lists.
+- Use the `List` component when presenting a set of items that need to be displayed in a sequential or hierarchical order.
+- Utilize the `List` component for menus, navigation bars, or any scenario where content needs to be structured into a list format.
+- Arrange list items in a logical way. For example, if the list is about resource use, the default order might be highest resource use to lowest. Grouping items in categories into smaller, more specific lists might be more meaningful in some contexts. Alternatively, organize in alphabetical or numeric order.
+- Use list items that are grammatically parallel. For example, do not mix passive voice with active voice or declarative sentences (statements) with imperative sentences (direct command).
 
 </DoUse>
 
 <DoNotUse>
 
-- Do not use lists for content that is not related. - Avoid using the
-  `unordered` kind for lists where the sequence of items is crucial.
+- Do not use lists for content that is not related.
+- Avoid using the `unordered` kind for lists where the sequence of items is crucial.
+- Avoid using the `List` component for non-linear content layouts or when the content does not benefit from a structured list format.
+- Consider alternative components such as `Cards` or `Tables` for presenting non-linear or visually rich content.
+- Generally, lists should be used to present simple pieces of information. For more complex sets of data, consider using a data table.
 
 </DoNotUse>
 
-## Content
+### Accessibility
 
-#### Length
-
-Generally, lists should be used to present simple pieces of information. For more complex sets of data, consider using a data table.
-
-#### Order
-
-Arrange list items in a logical way. For example, if the list is about resource use, the default order might be highest resource use to lowest. Grouping items in categories into smaller, more specific lists might be more meaningful in some contexts. Alternatively, organize in alphabetical or numeric order.
-
-#### Text
-
-Use list items that are grammatically parallel. For example, do not mix passive voice with active voice or declarative sentences (statements) with imperative sentences (direct command).
+- Ensure each list item is semantically marked up using appropriate HTML elements such as `<ul>`, `<ol>`, and `<li>`.

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import classNames from "classnames";
 import Link from "../Link";
-import { CaretUp, CaretDown } from "@wfp/icons-react";
+import { CaretUp, ChevronUp } from "@wfp/icons-react";
 import useSettings from "../../hooks/useSettings";
 import { useId } from "../../hooks/useId";
 
@@ -19,10 +19,16 @@ const MoreLink = ({ handleToggleClick, link, text, showMore, contentId }) => {
     });
     return clonedLink;
   } else {
-    const Icon = showMore ? CaretUp : CaretDown;
+    const Icon = ChevronUp;
+
+    const classes = classNames({
+      [`${prefix}--read-more__trigger`]: true,
+      [`${prefix}--read-more__trigger--expanded`]: showMore,
+    });
+
     return (
       <Link
-        className={`${prefix}--read-more__trigger`}
+        className={classes}
         size="sm"
         onClick={handleToggleClick}
         {...ariaProps} // Add aria attributes to the link

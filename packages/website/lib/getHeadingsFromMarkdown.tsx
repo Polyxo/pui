@@ -21,12 +21,18 @@ function extractHeadings() {
 
     visit(tree, "heading", (node: any) => {
       let textContent = "";
-      visit(node, "inlineCode", (textNode: HeadingNode) => {
+      visit(node, (child) => {
+        if (child.value) {
+          textContent += child.value;
+        }
+      });
+
+      /*visit(node, "inlineCode", (textNode: HeadingNode) => {
         textContent += textNode.value || "";
       });
       visit(node, "text", (textNode: HeadingNode) => {
         textContent += textNode.value || "";
-      });
+      });*/
       headings.push(textContent);
     });
     file.data = { headings };

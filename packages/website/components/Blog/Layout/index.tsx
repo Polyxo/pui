@@ -17,9 +17,11 @@ const Layout = ({ posts, post, propTypes, head }: LayoutProps) => (
     <Head>{head}</Head>
 
     <div className={styles.layout}>
-      {!post?.slug && <Homepage />}
-
-      <SidebarWrapper posts={posts} post={post} propTypes={propTypes} />
+      {post?.slug === "homepage" ? (
+        <Homepage />
+      ) : (
+        <SidebarWrapper posts={posts} post={post} propTypes={propTypes} />
+      )}
     </div>
   </>
 );

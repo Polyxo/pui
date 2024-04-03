@@ -28,6 +28,7 @@ function ComponentPreview({ component, componentsList, name, propTypes }: any) {
 export default function ComponentsList(props: any) {
   const componentsList = JSON.parse(props.components) || [];
 
+  console.log("componentsList", componentsList);
   const postSplit: any = componentsList.map((p) => {
     return {
       key: "/" + p.slug,
