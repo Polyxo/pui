@@ -24,7 +24,6 @@ const convertToSlug = function (str) {
 };
 
 export function createSlug(children) {
-  console.log("children", children);
   return children && typeof children === "string"
     ? convertToSlug(children.substring(0, 24))
     : convertToSlug(componentToString(children).substring(0, 24));

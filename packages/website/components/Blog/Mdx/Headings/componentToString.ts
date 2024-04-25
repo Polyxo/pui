@@ -1,6 +1,6 @@
 import React from "react";
 
-export function componentToString(element) {
+export function componentToString(element: React.ReactNode) {
   // Check if the element is a simple string or number and return it as is
   if (typeof element === "string" || typeof element === "number") {
     return String(element);
@@ -8,20 +8,22 @@ export function componentToString(element) {
 
   // Handle React elements
   if (React.isValidElement(element)) {
-    const type = element.type;
+    //const type = element.type;
     const props = element.props;
-    const propsString = Object.keys(props)
+    /* const propsString = Object.keys(props)
       // Filter out children from the props
       .filter((key) => key !== "children")
       // Map each prop to a key=value string
       .map((key) => `${key}=${JSON.stringify(props[key])}`)
       // Join all props with spaces
       .join(" ");
+    */
     const children = React.Children.toArray(props.children)
       .map((child) => componentToString(child))
       .join("");
+    /*
     const typeString =
-      typeof type === "string" ? type : type.displayName || type.name;
+      typeof type === "string" ? type : type.displayName || type.name; */
     return `${children}`;
     //return `<${typeString} ${propsString}>${children}</${typeString}>`;
   }

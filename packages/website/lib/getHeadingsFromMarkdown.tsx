@@ -1,12 +1,13 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import { visit } from "unist-util-visit";
-import { Node } from "unist"; // Import Node type for unist nodes
+// import { Node } from "unist"; // Import Node type for unist nodes
 import { VFile } from "vfile"; // Import VFile type for vfile instances
 
+/*
 interface HeadingNode extends Node {
   value?: string;
-}
+} */
 
 interface CustomVFile extends VFile {
   data: {
