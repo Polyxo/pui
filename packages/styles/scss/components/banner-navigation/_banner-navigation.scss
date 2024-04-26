@@ -14,7 +14,7 @@
     @include reset;
     display: flex;
     // @include font-smoothing; //added to reset mixin
-    @include breakpoint-down("sm") {
+    @include breakpoint-down("md") {
       display: none;
     }
     .#{$prefix}--search {

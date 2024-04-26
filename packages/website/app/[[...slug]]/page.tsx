@@ -42,6 +42,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: page.title + " | WFP Bridge",
       description: page.description || page.excerpt,
       type: "article",
+      images: [
+        {
+          url:
+            process.env.NEXT_PUBLIC_DOMAIN +
+            "api/opengraph/" +
+            slugifyWithSlashes(page.slug),
+          width: 1200,
+          height: 630,
+          alt: page.title,
+        },
+      ],
+    },
+    twitter: {
+      title: page.title + " | WFP Bridge",
+      cardType: "summary_large_image",
+      site: "@WFP",
+      images: [
+        {
+          url:
+            process.env.NEXT_PUBLIC_DOMAIN +
+            "api/opengraph/" +
+            slugifyWithSlashes(page.slug),
+          width: 1200,
+          height: 630,
+          alt: page.title,
+          type: "image/png",
+        },
+      ],
     },
   };
 }

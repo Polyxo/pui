@@ -280,9 +280,19 @@ export default function PropTypes({
     ...filterEmptyValues(componentProps),
   };
 
-  let code = reactElementToJSXString(<MyComponent {...filteredPropsList} />, {
-    filterProps: (val) => (val === undefined ? false : true),
-  });
+  // Filter if default value is same as component value
+  const filteredPropsWithoutDefaultValuesAsObject = Object.fromEntries(
+    Object.entries(filteredPropsList).filter(
+      ([key, value]) => value !== propList[key].defaultValue?.value
+    )
+  );
+
+  let code = reactElementToJSXString(
+    <MyComponent {...filteredPropsWithoutDefaultValuesAsObject} />,
+    {
+      filterProps: (val) => (val === undefined ? false : true),
+    }
+  );
 
   if (sampleCode) {
     try {
@@ -304,10 +314,10 @@ export default function PropTypes({
 
       const codeNew: any = eval(transformedCode.code);
 
-      const enhancedElement = React.cloneElement(codeNew, {
-        ...filterEmptyValues(defaultProps),
-        ...filterEmptyValues(componentProps),
-      });
+      const enhancedElement = React.cloneElement(
+        codeNew,
+        filteredPropsWithoutDefaultValuesAsObject
+      );
 
       code = reactElementToJSXString(enhancedElement, {
         showFunctions: true,

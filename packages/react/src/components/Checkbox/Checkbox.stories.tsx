@@ -16,27 +16,8 @@ export default {
 export const CheckboxDefault: Story = {
   render: (args) => <Checkbox {...args} />,
   args: {
-    labelText: "Label text",
+    labelText: "Checkbox label text",
     id: "check-1",
-  },
-};
-
-const regularsourcecode = `
-import { Checkbox } from "@wfp/react";
-
-<Checkbox
-  id="check-1"
-  labelText="Label text"
-/>
-`;
-
-CheckboxDefault.story = {
-  parameters: {
-    docs: {
-      source: {
-        code: regularsourcecode,
-      },
-    },
   },
 };
 

@@ -200,6 +200,25 @@
   h4 {
     font-size: 1em;
   }
+  :global(.debug) {
+    border-top: 2px solid $border-subtle;
+    margin-top: 1em;
+
+    h4,
+    :global(.wfp--label) {
+      margin-top: 1em !important;
+      margin-bottom: 0.3em;
+    }
+    pre {
+      font-family: var(--font-family-monospace);
+      font-size: 0.8em;
+      background-color: $layer-primary;
+      padding: 0.1em 0.5em;
+    }
+    input {
+      font-family: var(--font-family-monospace);
+    }
+  }
 }
 
 .mobileFrame {

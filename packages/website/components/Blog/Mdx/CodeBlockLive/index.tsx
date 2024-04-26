@@ -111,9 +111,9 @@ const CodeBlockLive = (props: any) => {
 
   if (reactHookForm)
     code = `
-  const Counter = () => {
+  const FormExample = () => {
 
-    const [defaultValues, setDefaultValues] = useState({"inputname":true});
+    const [defaultValues, setDefaultValues] = useState({});
     const { control, register, handleSubmit, watch, reset } = useForm({defaultValues});
     const [data, setData] = useState({});
 
@@ -141,21 +141,24 @@ const CodeBlockLive = (props: any) => {
   
         <Button type="submit">Submit</Button>{" "}
         <Button onClick={resetInputs} kind="secondary">Reset</Button>
+        
+        <div className="debug">
+          <h4>Submitted form data</h4>
+          <pre>{JSON.stringify(data, null, 2)}</pre>
 
-        <h4>Submitted form data</h4>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+          <h4>Current values</h4>
+          <pre>{JSON.stringify(currentValues, null, 2)}</pre>
 
-        <h4>Current values</h4>
-        <pre>{JSON.stringify(currentValues, null, 2)}</pre>
-
-        <TextInput name="default values" labelText="Default values" defaultValue={JSON.stringify(defaultValues)} onChange={setDefaultValuesFunc} /> 
-
+          <TextInput labelText="Default values (editable)" defaultValue={JSON.stringify(defaultValues)} onChange={setDefaultValuesFunc} /> 
+        </div>
       </form>
       </>
     );
   }
   
-  render(<Counter />)`;
+  render(<FormExample />)`;
+
+  //     <Result defaultValues={defaultValues} currentValues={currentValues} data={data} setDefaultValuesFunc={setDefaultValuesFunc}/>
 
   const language =
     props.language || className.replace(/language-/, "") || "jsx";

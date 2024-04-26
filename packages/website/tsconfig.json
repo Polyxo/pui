@@ -32,7 +32,10 @@
     "tina/database.ts.new",
     "appnew/new/[...slug]/page.tsx.new",
     "lib/databaseConnection.ts.new",
-    "pages/api/gql.ts.new"
+    "pages/api/gql.ts.new",
+    "app/layout.tsx",
+    "app/opengraph/[[...slug]]/opengraph-image.tsx.new",
+    "app/[[...slug]]/opengraph-image.tsx.f"
   ],
   "exclude": ["node_modules", "*.sitemap.xml.tsx", "**/*.build.tsx"]
 }

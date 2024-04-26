@@ -62,6 +62,7 @@ $css--body: true;
 body {
   background: $background-main;
   color: $text-body-default;
+  --font-family-primary: var(--font-open-sans);
 }
 
 .wfp--main-navigation__list {
@@ -129,4 +130,14 @@ html {
   font-size: 0.9em;
   line-height: 1.6em;
   overflow: auto;
+}
+
+.wfp--table {
+  th,
+  td {
+    word-break: keep-all;
+
+    hyphens: auto;
+    hyphenate-limit-chars: 10 3 4;
+  }
 }
