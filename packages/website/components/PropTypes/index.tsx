@@ -38,6 +38,36 @@ const filterEmptyValues = (obj) => {
   }, {});
 };
 
+function extractFirstComponent(func) {
+  // Convert the function to a string
+  const funcString = func.toString();
+
+  // Use a regex to find the first JSX component (assumes component starts with '<' and ends with '>')
+  // eslint-disable-next-line no-useless-escape
+  const jsxRegex = /<[\w\s\d\.\{\}\(\)\=\>\"\']*\>[^<]*<\/[\w]+>/;
+  const match = funcString.match(jsxRegex);
+
+  // Check if a match was found and return it
+  return match ? match[0] : null;
+}
+
+function extractPropsAsString(componentString) {
+  // Define a regex to match properties in the JSX component
+  // This pattern will match attributes and their values, considering different value types (variables, strings, etc.)
+  const propRegex = /(\w+)\s*=\s*{([^}]+)}/g;
+  let propsString = "";
+  let match;
+
+  while ((match = propRegex.exec(componentString)) !== null) {
+    // match[1] is the property name, match[2] is the value
+    // Append the matched property and its value to the result string
+    propsString += `${match[1]}={${match[2].trim()}} `;
+  }
+
+  // Trim the trailing space and return the result
+  return propsString.trim();
+}
+
 function extractJSX(code) {
   // Regular expression to match the pattern of the function and extract JSX
   const pattern = /const [\w]+ = \w+ => (.*);/s;
@@ -98,7 +128,10 @@ export default function PropTypes({
     defaultValues: componentsSourceProps /* defaultProps */,
   });
 
-  const sampleCode = componentsSourceText?.render
+  const isWrapped = componentsSourceText?.render?.startsWith("args => {");
+  const sampleCode = isWrapped
+    ? componentsSourceText?.render
+    : componentsSourceText?.render
     ? extractJSXFromRender(componentsSourceText.render)
     : extractJSX(componentsSourceText);
 
@@ -278,12 +311,13 @@ export default function PropTypes({
   const filteredPropsList = {
     ...filterEmptyValues(defaultProps),
     ...filterEmptyValues(componentProps),
+    ...(isWrapped ? { additional: "props" } : {}),
   };
 
   // Filter if default value is same as component value
   const filteredPropsWithoutDefaultValuesAsObject = Object.fromEntries(
     Object.entries(filteredPropsList).filter(
-      ([key, value]) => value !== propList[key].defaultValue?.value
+      ([key, value]) => value !== propList?.[key]?.defaultValue?.value
     )
   );
 
@@ -296,24 +330,31 @@ export default function PropTypes({
 
   if (sampleCode) {
     try {
+      const sampleCodeWithoutWrapper = isWrapped
+        ? extractFirstComponent(sampleCode)
+        : sampleCode;
       // Transpile JSX to JavaScript
-      const transformedCode = transform(sampleCode.replace("{...args}", ""), {
-        presets: ["react"],
-      });
+      const transformedCode = transform(
+        sampleCodeWithoutWrapper.replace("{...args}", ""),
+        {
+          presets: ["react"],
+        }
+      );
 
       // Evaluate the transpiled code to get a React element
-      window.React = React;
-      window.react = React;
-      window.ReactDatePicker = ReactDatePicker;
-      (window as any).action = (action) => {
-        console.log("action triggered", action);
-      };
-      Object.entries(wfpComponents).forEach((entry) => {
-        window[entry[0]] = entry[1];
-      });
 
+      if (typeof window !== "undefined") {
+        window.React = React;
+        window.react = React;
+        window.ReactDatePicker = ReactDatePicker;
+        (window as any).action = (action) => {
+          console.log("action triggered", action);
+        };
+        Object.entries(wfpComponents).forEach((entry) => {
+          window[entry[0]] = entry[1];
+        });
+      }
       const codeNew: any = eval(transformedCode.code);
-
       const enhancedElement = React.cloneElement(
         codeNew,
         filteredPropsWithoutDefaultValuesAsObject
@@ -331,6 +372,15 @@ export default function PropTypes({
     }
   }
 
+  if (isWrapped) {
+    code = sampleCode
+      .replace(extractFirstComponent(sampleCode), code)
+      .replace(
+        `additional="props"`,
+        extractPropsAsString(extractFirstComponent(sampleCode))
+      );
+  }
+
   const componentsUsedInCode: any = [];
   Object.entries(wfpComponents).forEach(([index]) => {
     if (code.includes("<" + index)) {
@@ -340,15 +390,19 @@ export default function PropTypes({
 
   const componentList = componentsUsedInCode.join(", ");
 
+  console.log("code", componentsSourceText?.render);
+
+  const codeWithWrapper = isWrapped
+    ? code
+    : `() => { 
+    ${
+      code.search("action") !== -1 ? "const action = () => {};" : ""
+    } return (${code})}`;
+
   code = `import { ${componentList} } from "@wfp/react";
   
-
-
-
-() => { 
-  ${
-    code.search("action") !== -1 ? "const action = () => {};" : ""
-  } return (${code})}`;
+${codeWithWrapper}
+`;
 
   if (view === "smallPreview") {
     return (

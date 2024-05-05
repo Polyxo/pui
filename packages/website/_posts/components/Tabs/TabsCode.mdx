@@ -103,13 +103,53 @@ const listElReactRouter = ({ anchor, className, to, exact, match }) => (
 
 ### useTab hook
 
-The useTab component can be used to build your own tab component which is useful when using a router. An example can be found here:
-
-TODO: ADD example
+The `useTab` component can be used to build your own tab component which is useful when using a router.
 
 ```jsx
 import { useTab } from "@wfp/react";
+
 const { anchorProps, liProps, selectedClasses } = useTab(props);
+```
+
+#### Example of using useTab with Next.js (App Router)
+
+```jsx
+import { useTab } from "@wfp/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
+
+/* 
+Props accepted by useTab
+  className,
+  disabled,
+  handleTabClick,
+  handleTabAnchorFocus,
+  handleTabKeyDown,
+  href,
+  index = 0,
+  label,
+  selected,
+  tabIndex,
+  onClick,
+  onKeyDown
+*/
+
+export default function NextTab(props) {
+  const { children, href } = props;
+  const { anchorProps, liProps, selectedClasses } = useTab(props);
+
+  const pathName = usePathname();
+  const isActive = pathName === href;
+
+  return (
+    <li {...liProps} className={isActive ? selectedClasses : liProps.className}>
+      <Link {...anchorProps} href={href}>
+        {children}
+      </Link>
+    </li>
+  );
+}
 ```
 
 ### References

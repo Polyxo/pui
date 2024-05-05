@@ -10,9 +10,23 @@ figma: "https://www.figma.com/file/KWrOuAzzykyysIDFpLikx1/WFP---Bridge?type=desi
 mainComponent: "Toggle"
 ---
 
-The Toogle component is wrapped inside the `Input` component.
+### Usage
+
+Make sure to use the toogle in a controlled context.
+
+```jsx live
+<Toggle
+  labelText="The Input"
+  helperText="Optional helperText"
+  labelA="Off"
+  labelB="On"
+  name="input-example"
+/>
+```
 
 ### react-hook-form example
+
+This example shows how to use the Toggle component with [react-hook-form](https://react-hook-form.com).
 
 ```jsx live reactHookForm
 <>
@@ -44,7 +58,7 @@ The Toogle component is wrapped inside the `Input` component.
 </>
 ```
 
-Without label or helperText
+The Toogle component is wrapped inside the `Input` component, but can be used without `label` or `helperText`:
 
 ```jsx live
 <Toggle labelA="Off" labelB="On" />
@@ -52,8 +66,5 @@ Without label or helperText
 
 ### Reference
 
+- [Input component](/components/forms/input)
 - [Carbon Design System Usage for text inputs](https://next.carbondesignsystem.com/components/text-input)
-
-```
-
-```

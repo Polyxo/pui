@@ -9,14 +9,12 @@ import path from "path";
 // Route segment config
 // export const runtime = "edge";
 
-// Image metadata
-const alt = "WFP Bridge";
 const size = {
   width: 1200,
   height: 630,
 };
 
-const contentType = "image/png";
+// const contentType = "image/png";
 
 const fsPromises = fs.promises;
 
@@ -24,11 +22,7 @@ export async function GET(
   req: Request,
   { params }: { params: { slug: string } }
 ) {
-  console.log("GET", params);
-
   const data: any = await getPostContent(params);
-
-  console.log("data", data.props.post.title);
 
   // Font
   /*

@@ -20,10 +20,10 @@ export const ModalDefault: Story = {
 
     return (
       <>
-        Use the open property in the table below to enable the preview.{" "}
         <Modal {...args} onRequestClose={handleModalClose} open={isOpen}>
           {args.children}
         </Modal>
+        <Button onClick={() => setOpen(true)}>Open Modal</Button>
       </>
     );
   },
@@ -32,6 +32,5 @@ export const ModalDefault: Story = {
     modalLabel: "Modal label",
     modalHeading: "Modal heading",
     modalText: "Modal text",
-    className: "some-class",
   },
 };

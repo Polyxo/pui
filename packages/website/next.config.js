@@ -47,11 +47,11 @@ module.exports = withMDX({
       };
     }
 
-    //config.resolve.alias['react'] = path.resolve('./node_modules/react');
     return config;
   },
   // Append the default value with md extensions
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  transpilePackages: ["next-mdx-remote"],
   env: {
     NEXT_PUBLIC_API: process.env.NEXT_PUBLIC_API,
   },

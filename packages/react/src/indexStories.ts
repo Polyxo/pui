@@ -39,5 +39,6 @@ export * as TextArea from "./components/TextArea/TextArea.stories.tsx";
 export * as TextInput from "./components/TextInput/TextInput.stories.tsx";
 export * as Text from "./components/Text/Text.stories.tsx";
 export * as Tooltip from "./components/Tooltip/Tooltip.stories.tsx";
+export * as Toggle from "./components/Toggle/Toggle.stories.tsx";
 export * as User from "./components/User/User.stories.tsx";
 export * as Wrapper from "./components/Wrapper/Wrapper.stories.tsx";

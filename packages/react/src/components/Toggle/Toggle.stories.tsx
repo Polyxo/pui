@@ -10,12 +10,12 @@ export default {
   },
 };
 
-export const Regular = (args) => <Toggle {...args} />;
-
-Regular.args = {
-  defaultToggled: false,
-  labelA: "Off",
-  labelB: "On",
-  name: "toggle",
-  onToggle: () => {},
+export const ToggleDefault: Story = {
+  render: (args) => <Toggle {...args} />,
+  args: {
+    defaultToggled: false,
+    labelA: "Off",
+    labelB: "On",
+    name: "togglename",
+  },
 };
