@@ -2,7 +2,7 @@
   "name": "@progressiveui/pictograms-react",
   "description": "React components for pictograms in digital and software products using the UN Core",
   "private": "true",
-  "version": "11.17.23",
+  "version": "11.18.0",
   "license": "Apache-2.0",
   "main": "umd/index.js",
   "module": "es/index.js",
@@ -37,8 +37,8 @@
     "react": ">=16"
   },
   "devDependencies": {
-    "@progressiveui/icons-core": "^0.3.23",
-    "@progressiveui/pictograms": "^11.17.23"
+    "@progressiveui/icons-core": "^0.4.0",
+    "@progressiveui/pictograms": "^11.18.0"
   },
   "sideEffects": false,
   "gitHead": "5d9678f4a62413b834d07736413c50ff2f851824",

@@ -1,6 +1,6 @@
 {
   "name": "@progressiveui/logos",
-  "version": "0.3.23",
+  "version": "0.4.0",
   "private": true,
   "description": "Logos of the World Food Programme",
   "main": "index.json",
@@ -14,6 +14,6 @@
   "gitHead": "5d9678f4a62413b834d07736413c50ff2f851824",
   "devDependencies": {
     "@babel/core": "^7.14.6",
-    "@progressiveui/icons-core": "^0.3.23"
+    "@progressiveui/icons-core": "^0.4.0"
   }
 }

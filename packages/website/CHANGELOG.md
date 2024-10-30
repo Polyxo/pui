@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Polyxo/pui/compare/@un/core-website@0.4.21...@un/core-website@0.5.0) (2024-10-30)
+
+
+### Bug Fixes
+
+* **logos:** temporary rename logos ([cf24d64](https://github.com/Polyxo/pui/commit/cf24d644fccefa1ce209135ad000997c2f43769a))
+* **website:** fontRendering fixed wip ([c29e22f](https://github.com/Polyxo/pui/commit/c29e22ffa0524d60e625c941b1d8ff0764a42f08))
+
+
+### Features
+
+* **packages:** naming added ([5e6ea53](https://github.com/Polyxo/pui/commit/5e6ea5374f132d54782987e09a5b8e1d18da1cd1))
+* **website:** improved editor for complex examples, Modal and Toggle ([51e9963](https://github.com/Polyxo/pui/commit/51e99632bd2bc2b8fccd1330a94f1011076cd893))
+* **website:** open Graph wip ([9e3684f](https://github.com/Polyxo/pui/commit/9e3684f21cddebe766200f57f7193a913e897bd8))
+
+
+
+
+
 ## 0.4.21 (2024-03-19)
 
 **Note:** Version bump only for package @un/core-website

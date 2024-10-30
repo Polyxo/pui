@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2024-10-30)
+
+
+### Bug Fixes
+
+* **build:** fixed build handler ([032752e](https://github.com/wfp/designsystem/commit/032752e2bfc4b9970f2d2f7f73b18a01d80d25c0))
+* **dependencies:** removed unused dependencies ([6a98a17](https://github.com/wfp/designsystem/commit/6a98a170d322600af752d3f5e7d5c3de09ba5586))
+* **Empty:** changed font-sizing ([ae92996](https://github.com/wfp/designsystem/commit/ae929965928941cbd75002d7307b65a1aa362120))
+* **grid:** removed for deploying ([ba4e27a](https://github.com/wfp/designsystem/commit/ba4e27a4be846e51ac38631770779f3398d1a214))
+* **grid:** removed to be able to build scss ([8ca900a](https://github.com/wfp/designsystem/commit/8ca900a7c4cfac63af5910acde3d15f5df0f107d))
+* **icons-core:** builder updated to work on new repositories ([ed040fe](https://github.com/wfp/designsystem/commit/ed040fe5ee0538f88d809545d09ccd18badef2d5))
+* **Icons-Core:** fixed async generation ([eaad47f](https://github.com/wfp/designsystem/commit/eaad47f8b4e4775326b2f563855947b580f3b227))
+* **lerna:** changelog updated ([2367526](https://github.com/wfp/designsystem/commit/236752651f113088dc7bee3921e5c06213c1f72e))
+* **Loading:** moved into a functional component and website improvements ([695298a](https://github.com/wfp/designsystem/commit/695298a491a460848fea6cc997678f35fd83fe6e))
+* **Mdx:** code view fixed ([151fd1e](https://github.com/wfp/designsystem/commit/151fd1e59002357d91143969fcb8bc7cb4417bf6))
+* **packages:** fixed yarn lock errors and inconsitencies in themes ([14ace8c](https://github.com/wfp/designsystem/commit/14ace8cc950c85a8b7220c516d7eaca2cbc8df48))
+* **react:** added TypeScript build and raw code generator to build process ([639c5e0](https://github.com/wfp/designsystem/commit/639c5e03ef3423d8ea15626783c52d7d472bb6d0))
+* **rename:** scope renaming from [@un](https://github.com/un) to [@wfp](https://github.com/wfp) ([e00fda8](https://github.com/wfp/designsystem/commit/e00fda84ab7bc9096697337836abc3c66f95273e))
+* **typesript:** added module build tools for Typescript ([4f4ef2d](https://github.com/wfp/designsystem/commit/4f4ef2d33c8a52cea5b953f4a324600aeb802cbc))
+* **version:** release new version ([22a9125](https://github.com/wfp/designsystem/commit/22a9125c0f8780bd59c6cc34d11428963133e66e))
+* **versions:** updated lerna packages ([28dcd9a](https://github.com/wfp/designsystem/commit/28dcd9ab66702b269224101644903a938c4eade3))
+
+
+### Features
+
+* **icons-core:** initial for the icons generator ([d580d18](https://github.com/wfp/designsystem/commit/d580d183bf4f2c4eae2ed5a3dfb297d8e5a94a8e))
+* **Icons:** react dependency updated ([7bac887](https://github.com/wfp/designsystem/commit/7bac8874c32391ae680e56906ce3559f38091036))
+* **Icons:** simplified icon generation ([73cab71](https://github.com/wfp/designsystem/commit/73cab71f51ac7cdf161c804039e8d3abe4f61e97))
+* **Inputs:** improved inputs and documentation ([38fa162](https://github.com/wfp/designsystem/commit/38fa162d46dcae8c10bc80963a1389a18a22117c))
+* **packages:** naming added ([5e6ea53](https://github.com/wfp/designsystem/commit/5e6ea5374f132d54782987e09a5b8e1d18da1cd1))
+* **packages:** renamed packages @un/icons and more ([233b6ec](https://github.com/wfp/designsystem/commit/233b6ecc195f3ff7f52344033d1e858f73c09020))
+* **packages:** updated package structure ([f974246](https://github.com/wfp/designsystem/commit/f9742461d620765d40a581aa4d576465d4b61938))
+* **Pictograms:** added support for generating pictograms from react ([00a74f2](https://github.com/wfp/designsystem/commit/00a74f2dde0d1cb404a5ebd3a09a70a169f13e0d))
+* **react:** multiple component improvements and style updates ([bfe3111](https://github.com/wfp/designsystem/commit/bfe31113442e842e39edeaf366ce194efab5f896))
+* **rename:** renamed scope from [@un](https://github.com/un) to [@wfp](https://github.com/wfp) ([3b66d99](https://github.com/wfp/designsystem/commit/3b66d993797dc3035abef0ecb76359754b670934))
+* **styles:** tokens updated ([ab73774](https://github.com/wfp/designsystem/commit/ab73774843fa00b6a0fe3ec68b517f57c7e56fc3))
+* **styles:** updated variables and spacings ([8b1e3bb](https://github.com/wfp/designsystem/commit/8b1e3bbacd5b4686d4b9e86607bccea3633c4905))
+* **website:** improved documentation and added Modal onBlur customization ([074ff28](https://github.com/wfp/designsystem/commit/074ff280f7793decd115d34e14517d5aacf918eb))
+
+
+
+
+
 ## 0.3.23 (2024-03-19)
 
 **Note:** Version bump only for package @wfp/icons-core

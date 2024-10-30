@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 10.38.0 (2024-10-30)
+
+
+### Bug Fixes
+
+* **dependencies:** removed unused dependencies ([6a98a17](https://github.com/wfp/designsystem/commit/6a98a170d322600af752d3f5e7d5c3de09ba5586))
+* **Empty:** changed font-sizing ([ae92996](https://github.com/wfp/designsystem/commit/ae929965928941cbd75002d7307b65a1aa362120))
+* **Githead:** updated githead ([1f06c35](https://github.com/wfp/designsystem/commit/1f06c355bfc57d62c4516f9daed57564730537f5))
+* **grid:** removed for deploying ([ba4e27a](https://github.com/wfp/designsystem/commit/ba4e27a4be846e51ac38631770779f3398d1a214))
+* **grid:** removed to be able to build scss ([8ca900a](https://github.com/wfp/designsystem/commit/8ca900a7c4cfac63af5910acde3d15f5df0f107d))
+* **icons:** output in wrong folder ([465e93c](https://github.com/wfp/designsystem/commit/465e93cc5584fef98887049a532204cd52eac589))
+* **Icons:** removed sample icons from tracking ([bb2439e](https://github.com/wfp/designsystem/commit/bb2439e346ede982d7fd535448565ec1c5c57983))
+* **lerna:** changelog updated ([2367526](https://github.com/wfp/designsystem/commit/236752651f113088dc7bee3921e5c06213c1f72e))
+* **Lerna:** removed unused config packages ([3eeae8a](https://github.com/wfp/designsystem/commit/3eeae8ac0db88c213b5f75c23e130b08e934c7da))
+* **Loading:** moved into a functional component and website improvements ([695298a](https://github.com/wfp/designsystem/commit/695298a491a460848fea6cc997678f35fd83fe6e))
+* **Mdx:** code view fixed ([151fd1e](https://github.com/wfp/designsystem/commit/151fd1e59002357d91143969fcb8bc7cb4417bf6))
+* **Monorepo:** minor version bump ([3c84bf4](https://github.com/wfp/designsystem/commit/3c84bf42c9602252c5a9e6938bea5e9fcb70ff4e))
+* **monorepo:** release npm changes ([e882a2d](https://github.com/wfp/designsystem/commit/e882a2dec8856f5abd7199d945a7cead0581e3f8))
+* **Monorepo:** version bump ([979f653](https://github.com/wfp/designsystem/commit/979f6537a6e0358c87666832e13f71cba6e337d0))
+* **moved:** packages to private ([69095bb](https://github.com/wfp/designsystem/commit/69095bb6ce7bdaf417a370ed73804d5493876999))
+* **packages:** fixed yarn lock errors and inconsitencies in themes ([14ace8c](https://github.com/wfp/designsystem/commit/14ace8cc950c85a8b7220c516d7eaca2cbc8df48))
+* **Pipeline:** build script updated ([96758b6](https://github.com/wfp/designsystem/commit/96758b60e67057c1f5bd902b162f789720d8e8c4))
+* **Pipeline:** output error double question marks ([6cfb0c9](https://github.com/wfp/designsystem/commit/6cfb0c912afdf98df64bc20ee3b073b984e8bfe8))
+* **typesript:** added module build tools for Typescript ([4f4ef2d](https://github.com/wfp/designsystem/commit/4f4ef2d33c8a52cea5b953f4a324600aeb802cbc))
+* **version:** release new version ([22a9125](https://github.com/wfp/designsystem/commit/22a9125c0f8780bd59c6cc34d11428963133e66e))
+* **versions:** updated lerna packages ([28dcd9a](https://github.com/wfp/designsystem/commit/28dcd9ab66702b269224101644903a938c4eade3))
+
+
+### Features
+
+* **DatePicker:** added new datepicker ([cd29725](https://github.com/wfp/designsystem/commit/cd297256f62e37a5b6a59328ac5411c8a60be7ec))
+* **Footer:** added icons to seperate package ([6716ea3](https://github.com/wfp/designsystem/commit/6716ea3d849d2b1397c2be4f3fce639c50b831e2))
+* **Icons:** react dependency updated ([7bac887](https://github.com/wfp/designsystem/commit/7bac8874c32391ae680e56906ce3559f38091036))
+* **Icons:** simplified icon generation ([73cab71](https://github.com/wfp/designsystem/commit/73cab71f51ac7cdf161c804039e8d3abe4f61e97))
+* **Inputs:** improved inputs and documentation ([38fa162](https://github.com/wfp/designsystem/commit/38fa162d46dcae8c10bc80963a1389a18a22117c))
+* **Monorepo:** moving ui to package ([3139c70](https://github.com/wfp/designsystem/commit/3139c70146888d4dcc0fe60363b58a270b0a72a2))
+* **monorepo:** preparing for monorepo ([4104146](https://github.com/wfp/designsystem/commit/4104146e1277a493ec49f27ad9d896eed43e3eca))
+* **Monorepo:** storybook build ([91fb808](https://github.com/wfp/designsystem/commit/91fb8083302ce955b35f1431030ed4da6b48b024))
+* **monorepo:** version bump ([5b707cf](https://github.com/wfp/designsystem/commit/5b707cf9adbdd9595f012c08e28f2140800d6ec9))
+* **multiple:** added docs and multiple other changes ([87b0648](https://github.com/wfp/designsystem/commit/87b0648562afcdf753b98213d13b57de7f83bc97))
+* **nametag:** replaced all instances of [@wfp](https://github.com/wfp) with [@unitednations](https://github.com/unitednations) ([9151dcd](https://github.com/wfp/designsystem/commit/9151dcd0251824c1365294da2a285b178a4579bc))
+* **naming:** renamed [@unitednations](https://github.com/unitednations) to [@un](https://github.com/un) ([c9abe27](https://github.com/wfp/designsystem/commit/c9abe27eecb43ecf547aaa6618ed5850ed4a2f2b))
+* **packages:** added cli package, fork was needed ([6ef804a](https://github.com/wfp/designsystem/commit/6ef804a3c043764df6fe84c64355263535d8763e))
+* **packages:** cleandup and icon builder ([da1fe25](https://github.com/wfp/designsystem/commit/da1fe25a57fbfedbcf715002dc96313e745fffe2))
+* **packages:** cli added, because not working as dependency ([3264de7](https://github.com/wfp/designsystem/commit/3264de76d85c9deff76ad4b6a146af3731d37a47))
+* **packages:** naming added ([5e6ea53](https://github.com/wfp/designsystem/commit/5e6ea5374f132d54782987e09a5b8e1d18da1cd1))
+* **packages:** renamed packages @un/icons and more ([233b6ec](https://github.com/wfp/designsystem/commit/233b6ecc195f3ff7f52344033d1e858f73c09020))
+* **packages:** updated package structure ([f974246](https://github.com/wfp/designsystem/commit/f9742461d620765d40a581aa4d576465d4b61938))
+* **Pictograms:** added pictogram library ([6e3b4e9](https://github.com/wfp/designsystem/commit/6e3b4e95f63824c4bcfca202d14ca8df012774c6))
+* **react:** added tests, documentation and more ([93479c3](https://github.com/wfp/designsystem/commit/93479c3295ed5499edc38a5f702371cb78ae7b10))
+* **react:** multiple component improvements and style updates ([bfe3111](https://github.com/wfp/designsystem/commit/bfe31113442e842e39edeaf366ce194efab5f896))
+* **rename:** renamed scope from [@un](https://github.com/un) to [@wfp](https://github.com/wfp) ([3b66d99](https://github.com/wfp/designsystem/commit/3b66d993797dc3035abef0ecb76359754b670934))
+* **Search:** fixed spacings ([a1f9e22](https://github.com/wfp/designsystem/commit/a1f9e22ebcec4aecb19d78b80eeede0221447bf1))
+* **styles:** tokens updated ([ab73774](https://github.com/wfp/designsystem/commit/ab73774843fa00b6a0fe3ec68b517f57c7e56fc3))
+* **styles:** updated variables and spacings ([8b1e3bb](https://github.com/wfp/designsystem/commit/8b1e3bbacd5b4686d4b9e86607bccea3633c4905))
+* **Themes:** color and theme generator added to CLI ([da1fd01](https://github.com/wfp/designsystem/commit/da1fd012103e3256e3747d6f0a57aa50723b4969))
+* **website:** DatePicker updated and design fixes ([299784f](https://github.com/wfp/designsystem/commit/299784f434e49655e87c6f604bcf3f33a133896e))
+* **website:** improved documentation and added Modal onBlur customization ([074ff28](https://github.com/wfp/designsystem/commit/074ff280f7793decd115d34e14517d5aacf918eb))
+
+
+
+
+
 ## 10.37.23 (2024-03-19)
 
 **Note:** Version bump only for package @wfp/icons
