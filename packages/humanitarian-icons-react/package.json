@@ -1,6 +1,7 @@
 {
   "name": "@progressiveui/humanitarian-icons-react",
   "description": "React components for pictograms in digital and software products using the Carbon Design System",
+  "private": "true",
   "version": "11.17.23",
   "license": "Apache-2.0",
   "main": "umd/index.js",
