@@ -5068,9 +5068,9 @@
   resolved "https://registry.yarnpkg.com/@un/layout/-/layout-10.26.15.tgz#68a334070cccf6ce21daa6f0187d0a21695e89b1"
   integrity sha512-1CwNTA4MOTIVUYqM45q5S/6OSBGQ4NNiwt2jWevGDImXqmL1VThLD2ensefSNYTSWMDGhEAZcJM0SkoFPNkkuQ==
 
-"@un/logos@^0.0.42":
+"@progressiveui/logos@^0.0.42":
   version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@un/logos/-/logos-0.0.42.tgz#d03503636ae5b4f7a840a4b66d7495bcc097ee15"
+  resolved "https://registry.yarnpkg.com/@progressiveui/logos/-/logos-0.0.42.tgz#d03503636ae5b4f7a840a4b66d7495bcc097ee15"
   integrity sha512-A5Ms+U8tvtz7o1XVlT8ajKi2KIDVgJNiFL6cibfAB+4GyJYMMlCT0WE94djv1I25R0tZgzdZmAyIzoPeivoMiQ==
 
 "@un/scss-generator@^10.13.7":

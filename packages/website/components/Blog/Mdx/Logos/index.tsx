@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@progressiveui/react";
-import logos from "@un/logos/index.json";
-import * as wfpLogos from "@un/logos/umd";
+import logos from "@progressiveui/logos/index.json";
+import * as wfpLogos from "@progressiveui/logos/umd";
 import styles from "./logos.module.scss";
 
 const capitalize = (word) => {
