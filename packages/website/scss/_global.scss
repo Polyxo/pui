@@ -4,27 +4,28 @@ $css--body: true;
 
 @use "./intern.scss";
 
-@use "@wfp/styles/scss/themes";
-@use "@wfp/styles/scss/theme" /*with (
+@use "@progressiveui/styles/scss/themes";
+@use "@progressiveui/styles/scss/theme"
+  /*with (
   $theme: meta.$carbon--theme--memo
 )*/;
 
-@use "@wfp/themes-core/dist/scss/default-css-theme" as defaulttheme;
-@use "@wfp/themes-core/distDark/scss/default-css-theme" as darkTheme;
+@use "@progressiveui/themes-core/dist/scss/default-css-theme" as defaulttheme;
+@use "@progressiveui/themes-core/distDark/scss/default-css-theme" as darkTheme;
 
 //@use "./dist/scss/default-css-theme" as memotheme;
 
-@use "@wfp/styles/scss/reset";
-@use "@wfp/styles/scss/components";
+@use "@progressiveui/styles/scss/reset";
+@use "@progressiveui/styles/scss/components";
 
 @use "scss/meta" as *;
 
 //@import "./global.scss";
 
-//@import "~@wfp/react/src/globals/scss/colors";
-//@import "~@wfp/react/src/globals/scss/vars";
-//@import "~@wfp/react/src/globals/scss/layout";
-//@import "~@wfp/react/src/globals/scss/_typography";
+//@import "~@progressiveui/react/src/globals/scss/colors";
+//@import "~@progressiveui/react/src/globals/scss/vars";
+//@import "~@progressiveui/react/src/globals/scss/layout";
+//@import "~@progressiveui/react/src/globals/scss/_typography";
 
 /* @import "@un/type/scss/font-face/mono";
 @import "@un/type/scss/font-face/sans";

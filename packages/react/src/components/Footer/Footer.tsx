@@ -3,7 +3,10 @@ import classNames from "classnames";
 import Link from "../Link";
 import Wrapper from "../Wrapper";
 import { ScreenSize } from "../../utils";
-import { WfpLogoStandardBlackEn, WfpLogoVerticalEn } from "@wfp/icons-react";
+import {
+  WfpLogoStandardBlackEn,
+  WfpLogoVerticalEn,
+} from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 
 /** A Footer is a section at the bottom of each page. It typically contains basic site information, copyright data or links to related pages. */

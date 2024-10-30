@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { Close, ChevronDown } from "@wfp/icons-react";
+import { Close, ChevronDown } from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 import useMainNavigation from "../MainNavigation/useMainNavigation";
 

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";
 import { InputProps } from "../Input";
 
-import { Close } from "@wfp/icons-react";
+import { Close } from "@progressiveui/icons-react";
 
 interface NotificationButtonProps
   extends InputProps,

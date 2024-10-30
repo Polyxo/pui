@@ -41,7 +41,7 @@ Regular.args = { children: 'Content', kind: 'h1' };
 */
 
 const regularsourcecode = `
-import { Text } from "@wfp/react";
+import { Text } from "@progressiveui/react";
 
 <div>
   <Text kind='h1'>Content</Text>
@@ -81,7 +81,7 @@ export const Headings = (args) => (
 );
 
 const headingsourcecode = `
-import { Text } from "@wfp/react";
+import { Text } from "@progressiveui/react";
 
 <>
   <Text kind='h1'>Heading 1</Text>
@@ -128,7 +128,7 @@ export const text = (args) => (
 );
 
 const textsourcecode = `
-import { Text } from "@wfp/react";
+import { Text } from "@progressiveui/react";
 
 <>
   <Text kind='p'>Body copy, paragraph</Text>
@@ -157,7 +157,7 @@ export const Pagetitle = (args) => (
   </>
 );
 const pagetitlesourcecode = `
-import { Text, Link  } from "@wfp/react";
+import { Text, Link  } from "@progressiveui/react";
 
 <>
   <Text kind="title">Title</Text>
@@ -185,7 +185,7 @@ export const Links = (args) => (
 );
 
 const linksourcecode = `
-import { Text, Link  } from "@wfp/react";
+import { Text, Link  } from "@progressiveui/react";
 
 <>
   <Text kind="a">Link</Text>
@@ -223,7 +223,7 @@ export const Emphasis = (args) => (
 );
 
 const emphasissourcecode = `
-import { Text } from "@wfp/react";
+import { Text } from "@progressiveui/react";
 
 <>
   <Text kind="strong">Bold</Text>
@@ -266,7 +266,7 @@ export const Lists = (args) => (
 );
 
 const listsourcecode = `
-import { Text, List, ListItem  } from "@wfp/react";
+import { Text, List, ListItem  } from "@progressiveui/react";
 
 const list = [
     { kind: 'simple', heading: 'Ordered lists' },
@@ -337,7 +337,7 @@ export const textColors = (args) => (
 );
 
 const textcolorsourcecode = `
-import { Text } from '@wfp/react'
+import { Text } from '@progressiveui/react'
 
 <>
   <div style={{ display: 'flex' }}>

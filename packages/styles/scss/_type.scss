@@ -1,5 +1,5 @@
-@use "@wfp/themes-core/dist/scss/tokensMapDeep" as *;
-@use "@wfp/themes-core/dist/scss/tokens" as tokens;
+@use "@progressiveui/themes-core/dist/scss/tokensMapDeep" as *;
+@use "@progressiveui/themes-core/dist/scss/tokens" as tokens;
 @use "./breakpoint" as *;
 
 @mixin reset() {

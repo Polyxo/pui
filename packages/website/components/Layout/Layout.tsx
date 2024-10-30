@@ -1,6 +1,6 @@
 "use client";
 
-import { WFPCoreProvider } from "@wfp/react";
+import { WFPCoreProvider } from "@progressiveui/react";
 import React from "react";
 import Footer from "../Footer";
 import Navigation from "../Navigation";

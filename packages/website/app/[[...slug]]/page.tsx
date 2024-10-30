@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       title: page.title + " | WFP Bridge",
       // cardType: "summary_large_image",
-      site: "@WFP",
+      site: "@progressiveui",
       images: [
         {
           url:

@@ -6,7 +6,7 @@ import "dotenv/config";
 
 /*
  * This script is used to update the Algolia search index, which is used in the search bar on the website.
- * It is run as a build step in the @wfp/website package.
+ * It is run as a build step in the @progressiveui/website package.
  * It only run in production. TODO: in the future.
  * It is similar to the api/buildIndex endpoint, but it is run at build time.
  */

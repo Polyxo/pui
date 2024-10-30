@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, User, Search, Link } from '@wfp/react';
+import React from "react";
+import { Button, User, Search, Link } from "@progressiveui/react";
 import {
   MainNavigation,
   MainNavigationItem,
@@ -12,7 +12,7 @@ import {
   SubNavigationList,
   SubNavigationGroup,
   SubNavigationItem,
-} from '@wfp/react';
+} from "@progressiveui/react";
 
 const Navigation = () => {
   return (
@@ -36,7 +36,7 @@ const Navigation = () => {
                   labelText="Filter"
                   placeholder="Filter list"
                   onChange={() => {
-                    alert('Apply Filter');
+                    alert("Apply Filter");
                   }}
                 />
               </SubNavigationFilter>
@@ -53,7 +53,8 @@ const Navigation = () => {
               </SubNavigationList>
             </SubNavigationContent>
           </SubNavigation>
-        }>
+        }
+      >
         <Link href="http://manuals.wfp.org" target="_blank">
           Section2
         </Link>
@@ -91,7 +92,8 @@ const Navigation = () => {
               {/* onClick={() => onChangeSub('close')} */}
             </SubNavigationContent>
           </SubNavigation>
-        }>
+        }
+      >
         <User ellipsis name="Max Mustermann long name" missingImage="letter" />
       </MainNavigationItem>
       <MainNavigationItem
@@ -121,7 +123,8 @@ const Navigation = () => {
               </SubNavigationList>
             </SubNavigationContent>
           </SubNavigation>
-        }>
+        }
+      >
         <span>EN</span>
       </MainNavigationItem>
     </MainNavigation>

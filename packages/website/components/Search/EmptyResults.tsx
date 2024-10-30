@@ -1,4 +1,4 @@
-import { List, ListItem } from "@wfp/react";
+import { List, ListItem } from "@progressiveui/react";
 import React from "react";
 import NavLink from "next/link";
 import styles from "./empty-results.module.scss";

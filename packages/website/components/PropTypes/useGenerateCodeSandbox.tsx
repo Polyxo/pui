@@ -27,11 +27,11 @@ export default function useGenerateCodeSandbox({
                 description: `WFP Digital Design System Component 📦 Playground: ${componentName}`,
                 tags: ["wfp", "design", "system", "react", "component"],
                 dependencies: {
-                  "@wfp/react": "alpha",
-                  "@wfp/icons-react": "alpha",
-                  "@wfp/styles": "alpha",
-                  "@wfp/themes-core": "alpha",
-                  "@wfp/pictograms-react": "alpha",
+                  "@progressiveui/react": "alpha",
+                  "@progressiveui/icons-react": "alpha",
+                  "@progressiveui/styles": "alpha",
+                  "@progressiveui/themes-core": "alpha",
+                  "@progressiveui/pictograms-react": "alpha",
                   react: "latest",
                   "react-dom": "latest",
                 },
@@ -41,7 +41,7 @@ export default function useGenerateCodeSandbox({
               content: `
 import React from "react";
 import ReactDOM from "react-dom";
-import "@wfp/styles/styles.css";
+import "@progressiveui/styles/styles.css";
 
 ${formatedCode.replace("() => {", "function App() {")}
 

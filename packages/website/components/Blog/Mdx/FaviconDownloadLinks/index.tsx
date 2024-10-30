@@ -1,4 +1,4 @@
-import { Link, List, ListItem } from "@wfp/react";
+import { Link, List, ListItem } from "@progressiveui/react";
 import React from "react";
 
 const files: any = [

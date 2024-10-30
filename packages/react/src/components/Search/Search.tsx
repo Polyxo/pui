@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";
 import Input, { InputProps, useInput } from "../Input";
-import { Search as SearchIcon, Close } from "@wfp/icons-react";
+import { Search as SearchIcon, Close } from "@progressiveui/icons-react";
 import { UseInputProps } from "../Input/useInput";
 
 interface SearchProps extends InputProps, React.ComponentPropsWithRef<"input"> {
@@ -102,7 +102,7 @@ const Search: React.FC<SearchProps> = React.forwardRef((props, ref) => {
     // setTimeout(() => {
     //   console.log("value", value);
     // }, 1000);
-    // onChange(evt, "");
+    onChange(evt, "");
   };
 
   const searchInputWrapperClasses = classNames(`${prefix}--number`, className, {

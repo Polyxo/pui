@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InfoSolid } from "@wfp/icons-react";
+import { InfoSolid } from "@progressiveui/icons-react";
 import type { PropsWithChildren } from "react";
 import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";

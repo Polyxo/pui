@@ -7,7 +7,7 @@ The themes core generates design tokens by using [Style Dictionary](https://amzn
 TODO: Add paragraph
 
 ```
-import variables from @wfp/themes-core/scss/variables;
+import variables from @progressiveui/themes-core/scss/variables;
 ```
 
 ## Building a theme
@@ -27,7 +27,7 @@ scripts: {
 
 ```jsx
 // buildTheme.js configuration
-const { config } = require("@wfp/themes-core/config.js");
+const { config } = require("@progressiveui/themes-core/config.js");
 
 /*
 config() can be configured

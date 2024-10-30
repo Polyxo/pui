@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import markdown from './README.mdx';
-import Loading from '.';
-import Button from '../Button';
+import React, { useState } from "react";
+import markdown from "./README.mdx";
+import Loading from ".";
+import Button from "../Button";
 
 export default {
-  title: 'Components/UI Elements/Loading',
+  title: "Components/UI Elements/Loading",
   component: Loading,
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'released',
+    componentSubtitle: "Component",
+    status: "released",
     mdx: markdown,
   },
 };
@@ -25,7 +25,7 @@ export const overlay = (args) => {
   return (
     <>
       <Button kind="primary" onClick={() => setLoading(true)}>
-        Load with overlay{' '}
+        Load with overlay{" "}
       </Button>
       {loading && (
         <Loading withOverlay={loading} {...args}>
@@ -41,7 +41,7 @@ overlay.args = {
 };
 
 const overlaysourcecode = `
-import { Loading, Button  } from "@wfp/react";
+import { Loading, Button  } from "@progressiveui/react";
 
 export const overlay = () => {
   const [loading, setLoading] = useState(false);

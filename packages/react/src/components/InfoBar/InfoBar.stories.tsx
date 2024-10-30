@@ -20,7 +20,7 @@ export const InfoBarDefault = (args) => (
 );
 
 const infobarsourcecode = `
-  import { InfoBar, Link  } from "@wfp/react";
+  import { InfoBar, Link  } from "@progressiveui/react";
 
   <InfoBar>
     InfoBar with content. 

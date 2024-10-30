@@ -2,7 +2,7 @@ import React from "react";
 import ContentSwitcher from "./ContentSwitcher";
 import markdown from "./README.mdx";
 import Switch from "../../../othersrc/Switch";
-import { Add16, AddCircle } from "@wfp/icons-react";
+import { Add16, AddCircle } from "@progressiveui/icons-react";
 
 export default {
   title: "Components/Content Related/ContentSwitcher",

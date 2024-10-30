@@ -11,7 +11,7 @@ import {
   Search,
   SubNavigationContent,
   useMainNavigation,
-} from "@wfp/react";
+} from "@progressiveui/react";
 
 import styles from "./styles.module.scss";
 import LinkWithNext from "components/LinkWithNext";

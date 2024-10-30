@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./possibilities.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Wrapper } from "@wfp/react";
+import { Wrapper } from "@progressiveui/react";
 import {
   faPenNib,
   faCode,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { Button } from "@wfp/react";
+import { Button } from "@progressiveui/react";
 
 function PossibilitiesContainer({ className = "", title, icon, content }: any) {
   return (

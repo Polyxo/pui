@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { Highlight, themes } from 'prism-react-renderer';
-import stylesModule from './codeBlock.module.scss';
+import React, { useState } from "react";
+import { Highlight, themes } from "prism-react-renderer";
+import stylesModule from "./codeBlock.module.scss";
 
-import { Button } from '@wfp/react';
+import { Button } from "@progressiveui/react";
 
 const CodeBlock = ({ children }: any) => {
   //return <OrginalCode>{children}</OrginalCode>;
   //if (!children || children.type !== 'code') return null;
 
   const {
-    props: { className, children: code = '' },
+    props: { className, children: code = "" },
   } = children;
 
-  const language = className ? className.replace(/language-/, '') : '';
+  const language = className ? className.replace(/language-/, "") : "";
 
-  const [copiedCode, setCopiedCode] = useState('Copy code');
+  const [copiedCode, setCopiedCode] = useState("Copy code");
 
   const handleCopyCode = (textToCopy) => {
     navigator.clipboard.writeText(textToCopy);
 
-    setCopiedCode('Copied!');
+    setCopiedCode("Copied!");
 
     setTimeout(() => {
-      setCopiedCode('Copy code');
+      setCopiedCode("Copy code");
     }, 2000);
   };
 
@@ -32,7 +32,8 @@ const CodeBlock = ({ children }: any) => {
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             className={`${className} ${stylesModule.codeBlock}`}
-            style={{ ...style, padding: '20px' }}>
+            style={{ ...style, padding: "20px" }}
+          >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (

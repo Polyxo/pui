@@ -23,13 +23,13 @@ The next step is to **add the Kit to your project as a dependency**. You can cho
 To install the Kit through `npm`, run:
 
 ```bash
-npm install @wfp/react @wfp/styles --save
+npm install @progressiveui/react @progressiveui/styles --save
 ```
 
 To install the Kit through `yarn`, run:
 
 ```bash
-yarn add @wfp/react @wfp/styles
+yarn add @progressiveui/react @progressiveui/styles
 ```
 
 ## 2. Load the Styles 🌈
@@ -41,7 +41,7 @@ This is a required step in case you want to load the full UI Kit stylesheet. You
 To import the full CSS through React, first make sure to have a `css` loader installed, then use the following code:
 
 ```jsx
-import "@wfp/styles/styles.css";
+import "@progressiveui/styles/styles.css";
 ```
 
 ### Alternative: Import the SCSS
@@ -49,17 +49,17 @@ import "@wfp/styles/styles.css";
 To import the full SCSS through React, first make sure to have a `sass` loader installed, then use the following code:
 
 ```bash
-npm install @wfp/themes-core --save-dev
+npm install @progressiveui/themes-core --save-dev
 ```
 
 In your custom `.scss` file, import the theme and the components you need.
 
 ```jsx
 // Import all stylesheets
-import '@wfp/styles';
+import '@progressiveui/styles';
 
 // Use a theme
-@use "@wfp/themes-core/dist/scss/default-css-theme" as defaulttheme;
+@use "@progressiveui/themes-core/dist/scss/default-css-theme" as defaulttheme;
 
 :root {
   @include defaulttheme.theme-default();
@@ -71,7 +71,7 @@ import '@wfp/styles';
 Wrap your Application in the [WFPCoreProvider](/documentation/developing/themes) to apply global settings.
 
 ```jsx
-import { WFPCoreProvider } from "@wfp/react";
+import { WFPCoreProvider } from "@progressiveui/react";
 
 <WFPCoreProvider>Your application</WFPCoreProvider>;
 ```
@@ -84,10 +84,10 @@ Instead of importing all stylesheets, you can also import only the stylesheets y
 
 ```jsx
 // Or import only the stylesheets you need
-@use "@wfp/styles/scss/themes";
-@use "@wfp/styles/scss/theme";
-@use "@wfp/styles/scss/reset";
-@use "@wfp/styles/scss/components";
+@use "@progressiveui/styles/scss/themes";
+@use "@progressiveui/styles/scss/theme";
+@use "@progressiveui/styles/scss/reset";
+@use "@progressiveui/styles/scss/components";
 ```
 
 ### Install the latest features 🌱
@@ -99,5 +99,5 @@ Instead of importing all stylesheets, you can also import only the stylesheets y
 Install the packages with the `@alpha` tag to get access to the latest features.
 
 ```bash
-npm install @wfp/react@alpha  @wfp/styles@alpha
+npm install @progressiveui/react@alpha  @progressiveui/styles@alpha
 ```

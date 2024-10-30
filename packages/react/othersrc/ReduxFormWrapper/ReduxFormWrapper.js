@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import warningMesssage from 'warning';
+import PropTypes from "prop-types";
+import React from "react";
+import warningMesssage from "warning";
 
 let didWarnAboutDeprecation = false;
 
@@ -22,9 +22,9 @@ const ReduxFormWrapper = ({
   if (__DEV__ && InputComponent !== undefined) {
     warningMesssage(
       didWarnAboutDeprecation,
-      'The `InputComponent` prop of ReduxFormWrapper has been deprecated and will be removed ' +
-        'in the next major release of `@wfp/react`. Please use ' +
-        '`children` instead.'
+      "The `InputComponent` prop of ReduxFormWrapper has been deprecated and will be removed " +
+        "in the next major release of `@progressiveui/react`. Please use " +
+        "`children` instead."
     );
     didWarnAboutDeprecation = true;
   }

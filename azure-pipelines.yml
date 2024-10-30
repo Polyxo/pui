@@ -42,7 +42,7 @@ steps:
 
   - script: |
       git config --global user.name "Azure Devops Pipeline"
-      git config --global user.email "roberg.guehne@wfp.org"
+      git config --global user.email "roberg.guehne@progressiveui.org"
     displayName: Git config user
 
   - task: CmdLine@2

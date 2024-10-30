@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Button, BannerNavigationWithContent } from '@wfp/react';
+import React, { Component } from "react";
+import { Button, BannerNavigationWithContent } from "@progressiveui/react";
 
-import './App.scss';
+import "./App.scss";
 
 class App extends Component {
   render() {

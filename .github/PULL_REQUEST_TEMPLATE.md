@@ -1,4 +1,4 @@
-Closes @wfp/react#
+Closes @progressiveui/react#
 
 {{short description}}
 

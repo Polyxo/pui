@@ -1,14 +1,14 @@
-import React from 'react';
-import markdown from './README.mdx';
-import { ContextMenu, ContextMenuGroup, ContextMenuItem } from './ContextMenu';
-import Link from '../Link';
+import React from "react";
+import markdown from "./README.mdx";
+import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "./ContextMenu";
+import Link from "../Link";
 
 export default {
-  title: 'Components/UI Elements/ContextMenu',
+  title: "Components/UI Elements/ContextMenu",
   component: Link,
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'released',
+    componentSubtitle: "Component",
+    status: "released",
     mdx: markdown,
   },
 };
@@ -27,15 +27,16 @@ export const Regular = (args) => (
         <ContextMenuItem>Item 2</ContextMenuItem>
         <ContextMenuItem>Item 3</ContextMenuItem>
       </>
-    }>
+    }
+  >
     <span>Open context menu</span>
   </ContextMenu>
 );
 
-Regular.args = { children: 'WFP Homepage', href: 'https://www.wfp.org' };
+Regular.args = { children: "WFP Homepage", href: "https://www.wfp.org" };
 
 const sourcecode = `
-import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "@wfp/react";
+import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "@progressiveui/react";
 
 <ContextMenu
   content={
@@ -79,24 +80,26 @@ export const States = (args) => (
         </ContextMenuGroup>
         <ContextMenuItem
           onClick={() => {
-            console.log('hide', setVisibility);
+            console.log("hide", setVisibility);
             setVisibility(true);
             visibilityChange(true);
-          }}>
+          }}
+        >
           Hide ContextMenu
         </ContextMenuItem>
         <ContextMenuItem>Item 2</ContextMenuItem>
         <ContextMenuItem>Item 3</ContextMenuItem>
       </>
-    )}>
+    )}
+  >
     <span>Open context menu</span>
   </ContextMenu>
 );
 
-States.args = { ...Regular.args, style: { marginRight: '1rem' } };
+States.args = { ...Regular.args, style: { marginRight: "1rem" } };
 
 const statesourcecode = `
-import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "@wfp/react";
+import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "@progressiveui/react";
 
 <ContextMenu
     content={({ setVisibility, visibilityChange }) => (

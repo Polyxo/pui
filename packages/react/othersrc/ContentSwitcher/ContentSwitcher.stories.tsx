@@ -30,7 +30,7 @@ Regular.args = {
 };
 
 const regularsourcecode = `
-import { ContentSwitcher , Switch } from "@wfp/react";
+import { ContentSwitcher , Switch } from "@progressiveui/react";
 
 <ContentSwitcher onChange={() => {}}>
   <Switch

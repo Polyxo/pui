@@ -23,7 +23,7 @@ export default {
 
 /* TODO: Add import section
 
- `import {SecondaryNavigation, SecondaryNavigationTitle, Breadcrumb, BreadcrumbHome, BreadcrumbItem, Tabs, Tab } from "@wfp/react";`,
+ `import {SecondaryNavigation, SecondaryNavigationTitle, Breadcrumb, BreadcrumbHome, BreadcrumbItem, Tabs, Tab } from "@progressiveui/react";`,
 
  */
 
@@ -92,7 +92,7 @@ Regular.story = {
     docs: {
       source: {
         code: sourcecode(
-          `import {SecondaryNavigation, SecondaryNavigationTitle, Breadcrumb, BreadcrumbHome, BreadcrumbItem, Tabs, Tab } from "@wfp/react";`,
+          `import {SecondaryNavigation, SecondaryNavigationTitle, Breadcrumb, BreadcrumbHome, BreadcrumbItem, Tabs, Tab } from "@progressiveui/react";`,
           tabsection
         ),
       },
@@ -125,7 +125,7 @@ HeadingOnly.story = {
       storyDescription: descriptionHeadingOnly,
       source: {
         code: sourcecode(
-          `import {SecondaryNavigation, SecondaryNavigationTitle, Breadcrumb, BreadcrumbHome, BreadcrumbItem } from "@wfp/react";`
+          `import {SecondaryNavigation, SecondaryNavigationTitle, Breadcrumb, BreadcrumbHome, BreadcrumbItem } from "@progressiveui/react";`
         ),
       },
     },

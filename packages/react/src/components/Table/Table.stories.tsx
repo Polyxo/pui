@@ -1,22 +1,22 @@
-import React from 'react';
-import { usePagination, useSortBy, useTable } from 'react-table';
-import makeData, { sampleColumns } from './makeData';
-import markdown from './README.mdx';
+import React from "react";
+import { usePagination, useSortBy, useTable } from "react-table";
+import makeData, { sampleColumns } from "./makeData";
+import markdown from "./README.mdx";
 
-import Table from './Table';
-import TableSorting from './TableSorting';
-import Pagination from '../Pagination';
+import Table from "./Table";
+import TableSorting from "./TableSorting";
+import Pagination from "../Pagination";
 
 export default {
-  title: 'Components/UI Elements/Table',
+  title: "Components/UI Elements/Table",
   component: Table,
   subcomponents: {
     TableSorting,
     Pagination,
   },
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'released',
+    componentSubtitle: "Component",
+    status: "released",
     mdx: markdown,
   },
 };
@@ -36,7 +36,7 @@ function ReactTable({ columns, data, withBorder }) {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
             ))}
           </tr>
         ))}
@@ -47,7 +47,7 @@ function ReactTable({ columns, data, withBorder }) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
@@ -115,7 +115,7 @@ function ReactTablePagination({ columns, data, withBorder }) {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
               ))}
             </tr>
           ))}
@@ -127,7 +127,7 @@ function ReactTablePagination({ columns, data, withBorder }) {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
@@ -159,7 +159,7 @@ function ReactTableSorting({ columns, data }) {
         initialState: {
           sortBy: [
             {
-              id: 'age',
+              id: "age",
               desc: false,
             },
           ],
@@ -176,7 +176,7 @@ function ReactTableSorting({ columns, data }) {
               // Add the sorting props to control sorting. For this example
               // we can add them into the header props
               <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                {column.render('Header')}
+                {column.render("Header")}
                 {/* Add a sort direction indicator */}
                 <TableSorting {...column} />
               </th>
@@ -190,7 +190,7 @@ function ReactTableSorting({ columns, data }) {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
@@ -242,7 +242,7 @@ UsingReactTable.story = {
 
       source: {
         code: `
-import { Table } from "@wfp/react";
+import { Table } from "@progressiveui/react";
 
 // Use the state and functions returned from useTable to build your UI
 const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

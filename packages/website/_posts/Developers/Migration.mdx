@@ -32,22 +32,22 @@ The overall design of components is currently in progress. Please be aware that 
 
 #### Packages renamed
 
-The `@wfp/ui` package has been split up into multiple packages like `@wfp/react` and `@wfp/styles`.
+The `@progressiveui/ui` package has been split up into multiple packages like `@progressiveui/react` and `@progressiveui/styles`.
 
 ```jsx
 // Before
-import { Component } from "@wfp/ui";
+import { Component } from "@progressiveui/ui";
 
-// After: Replace @wfp/ui with @wfp/react for React components
-import { Component } from "@wfp/react";
+// After: Replace @progressiveui/ui with @progressiveui/react for React components
+import { Component } from "@progressiveui/react";
 ```
 
 ```css
 // Before
-@import '@wfp/react/scss/globals/scss/styles.scss';
+@import '@progressiveui/react/scss/globals/scss/styles.scss';
 
 // After: importing styles
-becomes `@import '@wfp/styles';
+becomes `@import '@progressiveui/styles';
 ```
 
 More information about importing styles can be found [here](/how-tos/install-ui-kit).
@@ -59,7 +59,7 @@ More information about importing styles can be found [here](/how-tos/install-ui-
 <Icon icon={iconName} />;
 
 // After: Each Icon is now a separate component and can be imported directly from the package:
-import { IconName } from "@wfp/icons-react";
+import { IconName } from "@progressiveui/icons-react";
 <IconName />;
 ```
 

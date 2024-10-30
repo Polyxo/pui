@@ -1,6 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
-import { ChevronRight } from "@wfp/icons-react";
+import { ChevronRight } from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 import { IIcon } from "../../utils";
 

@@ -12,10 +12,10 @@ import {
   Text,
   TextInput,
   useMediaQuery,
-} from "@wfp/react";
+} from "@progressiveui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
-import * as wfpComponents from "@wfp/react";
+import * as wfpComponents from "@progressiveui/react";
 import ReactDatePicker from "react-datepicker";
 import reactElementToJSXString from "react-element-to-jsx-string";
 import styles from "./prop-types.module.scss";
@@ -23,7 +23,12 @@ import CodeBlockLive from "../Blog/Mdx/CodeBlockLive";
 import Markdown from "react-markdown";
 import formatTypes from "./formatTypes";
 import { transform } from "@babel/standalone";
-import { AddCircle, CloseCircle, Settings, StarSolid } from "@wfp/icons-react";
+import {
+  AddCircle,
+  CloseCircle,
+  Settings,
+  StarSolid,
+} from "@progressiveui/icons-react";
 import * as componentsSource from "@../../../demoCode/dist/bundle";
 import { extractComponentNames } from "./extractComponentNames";
 
@@ -399,7 +404,7 @@ export default function PropTypes({
       code.search("action") !== -1 ? "const action = () => {};" : ""
     } return (${code})}`;
 
-  code = `import { ${componentList} } from "@wfp/react";
+  code = `import { ${componentList} } from "@progressiveui/react";
   
 ${codeWithWrapper}
 `;

@@ -5,7 +5,7 @@ import slugify from "slugify";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import slugifyWithSlashes from "../../lib/slugifyWithSlashes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "@wfp/react";
+import { Link } from "@progressiveui/react";
 import NextLink from "next/link";
 import deepSortByName from "./deepSort";
 

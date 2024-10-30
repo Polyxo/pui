@@ -1,28 +1,28 @@
-import React from 'react';
-import Checkbox from '../Checkbox';
-import Form from './Form';
-import FormGroup from '../FormGroup';
+import React from "react";
+import Checkbox from "../Checkbox";
+import Form from "./Form";
+import FormGroup from "../FormGroup";
 //import FileUploader from '../FileUploader';
-import Dropzone from 'react-dropzone';
-import NumberInput from '../NumberInput';
-import RadioButton from '../RadioButton';
-import InputGroup from '../InputGroup';
-import Button from '../Button';
-import Search from '../Search';
-import Select from '../Select';
-import SelectItem from '../SelectItem';
-import TextArea from '../TextArea';
-import TextInput from '../TextInput';
-import Toggle from '../Toggle';
+import Dropzone from "react-dropzone";
+import NumberInput from "../NumberInput";
+import RadioButton from "../RadioButton";
+import InputGroup from "../InputGroup";
+import Button from "../Button";
+import Search from "../Search";
+import Select from "../Select";
+import SelectItem from "../SelectItem";
+import TextArea from "../TextArea";
+import TextInput from "../TextInput";
+import Toggle from "../Toggle";
 
-import markdown from './README.mdx';
+import markdown from "./README.mdx";
 
 export default {
-  title: 'Components/Forms/Form',
+  title: "Components/Forms/Form",
   component: Form,
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'released',
+    componentSubtitle: "Component",
+    status: "released",
     mdx: markdown,
   },
 };
@@ -65,13 +65,13 @@ export const Default = (args) => {
 };
 
 Default.args = {
-  children: 'Form',
-  className: 'some-class',
+  children: "Form",
+  className: "some-class",
   longForm: true,
 };
 
 const defaultformsourcecode = `
-import { Form, TextInput, TextArea, Select, SelectItem, Button } from "@wfp/react";
+import { Form, TextInput, TextArea, Select, SelectItem, Button } from "@progressiveui/react";
 
 <Form>
   <TextInput
@@ -154,7 +154,7 @@ export const DetailedForm = (args) => {
         <Dropzone onDrop={(acceptedFiles) => acceptedFiles}>
           {({ getRootProps, getInputProps }) => (
             <section className="wfp--dropzone">
-              <div {...getRootProps({ className: 'wfp--dropzone__input' })}>
+              <div {...getRootProps({ className: "wfp--dropzone__input" })}>
                 <input {...getInputProps()} />
                 <div>
                   Drag 'n' drop some files here, or click to select files
@@ -250,13 +250,13 @@ export const DetailedForm = (args) => {
 };
 
 DetailedForm.args = {
-  children: 'Form',
-  className: 'some-class',
+  children: "Form",
+  className: "some-class",
   longForm: true,
 };
 
 const detailedformsourcecode = `
-import { Form, FormGroup, Checkbox, NumberInput, Toggle, FileUploader, InputGroup, RadioButton, Search, TextInput, Button } from '@wfp/react';
+import { Form, FormGroup, Checkbox, NumberInput, Toggle, FileUploader, InputGroup, RadioButton, Search, TextInput, Button } from '@progressiveui/react';
 import Dropzone from 'react-dropzone';
 
 <Form>
@@ -351,7 +351,7 @@ export const Login = (args) => {
           type="email"
           id="email1"
           labelText="Email"
-          placeholder="c*****@wfp.org"
+          placeholder="c*****@progressiveui.org"
         />
         <br />
         <TextInput
@@ -395,7 +395,7 @@ export const Contact = (args) => {
         type="email"
         id="email4"
         labelText="Email"
-        placeholder="c******@wfp.org"
+        placeholder="c******@progressiveui.org"
       />
 
       <FormGroup legendText="Additional details">
@@ -426,7 +426,7 @@ export const Contact = (args) => {
 };
 
 const contactsourcecode = `
-import { Form, FormGroup, TextInput, Button  } from "@wfp/react";
+import { Form, FormGroup, TextInput, Button  } from "@progressiveui/react";
 
 
 <Form>
@@ -448,7 +448,7 @@ import { Form, FormGroup, TextInput, Button  } from "@wfp/react";
     type="email"
     id="email4"
     labelText="Email"
-    placeholder="c******@wfp.org"
+    placeholder="c******@progressiveui.org"
   />
 
   <FormGroup legendText="Additional details">

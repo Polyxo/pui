@@ -47,7 +47,7 @@ export const FooterDefault: Story = {
 };
 
 const regularsourcecode = `
-import { Footer } from "@wfp/react";
+import { Footer } from "@progressiveui/react";
         
 <Footer 
 metaContent="2023 © World Food Programme"
@@ -137,7 +137,7 @@ FooterDefault.story = {
 // };
 
 // const externalsourcecode = `
-// import { FooterExternal, Link  } from "@wfp/react";
+// import { FooterExternal, Link  } from "@progressiveui/react";
 
 // <FooterExternal
 //     metaContent="Via C. G. Viola 68 Parco dei Medici, 00148 Rome, Italy"
@@ -239,7 +239,7 @@ export const Internal = (args) => (
 );
 
 const intersourcecode = `
-import { Footer, Link } from "@wfp/react";
+import { Footer, Link } from "@progressiveui/react";
 
 <Footer
     metaContent="2023 © World Food Programme"

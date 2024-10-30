@@ -7,9 +7,9 @@ import {
   Text,
   Tooltip,
   tooltipStyle,
-} from "@wfp/react";
+} from "@progressiveui/react";
 
-import tokens from "@wfp/themes-core/dist/json/variables-full.json";
+import tokens from "@progressiveui/themes-core/dist/json/variables-full.json";
 import { hex, score } from "wcag-contrast";
 
 import styles from "./typeset.module.scss";

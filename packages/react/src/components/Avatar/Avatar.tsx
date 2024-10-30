@@ -1,5 +1,5 @@
 import * as React from "react";
-import { User as UserIcon } from "@wfp/icons-react";
+import { User as UserIcon } from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 import classNames from "classnames";
 

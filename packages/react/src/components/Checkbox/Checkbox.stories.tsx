@@ -117,7 +117,7 @@ export const VerticalGrouping = (args) => (
 );
 
 const verticalsourcecode = `
-import { Checkbox, InputGroup  } from "@wfp/react";
+import { Checkbox, InputGroup  } from "@progressiveui/react";
 
 <InputGroup
   helperText="select any that apply"
@@ -155,7 +155,7 @@ export const HorizontalGrouping = (args) => (
 );
 
 const horizontalsourcecode = `
-import { Checkbox, InputGroup  } from "@wfp/react";
+import { Checkbox, InputGroup  } from "@progressiveui/react";
 
 <InputGroup
   helperText="select any that apply"

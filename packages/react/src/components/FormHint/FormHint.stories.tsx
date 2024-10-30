@@ -1,14 +1,14 @@
-import React from 'react';
-import markdown from './README.mdx';
-import FormHint from '.';
-import TextInput from '../TextInput';
+import React from "react";
+import markdown from "./README.mdx";
+import FormHint from ".";
+import TextInput from "../TextInput";
 
 export default {
-  title: 'Components/Forms/FormHint',
+  title: "Components/Forms/FormHint",
   component: FormHint,
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'released',
+    componentSubtitle: "Component",
+    status: "released",
     mdx: markdown,
   },
 };
@@ -20,7 +20,7 @@ export const Regular = (args) => (
 );
 
 Regular.args = {
-  children: 'The hint text',
+  children: "The hint text",
 };
 
 export const Input = (args) => (
@@ -33,7 +33,7 @@ export const Input = (args) => (
           sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
           et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-          takimata sanctus est{' '}
+          takimata sanctus est{" "}
         </FormHint>
       </>
     }
@@ -42,7 +42,7 @@ export const Input = (args) => (
 );
 
 const formhintsourcecode = `
-import { FormHint, TextInput  } from "@wfp/react";
+import { FormHint, TextInput  } from "@progressiveui/react";
 
 <TextInput
   labelText={

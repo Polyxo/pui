@@ -96,7 +96,7 @@ const umdBundleConfig = {
         'prop-types': 'PropTypes',
         react: 'React',
         'react-dom': 'ReactDOM',
-        //'@wfp/icons': 'WfpIcons',
+        //'@progressiveui/icons': 'WfpIcons',
       },
     },*/
 };

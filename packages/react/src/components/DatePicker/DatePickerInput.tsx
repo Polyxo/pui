@@ -1,6 +1,6 @@
 import * as React from "react";
 import useSettings from "../../hooks/useSettings";
-import { ArrowRight, CalendarAltRegular } from "@wfp/icons-react";
+import { ArrowRight, CalendarAltRegular } from "@progressiveui/icons-react";
 
 export interface DatePickerInputProps {
   /**

@@ -1,21 +1,21 @@
-# @wfp/styles
+# @progressiveui/styles
 
 > Styles for the Bridge Design System
 
 ## Getting started
 
-To install `@wfp/styles` in your project, you will need to run the following
+To install `@progressiveui/styles` in your project, you will need to run the following
 command using [npm](https://www.npmjs.com/):
 
 ```bash
-npm install -S @wfp/styles
+npm install -S @progressiveui/styles
 ```
 
 If you prefer [Yarn](https://yarnpkg.com/en/), use the following command
 instead:
 
 ```bash
-yarn add @wfp/styles
+yarn add @progressiveui/styles
 ```
 
 This package requires [Dart Sass](http://npmjs.com/package/sass) in order to
@@ -42,20 +42,20 @@ docs.
 ## Usage
 
 You can bring in all the styles for the Carbon Design System by including
-`@wfp/styles` in your Sass files. For example:
+`@progressiveui/styles` in your Sass files. For example:
 
 ```scss
-@use "@wfp/styles";
+@use "@progressiveui/styles";
 ```
 
 If you only would like to bring in specific components, you can
 import them in a similar way:
 
 ```scss
-@use "@wfp/styles/scss/reset";
-@use "@wfp/styles/scss/components/accordion";
-@use "@wfp/styles/scss/components/button";
-@use "@wfp/styles/scss/components/checkbox";
+@use "@progressiveui/styles/scss/reset";
+@use "@progressiveui/styles/scss/components/accordion";
+@use "@progressiveui/styles/scss/components/button";
+@use "@progressiveui/styles/scss/components/checkbox";
 ```
 
 There are various helpers that you can include, as well, such as a
@@ -64,13 +64,13 @@ how you bring in components:
 
 ```scss
 // Bring in the CSS Reset
-@use "@wfp/styles/scss/reset";
+@use "@progressiveui/styles/scss/reset";
 
 // Bring in the CSS Grid
-@use "@wfp/styles/scss/grid";
+@use "@progressiveui/styles/scss/grid";
 ```
 
-To learn more about the various helpers that `@wfp/styles` provides, checkout
+To learn more about the various helpers that `@progressiveui/styles` provides, checkout
 the overview of the files available to use in our
 [Sass docs](./docs/sass.md#files).
 

@@ -1,6 +1,6 @@
 import React from "react";
 import markdown from "./README.mdx";
-import { Add, Home } from "@wfp/icons-react";
+import { Add, Home } from "@progressiveui/icons-react";
 
 export default {
   title: "Components/UI Elements/Icon",

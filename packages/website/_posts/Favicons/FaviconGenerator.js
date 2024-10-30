@@ -5,7 +5,7 @@ import {
   Module,
   ModuleBody,
   ReduxFormWrapper,
-} from "@wfp/react";
+} from "@progressiveui/react";
 
 import dynamic from "next/dynamic";
 

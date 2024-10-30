@@ -17,7 +17,7 @@ It is best practice to use an Inline loading component for any Create, Update, o
 ### Usage with react
 
 ```js
-import { InlineLoading } from '@wfp/react';
+import { InlineLoading } from "@progressiveui/react";
 ```
 
 ```js
@@ -38,7 +38,7 @@ import { InlineLoading } from '@wfp/react';
 ##### ES2015
 
 ```javascript
-import { InlineLoading } from 'carbon-components';
+import { InlineLoading } from "carbon-components";
 ```
 
 ##### With pre-build bundle (`carbon-components.min.js`)
@@ -51,7 +51,7 @@ var InlineLoading = CarbonComponents.InlineLoading;
 
 ```javascript
 // `#my-inline-loading` is an element with `[data-inline-loading]` attribute
-InlineLoading.create(document.getElementById('my-inline-loading'));
+InlineLoading.create(document.getElementById("my-inline-loading"));
 ```
 
 #### Static properties
@@ -72,7 +72,7 @@ InlineLoading.create(document.getElementById('my-inline-loading'));
 ```javascript
 // `#my-inline-loading` is an element with `[data-inline-loading]` attribute
 var inlineLoadingInstance = InlineLoading.create(
-  document.getElementById('my-inline-loading')
+  document.getElementById("my-inline-loading")
 );
 inlineLoadingInstance.setState(InlineLoading.states.FINISHED);
 ```

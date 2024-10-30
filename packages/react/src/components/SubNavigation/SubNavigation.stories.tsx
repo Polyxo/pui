@@ -161,7 +161,7 @@ const sourcecode = `
 import {
   SubNavigation , SubNavigationHeader, SubNavigationTitle, SubNavigationLink, SubNavigationFilter, SubNavigationContent, SubNavigationList, SubNavigationGroup, SubNavigationItem,
   Button, Search, Link
-} from "@wfp/react";
+} from "@progressiveui/react";
 
 <SubNavigation>
   <SubNavigationHeader>

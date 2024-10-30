@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import classNames from "classnames";
 import Link from "../Link";
-import { CaretUp, ChevronUp } from "@wfp/icons-react";
+import { CaretUp, ChevronUp } from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 import { useId } from "../../hooks/useId";
 

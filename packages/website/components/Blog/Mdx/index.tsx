@@ -25,7 +25,7 @@ import {
   Callout,
   TextInput,
   Input,
-} from "@wfp/react";
+} from "@progressiveui/react";
 
 import FaviconGenerator from "../../../_posts/Favicons/FaviconGenerator";
 

@@ -1,14 +1,14 @@
-import React from 'react';
-import InputGroup from '.';
-import markdown from './README.mdx';
-import RadioButton from '../RadioButton';
-import Checkbox from '../Checkbox';
+import React from "react";
+import InputGroup from ".";
+import markdown from "./README.mdx";
+import RadioButton from "../RadioButton";
+import Checkbox from "../Checkbox";
 
 export default {
-  title: 'Components/Forms/InputGroup',
+  title: "Components/Forms/InputGroup",
   component: InputGroup,
   parameters: {
-    componentSubtitle: 'Component',
+    componentSubtitle: "Component",
     mdx: markdown,
   },
 };
@@ -18,7 +18,8 @@ export const Regular = (args) => (
     defaultSelected="default-selected"
     labelText="Group labelText"
     helperText="Helper text"
-    {...args}>
+    {...args}
+  >
     <RadioButton
       name="radio"
       value="standard"
@@ -41,7 +42,7 @@ export const Regular = (args) => (
 );
 
 const regularsourcecode = `
-import { InputGroup, RadioButton  } from "@wfp/react";
+import { InputGroup, RadioButton  } from "@progressiveui/react";
 
 <InputGroup
   defaultSelected="default-selected"
@@ -83,7 +84,8 @@ export const withCheckbox = (args) => (
     defaultSelected="default-selected"
     labelText="Group labelText"
     helperText="Helper text"
-    {...args}>
+    {...args}
+  >
     <Checkbox
       id="check-1"
       name="checkbox-1"
@@ -106,7 +108,7 @@ export const withCheckbox = (args) => (
 );
 
 const withcheckboxsourcecode = `
-import { InputGroup, Checkbox } from "@wfp/react";
+import { InputGroup, Checkbox } from "@progressiveui/react";
         
 <InputGroup
   defaultSelected="default-selected"
@@ -134,7 +136,7 @@ import { InputGroup, Checkbox } from "@wfp/react";
 withCheckbox.story = {
   parameters: {
     docs: {
-      storyDescription: 'The InputGroup can be used with checkboxes',
+      storyDescription: "The InputGroup can be used with checkboxes",
       source: {
         code: withcheckboxsourcecode,
       },
@@ -149,7 +151,8 @@ export const vertical = (args) => (
       labelText="Group labelText"
       helperText="Helper text"
       vertical
-      {...args}>
+      {...args}
+    >
       <Checkbox
         id="checkb-1"
         name="checkboxb-1"
@@ -173,7 +176,8 @@ export const vertical = (args) => (
       defaultSelected="default-selected"
       legend="Group Legend"
       vertical
-      {...args}>
+      {...args}
+    >
       <RadioButton
         name="radiob"
         value="standard"
@@ -198,7 +202,7 @@ export const vertical = (args) => (
 
 const verticalsourcecode = `
 
-import { InputGroup, Checkbox, RadioButton  } from "@wfp/react";
+import { InputGroup, Checkbox, RadioButton  } from "@progressiveui/react";
 
 
   <InputGroup
@@ -252,7 +256,7 @@ vertical.story = {
   parameters: {
     docs: {
       storyDescription:
-        'Use the vertical alignment if the elements do not have enough horizontal space. Avoid wrapping InputGroupss',
+        "Use the vertical alignment if the elements do not have enough horizontal space. Avoid wrapping InputGroupss",
       source: {
         code: verticalsourcecode,
       },

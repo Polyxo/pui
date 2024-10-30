@@ -181,7 +181,7 @@ You can customize the content by using \`MainNavigation\`.
 `;
 
 const sourcecode = (type) => {
-  return `import { Button,User, Search } from "@wfp/react";
+  return `import { Button,User, Search } from "@progressiveui/react";
   import {
     MainNavigationExternal,
     MainNavigationItem,
@@ -194,7 +194,7 @@ const sourcecode = (type) => {
     SubNavigationList,
     SubNavigationGroup,
     SubNavigationItem
-  } from "@wfp/react";
+  } from "@progressiveui/react";
 
   const Navigation = () => {
     return (
@@ -620,7 +620,7 @@ const UserDropdownDetails = () => (
     <li className={`wfp--user-ext__profile-item`}>
       <span className={`wfp--user-ext__profile-label`}>Email:</span>
       <span className={`wfp--user-ext__profile-value`}>
-        <Link inline>user@wfp.com</Link>
+        <Link inline>user@progressiveui.com</Link>
       </span>
     </li>
     <li className={`wfp--user-ext__profile-item`}>

@@ -1,4 +1,4 @@
-import { useTab } from "@wfp/react";
+import { useTab } from "@progressiveui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";

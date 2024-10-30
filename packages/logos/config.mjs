@@ -2,7 +2,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-import { convertFolder, jsx, svgOptimized /* rollup*/ } from "@wfp/icons-core";
+import {
+  convertFolder,
+  jsx,
+  svgOptimized /* rollup*/,
+} from "@progressiveui/icons-core";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

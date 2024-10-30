@@ -3,7 +3,7 @@ import styles from "./tools.module.scss";
 import Link from "next/link";
 import MoreLink from "../MoreLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Wrapper } from "@wfp/react";
+import { Wrapper } from "@progressiveui/react";
 import {
   faBell,
   faGlassWaterDroplet,
@@ -80,14 +80,14 @@ export default function Tools() {
           }
           background="#E7DFFF"
           icon={faSatellite}
-          link="https://npmjs.com/package/@wfp/themes-core"
+          link="https://npmjs.com/package/@progressiveui/themes-core"
           npmLink
         />
         <PossibilitiesContainer
           title="React"
           content="The core library includes all essential components and can be used with css only or react. Tokens can be also used with your favorite component library"
           icon={faLeaf}
-          link="https://npmjs.com/package/@wfp/react"
+          link="https://npmjs.com/package/@progressiveui/react"
           npmLink
         />
         <PossibilitiesContainer
@@ -102,7 +102,7 @@ export default function Tools() {
           content="css and scss implementation of the core components ready to use with the react library or plain html"
           // background="#FFDFDF"
           icon={faBell}
-          link="https://npmjs.com/package/@wfp/styles"
+          link="https://npmjs.com/package/@progressiveui/styles"
           npmLink
         />
         <PossibilitiesContainer
@@ -123,7 +123,7 @@ export default function Tools() {
           }
           // background="#DFF0FF"
           icon={faGlassWaterDroplet}
-          link="https://npmjs.com/package/@wfp/icons-core"
+          link="https://npmjs.com/package/@progressiveui/icons-core"
           npmLink
         />
 
@@ -145,7 +145,7 @@ export default function Tools() {
           }
           // background="#DFF0FF"
           icon={faGlassWaterDroplet}
-          link="https://npmjs.com/package/@wfp/icons-core"
+          link="https://npmjs.com/package/@progressiveui/icons-core"
           npmLink
         />
 
@@ -166,7 +166,7 @@ export default function Tools() {
             </>
           }
           icon={faGlassWaterDroplet}
-          link="https://npmjs.com/package/@wfp/icons-core"
+          link="https://npmjs.com/package/@progressiveui/icons-core"
           npmLink
         />
       </div>

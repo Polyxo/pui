@@ -1,15 +1,15 @@
-import React from 'react';
-import markdown from './README.mdx';
-import Unit from '.';
-import Table from '../Table';
-import Text from '../Text';
+import React from "react";
+import markdown from "./README.mdx";
+import Unit from ".";
+import Table from "../Table";
+import Text from "../Text";
 
 export default {
-  title: 'Components/Content Related/Unit',
+  title: "Components/Content Related/Unit",
   component: Unit,
   parameters: {
-    componentSubtitle: 'Component',
-    status: 'released',
+    componentSubtitle: "Component",
+    status: "released",
     mdx: markdown,
   },
 };
@@ -17,8 +17,8 @@ export default {
 export const Regular = (args) => <Unit {...args} />;
 
 Regular.args = {
-  children: '12345',
-  type: 'usd',
+  children: "12345",
+  type: "usd",
 };
 
 export const NumberFractionDigits = () => (
@@ -85,7 +85,7 @@ export const NumberFractionDigits = () => (
 );
 
 const sourcecode = `
-import { Unit, Table, Text } from "@wfp/react";
+import { Unit, Table, Text } from "@progressiveui/react";
 
 <Table>
     <thead>

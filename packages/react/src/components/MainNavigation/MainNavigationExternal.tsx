@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useRef } from "react";
-import { WfpLogoVerticalEn } from "@wfp/icons-react";
-import { ChevronDown, ChevronUp } from "@wfp/icons-react";
+import { WfpLogoVerticalEn } from "@progressiveui/icons-react";
+import { ChevronDown, ChevronUp } from "@progressiveui/icons-react";
 
 import Button from "../Button";
 import User from "../User";

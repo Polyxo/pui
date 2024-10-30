@@ -6,7 +6,7 @@ slug: "tokens/Use(Developer)"
 figma: "https://figma.com"
 github: "https://github.com/component"
 storybook: "https://uikit.wfp.org/next-docs/index.html?path=/docs/components-button--button-regular"
-npm: "@wfp/themes-core"
+npm: "@progressiveui/themes-core"
 ---
 
 ### How to use tokens as a Developer
@@ -25,7 +25,7 @@ This file contains all tokens with a lot of additional information and can be us
 TODO: Instead, you can import the `variables.json` file, which only contains the token values.
 
 ```jsx
-import tokens from "@wfp/themes-core/dist/json/variables-full.json";
+import tokens from "@progressiveui/themes-core/dist/json/variables-full.json";
 ```
 
 ### CSS
@@ -33,7 +33,7 @@ import tokens from "@wfp/themes-core/dist/json/variables-full.json";
 The CSS file contains all tokens as CSS variables as a sass mixin.
 
 ```css
-@use "@wfp/themes-core/dist/scss/default-css-theme" as defaulttheme;
+@use "@progressiveui/themes-core/dist/scss/default-css-theme" as defaulttheme;
 
 // Use the WFP theme
 :root {
@@ -51,7 +51,7 @@ It helps keep large stylesheets well-organized and makes it easy to share design
 `tokens.scss` contains all tokens as `sass` variables. This file is used to generate the CSS file.
 
 ```css
-@use "@wfp/themes-core/dist/scss/tokens" as tokens;
+@use "@progressiveui/themes-core/dist/scss/tokens" as tokens;
 
 /* Contains
 $content-content4-earthy-brown-content4-80: var(--content-content4-earthy-brown-content4-80, "#fda987") !default;
@@ -63,7 +63,7 @@ $content-content4-earthy-brown-content4-80: var(--content-content4-earthy-brown-
 `tokensMapDeep.scss` contains all tokens as a nested scss object.
 
 ```css
-@use "@wfp/themes-core/dist/scss/tokensMapDeep" as tokensMapDeep;
+@use "@progressiveui/themes-core/dist/scss/tokensMapDeep" as tokensMapDeep;
 ```
 
 #### tokensMapFlat.scss
@@ -71,5 +71,5 @@ $content-content4-earthy-brown-content4-80: var(--content-content4-earthy-brown-
 `tokensMapFlat.scss` contains all tokens as a flat scss object.
 
 ```css
-@use "@wfp/themes-core/dist/scss/tokensMapFlat" as tokensMapFlat;
+@use "@progressiveui/themes-core/dist/scss/tokensMapFlat" as tokensMapFlat;
 ```

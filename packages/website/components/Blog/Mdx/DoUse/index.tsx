@@ -1,4 +1,4 @@
-import { List, ListItem } from "@wfp/react";
+import { List, ListItem } from "@progressiveui/react";
 import React from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";

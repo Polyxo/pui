@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./hero.module.scss";
-import { Wrapper } from "@wfp/react";
+import { Wrapper } from "@progressiveui/react";
 import Image from "next/image";
 import screenImage from "../../public/homescreens.png";
 

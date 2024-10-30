@@ -33,7 +33,7 @@ export const ItemDefault: Story = {
 };
 
 const itemsourcecode = (kind, wrapper) => `
-import { Item, Tag } from "@wfp/react";
+import { Item, Tag } from "@progressiveui/react";
 
 <Item
   additional="Yesterday"

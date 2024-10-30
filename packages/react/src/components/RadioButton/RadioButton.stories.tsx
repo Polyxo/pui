@@ -67,7 +67,7 @@ export const VerticalGrouping = (args) => {
 
 const verticalsourcecode = `
 
-import { RadioButton, InputGroup  } from "@wfp/react";
+import { RadioButton, InputGroup  } from "@progressiveui/react";
 
 const [gender, setgender] = useState('');
 
@@ -145,7 +145,7 @@ export const HorizontalGrouping = () => (
 );
 
 const horizontalsourcecode = `
-import { RadioButton, InputGroup  } from "@wfp/react";
+import { RadioButton, InputGroup  } from "@progressiveui/react";
 
 <InputGroup
   name="input-group"

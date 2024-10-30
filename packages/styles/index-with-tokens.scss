@@ -1,14 +1,14 @@
 $css--reset: true;
 $css--body: true;
 
-@use "@wfp/styles/scss/themes";
-@use "@wfp/styles/scss/theme";
+@use "@progressiveui/styles/scss/themes";
+@use "@progressiveui/styles/scss/theme";
 
-@use "@wfp/themes-core/dist/scss/default-css-theme" as defaultTheme;
-@use "@wfp/themes-core/distDark/scss/default-css-theme" as darkTheme;
+@use "@progressiveui/themes-core/dist/scss/default-css-theme" as defaultTheme;
+@use "@progressiveui/themes-core/distDark/scss/default-css-theme" as darkTheme;
 
-@use "@wfp/styles/scss/reset";
-@use "@wfp/styles/scss/components";
+@use "@progressiveui/styles/scss/reset";
+@use "@progressiveui/styles/scss/components";
 
 // Import types
 /* @import "@un/type/scss/font-face/mono";

@@ -23,11 +23,11 @@ import Frame from "react-frame-component";
 
 import * as ReactDOMServer from "react-dom/server";
 
-import * as unComponents from "@wfp/react";
-import * as unHumanitarianIcons from "@wfp/humanitarian-icons-react";
-import * as unPictograms from "@wfp/pictograms-react";
-import * as icons from "@wfp/icons-react";
-import { Button, Empty } from "@wfp/react";
+import * as unComponents from "@progressiveui/react";
+import * as unHumanitarianIcons from "@progressiveui/humanitarian-icons-react";
+import * as unPictograms from "@progressiveui/pictograms-react";
+import * as icons from "@progressiveui/icons-react";
+import { Button, Empty } from "@progressiveui/react";
 import prettier from "prettier/standalone";
 import babelParser from "prettier/parser-babel";
 import htmlParser from "prettier/parser-html";

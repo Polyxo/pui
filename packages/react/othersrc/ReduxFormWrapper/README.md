@@ -1,7 +1,7 @@
 ReduxFormWrapper allows you to use Input components as a `component` prop inside a [redux-form](https://redux-form.com) `Field`.
 
 ```js
-import { TextArea, ReduxFormWrapper } from '@wfp/react';
+import { TextArea, ReduxFormWrapper } from "@progressiveui/react";
 ```
 
 ```js
@@ -13,12 +13,12 @@ import { TextArea, ReduxFormWrapper } from '@wfp/react';
 ### Example usage for react-select or other custom Input
 
 ```js
-import ReactSelect from 'react-select';
+import ReactSelect from "react-select";
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
 ];
 
 const ReactSelectHelper = (props) => (

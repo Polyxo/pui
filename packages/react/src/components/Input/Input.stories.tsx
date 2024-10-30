@@ -26,7 +26,7 @@ export const InputDefault: Story = {
 };
 
 const inputsourcecode = `
-import { Input  } from "@wfp/react";
+import { Input  } from "@progressiveui/react";
 
 <Input
   helperText="Optional helperText"

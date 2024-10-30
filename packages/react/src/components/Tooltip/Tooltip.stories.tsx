@@ -1,7 +1,7 @@
 import React from "react";
 import Tooltip from "./Tooltip";
 import markdown from "./README.mdx";
-import { Menu } from "@wfp/icons-react";
+import { Menu } from "@progressiveui/icons-react";
 
 export default {
   title: "Components/UI Elements/Tooltip",
@@ -70,8 +70,8 @@ WithIcon.args = {
 };
 
 const withiconsourcecode = `
-import { Tooltip  } from "@wfp/react";
-import { iconOverflowMenu } from '@wfp/icons';
+import { Tooltip  } from "@progressiveui/react";
+import { iconOverflowMenu } from '@progressiveui/icons';
 
 <Tooltip
   trigger="click"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   SecondaryNavigation,
   SecondaryNavigationTitle,
@@ -7,7 +7,7 @@ import {
   BreadcrumbHome,
   Tabs,
   Tab,
-} from '@wfp/react';
+} from "@progressiveui/react";
 
 function NavigationSecondary() {
   return (
@@ -27,7 +27,8 @@ function NavigationSecondary() {
         customTabContent
         role="navigation"
         selected={0}
-        triggerHref="#">
+        triggerHref="#"
+      >
         <Tab
           href="#"
           label="Tab label 1"
@@ -35,7 +36,8 @@ function NavigationSecondary() {
           onKeyDown={function noRefCheck() {}}
           role="presentation"
           selected={false}
-          tabIndex={0}>
+          tabIndex={0}
+        >
           <div>sbjbjhb</div>
         </Tab>
         <Tab

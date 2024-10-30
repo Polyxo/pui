@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import classnames from "classnames";
-import { ChevronLeft, ChevronRight } from "@wfp/icons-react";
+import { ChevronLeft, ChevronRight } from "@progressiveui/icons-react";
 import Select from "../Select";
 import SelectItem from "../SelectItem";
 import { equals } from "../../tools/array";

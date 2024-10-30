@@ -6,7 +6,7 @@ import {
   CheckmarkCircle,
   WarningSolid,
   InfoCircle,
-} from "@wfp/icons-react";
+} from "@progressiveui/icons-react";
 
 const iconTypes = {
   error: Error,

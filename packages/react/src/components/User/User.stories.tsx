@@ -66,7 +66,7 @@ You can show the avatar only without showing the username.
 `;
 
 const extendedsourcecode = `
-import { User, List, ListItem } from "@wfp/react";
+import { User, List, ListItem } from "@progressiveui/react";
 
 <User
     alt="Image Alt text"

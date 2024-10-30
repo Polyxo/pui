@@ -11,7 +11,7 @@ import {
   Tab,
   Text,
   Tabs,
-} from "@wfp/react";
+} from "@progressiveui/react";
 import { MDXRemote } from "next-mdx-remote";
 import NextLink from "next/link";
 import styles from "./sidebar.module.scss";

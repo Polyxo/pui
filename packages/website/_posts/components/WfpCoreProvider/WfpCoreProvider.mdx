@@ -13,7 +13,11 @@ The `WFPCoreProvider` component in React serves as a context provider, encapsula
 To use `WFPCoreProvider`, import it along with its context and default settings:
 
 ```jsx
-import { WFPCoreProvider, WFPCoreContext, defaultWFPContext } from "@wfp/react";
+import {
+  WFPCoreProvider,
+  WFPCoreContext,
+  defaultWFPContext,
+} from "@progressiveui/react";
 ```
 
 ## Usage
@@ -22,7 +26,7 @@ Wrap your application or component tree with `WFPCoreProvider` to provide all ch
 
 ```jsx
 import React from "react";
-import { WFPCoreProvider } from "@wfp/react";
+import { WFPCoreProvider } from "@progressiveui/react";
 
 const App = () => (
   <WFPCoreProvider>{/* Rest of the application */}</WFPCoreProvider>

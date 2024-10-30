@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { buttonKinds } from "../../prop-types/types";
-import { AddCircle } from "@wfp/icons-react";
+import { AddCircle } from "@progressiveui/icons-react";
 import markdown from "./README.mdx";
 import Button from "./Button";
 
@@ -221,8 +221,8 @@ DangerButton.args = {
 // `;
 
 // const buttoniconsnippet = `
-// import { Button } from '@wfp/react';
-// import { AddCircleGlyph } from '@wfp/icons-react';
+// import { Button } from '@progressiveui/react';
+// import { AddCircleGlyph } from '@progressiveui/icons-react';
 
 //   <>
 //   <Button icon={AddCircleGlyph} kind="primary">
@@ -263,8 +263,8 @@ DangerButton.args = {
 // `;
 
 // const smallbuttonsnippet = `
-// import { Button } from '@wfp/react';
-// import { AddCircleGlyph } from '@wfp/icons-react';
+// import { Button } from '@progressiveui/react';
+// import { AddCircleGlyph } from '@progressiveui/icons-react';
 
 //   <>
 //     <Button small>Small button</Button>{' '}
@@ -299,8 +299,8 @@ DangerButton.args = {
 // `;
 
 // const largebuttonsnippet = `
-// import { Button } from '@wfp/react';
-// import { AddCircleGlyph } from '@wfp/icons-react';
+// import { Button } from '@progressiveui/react';
+// import { AddCircleGlyph } from '@progressiveui/icons-react';
 
 //   <>
 //     <Button large>Large button</Button>{' '}

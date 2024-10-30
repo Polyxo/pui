@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Icon from "../Icon";
-import { iconClose, iconCheckmark } from "@wfp/icons-react";
+import { iconClose, iconCheckmark } from "@progressiveui/icons-react";
 import { withWFPCoreSettings } from "../WFPCoreSettings";
 
 class Filename extends Component {

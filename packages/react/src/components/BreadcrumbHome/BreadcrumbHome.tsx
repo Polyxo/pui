@@ -1,6 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
-import { Home } from "@wfp/icons-react";
+import { Home } from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 
 interface BreadcrumbHomeProps {

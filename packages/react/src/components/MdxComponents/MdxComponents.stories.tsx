@@ -1,22 +1,22 @@
-import React from 'react';
-import markdown from './README.mdx';
-import MarkdownContent from './markdown.mdx';
+import React from "react";
+import markdown from "./README.mdx";
+import MarkdownContent from "./markdown.mdx";
 
-import { MDXProvider } from '@mdx-js/react';
-import mdxComponents from './MdxComponentsNew';
+import { MDXProvider } from "@mdx-js/react";
+import mdxComponents from "./MdxComponentsNew";
 
 export default {
-  title: 'Components/Content Related/Mdx components',
+  title: "Components/Content Related/Mdx components",
   component: mdxComponents,
   parameters: {
-    componentSubtitle: 'Component',
+    componentSubtitle: "Component",
     mdx: markdown,
     introText: `MDX is an authorable format that lets you seamlessly write JSX in your Markdown documents.`,
 
     docs: {
       source: {
         code: `
-import { mdxComponents } from '@wfp/react';
+import { mdxComponents } from '@progressiveui/react';
 import { MDXProvider } from '@mdx-js/react';
 
 <MDXProvider components={mdxComponents}>{children}</MDXProvider>`,

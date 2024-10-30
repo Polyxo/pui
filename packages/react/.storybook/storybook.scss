@@ -1,12 +1,12 @@
 $css--body: true;
 $css--reset: true;
 
-@use "@wfp/themes-core/dist/scss/default-css-theme" as defaulttheme;
-@use "@wfp/themes-core/distDark/scss/default-css-theme" as darkTheme;
+@use "@progressiveui/themes-core/dist/scss/default-css-theme" as defaulttheme;
+@use "@progressiveui/themes-core/distDark/scss/default-css-theme" as darkTheme;
 
-@use "@wfp/styles/scss/global-defaults" as globalDefaults;
-@use "@wfp/styles/scss/theme";
-@use "@wfp/styles/index";
+@use "@progressiveui/styles/scss/global-defaults" as globalDefaults;
+@use "@progressiveui/styles/scss/theme";
+@use "@progressiveui/styles/index";
 
 // Use the WFP theme
 :root {

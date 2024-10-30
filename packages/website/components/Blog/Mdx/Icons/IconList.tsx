@@ -7,15 +7,15 @@ import {
   ModuleFooter,
   Tooltip,
   tooltipStyle,
-} from "@wfp/react";
-import { Download } from "@wfp/icons-react";
+} from "@progressiveui/react";
+import { Download } from "@progressiveui/icons-react";
 
 import styles from "./icon-list.module.scss";
 
-import * as icons from "@wfp/icons-react";
-import * as pictograms from "@wfp/pictograms-react";
+import * as icons from "@progressiveui/icons-react";
+import * as pictograms from "@progressiveui/pictograms-react";
 
-import * as humanitarianIcons from "@wfp/humanitarian-icons-react";
+import * as humanitarianIcons from "@progressiveui/humanitarian-icons-react";
 import { CodeBlock } from "../CodeBlockLive";
 
 const iconList = {
@@ -41,7 +41,7 @@ const IconPreview = ({ icon, name }: any) => {
 
           <div className={styles.codeBlock}>
             <CodeBlock language="jsx">
-              {`import { ${key} } from '@wfp/${name}-react'`}
+              {`import { ${key} } from '@progressiveui/${name}-react'`}
             </CodeBlock>
           </div>
           <Button

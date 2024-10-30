@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Search } from "@wfp/react";
+import { Search } from "@progressiveui/react";
 import styles from "./search.module.scss";
 import { useSearchBox } from "react-instantsearch-hooks-web";
 
