@@ -1,6 +1,7 @@
 {
   "name": "@progressiveui/logos",
   "version": "0.3.23",
+  "private": true,
   "description": "Logos of the World Food Programme",
   "main": "index.json",
   "scripts": {
