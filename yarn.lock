@@ -5068,11 +5068,6 @@
   resolved "https://registry.yarnpkg.com/@un/layout/-/layout-10.26.15.tgz#68a334070cccf6ce21daa6f0187d0a21695e89b1"
   integrity sha512-1CwNTA4MOTIVUYqM45q5S/6OSBGQ4NNiwt2jWevGDImXqmL1VThLD2ensefSNYTSWMDGhEAZcJM0SkoFPNkkuQ==
 
-"@progressiveui/logos@^0.0.42":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@progressiveui/logos/-/logos-0.0.42.tgz#d03503636ae5b4f7a840a4b66d7495bcc097ee15"
-  integrity sha512-A5Ms+U8tvtz7o1XVlT8ajKi2KIDVgJNiFL6cibfAB+4GyJYMMlCT0WE94djv1I25R0tZgzdZmAyIzoPeivoMiQ==
-
 "@un/scss-generator@^10.13.7":
   version "10.13.20"
   resolved "https://registry.yarnpkg.com/@un/scss-generator/-/scss-generator-10.13.20.tgz#4164482e301c5b9836d5a581e265dc870ea2c8a5"
@@ -5131,6 +5126,11 @@
     "@resvg/resvg-wasm" "2.6.0"
     satori "0.10.9"
     yoga-wasm-web "0.3.3"
+
+"@wfp/logos@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@wfp/logos/-/logos-0.0.30.tgz#d1f289078d56d5855865902407030d24eeaec043"
+  integrity sha512-OUjlA5GKJDRWdM0/KmJccpKxVSuoNkxzWPjX0tsbSVJsHGpgNxYXMyGKNDCSFvBxlAKJK4CIvZiSCa5010R+Qg==
 
 "@yarnpkg/esbuild-plugin-pnp@^3.0.0-rc.10":
   version "3.0.0-rc.15"

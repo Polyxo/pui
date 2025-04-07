@@ -4,7 +4,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import remarkMdxCodeMeta from "remark-mdx-code-meta";
 import remarkGfm from "remark-gfm";
 import rehypeCode from "../../lib/rehypeCode";
-import rehypeImgSize from "rehype-img-size";
+// import rehypeImgSize from "rehype-img-size";
 import rehypeFigmaImage from "../../lib/rehypeFigmaImage";
 import rehypeComponentsList from "../../lib/rehypeComponentsList";
 import { getHeadings } from "../../lib/getHeadingsFromMarkdown";
@@ -149,12 +149,12 @@ export default async function getPostContent(params: any) {
         rehypeCode,
         rehypeFigmaImage,
         [rehypeComponentsList, posts, propTypes],
-        [
+        /* [
           rehypeImgSize,
           {
             dir: "_posts/",
           },
-        ],
+        ], */
       ],
     },
   });

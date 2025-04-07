@@ -2,7 +2,7 @@ import React from "react";
 import markdown from "./README.mdx";
 import Empty from "./Empty";
 import Button from "../Button";
-//import { IllustrationsMovingVanWithBackground } from '@progressiveui/pictograms-react';
+//import { IllustrationsMovingVanWithBackground } from '@wfp/pictograms-react';
 
 export default {
   title: "Components/UI Elements/Empty",
@@ -32,7 +32,7 @@ EmptyDefault.args = {
 
 const emptysourcecode = `
 import { Empty, Button  } from "@progressiveui/react";
-import { IllustrationsMovingVanWithBackground } from '@progressiveui/pictograms-react';
+import { IllustrationsMovingVanWithBackground } from '@wfp/pictograms-react';
 
 <Empty
   button={<Button kind="accent">New entry</Button>}

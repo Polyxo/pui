@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React from 'react';
-import classNames from 'classnames';
-import useSettings from '../../hooks/useSettings';
+import React from "react";
+import classNames from "classnames";
+import useSettings from "../../hooks/useSettings";
 
 export interface UseInputProps {
   /**
@@ -108,10 +108,10 @@ export interface UseInputProps {
 export const useInput = ({
   addonAfter,
   className,
-  inputClassName = 'wfp--input',
+  inputClassName = "wfp--input",
   id,
   placeholder,
-  type = 'text',
+  type = "text",
   onChange = () => {},
   onClick = () => {},
   hideLabel,
@@ -155,6 +155,9 @@ export const useInput = ({
   };
 
   const wrapperProps = {
+    calculatedId,
+    id,
+    name,
     className,
     addonAfter,
     labelText,
@@ -164,7 +167,7 @@ export const useInput = ({
     invalidText,
   };
 
-  const errorId = calculatedId + '-error-msg';
+  const errorId = calculatedId + "-error-msg";
 
   /*const labelClasses = classNames(`${prefix}--label`, {
     [`${prefix}--visually-hidden`]: hideLabel || !labelText,
@@ -179,9 +182,9 @@ export const useInput = ({
   );*/
 
   if (invalid) {
-    inputProps['data-invalid'] = true;
-    inputProps['aria-invalid'] = true;
-    inputProps['aria-describedby'] = errorId;
+    inputProps["data-invalid"] = true;
+    inputProps["aria-invalid"] = true;
+    inputProps["aria-describedby"] = errorId;
   }
   return { inputProps, wrapperProps };
 };

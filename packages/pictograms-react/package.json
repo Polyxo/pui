@@ -1,5 +1,5 @@
 {
-  "name": "@progressiveui/pictograms-react",
+  "name": "@wfp/pictograms-react",
   "description": "React components for pictograms in digital and software products using the UN Core",
   "private": "true",
   "version": "11.18.0",

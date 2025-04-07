@@ -2,7 +2,6 @@ import * as React from "react";
 import Wrapper from "../Wrapper";
 import type { PropsWithChildren } from "react";
 import classNames from "classnames";
-import { WfpLogoVerticalEn } from "@progressiveui/icons-react";
 import {
   LinkedIn,
   Facebook,
@@ -40,10 +39,6 @@ const FooterExternal: React.FC<FooterExternalProps> = ({
         <div className={`${prefix}--footer-ext__content`}>
           <div className={`${prefix}--footer-ext__info`}>
             <div className={`${prefix}--footer-ext__branding`}>
-              <WfpLogoVerticalEn
-                alt="WFP"
-                className={`${prefix}--footer-ext__logo`}
-              />
               <div className={`${prefix}--footer-ext__product-name`}>
                 {productName}
               </div>

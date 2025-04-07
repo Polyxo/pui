@@ -54,10 +54,11 @@ export default function Navigation() {
       </InfoBar>
 
       <MainNavigation
-        logo={<NextLink href="/">Bridge</NextLink>}
+        logo={<NextLink href="/">Progressive UI</NextLink>}
         line={false}
         className={styles.mainNavigation}
         pageWidth="full"
+        logoRibbon={null}
       >
         <CloseNavigationTrigger />
         <MainNavigationItem>
