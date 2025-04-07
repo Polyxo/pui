@@ -1,4 +1,10 @@
-# World Food Programme UI Kit (WFP-UI) 🇺🇳
+# Progressive UI
+
+Design once. Deliver everywhere.
+
+A modern design system for building progressive applications that scale seamlessly across all devices.
+
+Based on World Food Programme UI Kit (WFP-UI) 🇺🇳
 
 ## **[Click here to visit: Living Style Guide & Documentation](https://wfp.org/UIGuide)**
 
@@ -42,9 +48,6 @@ For developing on Windows please use WSL by following this guide: https://github
 
 All packages can be found inside `packages/`.
 
-- `fonts`: All Fonts used by WFP
-- `humanitarian-icons`: OCHA humanitarian icons customized by the Publications Unit of wfp
-- `humanitarian-icons-react`: React package of the humanitarian icons
 - `layout`: breakpoints, spacings, etc. no longer used, now themes!
 - `icons` all icons
 - `icons-core` tools to generate `icons`, `pictograms` and `humanitarian-icons`
@@ -53,29 +56,9 @@ All packages can be found inside `packages/`.
 - `themes`: theming (colors, etc.) TODO: move to themes-core
 - `react`: the react components
 
-### UN Core Examples
-
-All Examples can be found in `wfp/`.
-
 ### Documentation & list of components available
 
 View available Components [here](https://wfp.org/UIGuide). Usage information is available when you click the blue **Show Info** icon in the top right corner of the selected component.
-
-## ![About](https://cdn.wfp.org/guides/ui/v1.2.0/assets/internal/branding.svg "About") About the WFP UI Guidelines
-
-The new WFP UI Kit is based on the [World Food Programme’s Branding Guidance](http://brand.manuals.wfp.org/) WFP's new branding was launched in early 2018 and will be implemented across the organization, strengthening WFP’s brand image through consistent representation.
-
-Building on this initiative, the World Food Programme’s User Interface Style Guide emphasizes WFP’s commitment to establish and build the brand.
-
-## ![Purpose](https://cdn.wfp.org/guides/ui/v1.2.0/assets/internal/usability.svg "Purpose") Purpose
-
-The purpose of this project is to create a unified toolkit that is used by UX-designers and developers alike on their projects to ensure all WFP-branded projects are accessible, appealing, and have a consistent look and feel across the board by following WFP’s design and implementation guidelines.
-
-The guidelines contained in this guide are to be applied to all WFP digital products (such as: websites, web applications, internal systems and other).
-
-By unifiying design elements into reusable components, development will simplify and accelerate the development of these digital products.
-
-The Guide is a living document created to meet the needs of WFP’s front-end developers and designers. If there is a Component or Pattern that you need, or you have any other feedback, question or comment please contact us.
 
 ### Using the server
 
