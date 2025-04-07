@@ -65,7 +65,6 @@
     "react-markdown": "^9.0.0",
     "react-render-html": "^0.6.0",
     "react-use-gesture": "^9.0.1",
-    "rehype-img-size": "^1.0.1",
     "remark-gfm": "^3.0.1",
     "remark-mdx-code-meta": "^2.0.0",
     "remark-stringify": "^10.0.3",
