@@ -1,7 +1,6 @@
 import React from "react";
-//import markdown from './README.mdx';
 import { action } from "@storybook/addon-actions";
-import { MainNavigation, MainNavigationExternal } from ".";
+import { MainNavigation } from ".";
 import MainNavigationItem from "../MainNavigationItem";
 
 import {
@@ -23,7 +22,6 @@ import User from "../User";
 export default {
   title: "Components/Navigation/MainNavigation",
   component: MainNavigation,
-  subcomponents: { MainNavigationExternal },
   parameters: {
     componentSubtitle: "Component",
     status: "released",
@@ -183,7 +181,6 @@ You can customize the content by using \`MainNavigation\`.
 const sourcecode = (type) => {
   return `import { Button,User, Search } from "@progressiveui/react";
   import {
-    MainNavigationExternal,
     MainNavigationItem,
     SubNavigation,
     SubNavigationHeader,

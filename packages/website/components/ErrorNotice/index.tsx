@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./errorNotice.module.scss";
 import { Empty } from "@progressiveui/react";
 import MoreLink from "../MoreLink";
-import { Parachute } from "@wfp/pictograms-react";
 import EmptyResults from "components/Search/EmptyResults";
 
 export default function ErrorNotice() {
@@ -17,7 +16,7 @@ export default function ErrorNotice() {
           Return to Homepage
         </MoreLink>
       }
-      icon={<Parachute />}
+      // icon={<Parachute />}
       title="Page not found"
     >
       404 – The requested page was not found.

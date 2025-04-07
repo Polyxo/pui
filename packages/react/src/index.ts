@@ -80,7 +80,6 @@ export { List, ListItem } from "./components/List";
 export {
   MainNavigation,
   MainNavigationContext,
-  MainNavigationExternal,
   useMainNavigation,
 } from "./components/MainNavigation";
 export { default as MainNavigationItem } from "./components/MainNavigationItem";

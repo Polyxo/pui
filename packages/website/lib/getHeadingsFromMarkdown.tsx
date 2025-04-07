@@ -47,6 +47,7 @@ function noopCompiler() {
 }
 
 export async function getHeadings(markdownText: string): Promise<string[]> {
+  return [];
   try {
     const file = await unified()
       .use(remarkParse)

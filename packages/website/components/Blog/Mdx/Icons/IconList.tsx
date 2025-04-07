@@ -13,15 +13,10 @@ import { Download } from "@progressiveui/icons-react";
 import styles from "./icon-list.module.scss";
 
 import * as icons from "@progressiveui/icons-react";
-import * as pictograms from "@wfp/pictograms-react";
-
-import * as humanitarianIcons from "@wfp/humanitarian-icons-react";
 import { CodeBlock } from "../CodeBlockLive";
 
 const iconList = {
   icons,
-  pictograms,
-  humanitarianIcons,
 };
 
 const IconPreview = ({ icon, name }: any) => {

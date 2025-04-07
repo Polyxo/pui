@@ -1,8 +1,6 @@
 import React from "react";
-import { action } from "@storybook/addon-actions";
 import { BannerNavigation, BannerNavigationItem } from "./BannerNavigation";
 import { BannerNavigationWithContent } from "./BannerNavigationWithContent";
-import Search from "../Search";
 import Link from "../Link";
 
 export default {

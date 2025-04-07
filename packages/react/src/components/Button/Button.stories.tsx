@@ -2,7 +2,6 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { buttonKinds } from "../../prop-types/types";
 import { AddCircle } from "@progressiveui/icons-react";
-import markdown from "./README.mdx";
 import Button from "./Button";
 
 const meta: Meta<typeof Button> = {
@@ -12,27 +11,12 @@ const meta: Meta<typeof Button> = {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
     // twig: buttonTwig,
   },
 };
 
-// export default {
-//   title: "Components/UI Elements/Button",
-//   component: Button,
-//   markdown: "hello",
-//   parameters: {
-//     componentSubtitle: "Component",
-//     status: "released",
-//     mdx: markdown,
-//     // twig: buttonTwig,
-//   },
-// };
-
 export default meta;
 type Story = StoryObj<typeof Button>;
-
-//export const ButtonDefault = (args) => <Button {...args}>Default</Button>;
 
 export const ButtonDefault: Story = {
   render: (args) => <Button {...args} />,

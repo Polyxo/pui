@@ -3,7 +3,6 @@ import Image from "./Image";
 import Link from "./Link";
 import Video from "./Video";
 import Colors from "./Colors";
-import Logos from "./Logos";
 import Figma from "./Figma";
 import { DoUse, DoNotUse } from "./DoUse";
 import FigmaImage from "./FigmaImage";
@@ -64,7 +63,6 @@ const components = {
   CodeBlock,
   IconList,
   Link,
-  Logos,
   TextInput,
   Spacing,
   Typeset,

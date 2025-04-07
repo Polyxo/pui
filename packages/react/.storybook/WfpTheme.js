@@ -8,7 +8,7 @@ export default create({
   fontBase: '"Open Sans", sans-serif',
   fontCode: "monospace",
 
-  brandTitle: "WFP Design System",
+  brandTitle: "Progressive UI",
   brandUrl: "https://www.designsystem.wfp.org/",
   brandTarget: "_self",
 

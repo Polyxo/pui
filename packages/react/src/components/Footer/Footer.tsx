@@ -3,10 +3,6 @@ import classNames from "classnames";
 import Link from "../Link";
 import Wrapper from "../Wrapper";
 import { ScreenSize } from "../../utils";
-import {
-  WfpLogoStandardBlackEn,
-  WfpLogoVerticalEn,
-} from "@progressiveui/icons-react";
 import useSettings from "../../hooks/useSettings";
 
 /** A Footer is a section at the bottom of each page. It typically contains basic site information, copyright data or links to related pages. */
@@ -29,17 +25,10 @@ interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
  */
   logo?: string | React.ReactNode;
   /**
-   Optional WFP logo for desktop devices, can be used if the Logo should be provided by the CDN
- */
-  logoExtended?: string | React.ReactNode;
-  /**
    * Specify the max-width on desktop devices (same as \`Wrapper\` component)
    */
   pageWidth?: ScreenSize;
-  /**
-   Override the SDG icon
- */
-  sdgLogo?: React.ReactNode;
+
   /**
    The WFP logo, can be used if the SDG logo should be provided in a different way
  */
@@ -63,7 +52,6 @@ const Footer: React.FC<FooterProps> = ({
   linkTextTwo,
   linkHrefTwo,
   logo,
-  logoExtended,
   metaContent,
   metaLinks,
   secondary,
@@ -101,35 +89,7 @@ const Footer: React.FC<FooterProps> = ({
             </div>
           )}
           <div className={`${prefix}--footer__cta`}>
-            {logoExtended && typeof logoExtended === "string" ? (
-              <img
-                className={`${prefix}--footer__cta-logo`}
-                src={logoExtended}
-                alt="World Food Programme Logo"
-              />
-            ) : logoExtended ? (
-              logoExtended
-            ) : (
-              <WfpLogoStandardBlackEn
-                className={`${prefix}--footer__cta-logo`}
-                alt="WFP"
-              />
-            )}
-
-            {logo && typeof logo === "string" ? (
-              <img
-                className={`${prefix}--footer__cta-logo-small`}
-                src={logo}
-                alt="WFP Logo"
-              />
-            ) : logo ? (
-              logo
-            ) : (
-              <WfpLogoVerticalEn
-                description="WFP"
-                className={`${prefix}--footer__cta-logo-small`}
-              />
-            )}
+            {logo}
             {secondary && (
               <div className={`${prefix}--footer__secondary`}>{secondary}</div>
             )}

@@ -46,7 +46,6 @@ All packages can be found inside `packages/`.
 - `humanitarian-icons`: OCHA humanitarian icons customized by the Publications Unit of wfp
 - `humanitarian-icons-react`: React package of the humanitarian icons
 - `layout`: breakpoints, spacings, etc. no longer used, now themes!
-- `pictograms`: pictogram icons
 - `icons` all icons
 - `icons-core` tools to generate `icons`, `pictograms` and `humanitarian-icons`
 - `icons-react` the react package of the icons

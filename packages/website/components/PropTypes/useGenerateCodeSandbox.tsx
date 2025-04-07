@@ -31,7 +31,6 @@ export default function useGenerateCodeSandbox({
                   "@progressiveui/icons-react": "alpha",
                   "@progressiveui/styles": "alpha",
                   "@progressiveui/themes-core": "alpha",
-                  "@wfp/pictograms-react": "alpha",
                   react: "latest",
                   "react-dom": "latest",
                 },

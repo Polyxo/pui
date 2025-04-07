@@ -22,31 +22,6 @@ export const parameters = {
   },
 };
 
-/*
-export const globalTypes = {
-  theme: {
-    title: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: 'light',
-    toolbar: {
-      icon: 'circlehollow',
-      items: ['light', 'dark'],
-    },
-  },
-  locale: {
-    title: 'Locale',
-    description: 'Internationalization locale',
-    defaultValue: 'en',
-    toolbar: {
-      icon: 'globe',
-      items: [
-        { value: 'ltr', title: 'left-to-right' },
-        { value: 'rtl', title: 'right-to-left' },
-      ],
-    },
-  },
-};*/
-
 const withThemeProvider = (Story, context) => {
   const { locale, theme } = context.globals;
   document.body.classList.remove(

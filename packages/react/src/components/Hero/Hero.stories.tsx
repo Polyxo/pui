@@ -4,7 +4,6 @@ import markdown from "./README.mdx";
 
 import { Hero, HeroExternal } from ".";
 import Button from "../Button";
-import { WfpHumEmergencyResponsePos } from "@wfp/pictograms-react";
 //import heroTwig from './Hero.twig';
 
 export default {
@@ -240,7 +239,6 @@ Emergencies.args = {
   ...Regular.args,
   title: (
     <>
-      <WfpHumEmergencyResponsePos fill="#FFF" style={{ marginRight: "1rem" }} />
       <span>
         Curabitur ullamcorper ultricies nisi. Proin magna.{" "}
         <a>Etiam iaculis nunc ac metus</a>

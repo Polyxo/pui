@@ -1,5 +1,4 @@
 import React from "react";
-import markdown from "./README.mdx";
 import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "./ContextMenu";
 import Link from "../Link";
 
@@ -9,7 +8,6 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
   },
 };
 

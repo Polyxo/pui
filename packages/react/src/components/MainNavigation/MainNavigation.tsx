@@ -7,10 +7,6 @@ import { ScreenSize } from "../../utils";
 import MainNavigationContext from "./MainNavigationContext";
 import MobileButtonDefault, { MobileButtonProps } from "./MobileButton";
 import { WrapperProps } from "../Wrapper/Wrapper";
-import {
-  WfpLogoVerticalEn,
-  WfpLogoStandardBlackEn,
-} from "@progressiveui/icons-react";
 
 /** The Main Navigation is a Horizontal Menu which consists of multiple clickable items placed at the top of the page. The navigation stays unchanged when browswing through the site and is present on every page. The currently selected item is usually highlighted. */
 
@@ -142,25 +138,7 @@ const MainNavigation = ({
             >
               Menu
             </MobileButton>
-            <div className={`${prefix}--main-navigation__logo`}>
-              {logoRibbon === "default" ? (
-                <div className={`${prefix}--main-navigation__logo__default`}>
-                  <div
-                    className={`${prefix}--main-navigation__logo__default__ribbon`}
-                  >
-                    <WfpLogoVerticalEn description="WFP" />
-                  </div>
-                  {logo}
-                </div>
-              ) : logoRibbon === "offShelf" ? (
-                <div className={`${prefix}--main-navigation__logo__offShelf`}>
-                  <WfpLogoStandardBlackEn description="WFP" />
-                  {logo}
-                </div>
-              ) : (
-                logo
-              )}
-            </div>
+            <div className={`${prefix}--main-navigation__logo`}>{logo}</div>
           </div>
           <ul className={listClasses}>{children}</ul>
         </Wrapper>

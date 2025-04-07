@@ -6,13 +6,13 @@ const config: StorybookConfig = {
   stories: ["../src/**/*stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   core: {},
   addons: [
-    getAbsolutePath("@storybook/blocks"),
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
+    //getAbsolutePath("@storybook/blocks"),
+    //getAbsolutePath("@storybook/addon-links"),
+    //getAbsolutePath("@storybook/addon-essentials"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
-    options: {}
+    options: {},
   },
   /*
   typescript: {

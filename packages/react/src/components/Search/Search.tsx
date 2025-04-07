@@ -97,7 +97,7 @@ const Search: React.FC<SearchProps> = React.forwardRef((props, ref) => {
     }
   };
 
-  const clearSearch = () => {
+  const clearSearch = (evt) => {
     setValue("");
     // setTimeout(() => {
     //   console.log("value", value);
