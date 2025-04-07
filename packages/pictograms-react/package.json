@@ -2,7 +2,7 @@
   "name": "@wfp/pictograms-react",
   "description": "React components for pictograms in digital and software products using the UN Core",
   "private": "true",
-  "version": "11.18.0",
+  "version": "11.18.1",
   "license": "Apache-2.0",
   "main": "umd/index.js",
   "module": "es/index.js",
