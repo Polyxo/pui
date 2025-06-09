@@ -53,8 +53,8 @@
   // New code should use link-style "select file" UI (`.bx--file-browse-btn`)
   // TODO: deprecate this block
   .#{$prefix}--file-btn {
-    display: inline-flex;
     padding-right: calcRem(64px);
+    display: inline-flex;
     margin: 0;
   }
 
@@ -173,12 +173,11 @@
 
   // TODO: deprecate this block
   .#{$prefix}--file__selected-file--invalid__wrapper {
-    @include focus-outline("invalid");
-
     max-width: calcRem(320px);
     margin-bottom: $spacing-05;
     background-color: $fill-field;
     outline-width: 1px;
+    @include focus-outline("invalid");
   }
 
   .#{$prefix}--file__selected-file--invalid {

@@ -9,8 +9,6 @@
   @if ($type == "border") {
     outline: 1px solid theme.$field-focus;
     border-color: theme.$field-focus; //update $focus color
-    //box-shadow: 0px 2px 8px 0 theme.$focus; //get new token
-
     @media screen and (prefers-contrast) {
       outline-style: dotted;
     }
@@ -22,9 +20,10 @@
   }
 
   @if ($type == "outline") {
+    & {
     outline: 2px solid theme.$field-focus;
     outline-offset: -2px;
-
+    }
     @media screen and (prefers-contrast) {
       outline-style: dotted;
     }
@@ -40,8 +39,10 @@
   }
 
   @if ($type == "reset") {
+    & {
     outline: 2px solid transparent;
     outline-offset: -2px;
+    }
   }
 
   @if ($type == "border-important") {

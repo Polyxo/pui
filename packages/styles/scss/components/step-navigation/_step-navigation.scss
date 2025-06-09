@@ -13,12 +13,13 @@
   .#{$prefix}--step-navigation {
     @include type-style("caption-02");
     @include font-family("sans");
-    color: $text-body-default;
-    font-weight: 600;
-    height: auto;
-    width: 100%;
-    position: relative;
-
+    & {
+      color: $text-body-default;
+      font-weight: 600;
+      height: auto;
+      width: 100%;
+      position: relative;
+    }
     @include breakpoint("md") {
       background: none;
       min-height: calcRem(49px);
@@ -117,15 +118,15 @@
 
   .#{$prefix}--step-navigation.#{$prefix}--skeleton
     .#{$prefix}--step-navigation__nav-link {
-    @include skeleton;
     width: calcRem(75px);
     height: calcRem(12px);
+    @include skeleton;
   }
 
   .#{$prefix}--step-navigation.#{$prefix}--skeleton
     .#{$prefix}--step-navigation-trigger {
-    @include skeleton;
     width: calcRem(100px);
+    @include skeleton;
   }
 
   .#{$prefix}--step-navigation.#{$prefix}--skeleton

@@ -1,5 +1,5 @@
 {
-  "name": "@un/core-website",
+  "name": "@progressiveui/core-website",
   "version": "0.5.1",
   "private": true,
   "author": {
@@ -68,7 +68,7 @@
     "remark-gfm": "^3.0.1",
     "remark-mdx-code-meta": "^2.0.0",
     "remark-stringify": "^10.0.3",
-    "sass": "^1.69.0",
+    "sass": "^1.86.3",
     "slugify": "^1.6.5",
     "unified": "^11.0.4",
     "unist-util-visit": "^4.1.2",

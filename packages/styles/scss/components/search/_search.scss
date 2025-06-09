@@ -34,32 +34,30 @@ $input-border: 1px solid $field-border-color;
 
   .#{$prefix}--search-input {
     @include reset;
-    @include type.type-style("body-short-02");
     @include focus-outline("reset");
+    @include type.type-style("body-short-02");
 
-    width: 100%;
-    order: 1;
-    padding: 0 $spacing-08;
 
-    //@include font-family('sans');
-    //@include type-style('body-short-02');
-    //height: $input-height;
-    appearance: none;
-    display: block;
-    width: 100%;
-    padding: 0 $spacing-06 0 $spacing-03;
-    border: $input-border;
-    order: 2;
-    border-radius: 0;
-    cursor: pointer;
+    & {
+      width: 100%;
+      order: 1;
+      padding: 0 $spacing-08;
+      appearance: none;
+      display: block;
+      width: 100%;
+      padding: 0 $spacing-06 0 $spacing-03;
+      border: $input-border;
+      order: 2;
+      border-radius: 0;
+      cursor: pointer;
 
-    appearance: none;
-    background-color: $fill-field;
-    color: $text-body-default;
-    text-overflow: ellipsis;
-    transition: background-color $duration-fast-02 motion(standard, productive),
+      appearance: none;
+      background-color: $fill-field;
+      color: $text-body-default;
+      text-overflow: ellipsis;
+      transition: background-color $duration-fast-02 motion(standard, productive),
       outline $duration-fast-02 motion(standard, productive);
-
+    }
     &:focus {
       @include focus-outline("outline");
     }
@@ -149,11 +147,11 @@ $input-border: 1px solid $field-border-color;
   .#{$prefix}--search-close {
     @include button-reset.reset(false);
     @include focus-outline("reset");
-
-    position: absolute;
-    top: 0;
-    right: 0;
-
+    & {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
     &::before {
       position: absolute;
       top: calcRem(1px);
@@ -309,9 +307,8 @@ $input-border: 1px solid $field-border-color;
   .#{$prefix}--search--xl.#{$prefix}--skeleton .#{$prefix}--search-input,
   .#{$prefix}--search--lg.#{$prefix}--skeleton .#{$prefix}--search-input,
   .#{$prefix}--search--sm.#{$prefix}--skeleton .#{$prefix}--search-input {
-    @include skeleton;
-
     width: 100%;
+    @include skeleton;
 
     &::placeholder {
       color: transparent;

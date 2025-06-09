@@ -57,8 +57,11 @@ $content-padding: 0 0 0 $spacing-05 !default;
   .szh-accordion {
     @include reset;
     @include font-family("sans");
-    width: 100%;
-    border-bottom: 1px solid $border-strong;
+  
+    & {
+      width: 100%;
+      border-bottom: 1px solid $border-strong;
+    }
     &__item {
       border-top: 1px solid $border-strong;
 
@@ -100,10 +103,9 @@ $content-padding: 0 0 0 $spacing-05 !default;
   }
 
   .#{$prefix}--accordion {
-    @include component-reset.reset;
-
     width: 100%;
     list-style: none;
+    @include component-reset.reset;
   }
 
   .#{$prefix}--accordion__item {

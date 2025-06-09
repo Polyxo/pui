@@ -121,10 +121,10 @@
 
   .#{$prefix}--photo-cardnew--overlay {
     height: calcRem(300px);
+    box-shadow: none;
     @include breakpoint("lg") {
       height: calcRem(500px);
     }
-    box-shadow: none;
     .#{$prefix}--photo-cardnew__info {
       padding: $spacing-06;
     }

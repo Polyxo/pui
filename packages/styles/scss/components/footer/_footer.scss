@@ -28,10 +28,12 @@
   .#{$prefix}--footer {
     @include reset;
     @include font-family("sans");
-    color: $neutral-neutral100-white;
-    background-color: $brand-dark-blue-dark-blue20;
-    z-index: z("footer");
-    padding: calcRem(20px) 0;
+    & {
+      color: $neutral-neutral100-white;
+      background-color: $brand-dark-blue-dark-blue20;
+      z-index: z("footer");
+      padding: calcRem(20px) 0;
+    }
     @media print {
       display: none;
     }
@@ -184,11 +186,10 @@
 
     .#{$prefix}--footer__info {
       order: 1;
+      line-height: 1.5;
       @include breakpoint("md") {
         width: 40%;
       }
-      // @include line-height('body');
-      line-height: 1.5;
     }
 
     .#{$prefix}--footer__cta {

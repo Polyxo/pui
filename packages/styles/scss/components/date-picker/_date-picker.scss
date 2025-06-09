@@ -10,6 +10,7 @@
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/placeholder-colors" as *;
 @use "../../utilities/skeleton" as *;
+@use 'sass:color';
 
 /// Date picker styles
 /// @access public
@@ -182,7 +183,7 @@ $input-height: 40px !default;
   }
   .SingleDatePicker_closeButton:focus,
   .SingleDatePicker_closeButton:hover {
-    color: darken(#cacccd, 10%);
+    color: color.scale(#cacccd, $lightness: -10%);
     text-decoration: none;
   }
   .SingleDatePicker_closeButton_svg {
@@ -372,7 +373,8 @@ $input-height: 40px !default;
   }
   .CalendarDay__selected_span {
     background: #80bede;
-    border: 1px double darken(#80bede, 5);
+    border: 1px double color.scale(#cacccd, $lightness: -5%);
+    
     color: $text-inverse-default;
   }
   .CalendarDay__selected_span:active,
@@ -881,7 +883,7 @@ $input-height: 40px !default;
   }
   .DateRangePicker_closeButton:focus,
   .DateRangePicker_closeButton:hover {
-    color: darken(#cacccd, 10%);
+    color: color.scale(#cacccd, $lightness: -10%);
     text-decoration: none;
   }
   .DateRangePicker_closeButton_svg {

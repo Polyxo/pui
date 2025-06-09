@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-
-import { HTMLAttributes, KeyboardEvent } from 'react';
-import { ACCORDION_ATTR, ACCORDION_BTN_ATTR } from '../utils/constants';
+import { HTMLAttributes, KeyboardEvent } from "react";
+import { ACCORDION_ATTR, ACCORDION_BTN_ATTR } from "../utils/constants";
 
 const getAccordion = (node: Element) => {
   do {
@@ -23,7 +22,7 @@ const moveFocus = (moveUp: boolean, e: KeyboardEvent<Element>) => {
     return;
 
   const nodes = e.currentTarget.querySelectorAll<HTMLElement>(
-    `[${ACCORDION_BTN_ATTR}]`
+    `[${ACCORDION_BTN_ATTR}]`,
   );
   const { length } = nodes;
   for (let i = 0; i < length; i++) {
@@ -40,13 +39,18 @@ const moveFocus = (moveUp: boolean, e: KeyboardEvent<Element>) => {
   }
 };
 
+// Extend HTMLAttributes to allow our custom data attribute
+interface AccordionHTMLAttributes<T> extends HTMLAttributes<T> {
+  "data-accordion"?: string;
+}
+
 const useAccordion = () => {
-  const accordionProps: HTMLAttributes<Element> = {
-    [ACCORDION_ATTR]: '',
-    onKeyDown: (e) =>
-      e.key === 'ArrowUp'
+  const accordionProps: AccordionHTMLAttributes<Element> = {
+    "data-accordion": "",
+    onKeyDown: (e: KeyboardEvent<Element>) =>
+      e.key === "ArrowUp"
         ? moveFocus(true, e)
-        : e.key === 'ArrowDown' && moveFocus(false, e),
+        : e.key === "ArrowDown" && moveFocus(false, e),
   };
   return {
     accordionProps,

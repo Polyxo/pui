@@ -30,7 +30,9 @@ interface TextProps extends React.AllHTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const textLookup: Record<TextKind, keyof JSX.IntrinsicElements> = {
+export const textLookup: {
+  [key in NonNullable<TextProps["kind"]>]: React.ElementType;
+} = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
@@ -54,6 +56,7 @@ export const textLookup: Record<TextKind, keyof JSX.IntrinsicElements> = {
  */
 
 const Text: React.FC<TextProps> = ({
+  as,
   children,
   className,
   kind,
@@ -61,8 +64,8 @@ const Text: React.FC<TextProps> = ({
   spacingBottom,
 }) => {
   const { prefix } = useSettings();
-  const TagName: keyof JSX.IntrinsicElements =
-    kind && textLookup[kind] ? textLookup[kind] : "div";
+  const TagName: React.ElementType = kind ? textLookup[kind] : "div";
+
   const classes = classNames(
     {
       [`${prefix}--text`]: true,
@@ -71,7 +74,7 @@ const Text: React.FC<TextProps> = ({
       [`${prefix}--text__spacing-top-${spacingTop}`]: spacingTop,
       [`${prefix}--text__spacing-bottom-${spacingBottom}`]: spacingBottom,
     },
-    className
+    className,
   );
   return React.createElement(TagName, { className: classes }, children);
 };

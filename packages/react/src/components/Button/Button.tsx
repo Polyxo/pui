@@ -18,7 +18,6 @@ interface ButtonBaseProps {
    * Specify whether the Button should be a large variant
    */
   large?: boolean;
-
   /**
    * Specify btnSolid to buttons on solid background to make it stand out
    */
@@ -31,7 +30,6 @@ interface ButtonBaseProps {
    * Optionally specify an href for your Button to become an element
    */
   href?: string;
-  //target?: string; // TODO: Remove  " "
   /**
    * Specify an `icon` to include in the Button through an object representing the SVG data of the icon, similar to the `Icon` component @design
    */
@@ -40,7 +38,9 @@ interface ButtonBaseProps {
    * Optionally specify an href for your Button to become an element @design
    */
   iconReverse?: boolean;
-  // todo: revise iconDescription
+  /**
+   * Icon description for accessibility
+   */
   iconDescription?: string;
   /**
    * Specify whether the Button should be disabled, or not
@@ -51,7 +51,6 @@ interface ButtonBaseProps {
    */
   tabIndex?: number;
   target?: React.AnchorHTMLAttributes<HTMLAnchorElement>["target"];
-  // type?: 'button' | 'reset' | 'submit';
   useFlexbox?: boolean;
   id?: string;
 }
@@ -69,8 +68,8 @@ type ConditionalProps<T> = T extends { href: string }
   : ButtonButtonProps;
 
 /**
- * Buttons express what action will occur when the user clicks or touches it. Buttons are used to initialize an action, either in the background or foreground of an experience. */
-
+ * Buttons express what action will occur when the user clicks or touches it. Buttons are used to initialize an action, either in the background or foreground of an experience.
+ */
 export type ButtonRef<T extends React.ElementType> =
   React.ComponentPropsWithRef<T>["ref"];
 
@@ -78,8 +77,8 @@ export const Button = React.forwardRef(
   <T extends { href?: string }>(
     props: ConditionalProps<T>,
     ref: React.Ref<
-      T extends { href: string } ? HTMLLinkElement : HTMLButtonElement
-    >
+      T extends { href: string } ? HTMLAnchorElement : HTMLButtonElement
+    >,
   ) => {
     const {
       children,
@@ -92,6 +91,7 @@ export const Button = React.forwardRef(
       iconReverse,
       tabIndex,
       useFlexbox,
+      // Set the default to "button"
       type = "button",
       icon,
       iconDescription,
@@ -144,7 +144,9 @@ export const Button = React.forwardRef(
       setCount(false);
     };
 
-    const onClickAnimation = (e) => {
+    const onClickAnimation = (
+      e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+    ) => {
       if (onClick) {
         onClick(e);
       }
@@ -183,7 +185,8 @@ export const Button = React.forwardRef(
         {...buttonProps}
         {...commonProps}
         disabled={disabled}
-        type={type}
+        // Cast the type prop to the allowed union
+        type={type as "button" | "reset" | "submit"}
         onClick={onClickAnimation}
         ref={ref as React.Ref<HTMLButtonElement>}
         id={id}
@@ -193,7 +196,7 @@ export const Button = React.forwardRef(
         {!iconReverse && buttonImage}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

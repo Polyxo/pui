@@ -12,10 +12,11 @@
 @mixin read-more {
   .#{$prefix}--read-more {
     @include component-reset.reset;
-    max-height: 400px;
-    overflow: hidden;
-    transition: all 0.3s;
-
+    & {
+      max-height: 400px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
     &[aria-disabled="true"] {
       opacity: 0.5;
       pointer-events: none;

@@ -26,14 +26,8 @@
     width: 100%;
     text-decoration: none;
     height: calcRem(200px);
-    @include breakpoint("lg") {
-      height: calcRem(260px);
-    }
+
     transition: all 0.1s;
-    @include layer(pop-out);
-    &.#{$prefix}--photo-card--link:hover {
-      @include layer(pop-out--hover);
-    }
     color: $text-body-default;
     background-size: cover;
     background-position: 50% 50%;
@@ -41,6 +35,14 @@
     .#{$prefix}--photo-card__info__title {
       margin-top: 0;
     }
+    &.#{$prefix}--photo-card--link:hover {
+      @include layer(pop-out--hover);
+    }
+    @include breakpoint("lg") {
+      height: calcRem(260px);
+    }
+    @include layer(pop-out);
+  
   }
 
   .#{$prefix}--photo-card__background {
@@ -151,9 +153,6 @@
 
   .#{$prefix}--photo-card--hero {
     height: calcRem(300px);
-    @include breakpoint("lg") {
-      height: calcRem(500px);
-    }
     box-shadow: none;
     &.#{$prefix}--photo-card--link:hover {
       box-shadow: none;
@@ -166,6 +165,9 @@
       @include breakpoint("lg") {
         height: calcRem(500px);
       }
+    }
+    @include breakpoint("lg") {
+      height: calcRem(500px);
     }
   }
 
@@ -285,14 +287,14 @@
     }
     .#{$prefix}--photo-card__info {
       width: 70%;
-      @include breakpoint("md") {
-        width: 50%;
-      }
       left: inherit;
       bottom: 0;
       top: 0;
       right: 0;
       @include text-gradient();
+      @include breakpoint("md") {
+        width: 50%;
+      }
     }
     .#{$prefix}--photo-card__info__title {
       color: $action-default-fill-primary-default;

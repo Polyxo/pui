@@ -10,9 +10,12 @@
 
 @mixin banner-navigation {
   .#{$prefix}--banner-navigation {
-    background: $action-solid-fill-primary-default; //TODO use a new background token for interactive-02
+ 
     @include reset;
-    display: flex;
+    & {
+      display: flex;
+      background: $action-solid-fill-primary-default; 
+    }
     // @include font-smoothing; //added to reset mixin
     @include breakpoint-down("md") {
       display: none;
@@ -36,11 +39,10 @@
   }
 
   .#{$prefix}--banner-navigation__item {
+    padding: 0 $spacing-03;
+    font-size: 0.85rem;
     @include type-style("label");
     @include font-family("sans");
-    padding: 0 $spacing-03;
-
-    font-size: 0.85rem; //TODO: use token
     @include breakpoint("xlg") {
       padding: 0 $spacing-04;
     }

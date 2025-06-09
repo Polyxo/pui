@@ -2,8 +2,8 @@
 @use "../../../motion" as *;
 @use "../../../theme" as *;
 
-@import "variables.scss";
-@import "mixins.scss";
+@use "variables.scss" as *;
+@use "mixins.scss" as *;
 
 .react-datepicker-wrapper {
   display: inline-block;

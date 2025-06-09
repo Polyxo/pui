@@ -10,6 +10,8 @@
 @use "../../utilities/skeleton" as *;
 @use "../../utilities/rtl" as *;
 @use "../../utilities/visually-hidden" as *;
+
+@use 'sass:color';
 //@use 'tokens' as *;
 
 @mixin button {
@@ -402,8 +404,8 @@
 
   // Skeleton State
   .#{$prefix}--btn.#{$prefix}--skeleton {
-    @include skeleton;
     width: calcRem(150px);
+    @include skeleton;
   }
 
   // Legacy button state styling
@@ -426,10 +428,10 @@
 
   .#{$prefix}--btn--navigation {
     @include button-theme(
-      saturate(#34a2d9, 10%),
+      color.scale(#34a2d9, $lightness: 10%),
       transparent,
       $text-inverse-default,
-      saturate(lighten(#34a2d9, 5), 10%),
+      color.scale(#34a2d9, $lightness: 10%),
       $icon-on-color
     );
   }

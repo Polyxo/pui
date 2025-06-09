@@ -1,6 +1,7 @@
 @use "../../../config" as *;
 @use "../../../motion" as *;
 @use "../../../theme" as *;
+@use "./variables" as *;
 
 %navigation-chevron {
   border-color: $action-default-fill-primary-default;

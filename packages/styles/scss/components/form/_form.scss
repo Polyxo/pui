@@ -18,23 +18,25 @@ $input-label-weight: 400 !default;
   }
 
   .#{$prefix}--form-item {
-    @include font-family("sans");
     display: flex;
     flex-direction: column;
     flex: 1;
     align-items: flex-start;
+    @include font-family("sans");
   }
 
   .#{$prefix}--label {
     @include reset;
     @include font-family("sans");
     @include type-style("body-short");
-    color: $text-body-default;
-    font-weight: $input-label-weight;
-    font-weight: 600 !important;
-    display: inline-block;
-    vertical-align: baseline;
-    margin-bottom: $spacing-03;
+    & {
+      color: $text-body-default;
+      font-weight: $input-label-weight;
+      font-weight: 600 !important;
+      display: inline-block;
+      vertical-align: baseline;
+      margin-bottom: $spacing-03;
+    }
   }
 
   .#{$prefix}--label + .#{$prefix}--form__helper-text {
@@ -68,9 +70,9 @@ $input-label-weight: 400 !default;
 
   // Skeleton State
   .#{$prefix}--label.#{$prefix}--skeleton {
-    @include skeleton;
     width: calcRem(75px);
     height: calcRem(14px);
+    @include skeleton;
   }
 
   input[data-invalid],
@@ -101,15 +103,17 @@ $input-label-weight: 400 !default;
   .#{$prefix}--form-requirement {
     @include reset;
     @include type-style("caption");
-    margin: $spacing-01 0 0;
-    font-weight: 600;
-    font-size: 0.8em;
-    max-height: 0;
-    line-height: 1.5;
-    display: none;
-    order: 3;
-    color: $support-error-main;
-    // TODO: check if there is a better auto sizing for icons
+    & {
+     margin: $spacing-01 0 0;
+      font-weight: 600;
+      font-size: 0.8em;
+      max-height: 0;
+      line-height: 1.5;
+      display: none;
+      order: 3;
+      color: $support-error-main;
+      // TODO: check if there is a better auto sizing for icons
+    }
     > svg {
       width: auto;
       height: 1em;

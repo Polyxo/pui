@@ -10,6 +10,7 @@
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/skeleton" as *;
 @use "../link";
+@use "sass:map";
 
 /// Story styles
 /// @access public
@@ -306,10 +307,10 @@
   }
 
   .#{$prefix}--text__story-title {
-    @include type-style("story-title");
     margin-bottom: $spacing-07;
     margin-left: -0.058em;
     font-weight: 500;
+    @include type-style("story-title");
   }
 
   .#{$prefix}--helper {
@@ -338,14 +339,13 @@
   }
 
   .#{$prefix}--story__code {
-    @include type-style("code-02");
-    @include font-family("code");
     padding: 0.1rem 0.4em;
     margin: 0;
     font-size: 95%;
     border-radius: 0.2em;
     background: $code-background;
-    //background: rgba(#111f30, 0.08);
+    @include type-style("code-02");
+    @include font-family("code");
   }
 
   .#{$prefix}--story__pre {
@@ -357,8 +357,6 @@
     border-radius: 6px;
     .#{$prefix}--story__code,
     code {
-      @include type-style("code-02");
-      @include font-family("code");
       display: inline;
       max-width: auto;
       padding: 0;
@@ -369,6 +367,8 @@
       background-color: transparent;
       border: 0;
       font-size: 100%;
+      @include type-style("code-02");
+      @include font-family("code");
     }
   }
 
@@ -509,11 +509,11 @@
   @each $size, $glyph in $spacing-map {
     .#{$prefix}--story__spacing-top-#{$size},
     .#{$prefix}--text__spacing-top-#{$size} {
-      margin-top: map-get($spacing-map, $size) !important;
+      margin-top: map.get($spacing-map, $size) !important;
     }
     .#{$prefix}--story__spacing-bottom-#{$size},
     .#{$prefix}--text__spacing-bottom-#{$size} {
-      margin-bottom: map-get($spacing-map, $size) !important;
+      margin-bottom: map.get($spacing-map, $size) !important;
     }
   }
 }

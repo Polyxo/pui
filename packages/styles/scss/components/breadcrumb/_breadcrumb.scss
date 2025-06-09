@@ -10,14 +10,14 @@
 
 @mixin breadcrumb {
   .#{$prefix}--breadcrumb {
-    @include type-style("label-02");
-    @include font-family("sans");
     display: none;
-
     @include breakpoint("sm") {
       display: flex;
       flex-wrap: wrap;
     }
+    @include type-style("label-02");
+    @include font-family("sans");
+  
   }
 
   .#{$prefix}--breadcrumb-home {

@@ -12,7 +12,7 @@
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/z-index" as *;
 
-@import "../form";
+@use "../form" as *;
 
 /// @type Number
 /// @access public
@@ -65,12 +65,12 @@ $main-navigation-menu-width: calcRem(300px);
       user-select: none;
       display: flex;
       align-items: center;
+      white-space: nowrap;
       @include breakpoint-down("md") {
         width: 100%;
         justify-content: space-between;
       }
       // justify-content: center; // TODO: Check if needed
-      white-space: nowrap;
 
       > a {
         color: $action-default-link-default; // TODO change to $link_on_color token
@@ -159,13 +159,11 @@ $main-navigation-menu-width: calcRem(300px);
       align-self: flex-start;
       margin-right: 0.5em;
       width: 3.1rem;
+      z-index: 100000;
+      padding: 0.3em 0em;
       @include breakpoint-up("md") {
         width: 4.7rem;
       }
-      //position: absolute;
-      //top: 0;
-      z-index: 100000;
-      padding: 0.3em 0em;
     }
 
     svg {
@@ -232,6 +230,7 @@ $main-navigation-menu-width: calcRem(300px);
   }
 
   .#{$prefix}--main-navigation__item {
+    font-weight: 600;
     @include breakpoint-down("md") {
       width: 100%;
     }
@@ -240,7 +239,6 @@ $main-navigation-menu-width: calcRem(300px);
     }
     @include type-style("body-short-02");
     @include font-family("sans");
-    font-weight: 600;
 
     &:last-child {
       padding-right: 0;
@@ -285,9 +283,9 @@ $main-navigation-menu-width: calcRem(300px);
       z-index: z("modal");
       color: $text-body-default; // TODO: Replace
       background: $background-main;
-      box-shadow: rgba(desaturate(#0b77c2, 50%), 0.15) 0 3px 12px,
-        //TODO - convert raw color hex into color token in figma
-        rgba(desaturate(#0b77c2, 40%), 0.15) 0 32px 78px;
+      /* box-shadow: rgba(desaturate(#0b77c2, 50%), 0.15) 0 3px 12px,
+        TODO - convert raw color hex into color token in figma
+        rgba(desaturate(#0b77c2, 40%), 0.15) 0 32px 78px; */
       .#{$prefix}--theme-dark & {
         box-shadow: var(--modal-background-01) 0 3px 12px,
           //TODO - create token for this color

@@ -1,10 +1,3 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
-
 @use "../form";
 @use "../../config" as *;
 @use "../../motion" as *;
@@ -44,7 +37,8 @@ $input-height: 40px !default;
     border-radius: $input-border-radius;
     order: 2;
     resize: vertical;
-    transition: background-color $duration-fast-01 motion(standard, productive),
+    transition:
+      background-color $duration-fast-01 motion(standard, productive),
       outline $duration-fast-01 motion(standard, productive);
 
     & ~ .#{$prefix}--label {
@@ -90,8 +84,8 @@ $input-height: 40px !default;
 
   // Skeleton State
   #{$prefix}--text-area.#{$prefix}--skeleton {
-    @include skeleton;
     height: calcRem(100px);
+    @include skeleton;
 
     &::-webkit-input-placeholder {
       color: transparent;
@@ -100,8 +94,8 @@ $input-height: 40px !default;
 
   // Skeleton State
   #{$prefix}--text-area.#{$prefix}--skeleton {
-    @include skeleton;
     height: calcRem(100px);
+    @include skeleton;
 
     &::-webkit-input-placeholder {
       color: transparent;
@@ -110,9 +104,8 @@ $input-height: 40px !default;
 
   // Skeleton State
   #{$prefix}--text-area.#{$prefix}--skeleton {
-    @include skeleton;
     height: calcRem(100px);
-
+    @include skeleton;
     &::-webkit-input-placeholder {
       color: transparent;
     }

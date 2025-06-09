@@ -30,13 +30,15 @@
   .#{$prefix}--pagination {
     @include component-reset.reset;
     @include font-family("sans");
-    width: 100%;
-    background-color: $background-main;
-    padding: $spacing-03 $spacing-05;
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--ui-03);
-    height: calcRem(46px);
+    & {
+      width: 100%;
+      background-color: $background-main;
+      padding: $spacing-03 $spacing-05;
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--ui-03);
+      height: calcRem(46px);
+    }
 
     .#{$prefix}--form-item {
       flex: auto;
@@ -80,10 +82,11 @@
 
   .#{$prefix}--pagination__button {
     @include component-reset.reset;
-    border: none;
-    background: none;
-    cursor: pointer;
-
+    & {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
     &:hover {
       .#{$prefix}--pagination__button-icon {
         fill: $action-default-fill-primary-default;

@@ -34,16 +34,15 @@
   }
 
   .#{$prefix}--checkbox-label {
-    @include reset;
-    @include font-family("sans");
-    // @include font-smoothing;
-    @include type-style("label-02");
     display: flex;
     align-items: center;
     cursor: pointer;
     position: relative;
     padding-left: $spacing-06 + 0.1;
     min-height: calcRem(18px);
+    @include reset;
+    @include font-family("sans");
+    @include type-style("label-02");
   }
 
   .#{$prefix}--checkbox-label::before {

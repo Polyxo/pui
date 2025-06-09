@@ -11,6 +11,7 @@
 @mixin button-base {
   @include reset;
   @include font-family("sans");
+  & {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -28,6 +29,7 @@
   transition-timing-function: ease-in;
   white-space: nowrap;
   line-height: 16px;
+  }
 
   &:disabled {
     cursor: not-allowed;

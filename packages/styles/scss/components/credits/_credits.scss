@@ -13,9 +13,10 @@
 @mixin credits {
   .#{$prefix}--credits {
     @include reset;
-    position: relative;
-    > img {
-      width: 100%;
+    & { position: relative;
+      > img {
+        width: 100%;
+      }
     }
   }
 

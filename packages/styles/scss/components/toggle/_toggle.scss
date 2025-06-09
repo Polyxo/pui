@@ -8,7 +8,7 @@
 @use "../../utilities/high-contrast-mode" as *;
 @use "../../utilities/visually-hidden" as *;
 @use "../../utilities/focus-outline" as *;
-@import "../form";
+@use "../form" as *;
 
 /// Toggle styles
 /// @access public
@@ -19,14 +19,13 @@
   }
 
   .#{$prefix}--toggle__label {
-    @include font-family("sans");
     position: relative;
     display: flex;
     align-items: center;
     user-select: none;
     transition: $transition--base $standard-easing;
     cursor: pointer;
-    //margin: $spacing-05 0;
+    @include font-family("sans");
   }
 
   .#{$prefix}--toggle__appearance {

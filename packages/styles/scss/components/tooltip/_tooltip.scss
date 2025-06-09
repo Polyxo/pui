@@ -1,9 +1,3 @@
-//
-// Copyright IBM Corp. 2016, 2018
-//
-// This source code is licensed under the Apache-2.0 license found in the
-// LICENSE file in the root directory of this source tree.
-//
 
 @use "../../theme" as *;
 @use "../../type" as *;
@@ -13,9 +7,9 @@
 @use "../../utilities/layer" as *;
 @use "./vars";
 @use "./mixins";
-@import "./animations/fade.scss";
-@import "./themes/light.scss";
-@import "./themes/light-border.scss";
+@use  "./animations/fade.scss" as *;
+@use  "./themes/light.scss" as *;
+@use "./themes/light-border.scss" as *;
 
 // TODO: deprecate legacy tooltip mixins
 // Tooltip Icon
@@ -38,17 +32,15 @@
     &--trigger {
       cursor: pointer;
     }
-    /*opacity: 0;
-  display: none;*/
-    //transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    //transition-property: transform;
-    cursor: pointer;
-    max-width: 300px;
-    border-radius: 7px;
-    line-height: 1.5rem;
-    @include layer("pop-out");
-    z-index: 1000;
-    @include type-style("body-short-02");
+    & {
+      cursor: pointer;
+      max-width: 300px;
+      border-radius: 7px;
+      line-height: 1.5rem;
+      // z-index: 1000;
+    }
+    //TODO: @include layer("pop-out");
+    //@include type-style("body-short-02");
     &[data-popper-placement*="bottom"] {
       .#{$prefix}--tooltip__arrow {
         top: 0;

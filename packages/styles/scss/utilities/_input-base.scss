@@ -15,31 +15,26 @@ $input-height: 40px;
 $input-border-radius: 0px;
 
 @mixin input-base {
-  @include font-family("sans");
   @include type-style("input");
-  height: $input-height;
-  min-width: 10rem;
-  width: 100%;
-  padding: 0 $spacing-03;
-  color: $text-body-default;
-  appearance: none;
-  //TODO: dynamic font-size
-  font-size: 1em;
-  background-color: $fill-field;
-  order: 2;
-  border: $input-border;
-  border-color: var(--neutral-100__color);
-  border-radius: $input-border-radius;
-  border-radius: $field-border-radius;
-  box-shadow: none;
+  @include font-family("sans");
 
-  //TODO
-  // @include print {
-  //   background: var(--ui-01) !important;
-  //   border-color: var(--ui-06);
-  //   padding: 0 $spacing-02;
-  //   height: $input-height * 0.7;
-  // }
+  & {
+    height: $input-height;
+    min-width: 10rem;
+    width: 100%;
+    padding: 0 $spacing-03;
+    color: $text-body-default;
+    appearance: none;
+    //TODO: dynamic font-size
+    font-size: 1em;
+    background-color: $fill-field;
+    order: 2;
+    border: $input-border;
+    border-color: var(--neutral-100__color);
+    border-radius: $input-border-radius;
+    border-radius: $field-border-radius;
+    box-shadow: none;
+  }
   &::placeholder {
     @include placeholder-colors;
   }

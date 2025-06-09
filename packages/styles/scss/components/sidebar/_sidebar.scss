@@ -42,6 +42,9 @@
 
   .#{$prefix}--sidebar-item-content {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     @media print {
       display: none;
     }
@@ -51,14 +54,11 @@
       max-width: 30rem;
       border-right: 1px solid $border-strong;
     }
+ 
     @include breakpoint("lg") {
       //min-width: auto;
       max-width: 30rem;
     }
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
     @include breakpoint-down("lg") {
       top: 0;
       overflow: auto;

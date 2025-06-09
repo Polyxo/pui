@@ -71,22 +71,24 @@ $radio-border-width: 2px !default;
   }
 
   .#{$prefix}--radio-button__label {
-    @include type.type-style("body-short");
-    @include type.font-family("sans");
     display: flex;
     align-items: center;
     cursor: pointer;
+    @include type.type-style("body-short");
+    @include type.font-family("sans");
   }
 
   .#{$prefix}--radio-button__appearance {
     @include reset;
-    background-color: $background-main;
-    border-radius: 50%;
-    border: $radio-border-width solid $field-background-disabled;
-    flex-shrink: 0;
-    height: calcRem(18px);
-    width: calcRem(18px);
-    margin-right: $spacing-03;
+    & {
+      background-color: $background-main;
+      border-radius: 50%;
+      border: $radio-border-width solid $field-background-disabled;
+      flex-shrink: 0;
+      height: calcRem(18px);
+      width: calcRem(18px);
+      margin-right: $spacing-03;
+    }
     @include rtl {
       margin-left: $spacing-03;
       margin-right: 0;
@@ -125,9 +127,9 @@ $radio-border-width: 2px !default;
 
   // Skeleton State
   .#{$prefix}--radio-button__label.#{$prefix}--skeleton {
-    @include skeleton;
     width: calcRem(100px);
     height: calcRem(18px);
+    @include skeleton;
   }
 
   .#{$prefix}--radio-button__label.#{$prefix}--skeleton

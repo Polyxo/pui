@@ -22,13 +22,15 @@
   .#{$prefix}--tabs {
     @include type-style("body-short");
     @include font-family("sans");
-    color: $text-body-default;
-    font-weight: 600;
-    height: auto;
-    width: 100%;
-    position: relative;
-    overflow: auto;
-    max-width: 100%;
+    & {
+      color: $text-body-default;
+      font-weight: 600;
+      height: auto;
+      width: 100%;
+      position: relative;
+      overflow: auto;
+      max-width: 100%;
+    }
   }
 
   .#{$prefix}--tabs__nav__bar {
@@ -165,14 +167,14 @@
   }
 
   .#{$prefix}--tabs.#{$prefix}--skeleton .#{$prefix}--tabs__nav-link {
-    @include skeleton;
     width: calcRem(75px);
     height: calcRem(12px);
+    @include skeleton;
   }
 
   .#{$prefix}--tabs.#{$prefix}--skeleton .#{$prefix}--tabs-trigger {
-    @include skeleton;
     width: calcRem(100px);
+    @include skeleton;
   }
 
   .#{$prefix}--tabs.#{$prefix}--skeleton .#{$prefix}--tabs-trigger svg {

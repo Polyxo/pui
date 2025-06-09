@@ -12,7 +12,7 @@
 /// @example @include button-reset($width: false);
 /// @group utilities
 @mixin reset($width: true) {
-  @include component-reset.reset;
+
 
   display: inline-block;
   padding: 0;
@@ -21,6 +21,7 @@
   background: none;
   cursor: pointer;
 
+
   @if ($width == true) {
     width: 100%;
   }
@@ -28,4 +29,5 @@
   &::-moz-focus-inner {
     border: 0;
   }
+  @include component-reset.reset;
 }

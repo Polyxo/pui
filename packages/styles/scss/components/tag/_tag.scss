@@ -22,16 +22,15 @@
 /// @group tag
 @mixin tag {
   .#{$prefix}--tag {
-    @include font-family("sans");
-    @include typescale("zeta");
-    display: inline-flex;
-    align-items: center;
-    padding: 0 $spacing-03;
-    height: 1.5rem;
-    margin: $spacing-01;
-    border-radius: calcRem(15px);
-    white-space: nowrap;
-
+    & {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 $spacing-03;
+      height: 1.5rem;
+      margin: $spacing-01;
+      border-radius: calcRem(15px);
+      white-space: nowrap;
+    }
     &:not(:first-child) {
       margin-left: 0;
     }
@@ -41,6 +40,8 @@
         text-decoration: underline;
       }
     }
+   //TODO: @include font-family("sans");
+   // @include typescale("zeta");
   }
 
   .#{$prefix}--tag--info {
@@ -71,23 +72,6 @@
   .#{$prefix}--tag--wrap {
     white-space: normal;
   }
-
-  // .#{$prefix}--tag--information {
-  //   @include tag-theme(var(--support-light-04), $support-04);
-  // }
-
-  // Skeleton state
-  // .#{$prefix}--tag.#{$prefix}--skeleton {
-  //   @include tag-theme($color__gray-1, $color__navy-gray-4);
-  //   width: calcRem(60px);
-
-  //   &:after {
-  //     @include skeleton;
-  //     content: '';
-  //     height: calcRem(6px);
-  //     width: 100%;
-  //   }
-  // }
 }
 
 @mixin tag--x {

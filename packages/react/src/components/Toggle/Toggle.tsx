@@ -24,12 +24,12 @@ interface ToggleProps extends InputProps, React.ComponentPropsWithRef<"input"> {
   /**
    * Provide an optional hook that is called when the control is toggled
    */
-  onToggle?: (
+  /* onToggleLegacy?: (
     value: boolean,
     htmlFor: string,
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => void;
-  className?: string;
+  className?: string; */
   /**
    * Provide an id that unique represents the underlying `input`
    */
@@ -64,7 +64,7 @@ const Toggle: React.FC<ToggleProps> = React.forwardRef((props, ref) => {
     {
       [`${prefix}--form-item`]: true,
     },
-    className
+    className,
   );
 
   // const checkedProps = {};

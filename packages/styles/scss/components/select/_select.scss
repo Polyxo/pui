@@ -30,7 +30,7 @@ $input-border: 1px solid var(--neutral-100__color);
   }
 
   .#{$prefix}--select-input {
-    @include input-base;
+
     height: $input-height;
     appearance: none;
     display: block;
@@ -46,6 +46,8 @@ $input-border: 1px solid var(--neutral-100__color);
     //font-size: $typography-body-copy-16px-regular-font-size;
 
     // Hide default select arrow in IE10+
+
+    @include input-base;
     &::-ms-expand {
       display: none;
     }
@@ -213,9 +215,9 @@ $input-border: 1px solid var(--neutral-100__color);
 
   //Skeleton State
   .#{$prefix}--select.#{$prefix}--skeleton {
-    @include skeleton;
     width: 100%;
     height: 2.5rem;
+    @include skeleton;
   }
 
   .#{$prefix}--select.#{$prefix}--skeleton .#{$prefix}--select-input {
