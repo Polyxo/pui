@@ -5,14 +5,14 @@
 // LICENSE file in the root directory of this source tree.
 //
 
-@use '../../config' as *;
-@use '../../spacing' as *;
-@use '../../theme' as *;
-@use '../../type' as *;
-@use '../../breakpoint' as *;
-@use '../../utilities/convert' as *;
-@use '../../utilities/focus-outline' as *;
-@use '../../utilities/skeleton' as *;
+@use "../../config" as *;
+@use "../../spacing" as *;
+@use "../../theme" as *;
+@use "../../type" as *;
+@use "../../breakpoint" as *;
+@use "../../utilities/convert" as *;
+@use "../../utilities/focus-outline" as *;
+@use "../../utilities/skeleton" as *;
 
 @mixin formgroup-breakpoint($breakpoint) {
   .#{$prefix}--fieldset__content {
@@ -31,10 +31,10 @@
 
 @mixin form-group {
   .#{$prefix}--form-group__title {
-    @include type-style('productive-heading-03');
-    @include font-family('sans');
     font-weight: 600;
     margin-bottom: $spacing-05 !important;
+    @include type-style("productive-heading-03");
+    @include font-family("sans");
   }
 
   .#{$prefix}--fieldset__inline {
@@ -72,17 +72,17 @@
 
   .#{$prefix}--fieldset__align-horizontal {
     &.#{$prefix}--fieldset__breakpoint-lg {
-      @include formgroup-breakpoint('xlg');
+      @include formgroup-breakpoint("xlg");
     }
     &.#{$prefix}--fieldset__breakpoint-md {
-      @include formgroup-breakpoint('lg');
+      @include formgroup-breakpoint("lg");
     }
     &.#{$prefix}--fieldset__breakpoint-sm {
-      @include formgroup-breakpoint('md');
+      @include formgroup-breakpoint("md");
     }
   }
 
-  @include breakpoint('md') {
+  @include breakpoint("md") {
     .#{$prefix}--fieldset__align-horizontal {
       &.wfp--fieldset__input-spacing-md {
         .#{$prefix}--fieldset__content {

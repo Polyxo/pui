@@ -4,16 +4,18 @@ import { addons } from "@storybook/manager-api";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  core: {},
+
   addons: [
     //getAbsolutePath("@storybook/blocks"),
     //getAbsolutePath("@storybook/addon-links"),
     //getAbsolutePath("@storybook/addon-essentials"),
   ],
+
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: "@storybook/react-vite",
     options: {},
   },
+
   /*
   typescript: {
     check: false,
@@ -38,5 +40,6 @@ addons.setConfig({
 export default config;
 
 function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+  return null;
+  //return dirname(require.resolve(join(value, "package.json")));
 }

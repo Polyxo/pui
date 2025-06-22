@@ -20,9 +20,6 @@ $input-height: 40px !default;
 
 @mixin text-area {
   .#{$prefix}--text-area {
-    @include reset;
-    @include font-family("sans");
-    @include type-style("body-long-01");
     //TODO: check why min-width was used
     //min-width: 10rem;
     width: 100%;
@@ -41,6 +38,9 @@ $input-height: 40px !default;
       background-color $duration-fast-01 motion(standard, productive),
       outline $duration-fast-01 motion(standard, productive);
 
+    @include reset;
+    @include font-family("sans");
+    @include type-style("body-long-01");
     & ~ .#{$prefix}--label {
       order: 1;
     }

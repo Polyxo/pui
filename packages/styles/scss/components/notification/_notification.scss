@@ -56,7 +56,9 @@
       background-color: initial;
       border: none;
       cursor: pointer;
-      transition: outline 0.11s, background-color 0.11s;
+      transition:
+        outline 0.11s,
+        background-color 0.11s;
 
       .#{$prefix}--toast-notification__close-icon {
         fill: var(--cds-inverse-01, var(--ui-01));
@@ -381,7 +383,8 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    transition: outline 0.11s cubic-bezier(0.2, 0, 0.38, 0.9),
+    transition:
+      outline 0.11s cubic-bezier(0.2, 0, 0.38, 0.9),
       background-color 0.11s cubic-bezier(0.2, 0, 0.38, 0.9);
   }
 
@@ -446,7 +449,7 @@
     @include breakpoint(md) {
       max-width: inherit;
     }
-   
+
     .#{$prefix}--inline-notification__text-wrapper {
       flex-direction: column;
       grid-area: name;
@@ -454,6 +457,7 @@
     .#{$prefix}--inline-notification__actions-wrapper {
       grid-area: subject;
       display: flex;
+      padding: 0 0 0.8em 0;
       > * {
         margin-left: 0.5em;
       }
@@ -463,7 +467,7 @@
       .#{$prefix}--btn--tertiary {
         //background: rgba(255, 255, 255, 0.2);
       }
-      padding: 0 0 0.8em 0;
+
       @include breakpoint(md) {
         padding-top: 0.8em;
         padding-left: 0.8em;
