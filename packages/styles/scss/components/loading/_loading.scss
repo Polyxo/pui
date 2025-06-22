@@ -22,10 +22,10 @@
 
 @mixin loading {
   .#{$prefix}--loading {
-    @include component-reset.reset;
-    @include animation__loading--spin;
     width: $loading-size;
     height: $loading-size;
+    @include animation__loading--spin;
+    @include component-reset.reset;
   }
 
   // Animation (Spin by default)
