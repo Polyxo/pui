@@ -1,6 +1,6 @@
-import * as React from 'react';
-import classNames from 'classnames';
-import useSettings from '../../hooks/useSettings';
+import * as React from "react";
+import classNames from "classnames";
+import useSettings from "../../hooks/useSettings";
 
 export interface SkeletonTextProps {
   /**
@@ -25,7 +25,7 @@ export interface SkeletonTextProps {
 const SkeletonText: React.FC<SkeletonTextProps> = ({
   paragraph = false,
   lineCount = 3,
-  width = '100%',
+  width = "100%",
   heading = false,
   className,
   ...other
@@ -37,45 +37,45 @@ const SkeletonText: React.FC<SkeletonTextProps> = ({
       [`${prefix}--skeleton__text`]: true,
       [`${prefix}--skeleton__heading`]: heading,
     },
-    className
+    className,
   );
 
-  const widthNum = typeof width === 'string' ? parseInt(width, 10) : width;
+  const widthNum = typeof width === "string" ? parseInt(width, 10) : width;
 
-  const widthPx = typeof width === 'string' && width.includes('px');
-  const widthPercent = typeof width === 'string' && width.includes('%');
+  const widthPx = typeof width === "string" && width.includes("px");
+  const widthPercent = typeof width === "string" && width.includes("%");
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   if (widthPercent && paragraph) {
-    const lines: JSX.Element[] = [];
+    const lines: React.ReactElement[] = [];
     for (let i = 0; i < lineCount; i++) {
-      const randomWidth = getRandomInt(0, 75) + 'px';
+      const randomWidth = getRandomInt(0, 75) + "px";
       lines.push(
         <p
           className={skeletonTextClasses}
           style={{ width: `calc(${width} - ${randomWidth})` }}
           key={i}
           {...other}
-        />
+        />,
       );
     }
     return <div>{lines}</div>;
   }
 
   if (widthPx && paragraph) {
-    const lines: JSX.Element[] = [];
+    const lines: React.ReactElement[] = [];
     for (let j = 0; j < lineCount; j++) {
-      const randomWidth = getRandomInt(widthNum - 75, widthNum) + 'px';
+      const randomWidth = getRandomInt(widthNum - 75, widthNum) + "px";
       lines.push(
         <p
           className={skeletonTextClasses}
           style={{ width: randomWidth }}
           key={j}
           {...other}
-        />
+        />,
       );
     }
     return <div>{lines}</div>;
@@ -85,6 +85,6 @@ const SkeletonText: React.FC<SkeletonTextProps> = ({
   );
 };
 
-SkeletonText.displayName = 'SkeletonText';
+SkeletonText.displayName = "SkeletonText";
 
 export default SkeletonText;

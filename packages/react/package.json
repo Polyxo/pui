@@ -3,12 +3,11 @@
   "version": "2.0.2",
   "description": "WFP UI Kit",
   "license": "Apache-2",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "main:scss": "source/globals/styles.scss",
-  "types": "es/dist/index.d.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn rollup -c && yarn build:demos && yarn generate:types",
+    "build": "yarn rollup -c ./rollup.config.js && yarn build:demos && yarn generate:types",
     "clean": "rimraf es lib umd storybook-static build react-docgen.json",
     "build:rollup": "rollup -c --bundleConfigAsCjs",
     "build:demos": "rollup -c rollupDemos.config.js --bundleConfigAsCjs",
@@ -17,7 +16,8 @@
     "dev": "npm run storybook",
     "storybook": "STORYBOOK_ASSETS=https://cdn.wfp.org/guides/ui/assets/v0.0.1/ STORYBOOK_NPM_VERSION=10.10.3 storybook dev -p 9000",
     "test": "jest",
-    "jest-w": "jest --watch"
+    "jest-w": "jest --watch",
+    "build:vite": "vite build"
   },
   "sass": {
     "includePaths": [

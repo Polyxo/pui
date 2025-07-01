@@ -176,7 +176,7 @@ export {
   defaultWFPContext,
 } from "./components/WFPCoreSettings";
 
-export { default as SkeletonText } from "./components/SkeletonText";
+//export { default as SkeletonText } from "./components/SkeletonText";
 
 export { default as colors } from "./globals/data/colors";
 
