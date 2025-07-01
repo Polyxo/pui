@@ -15,12 +15,19 @@
     "allowJs": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ES6",
+    "allowImportingTsExtensions": true
   },
   "typeRoots": ["./node_modules/@types", "./typings"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off"
   },
   "include": ["src", "othersrc/FileUploader"],
-  "exclude": ["node_modules", "dist", "src/**/*.test.tsx", "src/**/*.test.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test.tsx",
+    "src/**/*.test.ts",
+    "**/*.stories.tsx"
+  ]
 }
