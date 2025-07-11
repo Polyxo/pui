@@ -1,4 +1,4 @@
-React implementation of the [Bridge Design System](https://designsystem.wfp.org)
+React implementation of the Progressive UI Design System
 
 ### Run development
 

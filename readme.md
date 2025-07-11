@@ -4,20 +4,9 @@ Design once. Deliver everywhere.
 
 A modern design system for building progressive applications that scale seamlessly across all devices.
 
-Based on World Food Programme UI Kit (WFP-UI) 🇺🇳
-
-## **[Click here to visit: Living Style Guide & Documentation](https://wfp.org/UIGuide)**
-
-| Branch | Build Status                                                                                                                                                                                                                                                       |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| master | [![Build Status](https://dev.azure.com/worldfoodprogramme/ui/_apis/build/status/wfp.ui?repoName=wfp%2Fdesignsystem&branchName=master)](https://dev.azure.com/worldfoodprogramme/ui/_build/latest?definitionId=242&repoName=wfp%2Fdesignsystem&branchName=master)() |
-| next   | [![Build Status](https://dev.azure.com/worldfoodprogramme/ui/_apis/build/status/wfp.ui?repoName=wfp%2Fdesignsystem&branchName=next)](https://dev.azure.com/worldfoodprogramme/ui/_build/latest?definitionId=242&repoName=wfp%2Fdesignsystem&branchName=next)       |
+Based on a fork of the World Food Programme UI Kit (WFP-UI) 🇺🇳
 
 ## ![Usage](https://cdn.wfp.org/guides/ui/v1.2.0/assets/internal/toolkit.svg "Usage") Usage
-
-### Installation 💾
-
-Information about the installation can be found in the [online documentation](https://www.designsystem.wfp.org/documentation/developing/installation).
 
 ### Development 🚧
 
@@ -42,8 +31,6 @@ yarn install
 yarn build
 ```
 
-For developing on Windows please use WSL by following this guide: https://github.com/carbon-design-system/carbon/blob/b5d615e05bc1c062337e8aca3a84e25a6f49b559/docs/guides/setup/windows.md
-
 ### Packages
 
 All packages can be found inside `packages/`.
@@ -58,7 +45,7 @@ All packages can be found inside `packages/`.
 
 ### Documentation & list of components available
 
-View available Components [here](https://wfp.org/UIGuide). Usage information is available when you click the blue **Show Info** icon in the top right corner of the selected component.
+View available Components [here](https://example.org. Usage information is available when you click the blue **Show Info** icon in the top right corner of the selected component.
 
 ### Using the server
 
