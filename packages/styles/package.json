@@ -1,6 +1,6 @@
 {
   "name": "@progressiveui/styles",
-  "description": "Styles for the WFP Design System",
+  "description": "Styles for the Progressive UI Design System",
   "version": "11.0.2",
   "license": "Apache-2.0",
   "author": "Robert Gühne <wfp.org>",
@@ -14,9 +14,6 @@
   "bugs": "https://github.com/wfp/designsystem/issues",
   "keywords": [
     "styles",
-    "un",
-    "wfp",
-    "wfp-design-system",
     "components",
     "react"
   ],

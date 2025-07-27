@@ -28,7 +28,7 @@ $code-font-family: var(--code-font-family);
 @mixin type-style($style) {
   $maped: map-deep-get($tokens, "typography", $style);
 
-  //@warn 'This is  a step of the WFP Type Scale!', $maped;
+  //@warn 'This is  a step of the Progressive UI Type Scale!', $maped;
   @if map-deep-get($tokens, "typography", $style) {
     $typographyMap: map.get($tokens, "typography", $style);
     font-size: map.get($typographyMap, "fontSize");
@@ -46,13 +46,13 @@ $code-font-family: var(--code-font-family);
     }
   }
   /*@if map-has-key($typographyMap, 'body-short-02',$style) {
-      @warn 'This is  a step of the WFP Type Scale!';
+      @warn 'This is  a step of the Progressive UI Type Scale!';
       $elements: map.get($tokens, $style);
       font-family: map.get($elements, 'fontFamily');
       font-size: map.get($elements, 'fontSize');
     } @else {
-      //@warn 'This is  a step of the WFP Type Scale!';
-      //@warn 'This is not a step of the WFP Type Scale!' + $style;
+      //@warn 'This is  a step of the Progressive UI Type Scale!';
+      //@warn 'This is not a step of the Progressive UI Type Scale!' + $style;
     }
   } @else {
     @warn 'No typography step found!';
@@ -79,7 +79,7 @@ $typescale-map: (
   @if map.has-key($typescale-map, $size) {
     font-size: map.get($typescale-map, $size);
   } @else {
-    @warn 'This is not a step of the WFP Type Scale!';
+    @warn 'This is not a step of the Progressive UI Type Scale!';
   }
 }
 /*

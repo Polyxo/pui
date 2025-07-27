@@ -13,7 +13,6 @@ export default function Hero() {
         </div>
 
         <h1>Progressive UI</h1>
-        <h2>Designsystem based on WFP UI</h2>
       </Wrapper>
 
       <Wrapper pageWidth="md">

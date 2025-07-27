@@ -26,7 +26,7 @@ Clone the `develop` branch for the un-core monorepo. TODO: Update Branch naming
 The project is using a `lerna/yarn` mono repository for development. Make sure you have [yarn](https://yarnpkg.com/) installed globally on your machine.
 
 ```bash
-git clone --branch develop https://github.com/wfp/designsystem.git
+git clone --branch develop https://github.com/Polyxo/pui.git
 yarn install
 yarn build
 ```
@@ -37,7 +37,7 @@ All packages can be found inside `packages/`.
 
 - `layout`: breakpoints, spacings, etc. no longer used, now themes!
 - `icons` all icons
-- `icons-core` tools to generate `icons`, `pictograms` and `humanitarian-icons`
+- `icons-core` tools to generate `icons`
 - `icons-react` the react package of the icons
 - `styles`: all components styles
 - `themes`: theming (colors, etc.) TODO: move to themes-core
@@ -107,4 +107,4 @@ To publish local changes directly to a alpha release on npm.
 
 ### Credits
 
-[View Credits](https://www.designsystem.wfp.org/support/credits)
+[WFP Design System](https://www.designsystem.wfp.org/support/credits)

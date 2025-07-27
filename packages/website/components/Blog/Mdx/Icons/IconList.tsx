@@ -27,7 +27,7 @@ const IconPreview = ({ icon, name }: any) => {
       content={
         <div className={styles.tooltip}>
           <Icon
-            description="WFP"
+            description="PUI"
             width="80"
             height="80"
             className={styles.icon}

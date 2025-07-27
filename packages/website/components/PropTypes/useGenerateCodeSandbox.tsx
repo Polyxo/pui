@@ -23,9 +23,9 @@ export default function useGenerateCodeSandbox({
           files: {
             "package.json": {
               content: {
-                name: `${componentName} WFP Design System`,
-                description: `WFP Digital Design System Component 📦 Playground: ${componentName}`,
-                tags: ["wfp", "design", "system", "react", "component"],
+                name: `${componentName} Progressive Design System`,
+                description: `Progressive Digital Design System Component 📦 Playground: ${componentName}`,
+                tags: ["design", "system", "react", "component"],
                 dependencies: {
                   "@progressiveui/react": "alpha",
                   "@progressiveui/icons-react": "alpha",
@@ -52,7 +52,7 @@ ReactDOM.render(<App />, rootElement);
             },
           },
         }),
-      }
+      },
     );
 
     const json = await response.json();

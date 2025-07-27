@@ -9,7 +9,7 @@ export default create({
   fontCode: "monospace",
 
   brandTitle: "Progressive UI",
-  brandUrl: "https://www.designsystem.wfp.org/",
+  brandUrl: "https://www.designsystem.polyxo.de",
   brandTarget: "_self",
 
   colorPrimary: "#3A10E5",

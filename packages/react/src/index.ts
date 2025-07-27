@@ -47,12 +47,7 @@ export {
   useFeatureFlag,
 } from './components/FeatureFlags';
 */
-export {
-  Footer,
-  FooterExternal,
-  FooterMetaLink,
-  LinksColumn,
-} from "./components/Footer";
+export { Footer } from "./components/Footer";
 
 export { default as Form } from "./components/Form";
 //export { default as FormControls } from './components/FormControls';
