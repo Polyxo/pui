@@ -5,15 +5,13 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wfp/designsystem.git",
+    "url": "https://github.com/Polyxo/pui.git",
     "directory": "packages/styles"
   },
-  "bugs": "https://github.com/wfp/designsystem/issues",
+  "bugs": "https://github.com/Polyxo/pui/issues",
   "keywords": [
     "colors",
     "themes",
-    "un",
-    "un core",
     "components",
     "react"
   ],

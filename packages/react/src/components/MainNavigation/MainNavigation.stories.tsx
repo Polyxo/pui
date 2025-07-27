@@ -171,7 +171,7 @@ export const MainNavigationDefault = (args) => (
 );
 
 MainNavigationDefault.args = {
-  logo: "WFP",
+  logo: "PUI",
 };
 
 const description = `
@@ -564,7 +564,7 @@ export const RegularWithButton = (args) => (
 );
 
 RegularWithButton.args = {
-  logo: "WFP",
+  logo: "PUI",
 };
 
 RegularWithButton.story = {

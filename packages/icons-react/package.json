@@ -7,10 +7,10 @@
   "module": "es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wfp/designsystem.git",
+    "url": "https://github.com/Polyxo/pui.git",
     "directory": "packages/icons-react"
   },
-  "bugs": "https://github.com/wfp/designsystem/issues",
+  "bugs": "https://github.com/Polyxo/pui/issues",
   "files": [
     "es",
     "lib",
@@ -18,12 +18,8 @@
     "next"
   ],
   "keywords": [
-    "un",
     "elements",
     "icons",
-    "united-nations",
-    "wfp",
-    "world-food-programme",
     "components",
     "react"
   ],

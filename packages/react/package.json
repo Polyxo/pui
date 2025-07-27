@@ -1,7 +1,7 @@
 {
   "name": "@progressiveui/react",
   "version": "2.0.5",
-  "description": "WFP UI Kit",
+  "description": "Progressive UI react components",
   "license": "Apache-2",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -25,10 +25,7 @@
     ]
   },
   "keywords": [
-    "WFP",
-    "World Food Programme",
-    "UN",
-    "United Nations",
+    "progressiveui",
     "react",
     "ui-kit",
     "components"
@@ -148,7 +145,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wfp/ui.git"
+    "url": "https://github.com/Polyxo/pui.git"
   },
   "bundleSizeThreshold": 80000,
   "gitHead": "5d9678f4a62413b834d07736413c50ff2f851824"
