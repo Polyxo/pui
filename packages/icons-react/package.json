@@ -1,7 +1,7 @@
 {
   "name": "@progressiveui/icons-react",
   "description": "React components for icons in digital and software products using the Carbon Design System",
-  "version": "10.38.0",
+  "version": "10.38.1",
   "license": "Apache-2.0",
   "main": "umd/index.js",
   "module": "es/index.js",

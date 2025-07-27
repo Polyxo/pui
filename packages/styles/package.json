@@ -1,7 +1,7 @@
 {
   "name": "@progressiveui/styles",
   "description": "Styles for the Progressive UI Design System",
-  "version": "11.0.3",
+  "version": "11.0.4",
   "license": "Apache-2.0",
   "author": "Robert Gühne <wfp.org>",
   "homepage": "https://www.wfp.org",
@@ -27,7 +27,7 @@
     "@carbon/feature-flags": "^0.6.0",
     "@carbon/grid": "^10.39.0",
     "@carbon/motion": "^10.22.0",
-    "@progressiveui/themes-core": "^0.4.0",
+    "@progressiveui/themes-core": "^0.4.1",
     "@un/layout": "^10.26.15",
     "@un/themes": "^10.40.14"
   },
