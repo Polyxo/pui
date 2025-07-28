@@ -33,7 +33,7 @@ export default {
 export const MainNavigationDefault = (args) => (
   <MainNavigation {...args}>
     <MainNavigationItem>
-      <Link href="http://communities.wfp.org" target="_blank">
+      <Link href="http://communities.polyxo.de" target="_blank">
         Section Link
       </Link>
     </MainNavigationItem>
@@ -51,12 +51,12 @@ export const MainNavigationDefault = (args) => (
             <SubNavigationList>
               <SubNavigationGroup title="First List" columns={1}>
                 <SubNavigationItem>
-                  <Link href="https://go.docs.wfp.org" target="_blank">
+                  <Link href="https://go.docs.polyxo.de" target="_blank">
                     Lorem Ipsum et jomen
                   </Link>
                 </SubNavigationItem>
                 <SubNavigationItem>
-                  <Link href="https://go.docs.wfp.org" target="_blank">
+                  <Link href="https://go.docs.polyxo.de" target="_blank">
                     Lorem Ipsum et jomen
                   </Link>
                 </SubNavigationItem>
@@ -93,7 +93,7 @@ export const MainNavigationDefault = (args) => (
             <SubNavigationList>
               <SubNavigationGroup title="First List" columns={1}>
                 <SubNavigationItem>
-                  <Link href="https://go.docs.wfp.org" target="_blank">
+                  <Link href="https://go.docs.polyxo.de" target="_blank">
                     Lorem Ipsum et jomen
                   </Link>
                 </SubNavigationItem>
@@ -198,7 +198,7 @@ const sourcecode = (type) => {
       <MainNavigation >
 
       <MainNavigationItem>
-        <Link href="http://communities.wfp.org" target="_blank">
+        <Link href="http://communities.polyxo.de" target="_blank">
           Section 1
         </Link>
       </MainNavigationItem>
@@ -227,7 +227,7 @@ const sourcecode = (type) => {
               <SubNavigationList>
                   <SubNavigationGroup title="First List" columns>
                   <SubNavigationItem>
-                      <Link href="https://go.docs.wfp.org" target="_blank">
+                      <Link href="https://go.docs.polyxo.de" target="_blank">
                       Lorem Ipsum et jomen
                       </Link>
                   </SubNavigationItem>
@@ -236,12 +236,12 @@ const sourcecode = (type) => {
               </SubNavigationContent>
           </SubNavigation>
           }>
-          <Link href="http://manuals.wfp.org" target="_blank">
+          <Link href="http://manuals.polyxo.de" target="_blank">
           Section2
           </Link>
       </MainNavigationItem>
       <MainNavigationItem>
-        <Link href="https://go.docs.wfp.org" target="_blank">
+        <Link href="https://go.docs.polyxo.de" target="_blank">
           Section 3
         </Link>
       </MainNavigationItem>
@@ -323,7 +323,7 @@ MainNavigationDefault.story = {
     docs: {
       storyDescription: description,
       source: {
-        code: sourcecode(`<Link href="http://opweb.wfp.org" target="_blank">
+        code: sourcecode(`<Link href="http://opweb.polyxo.de" target="_blank">
             Section 4
           </Link>`),
       },
@@ -340,7 +340,7 @@ MainNavigationDefault.story = {
 
 export const MainNavigationItemDefault = (args) => (
   <MainNavigationItem {...args}>
-    <Link href="http://communities.wfp.org" target="_blank">
+    <Link href="http://communities.polyxo.de" target="_blank">
       Section 1
     </Link>
   </MainNavigationItem>
@@ -370,7 +370,7 @@ export const SubNavigationDefault = (args) => (
       <SubNavigationList>
         <SubNavigationGroup title="First List" columns={1}>
           <SubNavigationItem>
-            <Link href="https://go.docs.wfp.org" target="_blank">
+            <Link href="https://go.docs.polyxo.de" target="_blank">
               Lorem Ipsum et jomen
             </Link>
           </SubNavigationItem>
@@ -414,10 +414,10 @@ export const SubNavigationListDefault = (args) => (
   <SubNavigationList {...args}>
     <SubNavigationGroup title="First List" columns={1}>
       <SubNavigationItem>
-        <Link href="https://wfp.org">First link</Link>
+        <Link href="https://polyxo.de">First link</Link>
       </SubNavigationItem>
       <SubNavigationItem>
-        <Link href="https://go.docs.wfp.org">second link</Link>
+        <Link href="https://go.docs.polyxo.de">second link</Link>
       </SubNavigationItem>
     </SubNavigationGroup>
   </SubNavigationList>
@@ -426,17 +426,17 @@ export const SubNavigationListDefault = (args) => (
 export const SubNavigationGroupDefault = (args) => (
   <SubNavigationGroup {...args}>
     <SubNavigationItem>
-      <Link href="https://wfp.org">First link</Link>
+      <Link href="https://polyxo.de">First link</Link>
     </SubNavigationItem>
     <SubNavigationItem {...args}>
-      <Link href="https://go.docs.wfp.org">second link</Link>
+      <Link href="https://go.docs.polyxo.de">second link</Link>
     </SubNavigationItem>
   </SubNavigationGroup>
 );
 
 export const SubNavigationItemDefault = (args) => (
   <SubNavigationItem {...args}>
-    <Link href="https://go.docs.wfp.org" target="_blank">
+    <Link href="https://go.docs.polyxo.de" target="_blank">
       Lorem Ipsum et jomen
     </Link>
   </SubNavigationItem>
@@ -445,7 +445,7 @@ export const SubNavigationItemDefault = (args) => (
 export const RegularWithButton = (args) => (
   <MainNavigation {...args}>
     <MainNavigationItem>
-      <Link href="http://communities.wfp.org" target="_blank">
+      <Link href="http://communities.polyxo.de" target="_blank">
         Section 1
       </Link>
     </MainNavigationItem>
@@ -474,7 +474,7 @@ export const RegularWithButton = (args) => (
             <SubNavigationList>
               <SubNavigationGroup title="First List" columns={1}>
                 <SubNavigationItem>
-                  <Link href="https://go.docs.wfp.org" target="_blank">
+                  <Link href="https://go.docs.polyxo.de" target="_blank">
                     Lorem Ipsum et jomen
                   </Link>
                 </SubNavigationItem>
@@ -484,12 +484,12 @@ export const RegularWithButton = (args) => (
         </SubNavigation>
       }
     >
-      <Link href="http://manuals.wfp.org" target="_blank">
+      <Link href="http://manuals.polyxo.de" target="_blank">
         Section 2
       </Link>
     </MainNavigationItem>
     <MainNavigationItem>
-      <Link href="https://go.docs.wfp.org" target="_blank">
+      <Link href="https://go.docs.polyxo.de" target="_blank">
         Section 3
       </Link>
     </MainNavigationItem>

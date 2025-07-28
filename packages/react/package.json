@@ -14,7 +14,7 @@
     "build:storybook": "rm -r -f docs && storybook build -o docs",
     "generate:types": "rollup --config scripts/rollup-generateTypeDefinitions.config.js --bundleConfigAsCjs && node .temp/generateTypeDefinitions.js && rm -rf .temp",
     "dev": "npm run storybook",
-    "storybook": "STORYBOOK_ASSETS=https://cdn.wfp.org/guides/ui/assets/v0.0.1/ STORYBOOK_NPM_VERSION=10.10.3 storybook dev -p 9000",
+    "storybook": "STORYBOOK_ASSETS=https://cdn.polyxo.de/guides/ui/assets/v0.0.1/ STORYBOOK_NPM_VERSION=10.10.3 storybook dev -p 9000",
     "test": "jest",
     "jest-w": "jest --watch",
     "build:vite": "vite build"

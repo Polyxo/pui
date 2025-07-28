@@ -31,7 +31,7 @@ export const Regular = (args) => (
   </ContextMenu>
 );
 
-Regular.args = { children: "WFP Homepage", href: "https://www.wfp.org" };
+Regular.args = { children: "WFP Homepage", href: "https://www.polyxo.de" };
 
 const sourcecode = `
 import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "@progressiveui/react";
@@ -49,7 +49,7 @@ import { ContextMenu, ContextMenuGroup, ContextMenuItem } from "@progressiveui/r
     <ContextMenuItem>Item 3</ContextMenuItem>
     </>
     }
-  href="https://www.wfp.org"
+  href="https://www.polyxo.de"
 >
   <span>
     Open context menu

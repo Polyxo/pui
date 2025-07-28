@@ -3,8 +3,8 @@
   "description": "Styles for the Progressive UI Design System",
   "version": "11.0.4",
   "license": "Apache-2.0",
-  "author": "Robert Gühne <wfp.org>",
-  "homepage": "https://www.wfp.org",
+  "author": "Robert Gühne <polyxo.de>",
+  "homepage": "https://www.polyxo.de",
   "main": "styles.css",
   "repository": {
     "type": "git",
