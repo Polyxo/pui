@@ -4,6 +4,9 @@
 @use "../../config" as *;
 @use "../form";
 @use "../../theme" as *;
+@use "../../spacing" as *;
+@use "../../utilities/button-reset";
+@use "../../utilities/focus-outline" as *;
 @use "../../utilities/input-base" as *;
 
 /// Text input styles
@@ -15,5 +18,33 @@
   }
   .#{$prefix}--text-input {
     @include input-base;
+  }
+
+  .#{$prefix}--password-input__toggle {
+    @include button-reset.reset(false);
+    @include focus-outline("reset");
+
+    & {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 $spacing-03;
+      font: inherit;
+      font-weight: 600;
+      color: currentColor;
+      text-transform: none;
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:focus {
+      @include focus-outline("outline");
+    }
+
+    &:disabled {
+      color: $text-body-secondary;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
   }
 }

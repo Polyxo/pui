@@ -148,6 +148,7 @@ export { default as Tag } from "./components/Tag";
 export { default as Text } from "./components/Text";
 export { default as TextArea } from "./components/TextArea";
 export { default as TextInput } from "./components/TextInput";
+export { default as PasswordInput } from "./components/PasswordInput";
 export {
   default as Tooltip,
   tooltipStyle,

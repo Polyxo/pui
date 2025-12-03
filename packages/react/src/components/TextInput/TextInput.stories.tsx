@@ -22,14 +22,6 @@ TextInputDefault.args = {
   placeholder: "placeholder",
 };
 
-export const PasswordInput = (args) => <TextInput {...args} />;
-
-PasswordInput.args = {
-  type: "password",
-  name: "password",
-  labelText: "The labelText",
-};
-
 export const withError = (args) => <TextInput {...args} />;
 
 withError.args = {
