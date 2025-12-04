@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Polyxo/pui/compare/@progressiveui/core-website@1.0.10...@progressiveui/core-website@1.1.0) (2025-12-04)
+
+
+### Features
+
+* **web:** some fixes ([4d9183a](https://github.com/Polyxo/pui/commit/4d9183a6a217c7320ac0115976bb9a5a8bd443da))
+
+
+
+
+
 # [0.5.0](https://github.com/Polyxo/pui/compare/@un/core-website@0.4.21...@un/core-website@0.5.0) (2024-10-30)
 
 

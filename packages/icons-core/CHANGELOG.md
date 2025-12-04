@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/wfp/designsystem/compare/@progressiveui/icons-core@0.4.0...@progressiveui/icons-core@0.5.0) (2025-12-04)
+
+
+### Features
+
+* **web:** some fixes ([4d9183a](https://github.com/wfp/designsystem/commit/4d9183a6a217c7320ac0115976bb9a5a8bd443da))
+
+
+
+
+
 # 0.4.0 (2024-10-30)
 
 
