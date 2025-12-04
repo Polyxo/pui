@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useRef } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
-import styles from './lightbox.module.scss';
-import { useGesture } from 'react-use-gesture';
-import Image from 'next/image';
+import React, { useState, useRef } from "react";
+import { motion, Transition, useMotionValue } from "framer-motion";
+import styles from "./lightbox.module.scss";
+import { useGesture } from "react-use-gesture";
+import Image from "next/image";
 
-const transition = {
-  type: 'spring',
+const transition: Transition = {
+  type: "spring",
   damping: 25,
   stiffness: 120,
 };
 
 const Lightbox = (props: any) => {
   const [isOpen, setOpen] = useState(false);
-  const domTarget = useRef(null);
+  const domTarget = useRef<HTMLSpanElement>(null!);
 
   const scale = useMotionValue(1);
 
@@ -41,11 +41,11 @@ const Lightbox = (props: any) => {
         scale.set(1);
       },
     },
-    { domTarget, eventOptions: { passive: false } }
+    { domTarget, eventOptions: { passive: false } },
   );
 
   return (
-    <span className={`${styles.imageContainer} ${isOpen ? styles.open : ''}`}>
+    <span className={`${styles.imageContainer} ${isOpen ? styles.open : ""}`}>
       <span className={`${styles.imageWrapper}`}>
         <span
           suppressHydrationWarning
@@ -73,7 +73,8 @@ const Lightbox = (props: any) => {
           animate={{ opacity: isOpen ? 1 : 0 }}
           transition={transition}
           className={styles.shade}
-          onClick={() => setOpen(false)}></motion.span>
+          onClick={() => setOpen(false)}
+        ></motion.span>
         <motion.span
           {...props}
           ref={domTarget}
@@ -83,11 +84,12 @@ const Lightbox = (props: any) => {
           style={{
             scale,
             aspectRatio: `${props.width} / ${props.height}`,
-          }}>
+          }}
+        >
           <Image
             alt={props.alt}
             {...props}
-            sizes={isOpen ? ' 100vw' : '(max-width: 710px) 100vw, 868px'}
+            sizes={isOpen ? " 100vw" : "(max-width: 710px) 100vw, 868px"}
           />
         </motion.span>
       </span>

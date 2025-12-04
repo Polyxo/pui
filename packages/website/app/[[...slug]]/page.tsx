@@ -17,13 +17,18 @@ export async function generateStaticParams() {
   return [...staticParams, { slug: ["/"] }];
 }
 
+type RouteParams = {
+  slug?: string[];
+};
+
 type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<RouteParams>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const postContent = await getPostContent(params);
+  const resolvedParams = await params;
+  const postContent = await getPostContent(resolvedParams);
   const page = postContent?.props?.post;
 
   if (!page?.title) return { title: "Not found" };
@@ -74,11 +79,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Page(args: any) {
-  const data: any = await getPostContent(args.params);
+export default async function Page({ params }: Props) {
+  const resolvedParams = await params;
+  const data: any = await getPostContent(resolvedParams);
   const { post, posts, propTypes } = data.props;
 
-  if (!post?.slug && args.params.slug !== undefined) notFound();
+  if (!post?.slug && resolvedParams.slug !== undefined) notFound();
   return <Layout posts={posts} post={post} propTypes={propTypes} />;
 }
 

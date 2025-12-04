@@ -1,9 +1,9 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from './card.module.scss';
-import slugifyWithSlashes from '../../../lib/slugifyWithSlashes';
+import React from "react";
+import Link from "next/link";
+import styles from "./card.module.scss";
+import slugifyWithSlashes from "../../../lib/slugifyWithSlashes";
 
-const CardWrapper = ({ article, detail = 'posts' }: any) => {
+const CardWrapper = ({ article, detail = "posts" }: any) => {
   //const src = article?.coverImage;
   //const srcElement = require(pathInclude);
   /*const srcElement = dynamic(() => import(article.coverImagePath), {
@@ -16,7 +16,7 @@ const CardWrapper = ({ article, detail = 'posts' }: any) => {
     <Link
       href={`/${detail}/${slugifyWithSlashes(article.slug)}`}
       className={styles.card}
-      legacyBehavior>
+    >
       <div>
         {/*multimedia ? (
           multimedia

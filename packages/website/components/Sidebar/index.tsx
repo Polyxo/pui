@@ -134,9 +134,12 @@ export default function SidebarWrapper({
               {statuses[post?.status].title}
             </Tag>
           )}
-          <Text kind="story-title">{post?.title}</Text>
+          {/* <Text kind="story-title">{post?.title}</Text> */}
 
-          {post.subtitle && <Text kind="story-subtitle">{post.subtitle}</Text>}
+          <Text kind="code">ddd</Text>
+          <Text kind="story-title">ddd</Text>
+
+          {/* post.subtitle && <Text kind="story-subtitle">{post.subtitle}</Text> */}
 
           {filteredPosts.length >= 1 && (
             <Tabs className={styles.tabs}>

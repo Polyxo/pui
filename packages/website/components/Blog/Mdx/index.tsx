@@ -36,6 +36,7 @@ const components = {
   img: Image,
   a: Link,
   Figma,
+  Logos: () => null,
   FigmaImage,
   Colors,
   Storybook,

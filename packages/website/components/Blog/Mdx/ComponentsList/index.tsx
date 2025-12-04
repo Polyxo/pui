@@ -8,7 +8,7 @@ import PropTypes from "../../../PropTypes";
 
 function ComponentPreview({ component, componentsList, name, propTypes }: any) {
   const componentData = componentsList.find(
-    (e) => e.slug === component.path?.slug
+    (e) => e.slug === component.path?.slug,
   );
 
   if (!componentData) return null;
@@ -55,7 +55,7 @@ export default function ComponentsList(props: any) {
             <div className={styles.componentsSubList}>
               {p.children.map((c, i) => {
                 const propType = propTypesList.find(
-                  (e) => e?.displayName === c.name
+                  (e) => e?.displayName === c.name,
                 );
 
                 return (

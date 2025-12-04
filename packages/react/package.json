@@ -7,7 +7,7 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "yarn rollup -c ./rollup.config.js && yarn build:demos && yarn generate:types",
+    "build": "yarn build:vite && yarn build:demos && yarn generate:types",
     "clean": "rimraf es lib umd storybook-static build react-docgen.json",
     "build:rollup": "rollup -c --bundleConfigAsCjs",
     "build:demos": "rollup -c rollupDemos.config.js --bundleConfigAsCjs",

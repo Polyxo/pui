@@ -39,7 +39,7 @@ export default async function getPostContent(params: any) {
           f.slug
             .split("/")
             .map((e) => slugify(e, { lower: true }))
-            .join("/") === slug.join("/")
+            .join("/") === slug.join("/"),
       )
     : null;
 
@@ -74,76 +74,68 @@ export default async function getPostContent(params: any) {
     // components,
   });
 
-  const propTypes: any = [];
+  const propTypes: any[] = [];
+  const propTypeTasks: Promise<void>[] = [];
+
+  const queuePropTypeLoad = (componentPath?: string | null) => {
+    if (!componentPath) {
+      return;
+    }
+
+    propTypeTasks.push(
+      (async () => {
+        try {
+          const importedModule = await import(
+            `../../types/src/components/${componentPath}.json`
+          );
+          const file = importedModule.default ?? importedModule;
+          propTypes.push(file[0]);
+        } catch {
+          // console.log("Can't load typescript definitions!");
+        }
+      })(),
+    );
+  };
 
   if (post.mainComponent) {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const file = require(`../../types/src/components/${post.mainComponent}/${post.mainComponent}.json`);
-      propTypes.push(file[0]);
-    } catch (e) {
-      // console.log("Can't load typescript definitions!");
-    }
+    queuePropTypeLoad(`${post.mainComponent}/${post.mainComponent}`);
   }
 
   if (post.componentsNew) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    Object.entries(
-      post.componentsNew as { [key: string]: { path?: string } }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ).map(([key, component]) => {
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const file = require(`../../types/src/components/${component.path}.json`);
-        propTypes.push(file[0]);
-      } catch (e) {
-        // console.log("Can't load typescript definitions!");
-      }
+    Object.values(
+      post.componentsNew as Record<string, { path?: string }>,
+    ).forEach((component) => {
+      queuePropTypeLoad(component?.path || null);
     });
   }
 
   if (post.components) {
     post.components.forEach((component) => {
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const file = require(`../../types/src/components/${component}/${component}.json`);
-        propTypes.push(file[0]);
-      } catch (e) {
-        // console.log("Can't load typescript definitions!");
-      }
+      queuePropTypeLoad(`${component}/${component}`);
     });
   }
 
   if (post.slug === "Components/Overview") {
     posts.forEach((p) => {
       if (p.mainComponent) {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
-          const file = require(`../../types/src/components/${p.title}/${p.title}.json`);
-          propTypes.push(file[0]);
-        } catch (e) {
-          // console.log("Can't load typescript definitions!");
-        }
+        queuePropTypeLoad(`${p.title}/${p.title}`);
       }
       if (p.componentsNew) {
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          Object.entries(p.componentsNew).map(([i, cN]: any) => {
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const fileCn = require(`../../types/src/components/${cN.path}.json`);
-            propTypes.push(fileCn[0]);
-          });
-        } catch (e) {
-          // console.log("Can't load typescript definitions!");
-        }
+        Object.values(
+          p.componentsNew as Record<string, { path?: string }>,
+        ).forEach((component) => {
+          queuePropTypeLoad(component?.path || null);
+        });
       }
     });
   }
 
+  await Promise.all(propTypeTasks);
+
   const mdxSource = await serialize(post.content, {
     //components,
     mdxOptions: {
-      remarkPlugins: [remarkMdxCodeMeta, remarkGfm],
+      // remarkPlugins: [remarkMdxCodeMeta, remarkGfm],
       rehypePlugins: [
         rehypeCode,
         rehypeFigmaImage,

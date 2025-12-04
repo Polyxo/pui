@@ -27,8 +27,8 @@ import * as unComponents from "@progressiveui/react";
 import * as icons from "@progressiveui/icons-react";
 import { Button, Empty } from "@progressiveui/react";
 import prettier from "prettier/standalone";
-import babelParser from "prettier/parser-babel";
-import htmlParser from "prettier/parser-html";
+import babelParser from "prettier/plugins/babel";
+import htmlParser from "prettier/plugins/html";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCode,
@@ -42,6 +42,7 @@ import { faCodepen, faHtml5 } from "@fortawesome/free-brands-svg-icons";
 import InnerFrame from "./InnerFrame";
 
 const countLines = (str) => {
+  if (typeof str !== "string") return 0;
   return str.split("\n").length;
 };
 
@@ -50,24 +51,41 @@ function LiveHtml({ live }: any /* { live?: Record<string, unknown> } */) {
   //const Result = live.element as React.ElementType;
   //if (!Result) return null;
   // let htmlString = ReactDOMServer.renderToStaticMarkup(<Result />);
-  let htmlString = ReactDOMServer.renderToStaticMarkup(<live.element />);
+  const htmlString = ReactDOMServer.renderToStaticMarkup(
+    <live.element />,
+  ).replace(/<svg.*?>(.*?)<\/svg>/gm, "<YOUR SVG IMAGE />"); // $1p
 
-  htmlString = htmlString.replace(
-    /<svg.*?>(.*?)<\/svg>/gm,
-    "<YOUR SVG IMAGE />"
-  ); // $1p
+  const [formattedHtmlString, setFormattedHtmlString] = useState(htmlString);
 
-  let formatedHtmlString = htmlString;
-  try {
-    formatedHtmlString = prettier.format(htmlString, {
-      parser: "html",
-      plugins: [htmlParser],
-    });
-  } catch (e) {
-    console.log(e);
-  }
+  useEffect(() => {
+    let isMounted = true;
 
-  return <CodeBlock language="html">{formatedHtmlString}</CodeBlock>;
+    const formatHtml = async () => {
+      try {
+        const formatted = await prettier.format(htmlString, {
+          parser: "html",
+          plugins: [htmlParser],
+        });
+
+        if (isMounted) {
+          setFormattedHtmlString(formatted);
+        }
+      } catch (e) {
+        console.log(e);
+        if (isMounted) {
+          setFormattedHtmlString(htmlString);
+        }
+      }
+    };
+
+    formatHtml();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [htmlString]);
+
+  return <CodeBlock language="html">{formattedHtmlString}</CodeBlock>;
 }
 const LiveHtmlHoc = withLive(LiveHtml);
 
@@ -100,7 +118,7 @@ const CodeBlockLive = (props: any) => {
   const [size, setSize] = useState(sizeProp);
   const [showHtml, setShowHtml] = useState(false);
   const [showCode, setShowCode] = useState(
-    noCode !== undefined ? !noCode : showEditor
+    noCode !== undefined ? !noCode : showEditor,
   );
   const [showAllCode, setShowAllCode] = useState(expandCode);
   // const [showExpandButton, setShowExpandButtons] = useState(true);
@@ -186,7 +204,7 @@ const CodeBlockLive = (props: any) => {
             printWidth: 55,
           })
         : code;
-  } catch (error) {
+  } catch {
     //console.log("prettier not working");
   }
 

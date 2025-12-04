@@ -52,11 +52,7 @@ function TreeBranch({ slug, split, level }: SidebarProps) {
               level > 0) ||
             split.children[0].name.startsWith("tab:") ? (
             // Child level
-            <NextLink
-              href={`${slugifyWithSlashes(split.path?.key)}`}
-              passHref
-              legacyBehavior
-            >
+            <NextLink href={`${slugifyWithSlashes(split.path?.key)}`} passHref>
               <Link
                 className={styles.item}
                 onMouseUp={(e: any) => e.target.blur()}
@@ -126,7 +122,7 @@ export default function SidebarNavigation({ post, posts, slug }: any) {
   deepSortByName(split.children);
 
   const splitSidebar = split.children.find(
-    (e) => e.name === post.slug.split("/")[0]
+    (e) => e.name === post.slug.split("/")[0],
   );
 
   return (

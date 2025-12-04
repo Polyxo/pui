@@ -5,10 +5,6 @@
   margin: 3em auto;
   //padding: 1.2em;
   text-align: center;
-  @include breakpoint-up(md) {
-    margin: 3em -1.2em 0;
-    width: calc(100% + 2 * 1.2em);
-  }
 
   > h3 {
     margin: 0;
@@ -22,17 +18,17 @@
   h4 {
     font-weight: 700;
     font-size: 1.2em;
+    margin-bottom: 0.5em;
     @include breakpoint-up(md) {
       font-size: 1.7em;
     }
-    margin-bottom: 0.5em;
   }
   p {
     font-size: 1em;
+    line-height: 1.5;
     @include breakpoint-up(md) {
       font-size: 1.2em;
     }
-    line-height: 1.5;
   }
   .icon {
     font-size: 5em;
@@ -45,6 +41,10 @@
       margin-top: 1rem;
       margin-bottom: 1.5rem;
     }
+  }
+  @include breakpoint-up(md) {
+    margin: 3em -1.2em 0;
+    width: calc(100% + 2 * 1.2em);
   }
 }
 .content {

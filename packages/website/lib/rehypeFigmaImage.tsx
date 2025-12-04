@@ -94,7 +94,7 @@ const rehypeImage = () => async (tree) => {
         });
 
         node.attributes = [...node.attributes, ...newAttributes];
-      } catch (error) {
+      } catch {
         console.error("Figma token not found: rendering empty image")
       }
 

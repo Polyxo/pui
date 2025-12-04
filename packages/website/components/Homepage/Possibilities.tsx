@@ -35,7 +35,7 @@ export default function Possiblities() {
           title="Are you a Designer?"
           content={
             <>
-              <Link href="/how-tos/start-designing" legacyBehavior>
+              <Link href="/how-tos/start-designing">
                 <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
                   Start designing
                 </Button>
@@ -49,7 +49,7 @@ export default function Possiblities() {
           title="Are you a Developer?"
           content={
             <>
-              <Link href="/how-tos/install-ui-kit" legacyBehavior>
+              <Link href="/how-tos/install-ui-kit">
                 <Button btnSolid icon={<FontAwesomeIcon icon={faArrowRight} />}>
                   Start coding
                 </Button>

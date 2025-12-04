@@ -1,5 +1,7 @@
 import React from "react";
 
+type ElementWithChildren = React.ReactElement<{ children?: React.ReactNode }>;
+
 export function componentToString(element: React.ReactNode) {
   // Check if the element is a simple string or number and return it as is
   if (typeof element === "string" || typeof element === "number") {
@@ -9,7 +11,7 @@ export function componentToString(element: React.ReactNode) {
   // Handle React elements
   if (React.isValidElement(element)) {
     //const type = element.type;
-    const props = element.props;
+    const props = (element as ElementWithChildren).props;
     /* const propsString = Object.keys(props)
       // Filter out children from the props
       .filter((key) => key !== "children")

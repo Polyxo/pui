@@ -7,12 +7,11 @@ import { Link as LinkCore } from "@progressiveui/react";
 interface MoreLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
   href: string;
-  legacyBehaviors?: boolean;
 }
 
 export default function MoreLink({ children, ...other }: MoreLinkProps) {
   return (
-    <Link href={other.href} legacyBehavior>
+    <Link href={other.href}>
       <LinkCore {...other}>
         {children} <FontAwesomeIcon icon={faArrowRight} />
       </LinkCore>

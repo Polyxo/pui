@@ -13,6 +13,23 @@ Text inputs enable users to enter free-form text data. The type of text field us
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=620%3A1379" />
 
+### Password Input
+
+`<PasswordInput />` extends the Text Input pattern with an inline toggle so users can reveal or hide sensitive values without retyping. Import it from `@progressiveui/react` and provide the same props you would for `TextInput`. The component handles switching between `password` and `text` input types, preserves helper text and validation messaging, and exposes two accessibility labels—`showPasswordLabelText` and `hidePasswordLabelText`—to describe the toggle button’s state.
+
+```tsx
+import { PasswordInput } from "@progressiveui/react";
+
+<PasswordInput
+  id="account-password"
+  name="password"
+  labelText="Password"
+  helperText="At least 8 characters"
+  showPasswordLabelText="Show password"
+  hidePasswordLabelText="Hide password"
+/>;
+```
+
 ### Anatomy
 
 <FigmaImage url="https://www.figma.com/file/h0OBnVRCmPzMmCpYIYsj8H/Bridge-Documentation?node-id=620%3A1765" />

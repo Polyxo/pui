@@ -5,6 +5,10 @@ import { Spacing, TextKind } from "../../utils";
 
 interface TextProps extends React.AllHTMLAttributes<HTMLDivElement> {
   /**
+   * Overrides the rendered HTML tag or React component.
+   */
+  as?: React.ElementType;
+  /**
    * Specifies the kind of text to be displayed. This could be an enumeration that defines various text styles or types.
    */
   kind?: TextKind;
@@ -44,40 +48,52 @@ export const textLookup: {
   p: "p",
   caption: "div",
   code: "code",
+  sup: "sup",
   i: "i",
   bold: "b",
   strong: "strong",
   a: "a",
   "inline-highlight": "code",
+  "story-subtitle": "h2",
+  "story-title": "h1",
 };
 
 /**
  *Text is a component for displaying paragraphs. You can use Text to standardize text across your web app. For longer sections or full articles use the <Story /> component instead.
  */
 
-const Text: React.FC<TextProps> = ({
-  as,
-  children,
-  className,
-  kind,
-  spacingTop,
-  spacingBottom,
-}) => {
-  const { prefix } = useSettings();
-  const TagName: React.ElementType = kind ? textLookup[kind] : "div";
-
-  const classes = classNames(
+const Text = React.forwardRef<HTMLElement, TextProps>(
+  (
     {
-      [`${prefix}--text`]: true,
-      // [`${prefix}--story__${kind}`]: kind,
-      [`${prefix}--text__${kind}`]: kind,
-      [`${prefix}--text__spacing-top-${spacingTop}`]: spacingTop,
-      [`${prefix}--text__spacing-bottom-${spacingBottom}`]: spacingBottom,
+      as: asProp,
+      children,
+      className,
+      kind,
+      spacingTop,
+      spacingBottom,
+      ...rest
     },
-    className,
-  );
-  return React.createElement(TagName, { className: classes }, children);
-};
+    ref,
+  ) => {
+    const { prefix } = useSettings();
+    const fallbackTag = undefined;
+    const TagName: React.ElementType = asProp || "div";
+
+    const classes = classNames(
+      `${prefix}--text`,
+      kind && `${prefix}--text__${kind}`,
+      spacingTop && `${prefix}--text__spacing-top-${spacingTop}`,
+      spacingBottom && `${prefix}--text__spacing-bottom-${spacingBottom}`,
+      className,
+    );
+
+    return (
+      <TagName ref={ref} className={classes} {...rest}>
+        {children}
+      </TagName>
+    );
+  },
+);
 
 Text.displayName = "Text";
 

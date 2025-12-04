@@ -75,6 +75,7 @@ declare type TextKind =
   | "a"
   | "p"
   | "i"
+  | "sup"
   | "caption"
   | "code";
 

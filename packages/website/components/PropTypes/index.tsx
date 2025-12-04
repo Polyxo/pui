@@ -29,7 +29,7 @@ import {
   Settings,
   StarSolid,
 } from "@progressiveui/icons-react";
-import * as componentsSource from "@../../../demoCode/dist/bundle";
+import * as componentsSource from "../../demoCode/dist/bundle";
 import { extractComponentNames } from "./extractComponentNames";
 
 declare const window: any;
@@ -137,8 +137,8 @@ export default function PropTypes({
   const sampleCode = isWrapped
     ? componentsSourceText?.render
     : componentsSourceText?.render
-    ? extractJSXFromRender(componentsSourceText.render)
-    : extractJSX(componentsSourceText);
+      ? extractJSXFromRender(componentsSourceText.render)
+      : extractJSX(componentsSourceText);
 
   /*     children?.props?.children?.props?.children || sampleCodeInput */ //if (!propTypes?.[0]) return null;
   const propList = propTypes?.props;
@@ -322,15 +322,15 @@ export default function PropTypes({
   // Filter if default value is same as component value
   const filteredPropsWithoutDefaultValuesAsObject = Object.fromEntries(
     Object.entries(filteredPropsList).filter(
-      ([key, value]) => value !== propList?.[key]?.defaultValue?.value
-    )
+      ([key, value]) => value !== propList?.[key]?.defaultValue?.value,
+    ),
   );
 
   let code = reactElementToJSXString(
     <MyComponent {...filteredPropsWithoutDefaultValuesAsObject} />,
     {
       filterProps: (val) => (val === undefined ? false : true),
-    }
+    },
   );
 
   if (sampleCode) {
@@ -343,7 +343,7 @@ export default function PropTypes({
         sampleCodeWithoutWrapper.replace("{...args}", ""),
         {
           presets: ["react"],
-        }
+        },
       );
 
       // Evaluate the transpiled code to get a React element
@@ -362,7 +362,7 @@ export default function PropTypes({
       const codeNew: any = eval(transformedCode.code);
       const enhancedElement = React.cloneElement(
         codeNew,
-        filteredPropsWithoutDefaultValuesAsObject
+        filteredPropsWithoutDefaultValuesAsObject,
       );
 
       code = reactElementToJSXString(enhancedElement, {
@@ -382,7 +382,7 @@ export default function PropTypes({
       .replace(extractFirstComponent(sampleCode), code)
       .replace(
         `additional="props"`,
-        extractPropsAsString(extractFirstComponent(sampleCode))
+        extractPropsAsString(extractFirstComponent(sampleCode)),
       );
   }
 
@@ -517,14 +517,14 @@ ${codeWithWrapper}
                                     {extractComponentNames(prop.type.name).map(
                                       (component, i) => (
                                         <span key={i}>{component}</span>
-                                      )
+                                      ),
                                     )}
                                   </>
                                 ) : (
                                   formatTypes(
                                     prop.type.raw
                                       ? prop.type.raw
-                                      : prop.type.name
+                                      : prop.type.name,
                                   ).map((line, lineIndex) => (
                                     <span key={lineIndex}>{line}</span>
                                   ))

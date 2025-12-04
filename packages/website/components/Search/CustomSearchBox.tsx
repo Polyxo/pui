@@ -9,7 +9,9 @@ function SearchBox(props: any) {
   const searchRef = useRef<HTMLInputElement | null>(null);
 
   const setFocus = () => {
-    searchRef.current && searchRef.current.focus();
+    if (searchRef.current) {
+      searchRef.current.focus();
+    }
   };
 
   useEffect(() => {

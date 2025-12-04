@@ -17,18 +17,22 @@ export function DoUse({
   background = false,
 }: DoUseType) {
   const childrenWithProps = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
+    if (React.isValidElement<{ children?: React.ReactNode }>(child)) {
       const childrenListItemWithProps = React.Children.map(
         child.props.children,
-        (childListItem: { props: object }) => {
-          if (React.isValidElement(childListItem)) {
+        (childListItem) => {
+          if (
+            React.isValidElement<React.ComponentProps<typeof ListItem>>(
+              childListItem,
+            )
+          ) {
             return React.createElement(ListItem, {
               ...childListItem.props,
               kind,
             });
           }
           return childListItem;
-        }
+        },
       );
       return childrenListItemWithProps;
     }
