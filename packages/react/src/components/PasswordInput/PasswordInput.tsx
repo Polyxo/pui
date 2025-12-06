@@ -11,11 +11,11 @@ interface PasswordInputProps
   /**
    * Accessible label for the toggle when the password is hidden
    */
-  showPasswordLabelText?: string;
+  showPasswordLabelText?: React.ReactNode;
   /**
    * Accessible label for the toggle when the password is visible
    */
-  hidePasswordLabelText?: string;
+  hidePasswordLabelText?: React.ReactNode;
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(

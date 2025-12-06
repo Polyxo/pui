@@ -36,7 +36,7 @@ interface NumberInputProps
   /**
    * Provide text that is used alongside the control label for additional help
    */
-  helperText?: string;
+  helperText?: React.ReactNode;
   /**
    * Specify whether you want the underlying label to be visually hidden
    */
@@ -54,13 +54,17 @@ interface NumberInputProps
    */
   pattern?: string;
   /**
+   * Provide a label for the control
+   */
+  labelText?: React.ReactNode;
+  /**
    * The new value is available in 'imaginaryTarget.value'
    * i.e. to get the value: evt.imaginaryTarget.value or in th second argument provided to the onChange prop
    */
   onChange?: (
     evt?: React.ChangeEvent | any,
     value?: number,
-    direction?: string
+    direction?: string,
   ) => void;
   /**
    * Provide an optional function to be called when the up/down button is clicked
@@ -68,7 +72,7 @@ interface NumberInputProps
   onClick?: (
     evt?: React.MouseEvent,
     value?: number,
-    direction?: string
+    direction?: string,
   ) => void;
   /**
    * Specify the value of the input, if undefined or null the value is empty
@@ -207,7 +211,7 @@ const NumberInput: React.FC<NumberInputProps> = React.forwardRef(
         </div>
       </Input>
     );
-  }
+  },
 );
 
 NumberInput.displayName = "NumberInput";
