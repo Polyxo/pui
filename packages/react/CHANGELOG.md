@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/Polyxo/pui/compare/@progressiveui/react@2.1.0...@progressiveui/react@2.2.0) (2025-12-06)
+
+
+### Features
+
+* **web:** types changed ([b636d84](https://github.com/Polyxo/pui/commit/b636d845ce087b8b5332c21987824572d2408e17))
+
+
+
+
+
 # [2.1.0](https://github.com/Polyxo/pui/compare/@progressiveui/react@2.0.10...@progressiveui/react@2.1.0) (2025-12-04)
 
 
