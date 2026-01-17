@@ -1,6 +1,6 @@
 import React from "react";
 
-import markdown from "./README.mdx";
+//import markdown from "./README.mdx";
 
 import { Hero, HeroExternal } from ".";
 import Button from "../Button";
@@ -12,7 +12,7 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
+    //mdx: markdown,
     //twig: heroTwig,
   },
 };

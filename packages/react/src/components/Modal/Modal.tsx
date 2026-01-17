@@ -92,7 +92,14 @@ export interface ModalProps {
    * body element, otherwise at the position it is placed.
    */
   inPortal?: boolean;
-  width?: "narrow" | "wide" | "full"; // TODO: Check
+  width?: "narrow" | "wide" | "full";
+  kind?: "dialog" | "fullscreen";
+  kindMobile?: "dialog" | "bottomsheet" | "fullscreen";
+  /**
+   * Overscroll behavior for modal content
+   */
+  overscrollBehavior?: "modal" | "inside";
+
   /**
    * If true the Modal will be wider then the regular Modal
    */
@@ -103,7 +110,7 @@ export interface ModalProps {
    */
   onRequestClose?: (
     evt: React.UIEvent,
-    trigger: "button" | "key" | "background"
+    trigger: "button" | "key" | "background",
   ) => void;
   /**
    * Specify a handler for "submitting" modal.
@@ -129,7 +136,7 @@ export interface ModalProps {
 const matchesFuncName =
   typeof Element !== "undefined" &&
   ["matches", "webkitMatchesSelector", "msMatchesSelector"].filter(
-    (name) => typeof Element.prototype[name] === "function"
+    (name) => typeof Element.prototype[name] === "function",
   )[0];
 
 /** Modals focus the user’s attention exclusively on one task or piece of information via a window that sits on top of the page content. */
@@ -148,6 +155,9 @@ function Modal(props: ModalProps) {
     backgroundImage,
     open,
     lazyLoad,
+    kind = "dialog",
+    kindMobile = "dialog",
+    overscrollBehavior = "modal",
     onRequestClose = () => {},
     // onRequestSubmit,
     onSecondarySubmit,
@@ -172,8 +182,8 @@ function Modal(props: ModalProps) {
   const el = elementToAppend
     ? elementToAppend
     : typeof document !== "undefined"
-    ? document.body
-    : undefined;
+      ? document.body
+      : undefined;
 
   const [beingOpen, setBeingOpen] = React.useState(false);
 
@@ -192,7 +202,7 @@ function Modal(props: ModalProps) {
     } = props;
     if (target && typeof target.closest === "function") {
       return selectorsFloatingMenus.some((selector) =>
-        target.closest(selector)
+        target.closest(selector),
       );
     } else {
       // Alternative if closest does not exist.
@@ -201,7 +211,7 @@ function Modal(props: ModalProps) {
           if (
             // eslint-disable-next-line no-loop-func
             selectorsFloatingMenus.some((selector) =>
-              target[matchesFuncName](selector)
+              target[matchesFuncName](selector),
             )
           ) {
             return true;
@@ -300,8 +310,11 @@ function Modal(props: ModalProps) {
       "is-visible": open,
       [`${prefix}--modal--warning`]: type === "warning" || props.warning,
       [`${prefix}--modal--danger`]: type === "danger" || props.danger,
+      [`${prefix}--modal--desktop-${kind}`]: kind,
+      [`${prefix}--modal--mobile-${kindMobile}`]: kindMobile,
+      [`${prefix}--modal--scroll-${overscrollBehavior}`]: overscrollBehavior,
     },
-    className
+    className,
   );
 
   const modalButton = !hideClose ? (

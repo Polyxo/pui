@@ -1,5 +1,5 @@
 import React from "react";
-import markdown from "./README.mdx";
+
 import { Accordion, AccordionItem } from ".";
 
 export default {
@@ -8,7 +8,6 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "experimental",
-    mdx: markdown,
   },
 };
 

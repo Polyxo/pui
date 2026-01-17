@@ -1,5 +1,5 @@
 import React from "react";
-import markdown from "./README.mdx";
+// import markdown from "./README.mdx";
 import Tabs from ".";
 import Tab from "../Tab";
 
@@ -9,7 +9,7 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
+    // mdx: markdown,
   },
 };
 

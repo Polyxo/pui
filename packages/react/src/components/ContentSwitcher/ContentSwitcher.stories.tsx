@@ -1,6 +1,6 @@
 import React from "react";
 import ContentSwitcher from "./ContentSwitcher";
-import markdown from "./README.mdx";
+// import markdown from "./README.mdx";
 import Switch from "../../../othersrc/Switch";
 import { Add16, AddCircle } from "@progressiveui/icons-react";
 
@@ -11,7 +11,7 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
+    // mdx: markdown,
   },
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import markdown from "./README.mdx";
+// import markdown from "./README.mdx";
 import Module from "./Module";
 import ModuleHeader from "./ModuleHeader";
 import ModuleBody from "./ModuleBody";
@@ -12,7 +12,7 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    mdx: markdown,
+    // mdx: markdown,
   },
 };
 
