@@ -1,6 +1,6 @@
 {
   "name": "@progressiveui/core-website",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "author": {
     "name": "Robert Gühne",
@@ -33,8 +33,8 @@
     "@mdx-js/runtime": "^1.6.22",
     "@next/mdx": "^15.2.4",
     "@progressiveui/icons-react": "^10.38.2",
-    "@progressiveui/react": "^2.2.0",
-    "@progressiveui/styles": "^11.0.8",
+    "@progressiveui/react": "^2.2.1",
+    "@progressiveui/styles": "^11.0.9",
     "@progressiveui/themes-core": "^0.4.1",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@un/layout": "^10.26.15",
