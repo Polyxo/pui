@@ -22,6 +22,7 @@
     "lerna:version": "lerna version --conventional-commits",
     "lerna:versionNoPush": "lerna version --no-push --conventional-commits --yes",
     "publish:main": "lerna publish",
+    "update:progressiveui": "bash ./update-progressiveui.sh",
     "test": "cd packages/react && yarn test"
   },
   "keywords": [

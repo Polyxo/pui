@@ -41,6 +41,8 @@ packages/icons/src/legacy/*
 packages/pictograms/es/*
 actions/copy-carbon/output/*
 
+update-progressiveui.sh
+
 .npmrc
 packages/styles/styles.css
 packages/website/types/*
