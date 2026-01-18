@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.11](https://github.com/Polyxo/pui/compare/@progressiveui/styles@11.0.10...@progressiveui/styles@11.0.11) (2026-01-18)
+
+
+### Bug Fixes
+
+* **Modal:** correct naming ([f7b972b](https://github.com/Polyxo/pui/commit/f7b972b4912bdc5b81a57637ab93edf9f144a07a))
+
+
+
+
+
 # 10.30.0 (2024-10-30)
 
 
