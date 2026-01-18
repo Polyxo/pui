@@ -307,6 +307,7 @@ function Modal(props: ModalProps) {
       [`${prefix}--modal--wide`]: wide,
       [`${prefix}--modal--tall`]: !passiveModal,
       [`${prefix}--modal--background-image`]: backgroundImage,
+      [`${prefix}--modal--passive`]: passiveModal,
       "is-visible": open,
       [`${prefix}--modal--warning`]: type === "warning" || props.warning,
       [`${prefix}--modal--danger`]: type === "danger" || props.danger,

@@ -141,17 +141,15 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
 
   .#{$prefix}--modal-header {
     padding: $spacing-05;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
     @include breakpoint-up("md") {
       padding: $spacing-07;
       padding-top: calc($spacing-07 - 2px);
     }
-    padding-bottom: 0;
-
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
-
     &:after {
       content: "";
       display: block;
@@ -194,12 +192,13 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     //overflow-y: auto;
     padding: $spacing-05;
     padding-top: $spacing-05;
+        color: $text-body-default;
     @include breakpoint-up("md") {
       padding: $spacing-07;
       padding-top: $spacing-05;
     }
 
-    color: $text-body-default;
+
 
     > * {
       @include reset;
@@ -230,11 +229,6 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     position: absolute;
     top: calcRem(8px);
     right: calcRem(6px);
-    @include breakpoint-up("md") {
-      top: calcRem(22px);
-      right: calcRem(18px);
-    }
-
     padding: 0;
     overflow: hidden;
     cursor: pointer;
@@ -242,17 +236,24 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     border: none;
     padding: 0.25rem 0.25rem 0.125rem;
 
+    @include breakpoint-up("md") {
+      top: calcRem(22px);
+      right: calcRem(18px);
+    }
+
+
     &:focus {
       @include focus-outline("border");
     }
   }
 
   .#{$prefix}--modal-close__icon {
+       color: $text-body-default;
     transition: 200ms;
     // fill: var(--ui-05); // TODO change $field-border
     width: 1.5rem;
     height: 1.5rem;
-    color: $text-body-default;
+
   }
 
   .#{$prefix}--modal--background-image {
@@ -277,6 +278,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
   }
   .#{$prefix}--modal-container {
     // max-height: 90vh;
+    flex-grow: 0;
   }
 }
 
@@ -293,9 +295,9 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
       height: 100%;
       border-radius: 0;
       max-width: 100%;
-
       width: 100%;
       height: 100%;
+      max-height: 85vh;
     }
   }
 }
@@ -303,10 +305,10 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
 .#{$prefix}--modal--mobile-fullscreen {
   @include breakpoint-down("md") {
     .#{$prefix}--modal-header {
-      padding-bottom: calc(env(safe-area-inset-top) + $spacing-05);
+      padding-bottom: calc(var(--safe-area-inset-top) + $spacing-05);
     }
     .#{$prefix}--modal-close {
-      top: calc(env(safe-area-inset-top) + calcRem(8px));
+      top: calc(var(--safe-area-inset-top) + calcRem(8px));
     }
 
     .#{$prefix}--modal-inner {
@@ -324,6 +326,14 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
       width: 100%;
       height: 100%;
     }
+    .#{$prefix}--modal-footer {
+      padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
+    }
+    &.#{$prefix}--modal-passive {
+      .#{$prefix}--modal-content {
+        padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
+      }
+    }
   }
 }
 
@@ -336,7 +346,12 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
       border-radius: $modal-border-radius $modal-border-radius 0 0;
     }
     .#{$prefix}--modal-footer {
-      padding-bottom: calc(env(safe-area-inset-bottom) + $spacing-05);
+      padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
+    }
+  }
+  &.#{$prefix}--modal-passive {
+    .#{$prefix}--modal-content {
+      padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
     }
   }
 }
