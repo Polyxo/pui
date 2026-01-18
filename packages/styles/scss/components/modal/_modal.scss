@@ -225,7 +225,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
 
   .#{$prefix}--modal-close {
     position: absolute;
-    top: calcRem(8px);
+    top: calcRem(2px);
     right: calcRem(6px);
     padding: 0;
     overflow: hidden;
@@ -248,8 +248,8 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     color: $text-body-default;
     transition: 200ms;
     // fill: var(--ui-05); // TODO change $field-border
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.7rem;
+    height: 1.7rem;
   }
 
   .#{$prefix}--modal--background-image {
@@ -261,8 +261,8 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
   .#{$prefix}--modal-container {
     @include breakpoint-down("md") {
       min-width: 50%;
-      width: 90%;
-      max-width: 90%;
+      width: 95%;
+      max-width: 95%;
       height: auto;
     }
   }
@@ -309,7 +309,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
       padding-top: calc(var(--safe-area-inset-top) + $spacing-05);
     }
     .#{$prefix}--modal-close {
-      top: calc(var(--safe-area-inset-top) + calcRem(8px));
+      top: calc(var(--safe-area-inset-top) + calcRem(2px));
     }
 
     .#{$prefix}--modal-inner {
