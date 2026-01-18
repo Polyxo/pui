@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://github.com/Polyxo/pui/compare/@progressiveui/react@2.2.4...@progressiveui/react@2.2.5) (2026-01-18)
+
+**Note:** Version bump only for package @progressiveui/react
+
+
+
+
+
 ## [2.2.4](https://github.com/Polyxo/pui/compare/@progressiveui/react@2.2.3...@progressiveui/react@2.2.4) (2026-01-18)
 
 **Note:** Version bump only for package @progressiveui/react

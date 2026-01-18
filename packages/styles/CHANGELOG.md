@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/Polyxo/pui/compare/@progressiveui/styles@11.1.0...@progressiveui/styles@11.2.0) (2026-01-18)
+
+
+### Features
+
+* **Modal:** alignment updated ([e1d636f](https://github.com/Polyxo/pui/commit/e1d636febb5a506d6a400a72aedb2e5d432c570a))
+
+
+
+
+
 # [11.1.0](https://github.com/Polyxo/pui/compare/@progressiveui/styles@11.0.11...@progressiveui/styles@11.1.0) (2026-01-18)
 
 
