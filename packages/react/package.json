@@ -1,6 +1,6 @@
 {
   "name": "@progressiveui/react",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Progressive UI react components",
   "license": "Apache-2",
   "main": "dist/index.cjs.js",
@@ -60,7 +60,7 @@
     "@babel/traverse": "^7.27.0",
     "@fontsource-variable/open-sans": "^5.2.5",
     "@progressiveui/icons-react": "^10.38.2",
-    "@progressiveui/styles": "^11.0.9",
+    "@progressiveui/styles": "^11.0.10",
     "@progressiveui/themes-core": "^0.4.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.3",
