@@ -192,13 +192,11 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     //overflow-y: auto;
     padding: $spacing-05;
     padding-top: $spacing-05;
-        color: $text-body-default;
+    color: $text-body-default;
     @include breakpoint-up("md") {
       padding: $spacing-07;
       padding-top: $spacing-05;
     }
-
-
 
     > * {
       @include reset;
@@ -241,19 +239,17 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
       right: calcRem(18px);
     }
 
-
     &:focus {
       @include focus-outline("border");
     }
   }
 
   .#{$prefix}--modal-close__icon {
-       color: $text-body-default;
+    color: $text-body-default;
     transition: 200ms;
     // fill: var(--ui-05); // TODO change $field-border
     width: 1.5rem;
     height: 1.5rem;
-
   }
 
   .#{$prefix}--modal--background-image {
@@ -310,7 +306,7 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
 .#{$prefix}--modal--mobile-fullscreen {
   @include breakpoint-down("md") {
     .#{$prefix}--modal-header {
-      padding-bottom: calc(var(--safe-area-inset-top) + $spacing-05);
+      padding-top: calc(var(--safe-area-inset-top) + $spacing-05);
     }
     .#{$prefix}--modal-close {
       top: calc(var(--safe-area-inset-top) + calcRem(8px));
@@ -334,8 +330,10 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
     .#{$prefix}--modal-footer {
       padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
     }
-    &.#{$prefix}--modal-passive {
-      .#{$prefix}--modal-content {
+  }
+  &.#{$prefix}--modal-passive {
+    .#{$prefix}--modal-content {
+      @include breakpoint-down("md") {
         padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
       }
     }
@@ -344,6 +342,9 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
 
 .#{$prefix}--modal--mobile-bottomsheet {
   @include breakpoint-down("md") {
+    .#{$prefix}--modal-container {
+      max-height: 90vh;
+    }
     .#{$prefix}--modal-inner {
       align-self: flex-end;
       width: 100%;
@@ -356,7 +357,9 @@ $modal-footer-background-color: $layer-primary !default; //TODO use $layer token
   }
   &.#{$prefix}--modal-passive {
     .#{$prefix}--modal-content {
-      padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
+      @include breakpoint-down("md") {
+        padding-bottom: calc(var(--safe-area-inset-bottom) + $spacing-05);
+      }
     }
   }
 }
