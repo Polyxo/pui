@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.3.0](https://github.com/Polyxo/pui/compare/@progressiveui/styles@11.2.0...@progressiveui/styles@11.3.0) (2026-01-19)
+
+
+### Features
+
+* **styles:** updated modal and design vars ([72b7b7e](https://github.com/Polyxo/pui/commit/72b7b7e50e6547b81bd18cca3386034d3107720e))
+
+
+
+
+
 # [11.2.0](https://github.com/Polyxo/pui/compare/@progressiveui/styles@11.1.0...@progressiveui/styles@11.2.0) (2026-01-18)
 
 
