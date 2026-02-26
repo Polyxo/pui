@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
+import React, { useEffect, useState } from "react";
+import classNames from "classnames";
 //import RadioButton from '../RadioButton';
 //import warning from 'warning';
-import useSettings from '../../hooks/useSettings';
-import { InputProps } from '../Input/Input';
+import useSettings from "../../hooks/useSettings";
+import { InputProps } from "../Input/Input";
 
 /**
  * InputGroup allows you to organize and arange multiple input elements.
@@ -11,7 +11,7 @@ import { InputProps } from '../Input/Input';
 
 interface InputGroupProps
   extends InputProps,
-    React.ComponentPropsWithoutRef<'div'> {
+    React.ComponentPropsWithoutRef<"div"> {
   /**
    * Provide a collection of <RadioButton> components to render in the group
    */
@@ -79,14 +79,14 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     //controlled,
     vertical,
     hideLabel,
-    className = `${prefix}--input-group`,
+    className,
     wrapperClassName,
     valueSelected,
     defaultSelected,
   } = props;
 
   const [prevValueSelected, setPrevValueSelected] = useState(
-    valueSelected || defaultSelected
+    valueSelected || defaultSelected,
   );
   //const [selected, setSelected] = useState();
 
@@ -114,9 +114,11 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     <div className={`${prefix}--form__helper-text`}>{helperText}</div>
   ) : null;
 
+  const classes = classNames(`${prefix}--input-group`, className);
+
   return (
     <div className={wrapperClasses}>
-      <div className={className}>
+      <div className={classes}>
         {label}
         {helper}
         <div className={`${prefix}--input-group-inside`}>
@@ -127,6 +129,6 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
   );
 };
 
-InputGroup.displayName = 'InputGroup';
+InputGroup.displayName = "InputGroup";
 
 export default InputGroup;

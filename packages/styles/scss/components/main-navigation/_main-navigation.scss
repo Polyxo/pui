@@ -42,7 +42,9 @@ $main-navigation-menu-width: calcRem(300px);
     color: $action-default-link-default;
     background: $background-main;
     height: $main-navigation-height;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+    color: $text-inverse-default;
+    background: $brand-main;
     @include reset;
     @media print {
       display: none;
@@ -73,7 +75,7 @@ $main-navigation-menu-width: calcRem(300px);
       // justify-content: center; // TODO: Check if needed
 
       > a {
-        color: $action-default-link-default; // TODO change to $link_on_color token
+        color: $text-inverse-default; // TODO change to $link_on_color token
         @include type-style("body-short-02");
         text-decoration: none;
         &.active {
@@ -82,11 +84,11 @@ $main-navigation-menu-width: calcRem(300px);
         &:hover,
         &:visited,
         &:active {
-          color: $action-default-link-default;
+          color: $text-inverse-default;
           text-decoration: underline;
         }
         &:focus {
-          color: $action-default-link-default;
+          color: $text-inverse-default;
         }
       }
     }
@@ -129,17 +131,17 @@ $main-navigation-menu-width: calcRem(300px);
 
   .#{$prefix}--main-navigation__logo {
     a {
-      color: $action-default-link-default;
+      color: $text-inverse-default;
       text-decoration: none;
       text-transform: uppercase;
       &:hover,
       &:visited,
       &:active {
-        color: $action-default-link-default;
+        color: $text-inverse-default;
         text-decoration: underline;
       }
       &:focus {
-        color: $text-body-default;
+        color: $text-inverse-default;
       }
     }
   }
@@ -287,7 +289,8 @@ $main-navigation-menu-width: calcRem(300px);
         TODO - convert raw color hex into color token in figma
         rgba(desaturate(#0b77c2, 40%), 0.15) 0 32px 78px; */
       .#{$prefix}--theme-dark & {
-        box-shadow: var(--modal-background-01) 0 3px 12px,
+        box-shadow:
+          var(--modal-background-01) 0 3px 12px,
           //TODO - create token for this color
           var(--modal-background-01) 0 32px 78px;
       }
