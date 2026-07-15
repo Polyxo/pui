@@ -1,7 +1,7 @@
 import { Search } from "@progressiveui/react";
 import styles from "./search.module.scss";
 
-import { useSearchBox } from "react-instantsearch-hooks-web";
+import { useSearchBox } from "react-instantsearch";
 import { useEffect, useRef } from "react";
 
 function SearchBox(props: any) {

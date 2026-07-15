@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Highlight, Snippet, useHits } from "react-instantsearch-hooks-web";
+import { Highlight, Snippet, useHits } from "react-instantsearch";
 import slugifyWithSlashes from "../../lib/slugifyWithSlashes";
 import styles from "./hits.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";

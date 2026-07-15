@@ -1,3 +1,9 @@
-const { config } = require("@progressiveui/themes-core/config.js");
+async function buildTheme() {
+  const { config } = await import("@progressiveui/themes-core/config.js");
+  config();
+}
 
-config();
+buildTheme().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

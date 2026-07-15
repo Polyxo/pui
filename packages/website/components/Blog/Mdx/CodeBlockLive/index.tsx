@@ -28,6 +28,7 @@ import * as icons from "@progressiveui/icons-react";
 import { Button, Empty } from "@progressiveui/react";
 import prettier from "prettier/standalone";
 import babelParser from "prettier/plugins/babel";
+import estreePlugin from "prettier/plugins/estree";
 import htmlParser from "prettier/plugins/html";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -200,7 +201,7 @@ const CodeBlockLive = (props: any) => {
       language === "jsx" || 1 === 1
         ? prettier.format(code, {
             parser: "babel",
-            plugins: [babelParser],
+            plugins: [babelParser, estreePlugin],
             printWidth: 55,
           })
         : code;

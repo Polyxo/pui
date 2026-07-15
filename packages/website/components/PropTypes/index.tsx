@@ -32,8 +32,6 @@ import {
 import * as componentsSource from "../../demoCode/dist/bundle";
 import { extractComponentNames } from "./extractComponentNames";
 
-declare const window: any;
-
 const filterEmptyValues = (obj) => {
   return Object.entries(obj).reduce((acc, [key, value]) => {
     if (value !== undefined && value !== null && value !== "") {
@@ -97,6 +95,26 @@ function extractJSXFromRender(code) {
   } else {
     return "Pattern not found";
   }
+}
+
+function evaluateSampleCode(compiledCode: string) {
+  const componentEntries = Object.entries(wfpComponents).filter(([name]) =>
+    /^[A-Za-z_$][\w$]*$/.test(name),
+  );
+  const scopeEntries = [
+    ["React", React],
+    ["react", React],
+    ["ReactDatePicker", ReactDatePicker],
+    ["action", () => undefined],
+    ...componentEntries,
+  ] as const;
+  const expression = compiledCode.trim().replace(/;\s*$/, "");
+  const evaluator = new Function(
+    ...scopeEntries.map(([name]) => name),
+    `"use strict"; return (${expression});`,
+  );
+
+  return evaluator(...scopeEntries.map(([, value]) => value));
 }
 
 export default function PropTypes({
@@ -346,20 +364,8 @@ export default function PropTypes({
         },
       );
 
-      // Evaluate the transpiled code to get a React element
-
-      if (typeof window !== "undefined") {
-        window.React = React;
-        window.react = React;
-        window.ReactDatePicker = ReactDatePicker;
-        (window as any).action = (action) => {
-          console.log("action triggered", action);
-        };
-        Object.entries(wfpComponents).forEach((entry) => {
-          window[entry[0]] = entry[1];
-        });
-      }
-      const codeNew: any = eval(transformedCode.code);
+      // Evaluate with an explicit scope so this also works during SSR.
+      const codeNew: any = evaluateSampleCode(transformedCode.code);
       const enhancedElement = React.cloneElement(
         codeNew,
         filteredPropsWithoutDefaultValuesAsObject,

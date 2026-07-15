@@ -4,7 +4,7 @@ import CustomHits from "./Hits";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.scss";
-import { InstantSearch } from "react-instantsearch-hooks";
+import { InstantSearch } from "react-instantsearch";
 import { usePathname, useRouter /* useSearchParams*/ } from "next/navigation";
 import { useURLSearchParams } from "./useUrlSearchParams";
 
