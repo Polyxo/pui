@@ -202,11 +202,15 @@ const CodeBlockLive = (props: any) => {
       .replaceAll(/: \S+ = /g, " = "); // let a: string = "something"
   };
 
-  const [formattedCode, setFormattedCode] = useState(code);
+  const [formatResult, setFormatResult] = useState({
+    source: code,
+    value: code,
+  });
+  const formattedCode =
+    formatResult.source === code ? formatResult.value : code;
 
   useEffect(() => {
     let isCurrent = true;
-    setFormattedCode(code);
 
     prettier
       .format(code, {
@@ -215,10 +219,10 @@ const CodeBlockLive = (props: any) => {
         printWidth: 55,
       })
       .then((formatted) => {
-        if (isCurrent) setFormattedCode(formatted);
+        if (isCurrent) setFormatResult({ source: code, value: formatted });
       })
       .catch(() => {
-        if (isCurrent) setFormattedCode(code);
+        if (isCurrent) setFormatResult({ source: code, value: code });
       });
 
     return () => {
