@@ -107,11 +107,14 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
   };
 
   const customButtonEl = customButton
-    ? React.cloneElement(customButton, {
-        disabled: disabled,
-        onClick: handleOpen,
-        inputref: triggerButton,
-      })
+    ? React.cloneElement(
+        customButton as React.ReactElement<Record<string, unknown>>,
+        {
+          disabled: disabled,
+          onClick: handleOpen,
+          inputref: triggerButton,
+        },
+      )
     : undefined;
 
   return (

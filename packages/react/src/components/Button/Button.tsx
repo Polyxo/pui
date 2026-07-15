@@ -147,8 +147,11 @@ export const Button = React.forwardRef(
     const onClickAnimation = (
       e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     ) => {
-      if (onClick) {
-        onClick(e);
+      const clickHandler = onClick as
+        | React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>
+        | undefined;
+      if (clickHandler) {
+        clickHandler(e);
       }
       setCount(true);
     };

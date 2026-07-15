@@ -37,12 +37,12 @@ describe("Footer component", () => {
   it("renders with custom logos", () => {
     render(
       <Footer
-        logo="path-to-logo.png"
-        logoExtended="path-to-extended-logo.png"
-      />
+        logo={<img src="path-to-logo.png" alt="World Food Programme Logo" />}
+        secondary={<img src="path-to-secondary-logo.png" alt="WFP Logo" />}
+      />,
     );
     expect(
-      screen.getByAltText("World Food Programme Logo")
+      screen.getByAltText("World Food Programme Logo"),
     ).toBeInTheDocument();
     expect(screen.getByAltText("WFP Logo")).toBeInTheDocument();
   });
