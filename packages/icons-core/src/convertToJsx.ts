@@ -14,12 +14,12 @@ import { pascalCase } from 'change-case';
 
 //const fsPromises = fsPromises;
 
-export async function jsx(fileName, distName, svgConfig = defaultSvgConfig) {
+export async function jsx(fileName, distName, configFactory = defaultSvgConfig) {
   const svgCode = readFileSync(fileName, 'utf8');
 
   const name = pascalCase(path.parse(fileName).name);
 
-  const jsCode = await transform(svgCode, svgConfig(/*defaultSvgConfig()*/), {
+  const jsCode = await transform(svgCode, configFactory(), {
     componentName: name,
   });
 
