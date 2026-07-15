@@ -11,8 +11,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start -p 80",
     "build:theme": "node buildTheme.js",
     "build:runAlgoliaUpdate": "node runAlgoliaUpdate.mjs",
