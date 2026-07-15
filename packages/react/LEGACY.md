@@ -6,7 +6,7 @@ Legacy code is intentionally quarantined while compatibility requirements are es
 
 - `othersrc`: 76 files in 14 component directories.
 - `src` old/legacy variants: 35 files matching `.legacy` or `old` naming.
-- JavaScript `*-test.js` suites: 66; 65 still import Enzyme.
+- JavaScript `*-test.js` suites: 66; 64 still import Enzyme. The two exceptions are pre-existing Testing Library suites under `othersrc`.
 - Active cross-boundary reference: the `ContentSwitcher` Storybook story imports `othersrc/Switch`.
 - Redux Form is referenced by internal wrappers, historical documentation, and legacy examples.
 - React Table v7 is used by the table story and a legacy table story, not the shipped runtime bundle.

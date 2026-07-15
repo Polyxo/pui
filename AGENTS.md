@@ -15,11 +15,13 @@ yarn build:packages
 yarn build:storybook
 yarn build:website
 yarn verify:packages
+yarn verify:packed-packages
 yarn verify:public-exports
 yarn verify:bundle-size
+yarn verify:clean
 ```
 
-`yarn validate` runs the full sequence used before versioning or publishing. Never run a publish or version command merely to test it.
+`yarn validate` runs the full sequence used before versioning or publishing. Root `typecheck` and `test` generate their required token, demo, and icon inputs, so use the root commands from a clean checkout instead of relying on old build output. Never run a publish or version command merely to test it.
 
 ## Package map
 
@@ -49,7 +51,7 @@ Do not hand-edit generated output. Run the owning generator and confirm `git sta
 - Keep ESM, CommonJS, UMD, and declaration consumers working.
 - Do not rename CSS classes or token names during tooling work.
 - `packages/react/othersrc`, `*.legacy.*`, and `*-old*` are quarantined, not deletion candidates. Read `packages/react/LEGACY.md` first.
-- JavaScript `*-test.js` files are the isolated Enzyme suite. Migrate a suite to Testing Library before removing it or Enzyme.
+- JavaScript `*-test.js` files are quarantined from the active Jest project. Of 66 suites, 64 use Enzyme and two `othersrc` suites already use Testing Library. Migrate required Enzyme coverage before removing a suite, Enzyme, or its React 16 adapter.
 - Redux Form and React Table v7 are compatibility dependencies for legacy/internal examples; do not upgrade or remove them without an explicit migration.
 - `yarn workspace @progressiveui/themes-core build:tokens` performs authenticated remote synchronization. Routine local validation uses `yarn generate:tokens` and must not require credentials.
 
