@@ -12,7 +12,7 @@ pool:
 
 steps:
   - checkout: self
-    persistCredentials: true
+    persistCredentials: false
 
   - script: |
       git config --global user.name "Azure Devops Pipeline"
@@ -85,16 +85,20 @@ steps:
   - script: |
       set -euo pipefail
       yarn lerna publish from-package --temp-tag --yes
-      git push --follow-tags origin HEAD:refs/heads/main
+      git -c http.extraheader="AUTHORIZATION: bearer $SYSTEM_ACCESSTOKEN" push --follow-tags origin HEAD:refs/heads/main
     displayName: "lerna publish"
     condition: and(succeeded(), eq(variables.isMain, 'true'))
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
   - script: |
       set -euo pipefail
       yarn lerna publish from-package --dist-tag alpha --temp-tag --yes
-      git push --follow-tags origin HEAD:refs/heads/develop
+      git -c http.extraheader="AUTHORIZATION: bearer $SYSTEM_ACCESSTOKEN" push --follow-tags origin HEAD:refs/heads/develop
     displayName: "lerna publish alpha (Develop)"
     condition: and(succeeded(), eq(variables.isDevelop, 'true'))
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
   - script: rm -f .npmrc
     displayName: "Remove npm publish configuration"
@@ -102,7 +106,7 @@ steps:
 
   - script: |
       set -euo pipefail
-      git clone --mirror "$(Build.Repository.Uri)" repo-mirror
+      git -c http.extraheader="AUTHORIZATION: bearer $SYSTEM_ACCESSTOKEN" clone --mirror "$(Build.Repository.Uri)" repo-mirror
       git -C repo-mirror \
         -c credential.helper= \
         -c 'credential.helper=!f() { printf "%s\n" "username=$AWS_GIT_USERNAME" "password=$AWS_GIT_PASSWORD"; }; f' \
@@ -113,6 +117,7 @@ steps:
       AWS_REPO_URL: $(AWS_REPO_URL)
       AWS_GIT_USERNAME: $(AWS_GIT_USERNAME)
       AWS_GIT_PASSWORD: $(AWS_GIT_PASSWORD)
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: "./packages/react"
