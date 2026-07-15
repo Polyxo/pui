@@ -1,110 +1,76 @@
 # Progressive UI
 
-Design once. Deliver everywhere.
+Progressive UI is a React design-system monorepo derived from the World Food Programme UI Kit. It publishes React components, Sass/CSS, design tokens, React icons, and icon-generation tooling, with a Next.js documentation website.
 
-A modern design system for building progressive applications that scale seamlessly across all devices.
+## Requirements
 
-Based on a fork of the World Food Programme UI Kit (WFP-UI) 🇺🇳
+- Node.js 22.12 or newer
+- Yarn 1.22.22 (the version in `packageManager`)
 
-## ![Usage](https://cdn.wfp.org/guides/ui/v1.2.0/assets/internal/toolkit.svg "Usage") Usage
-
-### Development 🚧
-
-#### WARNING: This branch is experimental and in current development. Things could easily break!
-
-### Contribution Guidelines
-
-Please refer to the [Contribution Guidelines](./.github/CONTRIBUTING.md) before starting any work.
-
-### Installing the monorepo
-
-Requirements: `node.js 14.x`, `yarn 1.x`
-Use the `feat/` branches for active development.
-
-Clone the `develop` branch for the un-core monorepo. TODO: Update Branch naming
-
-The project is using a `lerna/yarn` mono repository for development. Make sure you have [yarn](https://yarnpkg.com/) installed globally on your machine.
-
-```bash
-git clone --branch develop https://github.com/Polyxo/pui.git
-yarn install
-yarn build
+```sh
+corepack enable
+corepack prepare yarn@1.22.22 --activate
+yarn install --frozen-lockfile
 ```
 
-### Packages
+## Workspaces
 
-All packages can be found inside `packages/`.
+| Workspace | Purpose |
+| --- | --- |
+| `@progressiveui/react` | React 19 component library |
+| `@progressiveui/styles` | Sass sources and compiled CSS |
+| `@progressiveui/themes-core` | Style Dictionary tokens and theme builder |
+| `@progressiveui/icons` | Private SVG source workspace |
+| `@progressiveui/icons-core` | Icon generation tools |
+| `@progressiveui/icons-react` | Generated React icon components |
+| `@progressiveui/core-website` | Private Next.js documentation website |
 
-- `layout`: breakpoints, spacings, etc. no longer used, now themes!
-- `icons` all icons
-- `icons-core` tools to generate `icons`
-- `icons-react` the react package of the icons
-- `styles`: all components styles
-- `themes`: theming (colors, etc.) TODO: move to themes-core
-- `react`: the react components
+## Development
 
-### Documentation & list of components available
+Run commands from the repository root:
 
-View available Components [here](https://example.org. Usage information is available when you click the blue **Show Info** icon in the top right corner of the selected component.
-
-### Using the server
-
-We recommend the use of [React Storybook](https://github.com/storybooks/react-storybook) for developing components.
-
-1. Generate new tests
-
-```
-npm run test
-```
-
-2. Start the server:
-
-```
-npm run storybook
+```sh
+yarn start:react       # Storybook development server on port 9000
+yarn test              # Active React Testing Library suites
+yarn lint              # React and website flat-config ESLint
+yarn typecheck         # Shipped React API and website TypeScript
+yarn build:packages    # Tokens, styles, icons, and React library
+yarn build:storybook   # Production Storybook
+yarn build:website     # Website assets and Next.js production build
 ```
 
-3. Open browser to `http://localhost:9000/`.
-4. Develop components in the `/components` folder. Add the export to `index.js` to include them into the build.
-5. Write stories for your components in `/.components` with `.stories.js` or `stories.mdx` ending.
+The full pre-release gate is:
 
-### Commits
-
-Use [Conventional Commits](https://www.conventionalcommits.org) for commit messages and pre-commit hooks for commiting.
-
-Make sure your commit does not produce any errors while checking:
-
-- ESlint
-- jest tests
-- correct commit message
-
-### Testing
-
-Use jest for testing the components. Once commited the branches will be also tested on [Travis CI](https://travis-ci.org/wfp/ui).
-
-```
-npm run test
+```sh
+yarn validate
 ```
 
-### Deployment
+It also runs ESM/CommonJS/UMD package smoke tests, strict declaration consumption, public-export comparison, and bundle-size comparison. Version and publish scripts invoke this gate. Do not use publish commands as local validation.
 
-The UN Core uses Azure Devops, yarn, lerna and [semver](https://github.com/lerna/lerna/tree/main/commands/version) for automated versioning and the deployment.
+## Generated assets
 
-#### npm release
-
-- Commits on the `master` branch will be released as `@lastest` if a relevant commit is included (e.g. feat, fix, perf, breaking)
-- Commits on `next` branch will be released as `@next` if a relevant commit is included
-
-### Generate and release an alpha from a local machine
-
-```
-yarn publish:alpha-cli
-
-or
-git push --follow-tags origin next && npm publish --tag alpha
+```sh
+yarn generate:tokens          # Local default token output
+yarn generate:icons           # React icon formats and declarations
+yarn generate:website-assets  # Demo bundle and component metadata
 ```
 
-To publish local changes directly to a alpha release on npm.
+`packages/themes-core` also has `build:tokens`, which performs an authenticated remote token sync. It is not part of routine local or pull-request validation.
+The checked-in legacy dark artifact is intentionally preserved until its source
+format and output have a golden compatibility fixture.
 
-### Credits
+## Compatibility
 
-[WFP Design System](https://www.designsystem.wfp.org/support/credits)
+Public component behavior, markup, CSS classes, token names, and `@progressiveui/react` exports are compatibility contracts. Run `yarn verify:public-exports` after changing the React entry point or packaging.
+
+Legacy implementations and JavaScript Enzyme suites are quarantined rather than deleted. Read [packages/react/LEGACY.md](packages/react/LEGACY.md) before touching `othersrc`, `.legacy`, `-old`, Redux Form, React Dates, or React Table v7 code.
+
+## Contributing
+
+- Create a branch; do not work directly on the release branch.
+- Use [Conventional Commits](https://www.conventionalcommits.org/).
+- Keep commits focused and preserve unrelated working-tree edits.
+- Record an existing failure separately from a regression.
+- Never print `.npmrc`, tokens, or registry credentials.
+
+See [AGENTS.md](AGENTS.md) for a machine-oriented repository map and [MODERNIZATION.md](MODERNIZATION.md) for the 2026 audit, compatibility decisions, and remaining risks.

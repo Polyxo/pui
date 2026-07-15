@@ -1,81 +1,50 @@
-## themes-core
+# @progressiveui/themes-core
 
-The themes core generates design tokens by using [Style Dictionary](https://amzn.github.io/style-dictionary/#).
+Style Dictionary configuration, token sources, and generated theme artifacts
+for Progressive UI.
 
-### Using existing theme
+## Use the published theme
 
-TODO: Add paragraph
+Sass consumers can load the generated mixin through the exported subpath:
 
-```
-import variables from @progressiveui/themes-core/scss/variables;
-```
+```scss
+@use "@progressiveui/themes-core/dist/scss/default-css-theme" as theme;
 
-## Building a theme
-
-### Generate Source json on your own
-
-The source can be `json`, preferably generated from Figma using [Design Tokens](https://github.com/lukasoppermann/design-tokens).
-
-An example can be found in `tokens/design-tokens.tokens.json`
-
-```jsx
-// Add this to your package.json to generate a theme
-scripts: {
-    "build:theme": "node buildTheme.js",
+:root {
+  @include theme.theme-default();
 }
 ```
 
-```jsx
-// buildTheme.js configuration
-const { config } = require("@progressiveui/themes-core/config.js");
+## Build a custom theme
 
-/*
-config() can be configured
-source: defines the lookup for finding
-Example can be found in tokens/design-tokens.tokens.json
-*/
-const source = "tokens/**/*.json";
+The configuration API is ESM-only:
 
-// BuildPath: Output for the build
-const buildPath = "dist";
+```js
+import { config } from "@progressiveui/themes-core";
 
-config({ source, buildPath });
+config({
+  source: "tokens/**/*.json",
+  buildPath: "dist",
+  themeName: "default",
+});
 ```
 
-### Development
+`source` is a glob for Style Dictionary-compatible JSON token files.
+`buildPath` is the output directory, and `themeName` controls the generated
+Sass mixin name.
 
-### `build`
+## Repository commands
 
-Builds themes from existing raw tokens.
-
-```bash
-yarn build
+```sh
+yarn build         # Build the local default theme from checked-in tokens
+yarn build:tokens  # Sync remote tokens, filter them, and build
 ```
 
-### `build:tokens`
+`build:tokens` requires `GIT_ACCESS_TOKEN` and contacts the private Azure token
+repository. Routine local and pull-request validation uses `yarn build` and
+does not perform remote synchronization. The tracked legacy dark artifact is
+preserved until its source format has a golden compatibility fixture.
 
-A shorthand command that executes `sync:tokens`, `filter:theme`, and `build`. This script does the synchronization of design tokens, filtering of theme data, and the final theme build.
+## License
 
-```bash
-yarn build:tokens
-```
-
-### `sync:tokens`
-
-Downloads the latest `tokens.json` (Figma Tokens) from the tokens repository.
-
-Create a `.env` with [GIT_ACCESS_TOKEN](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
-
-```bash
-yarn sync:tokens
-```
-
-### `filter:theme`
-
-TODO: Remove this once the token source is cleaned up.
-
-Prepares raw tokens and cleans them up.
-
-```bash
-yarn filter:theme
-```
+Apache-2.0. See `LICENSE`.

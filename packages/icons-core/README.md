@@ -1,19 +1,33 @@
-## icons-core
+# @progressiveui/icons-core
 
-This tool generates a optimized icon library from a folder of svg files using [svgo](https://github.com/svg/svgo) and [react-svgr](https://react-svgr.com/).
+Node.js tooling for converting a directory of SVG files into a bundled React
+icon package. The package exposes the same API to ESM and CommonJS consumers.
 
-### Usage with cmd
-
-### Usage with node.js
+## Usage
 
 ```js
-const iconGenerator = require("@progressiveui/icons-core");
+import { convertFolder, jsx } from "@progressiveui/icons-core";
 
-iconGenerator({ src: "/folder", output: "/outputFolder" });
+await convertFolder("./icons", "./generated-icons", jsx);
 ```
 
-#### Structure
+CommonJS:
 
-- index.js
-- files/[name].js
-- metadata.json
+```js
+const { convertFolder, jsx } = require("@progressiveui/icons-core");
+
+await convertFolder("./icons", "./generated-icons", jsx);
+```
+
+`convertFolder` clears the output directory, converts every `.svg` file, writes
+an `index.js`, and produces ESM and UMD bundles. The package also exports
+`svgOptimized` for optimized SVG output.
+
+## Requirements
+
+- Node.js 18 or newer
+- An input directory containing SVG files
+
+## License
+
+Apache-2.0. See `LICENSE`.
