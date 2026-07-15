@@ -40,8 +40,7 @@
     "lerna:publishFromPackageAlpha": "yarn validate && lerna publish from-package --dist-tag alpha --temp-tag --yes",
     "lerna:version": "yarn validate && lerna version --conventional-commits",
     "lerna:versionNoPush": "yarn validate && lerna version --no-push --conventional-commits --yes",
-    "publish:main": "yarn validate && lerna publish --temp-tag",
-    "update:progressiveui": "bash ./update-progressiveui.sh"
+    "publish:main": "yarn validate && lerna publish --temp-tag"
   },
   "keywords": [
     "react",

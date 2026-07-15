@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "yarn build:vite",
-    "clean": "rimraf es lib umd storybook-static build react-docgen.json",
+    "clean": "rimraf dist es lib umd storybook-static build docs .temp react-docgen.json stats.html",
     "build:rollup": "rollup -c --bundleConfigAsCjs",
     "build:demos": "rollup -c rollupDemos.config.js --bundleConfigAsCjs",
     "build:storybook": "node scripts/buildStorybook.mjs",
