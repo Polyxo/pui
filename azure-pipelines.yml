@@ -19,28 +19,6 @@ steps:
     persistCredentials: true
 
   - script: |
-
-      # Install urlencode function to encode reserved characters in passwords
-      sudo apt-get install gridsite-clients
-
-      # Create local mirror of Azure DevOps repository
-      git clone --mirror https://$(System.AccessToken)@dev.azure.com/worldfoodprogramme/Design%20System/_git/bridge repo-mirror
-
-
-      # Sync AWS CodeCommit repository
-      cd repo-mirror
-      git push --mirror https://${AWS_GIT_USERNAME}:$(urlencode ${AWS_GIT_PASSWORD})@${AWS_REPO_URL}
-
-    displayName: "Sync repository with AWS CodeCommit"
-    env:
-      AZURE_REPO_URL: $(AZURE_REPO_URL)
-      AZURE_GIT_USERNAME: $(AZURE_GIT_USERNAME)
-      AZURE_GIT_PASSWORD: $(AZURE_GIT_PASSWORD)
-      AWS_REPO_URL: $(AWS_REPO_URL)
-      AWS_GIT_USERNAME: $(AWS_GIT_USERNAME)
-      AWS_GIT_PASSWORD: $(AWS_GIT_PASSWORD)
-
-  - script: |
       git config --global user.name "Azure Devops Pipeline"
       git config --global user.email "roberg.guehne@progressiveui.org"
     displayName: Git config user
@@ -53,7 +31,7 @@ steps:
         git checkout $(branchName)
   - task: NodeTool@0
     inputs:
-      versionSpec: "18.x"
+      versionSpec: "20.x"
     displayName: "Install Node.js"
 
   - task: DownloadSecureFile@1
@@ -65,26 +43,13 @@ steps:
     inputs:
       script: cp $(npmrcFile.secureFilePath) ./.npmrc
 
-  - script: |
-      npm run lerna:versionNoPush
-      git push --follow-tags origin HEAD:$(branchName)
-    displayName: "npm run lerna:version"
-    condition: or( eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true') )
-
   - bash: echo "##vso[task.setvariable variable=yarnCacheDir;]$(yarn cache dir)"
     displayName: Set yarn cache dir variable
 
   - script: |
-      npmVersionString=$(node -p "require('./lerna.json').version") 
+      npmVersionString=$(node -p "require('./package.json').version")
       echo "##vso[build.updatebuildnumber]$npmVersionString"
     displayName: "set build number"
-  - task: CmdLine@2
-    inputs:
-      script: |
-        cp $(npmrcFile.secureFilePath) .npmrc
-        cp $(npmrcFile.secureFilePath) ./packages/helpers/.npmrc
-        ls -a
-        cat .npmrc
   - task: Cache@2
     inputs:
       key: '"yarn" | "$(Agent.OS)" | yarn.lock'
@@ -112,12 +77,40 @@ steps:
     displayName: "yarn test"
 
   - script: |
+      set -euo pipefail
+
+      # Install urlencode function to encode reserved characters in passwords
+      sudo apt-get install gridsite-clients
+
+      # Create local mirror of Azure DevOps repository
+      git clone --mirror https://$(System.AccessToken)@dev.azure.com/worldfoodprogramme/Design%20System/_git/bridge repo-mirror
+
+      # Sync AWS CodeCommit repository only after validation succeeds
+      cd repo-mirror
+      git push --mirror https://${AWS_GIT_USERNAME}:$(urlencode ${AWS_GIT_PASSWORD})@${AWS_REPO_URL}
+    displayName: "Sync repository with AWS CodeCommit"
+    env:
+      AWS_REPO_URL: $(AWS_REPO_URL)
+      AWS_GIT_USERNAME: $(AWS_GIT_USERNAME)
+      AWS_GIT_PASSWORD: $(AWS_GIT_PASSWORD)
+
+  - script: |
+      set -euo pipefail
+      npm run lerna:versionNoPush
+    displayName: "npm run lerna:version"
+    condition: or(eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true'))
+
+  - script: |
+      set -euo pipefail
       npm run lerna:publishFromPackage
+      git push --follow-tags origin HEAD:$(branchName)
     displayName: "lerna publish"
     condition: eq(variables.isMain, 'true')
 
   - script: |
+      set -euo pipefail
       npm run lerna:publishFromPackageAlpha
+      git push --follow-tags origin HEAD:$(branchName)
     displayName: "lerna publish alpha (Develop)"
     condition: eq(variables.isDevelop, 'true')
   - task: PublishPipelineArtifact@1
