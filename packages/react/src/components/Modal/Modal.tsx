@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
@@ -139,12 +138,27 @@ const matchesFuncName =
     (name) => typeof Element.prototype[name] === "function",
   )[0];
 
+const enterHandledByTargetSelector = [
+  "button",
+  "a[href]",
+  "textarea",
+  "select",
+  '[role="button"]',
+  '[role="link"]',
+  '[contenteditable=""]',
+  '[contenteditable="true"]',
+  'input[type="button"]',
+  'input[type="reset"]',
+  'input[type="submit"]',
+].join(",");
+
 /** Modals focus the user’s attention exclusively on one task or piece of information via a window that sits on top of the page content. */
 
 function Modal(props: ModalProps) {
   const {
     modalHeading,
     modalLabel,
+    modalText: _modalText,
     className,
     components: componentsOverride = {},
     modalSecondaryAction,
@@ -159,25 +173,38 @@ function Modal(props: ModalProps) {
     kindMobile = "dialog",
     overscrollBehavior = "modal",
     onRequestClose = () => {},
-    // onRequestSubmit,
+    onRequestSubmit = () => {},
     onSecondarySubmit,
+    secondaryButtonText: _secondaryButtonText,
+    secondaryButtonDisabled: _secondaryButtonDisabled,
+    primaryButtonText: _primaryButtonText,
+    primaryButtonDisabled: _primaryButtonDisabled,
     iconDescription,
     inPortal = true,
     hideClose,
     handleBlur = () => {},
     wide,
     type,
+    warning,
+    danger,
+    width: _width,
     selectorPrimaryFocus,
+    selectorsFloatingMenus: selectorsFloatingMenusProp,
     primaryButtonRef,
     secondaryButtonRef,
-    // shouldSubmitOnEnter,
+    shouldSubmitOnEnter,
     ...other
   } = props;
 
   const { prefix } = useSettings();
+  const selectorsFloatingMenus = selectorsFloatingMenusProp ?? [
+    `.${prefix}--overflow-menu-options`,
+    `.${prefix}--tooltip`,
+    ".flatpickr-calendar",
+  ];
   const button = useRef<HTMLButtonElement>(null);
-  const outerModal = useRef<HTMLInputElement>(null);
-  const innerModal = useRef<HTMLInputElement>(null);
+  const outerModal = useRef<HTMLDivElement>(null);
+  const innerModal = useRef<HTMLDivElement>(null);
 
   const el = elementToAppend
     ? elementToAppend
@@ -187,19 +214,25 @@ function Modal(props: ModalProps) {
 
   const [beingOpen, setBeingOpen] = React.useState(false);
 
-  //   const handleKeyDown = (evt) => {
-  //     if (evt.which === 27) onRequestClose(evt, 'key');
-  //     if (evt.which === 13 && shouldSubmitOnEnter) onRequestSubmit(evt, 'key');
-  //   };
+  const handleKeyDown = (evt: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!open) return;
+    if (evt.key === "Escape") onRequestClose(evt, "key");
+    if (
+      evt.key === "Enter" &&
+      shouldSubmitOnEnter &&
+      !evt.defaultPrevented &&
+      !evt.repeat &&
+      !evt.nativeEvent.isComposing &&
+      !(
+        evt.target instanceof Element &&
+        evt.target.closest(enterHandledByTargetSelector)
+      )
+    ) {
+      onRequestSubmit();
+    }
+  };
 
   const elementOrParentIsFloatingMenu = (target) => {
-    const {
-      selectorsFloatingMenus = [
-        `.${prefix}--overflow-menu-options`,
-        `.${prefix}--tooltip`,
-        ".flatpickr-calendar",
-      ],
-    } = props;
     if (target && typeof target.closest === "function") {
       return selectorsFloatingMenus.some((selector) =>
         target.closest(selector),
@@ -209,7 +242,6 @@ function Modal(props: ModalProps) {
       while (target) {
         if (matchesFuncName && typeof target[matchesFuncName] === "function") {
           if (
-            // eslint-disable-next-line no-loop-func
             selectorsFloatingMenus.some((selector) =>
               target[matchesFuncName](selector),
             )
@@ -309,8 +341,8 @@ function Modal(props: ModalProps) {
       [`${prefix}--modal--background-image`]: backgroundImage,
       [`${prefix}--modal--passive`]: passiveModal,
       "is-visible": open,
-      [`${prefix}--modal--warning`]: type === "warning" || props.warning,
-      [`${prefix}--modal--danger`]: type === "danger" || props.danger,
+      [`${prefix}--modal--warning`]: type === "warning" || warning,
+      [`${prefix}--modal--danger`]: type === "danger" || danger,
       [`${prefix}--modal--desktop-${kind}`]: kind,
       [`${prefix}--modal--mobile-${kindMobile}`]: kindMobile,
       [`${prefix}--modal--scroll-${overscrollBehavior}`]: overscrollBehavior,
@@ -365,7 +397,7 @@ function Modal(props: ModalProps) {
   const modal = (
     <div
       {...other}
-      // onKeyDown={handleKeyDown}
+      onKeyDown={handleKeyDown}
       //onClick={handleClick}
       onBlur={handleBlurEvent}
       className={modalClasses}

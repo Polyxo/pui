@@ -7,8 +7,7 @@ import { ModalProps } from "../Modal/Modal";
 
 /** Modal Wrapper component to encapsulate your Modal within a button. */
 interface ModalWrapperProps
-  extends ModalProps,
-    React.ComponentPropsWithRef<"div"> {
+  extends ModalProps, React.ComponentPropsWithRef<"div"> {
   /**
    * ID of the trigger button.
    */
@@ -58,6 +57,21 @@ interface ModalWrapperProps
   onKeyDown?: (evt: React.KeyboardEvent<HTMLDivElement>) => void;
 }
 
+const assignRef = <T,>(ref: React.Ref<T> | undefined, value: T | null) => {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+};
+
+type CustomButtonProps = {
+  disabled?: boolean;
+  inputref?: React.RefObject<HTMLButtonElement | null>;
+  onClick?: React.MouseEventHandler;
+  ref?: React.Ref<HTMLButtonElement>;
+};
+
 const ModalWrapper: React.FC<ModalWrapperProps> = ({
   children,
   customButton,
@@ -67,28 +81,51 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
   buttonTriggerClassName,
   triggerButtonKind,
   disabled,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleSubmit = () => {},
+  handleOpen: onOpen,
+  handleClose: onClose,
   shouldCloseAfterSubmit = true,
   ...other
 }) => {
   const { prefix } = useSettings();
-  const triggerButton = React.createRef<HTMLButtonElement>();
+  const triggerButton = React.useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = React.useState(false);
+  const isOpenRef = React.useRef(isOpen);
+  const wasOpen = React.useRef(isOpen);
+  const customButtonRef = (
+    customButton as
+      | React.ReactElement<{ ref?: React.Ref<HTMLButtonElement> }>
+      | undefined
+  )?.props.ref;
 
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
+  const setCustomButtonRef = React.useCallback(
+    (node: HTMLButtonElement | null) => {
+      triggerButton.current = node;
+      assignRef(customButtonRef, node);
+    },
+    [customButtonRef],
+  );
 
-  const handleClose = () => {
-    setIsOpen(false);
-    if (!isOpen) {
-      triggerButton.current && triggerButton.current.focus();
-      if (handleClose) {
-        handleClose();
-      }
+  React.useEffect(() => {
+    if (wasOpen.current && !isOpen) {
+      triggerButton.current?.focus();
     }
-  };
+    wasOpen.current = isOpen;
+  }, [isOpen]);
+
+  const handleOpen = React.useCallback(() => {
+    if (isOpenRef.current) return;
+    isOpenRef.current = true;
+    setIsOpen(true);
+    onOpen?.();
+  }, [onOpen]);
+
+  const handleClose = React.useCallback(() => {
+    if (!isOpenRef.current) return;
+    isOpenRef.current = false;
+    setIsOpen(false);
+    onClose?.();
+  }, [onClose]);
 
   const handleOnRequestSubmit = () => {
     if (handleSubmit) {
@@ -108,11 +145,14 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
 
   const customButtonEl = customButton
     ? React.cloneElement(
-        customButton as React.ReactElement<Record<string, unknown>>,
+        customButton as React.ReactElement<CustomButtonProps>,
         {
-          disabled: disabled,
+          disabled,
           onClick: handleOpen,
-          inputref: triggerButton,
+          ref: setCustomButtonRef,
+          ...(typeof customButton.type === "string"
+            ? {}
+            : { inputref: triggerButton }),
         },
       )
     : undefined;
@@ -122,9 +162,9 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({
       role="presentation"
       className={`${prefix}--modal__wrapper`}
       onKeyDown={(evt) => {
-        if (evt.which === 27) {
+        if (evt.key === "Escape" && isOpen) {
           handleClose();
-          onKeyDown && onKeyDown(evt);
+          onKeyDown?.(evt);
         }
       }}
     >
