@@ -1,4 +1,3 @@
-import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 const config = [
   {
@@ -9,10 +8,9 @@ const config = [
       sourcemap: true,
     },
     external: ['axios', 'os', 'url'],
-    plugins: [typescript()],
   },
   {
-    input: 'build/compiled/index.js',
+    input: 'build/compiled/index.d.ts',
     plugins: [dts()],
     output: {
       file: `dist/bundle.d.ts`,

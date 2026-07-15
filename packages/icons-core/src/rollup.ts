@@ -37,11 +37,19 @@ async function bundle(
 
   const packageJsonPath = path.join(packageFolder, 'package.json');
   const packageJson = await fs.readJson(packageJsonPath);
-  const { dependencies = {} } = packageJson;
+  const { dependencies = {}, peerDependencies = {} } = packageJson;
+  const externalDependencies = [
+    ...Object.keys(dependencies),
+    ...Object.keys(peerDependencies),
+  ];
+  const isExternal = (id) =>
+    externalDependencies.some(
+      (dependency) => id === dependency || id.startsWith(`${dependency}/`)
+    );
 
-  const bundle = await rollup({
+  const rollupBundle = await rollup({
     input: entrypoint,
-    external: Object.keys(dependencies),
+    external: isExternal,
     plugins: [
       babel({
         exclude: 'node_modules/**',
@@ -67,26 +75,33 @@ async function bundle(
     ],
   });
 
-  await Promise.all(
-    jsEntryPoints.map(({ format, file }) => {
-      const outputOptions = {
-        format,
-        file,
-        exports: 'auto',
-        name: 'not used',
-        globals: undefined,
-      };
-
-      if (format === 'umd') {
-        outputOptions.name = name;
-        outputOptions.globals = {
-          ...formatDependenciesIntoGlobals(dependencies),
-          ...globals,
+  try {
+    await Promise.all(
+      jsEntryPoints.map(({ format, file }) => {
+        const outputOptions = {
+          format,
+          file,
+          exports: 'auto',
+          name: 'not used',
+          globals: undefined,
         };
-      }
-      return bundle.write(outputOptions);
-    })
-  );
+
+        if (format === 'umd') {
+          outputOptions.name = name;
+          outputOptions.globals = {
+            ...formatDependenciesIntoGlobals({
+              ...dependencies,
+              ...peerDependencies,
+            }),
+            ...globals,
+          };
+        }
+        return rollupBundle.write(outputOptions);
+      })
+    );
+  } finally {
+    await rollupBundle.close();
+  }
 }
 
 function formatGlobals(string) {

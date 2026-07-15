@@ -62,5 +62,5 @@ export async function convertFolder(
 
   console.log(`Generated index: ${distIndex}`);
 
-  rollup(distIndex);
+  await rollup(distIndex);
 }
