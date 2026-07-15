@@ -5,7 +5,8 @@ Audit date: 2026-07-15
 Branch: `chore/modernize-monorepo`
 
 Baseline: `b662910f3` (`feat/april-release`)
-Local validation runtime: Node 24.0.2 and Yarn 1.22.22; CI target: Node 22 and Yarn 1.22.22.
+Baseline validation runtime: Node 24.0.2 and Yarn 1.22.22; CI target at the
+start of the audit: Node 22 and Yarn 1.22.22.
 
 The work started with uncommitted Sass and `sass-loader` updates in the React and website manifests plus their lockfile changes. Those edits were preserved and adopted into the modernization dependency commit.
 
@@ -36,7 +37,7 @@ Baseline package facts:
 - Icon baseline gzip sizes were 46,685 bytes ESM and 47,015 bytes UMD.
 - CSS baseline was 271,808 bytes raw and 37,092 bytes gzip.
 
-## Implemented changes
+## Implemented changes (2026-07-15)
 
 ### CI and release safety
 
@@ -94,7 +95,7 @@ Baseline package facts:
 - Published package manifests include license files and package-specific ESM/CommonJS usage examples.
 - Added `packages/react/LEGACY.md`; no legacy implementation or compatibility dependency was removed.
 
-## Compatibility decisions
+## Compatibility decisions recorded 2026-07-15
 
 - Runtime public exports remain exactly the baseline 127 names.
 - Existing React `.es.js` and `.cjs.js` entry files remain available alongside native extensions.
@@ -103,11 +104,16 @@ Baseline package facts:
 - `Text` now accepts the already-rendered `story-title` and `story-subtitle` kinds in its public type.
 - Enzyme, Redux Form, React Table v7, React Dates, and other React 16-era example dependencies remain isolated because removing them would require migrations and compatibility evidence.
 - Style Dictionary stays on v3.9.2. Its v4 API migration is deferred to a token-fixture-focused pull request.
-- Node 22 is the repository and CI toolchain policy, not a new runtime floor for the browser-only styles, themes, or icon packages. Existing React peer ranges remain compatible.
+- Node 22 was the repository and CI toolchain policy at this stage, not a new
+  runtime floor for the browser-only styles, themes, or icon packages. The
+  repository policy was superseded by the Node 24 follow-up below; existing
+  React peer ranges remain compatible.
 
-## Deferred work and risks
+## Deferred work and risks recorded 2026-07-15
 
-- Migrate the remaining 64 Enzyme-dependent JavaScript suites before removing Enzyme or its React 16 adapter. There are 66 quarantined `*-test.js` suites in total; two `othersrc` suites already use Testing Library.
+- At this point, 64 Enzyme-dependent JavaScript suites remained out of 66
+  quarantined `*-test.js` suites; two `othersrc` suites already used Testing
+  Library.
 - Fix Modal prop forwarding warnings under React 19 in a behavior-focused change.
 - Resolve the 69 React lint warnings and 24 website lint warnings before making warning budgets zero.
 - Replace Redux Form/React Dates/React Table v7 examples, then remove their incompatible peer trees.
@@ -121,7 +127,7 @@ Baseline package facts:
 - CSS selector/custom-property and token name/value semantic fixtures are still needed; export and bundle checks alone do not prove those contracts.
 - Remove or formally isolate the redundant direct Rollup React build after downstream consumers confirm Vite output is sufficient.
 
-## Final validation
+## Final validation for the 2026-07-15 stage
 
 Validation used a detached worktree created without `node_modules`. `yarn install --frozen-lockfile` passed there in 35.53 seconds. The install retained warnings from React 16-era development dependencies, but did not change the lockfile.
 
@@ -160,7 +166,7 @@ Final bundle comparison:
 | Icons UMD | 122,374 (-59,984) | 33,137 (-13,878) |
 | Styles CSS | 271,808 (+0) | 37,164 (+72) |
 
-## Recommended follow-up pull requests
+## Recommended follow-up pull requests recorded 2026-07-15
 
 1. Migrate Enzyme suites component-by-component to Testing Library, starting with active exported components; remove the React 16 adapter only after the final suite moves.
 2. Tighten public JavaScript, website, and Storybook TypeScript boundaries, then enable `noImplicitAny` in small ownership-based slices.
@@ -169,3 +175,169 @@ Final bundle comparison:
 5. Resolve React 19 DOM-prop and React Compiler warnings with behavior-specific tests.
 6. Evaluate Turbopack for the website and retire the redundant React Rollup build only with downstream and bundle evidence.
 7. Exercise the hardened Azure validation/version/publish flow in a non-production dry-run pipeline without registry publication.
+
+## Follow-up audit and implementation — 2026-07-16
+
+This section records the next reviewable batch. It supersedes current-state
+version, test-count, and deferred-work statements above without rewriting the
+historical baseline or its clean validation evidence.
+
+### Changes implemented
+
+#### Agent guidance, CI, and security
+
+- Expanded `AGENTS.md` into a repository-specific operating guide and added the
+  architecture, generation, validation, package-contract, legacy, secret, and
+  remote-side-effect maps under `docs/architecture`.
+- Adopted Node 24 as the repository build policy in `.nvmrc`, root and website
+  engines, Node types, and Azure. CI now selects `ubuntu-24.04`, fetches complete
+  history and tags, and keeps checkout credentials disabled. Yarn remains
+  1.22.22.
+- Split broad local feedback into `yarn validate:quick` and the full
+  `yarn validate:release`; `yarn validate` remains the stable release-equivalent
+  alias used before versioning or publishing.
+- Added a security policy and weekly family-scoped Dependabot groups for minor
+  and patch updates. Major updates remain separate, review-required pull
+  requests rather than being mixed into those groups.
+- Added an immutable tag-and-digest-pinned OSV-Scanner 2.3.8 CI report. The
+  current lockfile still has known findings, so this step must remain report-only
+  until a reviewed baseline or remediation policy can make it a reliable gate.
+  It is not documented as a passing vulnerability gate.
+- No package publish, version, tag, mirror, token synchronization, or Algolia
+  write was run. No registry or search credential was printed.
+
+#### Dependencies and website
+
+- Aligned Next and `eslint-config-next` at exact version 16.2.10 and migrated the
+  active content renderer to `next-mdx-remote` 6. The website now uses TypeScript
+  bundler resolution as required by the updated Next toolchain.
+- Removed unused website packages including Axios, `next-seo`,
+  `react-render-html`, and inactive remark/hast integrations after checking local
+  imports.
+- Updated selected Babel packages, Node types, Handlebars, PostCSS, and the
+  icon-core SVGO line rather than applying unbounded major upgrades.
+- Adapted live MDX code blocks to MDX 6 node-shaped children and Prettier 3's
+  asynchronous formatter. Formatting now updates state without assigning a
+  `Promise` to rendered code and falls back to the original source on failure.
+- Deleted the two unauthenticated website API routes that could mutate the
+  Algolia index. The remaining administrative script has an offline dry run,
+  validates record IDs and non-empty input, requires the explicit
+  `ALGOLIA_INDEX_WRITE=update-ui-docs` confirmation plus server-side credentials,
+  and replaces the index atomically.
+
+#### React behavior and legacy migration
+
+- Repaired Modal and ModalWrapper behavior under React 19: external open/close
+  callbacks fire once, Escape closes with the key reason, opted-in Enter submits,
+  focus returns to native and legacy `inputref` custom triggers, internal
+  configuration props no longer leak to the DOM, and modal element refs use
+  their real element types.
+- Replaced the Hero Enzyme suite with a TypeScript Testing Library suite before
+  removing it. The implementation now makes the existing `href`-before-`url`
+  behavior explicit instead of relying on DOM spread order, and related-card
+  images receive derived or explicit alternative text.
+- Removed a shipped Slider debug log.
+- No legacy implementation was removed. The quarantine now contains 65
+  JavaScript `*-test.js` suites, of which 63 import Enzyme; the two exceptions are
+  Testing Library suites under `othersrc`. There are 13 active TypeScript Jest
+  suites.
+
+### Compatibility decisions
+
+- Node 24 is the contributor, build, website, and CI policy (`>=24 <25`). This
+  does not add a Node engine to the published browser-oriented packages or alter
+  their React peer ranges.
+- No root export name, compatibility alias, CSS class, token, or icon name was
+  intentionally changed in this batch. The final public-export and packed-package
+  checks remain required before merge.
+- `Hero.imageAlt` is additive. Existing `href` callers retain precedence over the
+  `url` compatibility fallback.
+- Modal changes correct callback, keyboard, focus, and invalid-DOM-prop behavior;
+  they do not intentionally change its CSS classes or public export.
+- The TypeScript legacy boundary was not widened. New production and test code is
+  TypeScript; `allowJs` remains confined to the documented compatibility configs.
+- Enzyme and its React 16 adapter, Redux Form, React Dates, and React Table v7
+  remain installed until their remaining references have behavior-equivalent
+  migrations.
+- Vite 6, Rollup 4, Storybook 8, Style Dictionary 3, Webpack-mode Next builds,
+  token names and values, and icon generation formats remain unchanged by this
+  follow-up.
+
+### Validation evidence for this follow-up
+
+The following commands or focused checks completed successfully after their
+listed changes. They do not replace the still-pending clean release-equivalent
+gate for the complete follow-up diff.
+
+| Check                                 | Result recorded 2026-07-16                                                                                      |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `yarn install --frozen-lockfile`      | Passed after the final manifest and lockfile refresh; expected legacy warnings remain.                         |
+| Algolia `search:index:check`          | Passed offline and validated 150 records; no remote write or credential was used.                               |
+| Focused Hero Testing Library suite    | Passed: 1 suite and 5 tests.                                                                                    |
+| Focused Hero/Modal/ModalWrapper suites | Passed after compatibility review: 3 suites and 18 tests.                                                     |
+| Full React workspace Jest run         | Passed: 13 suites, 91 tests, and 4 snapshots. Quarantined JavaScript suites remained excluded.                  |
+| React workspace type-check            | Passed after the Modal, Hero, and dependency changes.                                                           |
+| Website type-check                    | Passed after the Next/MDX compatibility fix.                                                                    |
+| `yarn build:website`                  | Passed with Next 16.2.10 in Webpack mode and generated 154 static pages. Existing Sass/content warnings remain. |
+
+### Failures and regressions encountered
+
+- A website type-check immediately after upgrading Next read stale `.next` type
+  metadata and failed on `PrefetchForTypeCheckInternal`. Regenerating the Next
+  output removed that stale-state failure.
+- The first sandboxed website build could not fetch Google Fonts because network
+  access was unavailable. The network-enabled retry reached compilation; this
+  was an environment failure, not counted as a passing build.
+- The first Next 16.2.10/MDX 6 production build then failed while prerendering
+  `/how-tos/write-documentation` because the live code block assumed MDX children
+  were always strings and because Prettier 3 returns a promise. The recursive
+  text normalization and asynchronous formatting change fixed that regression;
+  the subsequent production build passed.
+- Yarn Classic's registry audit endpoint returned HTTP 410, so `yarn audit` did
+  not provide usable evidence. The OSV scan ran instead and correctly exited
+  nonzero for known findings.
+- The initial OSV inventory contained 59 affected package-version entries, 38
+  package names, 113 advisories, and 114 unique package-name/advisory pairs.
+  After selected updates and the final MDX upgrade, the report contains 53
+  affected package-version entries across 32 package names, 61 advisories, and
+  62 unique package-name/advisory pairs. By unique advisory, 4 are critical, 31
+  high, 21 medium, and 5 low. OSV correctly exits nonzero; no clean security
+  result is claimed.
+- For this follow-up diff, the package build, Storybook build, package/packed
+  consumers, public-export comparison,
+  bundle-size comparison, clean-tree check, and complete `yarn validate` were not
+  yet recorded at the time of this update.
+
+### Remaining risks and recommended pull requests
+
+1. Run and record the complete clean `yarn validate` sequence for this follow-up,
+   including frozen installation, generated cleanliness, packed ESM/CommonJS/UMD
+   and declaration consumers, public exports, and bundle sizes.
+2. Triage the final OSV report by direct owner and runtime reachability. Remediate
+   safe parent upgrades in focused pull requests, document unavoidable legacy
+   development-only findings, and make CI blocking only when its baseline policy
+   cannot create false regressions.
+3. Migrate the remaining 63 Enzyme suites component-by-component, preserving
+   behavior, markup, classes, and focus/accessibility evidence before removing
+   Enzyme or the React 16 adapter.
+4. Tighten TypeScript by shipped-source ownership: remove remaining JavaScript
+   production boundaries, enable `noImplicitAny` in small slices, and make the
+   website strict without hiding errors behind generated output or blanket
+   exceptions.
+5. Replace Redux Form, React Dates, and React Table v7 examples and wrappers in
+   dedicated compatibility migrations.
+6. Consolidate React build/declaration ownership only after API and declaration
+   fixtures prove Vite can replace the retained direct Rollup path. Evaluate API
+   Extractor or equivalent signature reports separately from runtime export-name
+   checks.
+7. Add golden light/dark token, selector, custom-property, icon, and generated
+   cleanliness fixtures before Style Dictionary 4 or broad Sass modernization.
+8. Address remaining React/website lint, React Compiler, Sass, and content-parser
+   warnings with ownership-specific budgets. Keep Next on Webpack, Storybook on
+   8, and Vite on 6 until dedicated migration evidence exists.
+9. Add accessibility and visual-regression coverage for stable component stories,
+   and consider `publint`, package-attestation checks, and dead-code analysis as
+   independent, reviewable gates.
+10. Rehearse Azure validation/version/publish ordering in a non-production
+    pipeline. Moving registry access to workload identity or another short-lived
+    credential mechanism requires release-owner and infrastructure coordination.

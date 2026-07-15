@@ -1,12 +1,18 @@
 # React legacy-code inventory
 
-Legacy code is intentionally quarantined while compatibility requirements are established. No legacy component was deleted during the 2026 modernization.
+Legacy code is intentionally quarantined while compatibility requirements are
+established. No legacy component was deleted during the 2026 modernization.
 
 ## Current inventory
 
 - `othersrc`: 76 files in 14 component directories.
-- `src` old/legacy variants: 35 files matching `.legacy` or `old` naming.
-- JavaScript `*-test.js` suites: 66; 64 still import Enzyme. The two exceptions are pre-existing Testing Library suites under `othersrc`.
+- `src` old/legacy JavaScript variants: 35 files matching `*-old*.js`,
+  `*.legacy.js`, or `*.js.legacy` naming.
+- JavaScript `*-test.js` suites: 65; 63 still import Enzyme. The two exceptions
+  are pre-existing Testing Library suites under `othersrc`.
+- Active TypeScript Jest suites: 13. The Hero suite moved from an Enzyme-backed
+  JavaScript test to Testing Library on 2026-07-16; its replacement covers the
+  documented classes, link aliases, related-card structure, and image text.
 - Active cross-boundary reference: the `ContentSwitcher` Storybook story imports `othersrc/Switch`.
 - Redux Form is referenced by internal wrappers, historical documentation, and legacy examples.
 - React Table v7 is used by the table story and a legacy table story, not the shipped runtime bundle.
@@ -16,7 +22,8 @@ Legacy code is intentionally quarantined while compatibility requirements are es
 - The production declaration and package builds exclude `othersrc`, stories, tests, old files, and `.legacy` files.
 - `tsconfig.legacy.json` is the explicit JavaScript/legacy compiler boundary.
 - The active Jest project discovers dot-named TypeScript tests only. It never loads the React 16 Enzyme adapter.
-- Enzyme remains installed until every required suite has a Testing Library replacement.
+- Enzyme remains installed until every required suite has a Testing Library
+  replacement.
 
 ## Removal gate
 
