@@ -1,3 +1,5 @@
+// Shared public component types. This is a TypeScript source module so the
+// declaration build reliably includes it for package consumers.
 declare type ScreenSize = "full" | "lg" | "md" | "sm";
 
 declare type StatusKind = "info" | "error" | "warning" | "success";
@@ -34,7 +36,7 @@ declare interface IIcon {
   width?: string;
   height?: string;
   viewBox: string;
-  svgData: React.ReactSVG | React.ReactSVGElement;
+  svgData: React.ReactNode;
 }
 
 declare type CardKind = "simple-card" | "overlay";
@@ -69,6 +71,8 @@ declare type TextKind =
   | "h6"
   | "title"
   | "subtitle"
+  | "story-title"
+  | "story-subtitle"
   | "bold"
   | "strong"
   | "inline-highlight"

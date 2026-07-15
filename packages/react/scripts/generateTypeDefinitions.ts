@@ -23,18 +23,23 @@ const options = {
   },
 };
 
-export default async function walk(directory: string) {
+async function collectFiles(directory: string) {
   let fileList: string[] = [];
-  // TODO: fix only run once
   const files = await readdir(directory);
   for (const file of files) {
     const p = path.join(directory, file);
     if ((await stat(p)).isDirectory()) {
-      fileList = [...fileList, ...(await walk(p))];
+      fileList = [...fileList, ...(await collectFiles(p))];
     } else {
       fileList.push(p);
     }
   }
+
+  return fileList;
+}
+
+export default async function walk(directory: string) {
+  const fileList = await collectFiles(directory);
 
   const tsxFileList = fileList.filter(
     (file) =>
@@ -74,7 +79,9 @@ async function startGenerateTypes() {
   await rm(distUrl, { recursive: true, force: true });
 
   await walk("./src/components");
-  process.exit();
 }
 
-startGenerateTypes();
+startGenerateTypes().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

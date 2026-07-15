@@ -1,12 +1,20 @@
 import { defineConfig } from "vite";
 import path from "path";
-import { readFile, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
 import dts from "vite-plugin-dts";
 
 const distDirectory = path.resolve(__dirname, "dist");
 const legacyArtifacts = [
-  ["index.mjs", "index.es.js"],
-  ["index.cjs", "index.cjs.js"],
+  {
+    sourceFile: "index.mjs",
+    legacyFile: "index.es.js",
+    code: 'export * from "./index.mjs";\n',
+  },
+  {
+    sourceFile: "index.cjs",
+    legacyFile: "index.cjs.js",
+    code: '"use strict";\nmodule.exports = require("./index.cjs");\n',
+  },
 ];
 
 const isReactExternal = (id) =>
@@ -18,28 +26,19 @@ function legacyCompatibilityArtifacts() {
     apply: "build",
     async closeBundle() {
       await Promise.all(
-        legacyArtifacts.map(async ([sourceFile, legacyFile]) => {
-          const sourcePath = path.join(distDirectory, sourceFile);
+        legacyArtifacts.map(async ({ sourceFile, legacyFile, code }) => {
           const legacyPath = path.join(distDirectory, legacyFile);
-          const sourceMapPath = `${sourcePath}.map`;
           const legacyMapPath = `${legacyPath}.map`;
-
-          const [code, sourceMapContents] = await Promise.all([
-            readFile(sourcePath, "utf8"),
-            readFile(sourceMapPath, "utf8"),
-          ]);
-          const sourceMap = JSON.parse(sourceMapContents);
-
-          sourceMap.file = legacyFile;
+          const sourceMap = {
+            version: 3,
+            file: legacyFile,
+            sources: [sourceFile],
+            names: [],
+            mappings: "",
+          };
 
           await Promise.all([
-            writeFile(
-              legacyPath,
-              code.replace(
-                `sourceMappingURL=${sourceFile}.map`,
-                `sourceMappingURL=${legacyFile}.map`
-              )
-            ),
+            writeFile(legacyPath, code),
             writeFile(legacyMapPath, JSON.stringify(sourceMap)),
           ]);
         })
@@ -49,8 +48,18 @@ function legacyCompatibilityArtifacts() {
 }
 
 export default defineConfig({
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production"),
+  },
+  esbuild: {
+    jsx: "transform",
+    jsxFactory: "__PuiReact.createElement",
+    jsxFragment: "__PuiReact.Fragment",
+    jsxInject: 'import * as __PuiReact from "react"',
+  },
   plugins: [
     dts({
+      tsconfigPath: "./tsconfig.declarations.json",
       entryRoot: "src",
       outputDir: "dist",
       include: ["src/**/*.{ts,tsx,js,jsx}"],

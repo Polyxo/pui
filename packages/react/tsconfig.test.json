@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["jest", "node", "mdx"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": [
+    "dist",
+    "docs",
+    "node_modules",
+    "othersrc",
+    "src/indexStories.ts",
+    "src/**/*.stories.*",
+    "src/**/*.legacy.*",
+    "src/**/*-old.*"
+  ]
+}

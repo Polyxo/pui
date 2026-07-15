@@ -1,0 +1,12 @@
+{
+  "packages/react/dist/index.cjs": { "raw": 193166, "gzip": 57704 },
+  "packages/react/dist/index.mjs": { "raw": 279911, "gzip": 69385 },
+  "packages/react/dist/index.umd.js": { "raw": 192087, "gzip": 57548 },
+  "packages/icons-react/es/index.mjs": { "raw": 176853, "gzip": 46685 },
+  "packages/icons-react/umd/index.js": { "raw": 182358, "gzip": 47015 },
+  "packages/styles/styles.css": {
+    "raw": 271808,
+    "gzip": 37092,
+    "tolerance": 1.06
+  }
+}

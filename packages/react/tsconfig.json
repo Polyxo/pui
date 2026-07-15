@@ -8,26 +8,27 @@
     "declaration": true,
     "esModuleInterop": true,
     "lib": ["ES5", "ES2015", "ES2016", "DOM", "ESNext"],
-    "types": ["jest", "node", "mdx"],
+    "types": ["node"],
     "noImplicitAny": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "allowJs": true,
+    "allowJs": false,
     "sourceMap": true,
     "strict": true,
-    "target": "ES6",
-    "allowImportingTsExtensions": true
+    "target": "ES6"
   },
   "typeRoots": ["./node_modules/@types", "./typings"],
-  "rules": {
-    "@typescript-eslint/no-explicit-any": "off"
-  },
-  "include": ["src", "othersrc/FileUploader"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": [
     "node_modules",
     "dist",
+    "othersrc",
+    "src/indexStories.ts",
     "src/**/*.test.tsx",
     "src/**/*.test.ts",
-    "**/*.stories.tsx"
+    "src/**/*-test.*",
+    "src/**/*.stories.*",
+    "src/**/*.legacy.*",
+    "src/**/*-old.*"
   ]
 }

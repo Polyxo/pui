@@ -5,7 +5,6 @@ import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";
 import FormItem from "../FormItem/FormItem";
 import { WarningSolid } from "@progressiveui/icons-react";
-import * as HookForm from "react-hook-form";
 
 /**
    * Optionally provide the default value of the input @design
@@ -41,7 +40,7 @@ export interface InputProps {
    * Specify whether the control is currently invalid.
    * Either a boolean in combination with `invalidText` or an `object`( eg. { message: "Message", …otherErrorProperties }) can be passed.
    */
-  invalid?: boolean | HookForm.FieldError | any;
+  invalid?: any;
   /**
    * Provide the text that is displayed when the control is in an invalid state @design
    */

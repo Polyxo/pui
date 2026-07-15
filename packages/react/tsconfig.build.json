@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.declarations.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "files": ["src/index.ts"],
+  "include": [],
+  "exclude": [
+    ".storybook",
+    "dist",
+    "docs",
+    "node_modules",
+    "othersrc",
+    "src/indexStories.ts",
+    "src/**/*.stories.*",
+    "src/**/*.test.*",
+    "src/**/*-test.*",
+    "src/**/*.legacy.*",
+    "src/**/*-old.*"
+  ]
+}

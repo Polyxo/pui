@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "strict": false,
+    "types": ["jest", "node", "mdx"]
+  },
+  "include": [
+    "othersrc/**/*",
+    "src/**/*.legacy.*",
+    "src/**/*-old.*",
+    "src/**/*-test.js"
+  ],
+  "exclude": ["dist", "docs", "node_modules"]
+}

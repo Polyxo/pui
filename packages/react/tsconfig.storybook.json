@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "types": ["node", "mdx"]
+  },
+  "include": [".storybook/**/*", "src/**/*.stories.*", "src/indexStories.ts"],
+  "exclude": ["dist", "docs", "node_modules", "othersrc"]
+}
