@@ -1,8 +1,4 @@
 variables:
-  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/heads/') }}:
-    branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
-  ${{ if startsWith(variables['Build.SourceBranch'], 'refs/pull/') }}:
-    branchName: $[ replace(variables['System.PullRequest.SourceBranch'], 'refs/heads/', '') ]
   isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
   isDevelop: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
 
@@ -23,25 +19,15 @@ steps:
       git config --global user.email "roberg.guehne@progressiveui.org"
     displayName: Git config user
 
-  - task: CmdLine@2
-    displayName: Checkout $(branchName) Original $(Build.SourceBranch)
-    inputs:
-      script: |
-        git fetch --all
-        git checkout $(branchName)
   - task: NodeTool@0
     inputs:
-      versionSpec: "20.x"
+      versionSpec: "22.x"
     displayName: "Install Node.js"
 
-  - task: DownloadSecureFile@1
-    name: npmrcFile
-    displayName: "Download npmrc certificate"
-    inputs:
-      secureFile: "npmrc"
-  - task: CmdLine@2
-    inputs:
-      script: cp $(npmrcFile.secureFilePath) ./.npmrc
+  - script: |
+      corepack enable
+      corepack prepare yarn@1.22.22 --activate
+    displayName: "Activate Yarn 1.22.22"
 
   - bash: echo "##vso[task.setvariable variable=yarnCacheDir;]$(yarn cache dir)"
     displayName: Set yarn cache dir variable
@@ -64,55 +50,69 @@ steps:
     displayName: "yarn install"
 
   - script: |
-      yarn build
-    displayName: "yarn build"
+      yarn validate
+    displayName: "Validate lint, types, tests, builds and packages"
     env:
       NEXT_PUBLIC_API: $(NEXT_PUBLIC_API)
       NEXT_PUBLIC_ALGOLIA_APP_ID: $(NEXT_PUBLIC_ALGOLIA_APP_ID)
       NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY: $(NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY)
-      ALGOLIA_SEARCH_ADMIN_KEY: $(ALGOLIA_SEARCH_ADMIN_KEY) 
-
-  - script: |
-      yarn test
-    displayName: "yarn test"
 
   - script: |
       set -euo pipefail
+      yarn lerna version --no-push --conventional-commits --conventional-graduate --yes
+    displayName: "Version stable packages"
+    condition: and(succeeded(), eq(variables.isMain, 'true'))
 
-      # Install urlencode function to encode reserved characters in passwords
-      sudo apt-get install gridsite-clients
+  - script: |
+      set -euo pipefail
+      yarn lerna version --no-push --conventional-commits --conventional-prerelease --preid alpha --yes
+    displayName: "Version alpha packages"
+    condition: and(succeeded(), eq(variables.isDevelop, 'true'))
 
-      # Create local mirror of Azure DevOps repository
-      git clone --mirror https://$(System.AccessToken)@dev.azure.com/worldfoodprogramme/Design%20System/_git/bridge repo-mirror
+  - task: DownloadSecureFile@1
+    name: npmrcFile
+    displayName: "Download npm publish configuration"
+    inputs:
+      secureFile: "npmrc"
+    condition: and(succeeded(), or(eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true')))
 
-      # Sync AWS CodeCommit repository only after validation succeeds
-      cd repo-mirror
-      git push --mirror https://${AWS_GIT_USERNAME}:$(urlencode ${AWS_GIT_PASSWORD})@${AWS_REPO_URL}
-    displayName: "Sync repository with AWS CodeCommit"
+  - task: CmdLine@2
+    displayName: "Materialize npm publish configuration"
+    inputs:
+      script: cp $(npmrcFile.secureFilePath) ./.npmrc
+    condition: and(succeeded(), or(eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true')))
+
+  - script: |
+      set -euo pipefail
+      yarn lerna publish from-package --temp-tag --yes
+      git push --follow-tags origin HEAD:refs/heads/main
+    displayName: "lerna publish"
+    condition: and(succeeded(), eq(variables.isMain, 'true'))
+
+  - script: |
+      set -euo pipefail
+      yarn lerna publish from-package --dist-tag alpha --temp-tag --yes
+      git push --follow-tags origin HEAD:refs/heads/develop
+    displayName: "lerna publish alpha (Develop)"
+    condition: and(succeeded(), eq(variables.isDevelop, 'true'))
+
+  - script: rm -f .npmrc
+    displayName: "Remove npm publish configuration"
+    condition: and(always(), or(eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true')))
+
+  - script: |
+      set -euo pipefail
+      git clone --mirror "$(Build.Repository.Uri)" repo-mirror
+      git -C repo-mirror \
+        -c credential.helper= \
+        -c 'credential.helper=!f() { printf "%s\n" "username=$AWS_GIT_USERNAME" "password=$AWS_GIT_PASSWORD"; }; f' \
+        push --mirror "https://${AWS_REPO_URL}"
+    displayName: "Sync released repository with AWS CodeCommit"
+    condition: and(succeeded(), or(eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true')))
     env:
       AWS_REPO_URL: $(AWS_REPO_URL)
       AWS_GIT_USERNAME: $(AWS_GIT_USERNAME)
       AWS_GIT_PASSWORD: $(AWS_GIT_PASSWORD)
-
-  - script: |
-      set -euo pipefail
-      npm run lerna:versionNoPush
-    displayName: "npm run lerna:version"
-    condition: or(eq(variables.isMain, 'true'), eq(variables.isDevelop, 'true'))
-
-  - script: |
-      set -euo pipefail
-      npm run lerna:publishFromPackage
-      git push --follow-tags origin HEAD:$(branchName)
-    displayName: "lerna publish"
-    condition: eq(variables.isMain, 'true')
-
-  - script: |
-      set -euo pipefail
-      npm run lerna:publishFromPackageAlpha
-      git push --follow-tags origin HEAD:$(branchName)
-    displayName: "lerna publish alpha (Develop)"
-    condition: eq(variables.isDevelop, 'true')
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: "./packages/react"
