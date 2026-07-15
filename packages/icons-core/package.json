@@ -42,15 +42,10 @@
     "react"
   ],
   "scripts": {
-    "legacy:build-config": "node config.mjs",
     "legacy:build-babel": "babel -d ./build ./src -s",
     "legacy:watch": "babel -d ./build ./src -s --watch",
-    "build:legacy": "yarn legacy:build-config",
     "build:old": "yarn legacy:build-babel",
     "watch": "yarn legacy:watch",
-    "rollup": "rollup --config ../pictograms-react/dist/jsx/index.js",
-    "generate-icons": "node exampleconfig.mjs",
-    "un-cli": "wfp-cli bundle ../pictograms-react/dist/jsx/index.js",
     "_clear": "rimraf build/compiled/*",
     "_tsc": "tsc",
     "_make-bundle": "rollup --config",

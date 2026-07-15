@@ -51,7 +51,7 @@ Do not hand-edit generated output. Run the owning generator and confirm `git sta
 - `packages/react/othersrc`, `*.legacy.*`, and `*-old*` are quarantined, not deletion candidates. Read `packages/react/LEGACY.md` first.
 - JavaScript `*-test.js` files are the isolated Enzyme suite. Migrate a suite to Testing Library before removing it or Enzyme.
 - Redux Form and React Table v7 are compatibility dependencies for legacy/internal examples; do not upgrade or remove them without an explicit migration.
-- `build:tokens` performs authenticated remote synchronization. Routine local validation uses `yarn generate:tokens` and must not require credentials.
+- `yarn workspace @progressiveui/themes-core build:tokens` performs authenticated remote synchronization. Routine local validation uses `yarn generate:tokens` and must not require credentials.
 
 ## Change discipline
 
