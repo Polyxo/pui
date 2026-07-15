@@ -73,6 +73,17 @@ declare type TextKind =
   | "subtitle"
   | "story-title"
   | "story-subtitle"
+  | "story-sub-title"
+  | "story-italic"
+  | "story-h1"
+  | "story-h2"
+  | "story-h3"
+  | "story-h4"
+  | "story-h5"
+  | "story-h6"
+  | "body-regular"
+  | "helper"
+  | "input"
   | "bold"
   | "strong"
   | "inline-highlight"
@@ -84,15 +95,20 @@ declare type TextKind =
   | "code";
 
 declare type Spacing =
+  | "none"
   | "3xs"
   | "2xs"
+  | "2x"
   | "xs"
+  | "sm"
   | "md"
   | "lg"
   | "xl"
   | "2xl"
   | "3xl"
-  | "4xl";
+  | "4xl"
+  | "5xl"
+  | "6xl";
 
 declare type Placement =
   | "top"

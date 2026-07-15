@@ -18,7 +18,7 @@
     "build:runAlgoliaUpdate": "node runAlgoliaUpdate.mjs",
     "lint": "eslint .",
     "dev:ts": "yarn dev & yarn ts:watch",
-    "ts": "tsc --noEmit",
+    "ts": "tsc --noEmit --project tsconfig.typecheck.json",
     "ts:watch": "yarn ts --watch",
     "cp:logos": "cp -r ../logos/src public/logos"
   },

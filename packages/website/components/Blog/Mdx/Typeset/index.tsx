@@ -71,7 +71,9 @@ export default function Typeset() {
           </List>
         </div>
         <div>
-          <Text kind={i}>{breakpoint} Example text</Text>
+          <Text kind={i as React.ComponentProps<typeof Text>["kind"]}>
+            {breakpoint} Example text
+          </Text>
         </div>
       </div>
     );

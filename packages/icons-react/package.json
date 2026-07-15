@@ -5,10 +5,10 @@
   "license": "Apache-2.0",
   "main": "umd/index.js",
   "module": "es/index.mjs",
-  "types": "es/index.d.ts",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "types": "./es/index.d.ts",
+      "types": "./index.d.ts",
       "import": "./es/index.mjs",
       "require": "./umd/index.js",
       "default": "./es/index.mjs"
@@ -27,6 +27,7 @@
     "lib",
     "umd",
     "next",
+    "index.d.ts",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"

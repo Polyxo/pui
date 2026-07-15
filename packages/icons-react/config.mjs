@@ -34,6 +34,7 @@ const declarations = [
 const esmBundle = await readFile(path.resolve(__dirname, "es/index.js"), "utf8");
 
 await Promise.all([
+  writeFile(path.resolve(__dirname, "index.d.ts"), declarations),
   writeFile(path.resolve(__dirname, "es/index.d.ts"), declarations),
   writeFile(path.resolve(__dirname, "es/index.mjs"), esmBundle),
 ]);

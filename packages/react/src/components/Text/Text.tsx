@@ -56,6 +56,17 @@ export const textLookup: {
   a: "a",
   "inline-highlight": "code",
   "story-subtitle": "h2",
+  "story-sub-title": "h2",
+  "story-italic": "i",
+  "story-h1": "h1",
+  "story-h2": "h2",
+  "story-h3": "h3",
+  "story-h4": "h4",
+  "story-h5": "h5",
+  "story-h6": "h6",
+  "body-regular": "p",
+  helper: "div",
+  input: "span",
   "story-title": "h1",
 };
 
