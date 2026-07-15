@@ -57,12 +57,12 @@
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/node": "^7.20.2",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-env": "^7.29.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@babel/core": "^7.28.5",
+    "@babel/core": "^7.29.7",
     "@babel/preset-react": "^7.28.5",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^29.0.3",
@@ -78,7 +78,7 @@
     "fs-readdir-recursive": "^1.1.0",
     "rollup": "^4.62.2",
     "rollup-plugin-dts": "^6.4.1",
-    "svgo": "^3.3.2"
+    "svgo": "^3.3.3"
   },
   "gitHead": "5d9678f4a62413b834d07736413c50ff2f851824"
 }

@@ -22,7 +22,6 @@ import components from "../Blog/Mdx";
 import References from "../Blog/References";
 import TableOfContent from "../Blog/References/TableOfContent";
 import slugifyWithSlashes from "../../lib/slugifyWithSlashes";
-// import { NextSeo } from "next-seo";
 import PropTypes from "../PropTypes";
 import NextTab from "./NextTab";
 import SidebarNavigation from "./SidebarNavigation";

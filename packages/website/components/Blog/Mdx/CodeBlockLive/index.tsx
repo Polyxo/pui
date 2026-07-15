@@ -1,4 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
 // src/components/CodeBlock.js
 import React, { useEffect, useState } from "react";
 import { Highlight, themes } from "prism-react-renderer";
@@ -45,6 +44,19 @@ import InnerFrame from "./InnerFrame";
 const countLines = (str) => {
   if (typeof str !== "string") return 0;
   return str.split("\n").length;
+};
+
+const getCodeText = (value: React.ReactNode): string => {
+  if (typeof value === "string" || typeof value === "number") {
+    return String(value);
+  }
+  if (Array.isArray(value)) {
+    return value.map(getCodeText).join("");
+  }
+  if (React.isValidElement<{ children?: React.ReactNode }>(value)) {
+    return getCodeText(value.props.children);
+  }
+  return "";
 };
 
 function LiveHtml({ live }: any /* { live?: Record<string, unknown> } */) {
@@ -124,7 +136,8 @@ const CodeBlockLive = (props: any) => {
   const [showAllCode, setShowAllCode] = useState(expandCode);
   // const [showExpandButton, setShowExpandButtons] = useState(true);
   const [rtl, setRtl] = useState(false);
-  let code = source ? source : children ? children.trim() : "";
+  const sourceCode = getCodeText(source);
+  let code = sourceCode || getCodeText(children).trim();
 
   if (reactHookForm)
     code = `
@@ -189,25 +202,34 @@ const CodeBlockLive = (props: any) => {
       .replaceAll(/: \S+ = /g, " = "); // let a: string = "something"
   };
 
-  let formatedCode = code;
+  const [formattedCode, setFormattedCode] = useState(code);
+
+  useEffect(() => {
+    let isCurrent = true;
+    setFormattedCode(code);
+
+    prettier
+      .format(code, {
+        parser: "babel",
+        plugins: [babelParser, estreePlugin],
+        printWidth: 55,
+      })
+      .then((formatted) => {
+        if (isCurrent) setFormattedCode(formatted);
+      })
+      .catch(() => {
+        if (isCurrent) setFormattedCode(code);
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [code]);
 
   const { generateCodeSandbox } = useGenerateCodeSandbox({
     componentName,
-    formatedCode,
+    formatedCode: formattedCode,
   });
-
-  try {
-    formatedCode =
-      language === "jsx" || 1 === 1
-        ? prettier.format(code, {
-            parser: "babel",
-            plugins: [babelParser, estreePlugin],
-            printWidth: 55,
-          })
-        : code;
-  } catch {
-    //console.log("prettier not working");
-  }
 
   const handleCopyCode = (textToCopy) => {
     navigator.clipboard.writeText(textToCopy);
@@ -233,7 +255,7 @@ const CodeBlockLive = (props: any) => {
       DoNotUse,
     };
 
-    const showExpandButton = countLines(formatedCode) > 12;
+    const showExpandButton = countLines(formattedCode) > 12;
 
     const codeBlockClasses = classNames(stylesModule.editor, {
       btn: true,
@@ -319,7 +341,7 @@ const CodeBlockLive = (props: any) => {
           </div>
         )}
         <LiveProvider
-          code={formatedCode}
+          code={formattedCode}
           scope={scope}
           theme={themes.vsDark}
           noInline={noInline || reactHookForm}

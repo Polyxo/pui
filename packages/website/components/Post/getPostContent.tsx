@@ -1,8 +1,6 @@
 import { getAllPosts, getPostByPath, getPostSlugs } from "../../lib/getPost";
 import slugify from "slugify";
 import { serialize } from "next-mdx-remote/serialize";
-import remarkMdxCodeMeta from "remark-mdx-code-meta";
-import remarkGfm from "remark-gfm";
 import rehypeCode from "../../lib/rehypeCode";
 import rehypeFigmaImage from "../../lib/rehypeFigmaImage";
 import rehypeComponentsList from "../../lib/rehypeComponentsList";
@@ -135,7 +133,6 @@ export default async function getPostContent(params: any) {
   const mdxSource = await serialize(post.content, {
     //components,
     mdxOptions: {
-      // remarkPlugins: [remarkMdxCodeMeta, remarkGfm],
       rehypePlugins: [
         rehypeCode,
         rehypeFigmaImage,
