@@ -58,7 +58,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
         className={`${prefix}--password-input__toggle`}
         onClick={handleToggle}
         aria-pressed={isVisible}
-        aria-label={toggleButtonLabel}
+        aria-label={toggleButtonLabel as string}
         disabled={disabled || readOnly}
       >
         {toggleButtonLabel}

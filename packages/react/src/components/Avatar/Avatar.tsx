@@ -47,7 +47,7 @@ function Avatar({
       `${prefix}--avatar`,
       `${prefix}--avatar--empty`,
       `${prefix}--avatar--missing`,
-      className
+      className,
     );
 
     return (
@@ -56,7 +56,7 @@ function Avatar({
         description={alt}
         className={classes}
         {...userIconProps}
-        {...other}
+        {...(other as unknown as React.SVGProps<SVGSVGElement>)}
       />
     );
   } else if (image === undefined && missingImage === "letter") {
@@ -64,7 +64,7 @@ function Avatar({
       `${prefix}--avatar`,
       `${prefix}--avatar--empty`,
       `${prefix}--avatar--letter`,
-      className
+      className,
     );
 
     return (

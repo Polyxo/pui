@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/ban-types */
 import * as React from "react";
 import type { PropsWithChildren } from "react";
 import classNames from "classnames";

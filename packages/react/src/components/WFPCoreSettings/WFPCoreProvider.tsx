@@ -14,7 +14,6 @@ export interface AppContextInterface {
   theme: string;
   actualTheme: string;
   initialized: boolean;
-  // eslint-disable-next-line @typescript-eslint/ban-types
   setTheme: (theme: string) => void;
   wrapperElement?: HTMLElement;
 }

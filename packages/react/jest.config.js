@@ -3,7 +3,10 @@ module.exports = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/config/jest/setup.js"],
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      { tsconfig: "<rootDir>/tsconfig.test.json" },
+    ],
   },
   roots: ["<rootDir>/src"],
   // JavaScript `*-test.js` files are the legacy Enzyme suite. Keep them out

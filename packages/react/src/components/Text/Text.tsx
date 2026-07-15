@@ -3,7 +3,8 @@ import classNames from "classnames";
 import useSettings from "../../hooks/useSettings";
 import { Spacing, TextKind } from "../../utils";
 
-interface TextProps extends React.AllHTMLAttributes<HTMLDivElement> {
+interface TextProps
+  extends Omit<React.AllHTMLAttributes<HTMLDivElement>, "as"> {
   /**
    * Overrides the rendered HTML tag or React component.
    */
@@ -76,7 +77,6 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
     ref,
   ) => {
     const { prefix } = useSettings();
-    const fallbackTag = undefined;
     const TagName: React.ElementType = asProp || "div";
 
     const classes = classNames(

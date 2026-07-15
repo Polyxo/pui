@@ -65,7 +65,6 @@ interface SliderProps extends InputProps, React.ComponentPropsWithRef<"input"> {
    * `true` to hide the number input box.
    */
   hideTextInput?: boolean;
-  // eslint-disable-next-line @typescript-eslint/ban-types
   /**
    * Use the width of the parent element
    */

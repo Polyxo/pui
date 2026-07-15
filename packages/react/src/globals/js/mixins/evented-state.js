@@ -12,7 +12,6 @@ export default function(ToMix) {
      *   The object that should be put to event details that is fired before/after changing state.
      *   Can have a `group` property, which specifies what state to be changed.
      * @param {EventedState~changeStateCallback} callback The callback called once changing state is finished or is canceled.
-     * @private
      */
     _changeState() {
       throw new Error(

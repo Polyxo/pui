@@ -7,7 +7,6 @@ type BannerNavigationWithContentProps = {
   /**
    * A onChange Function for the search
    */
-  // eslint-disable-next-line @typescript-eslint/ban-types
   searchOnChange?: () => {};
   /**
    * Allows to disable the search input

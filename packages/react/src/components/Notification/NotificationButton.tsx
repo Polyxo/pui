@@ -70,7 +70,6 @@ export const NotificationButton: React.FC<NotificationButtonProps> = ({
   // const Icon = renderIcon;
 
   return (
-    // eslint-disable-next-line react/button-has-type
     <button
       {...other}
       type={type}
