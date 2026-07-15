@@ -22,7 +22,7 @@
     "clean": "rimraf es lib umd storybook-static build react-docgen.json",
     "build:rollup": "rollup -c --bundleConfigAsCjs",
     "build:demos": "rollup -c rollupDemos.config.js --bundleConfigAsCjs",
-    "build:storybook": "rimraf docs && storybook build --disable-telemetry -o docs",
+    "build:storybook": "node scripts/buildStorybook.mjs",
     "generate:website-metadata": "rollup --config scripts/rollup-generateTypeDefinitions.config.js --bundleConfigAsCjs && node .temp/generateTypeDefinitions.js && rm -rf .temp",
     "generate:types": "yarn generate:website-metadata",
     "dev": "npm run storybook",
