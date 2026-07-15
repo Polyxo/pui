@@ -1,7 +1,7 @@
 import React from "react";
 import ReactSelect from "react-select";
 
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 export default {
   title: "Components/Forms/Dropdown/react-select",

@@ -1,6 +1,6 @@
 import React from "react";
 import InputGroup from ".";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 import RadioButton from "../RadioButton";
 import Checkbox from "../Checkbox";
 

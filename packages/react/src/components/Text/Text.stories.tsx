@@ -1,5 +1,5 @@
 import React from "react";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 import Text from ".";
 import Link from "../Link";
 import { List, ListItem } from "../List";

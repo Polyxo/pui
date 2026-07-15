@@ -1,6 +1,6 @@
 import React from "react";
 
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 //import cardTwig from './Card.twig';
 import Button from "../Button";
 import { Card, CardExternal } from ".";

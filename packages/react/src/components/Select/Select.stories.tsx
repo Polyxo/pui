@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "./Select";
 import SelectItem from "../SelectItem";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 export default {
   title: "Components/Forms/Dropdown/Select",

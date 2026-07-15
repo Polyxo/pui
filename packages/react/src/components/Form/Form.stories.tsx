@@ -15,7 +15,7 @@ import TextArea from "../TextArea";
 import TextInput from "../TextInput";
 import Toggle from "../Toggle";
 
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 export default {
   title: "Components/Forms/Form",

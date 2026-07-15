@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 import RadioButton from ".";
 import InputGroup from "../InputGroup";
 

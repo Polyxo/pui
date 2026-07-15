@@ -1,6 +1,6 @@
 import React from "react";
 import Credits from ".";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 export default {
   title: "Components/UI Elements/Credits",

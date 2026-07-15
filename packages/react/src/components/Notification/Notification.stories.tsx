@@ -8,7 +8,7 @@ import {
 import Button from "../Button";
 import { notificationtypes } from "../../prop-types/types";
 
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 export default {
   title: "Components/UI Elements/Notification",

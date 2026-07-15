@@ -1,17 +1,14 @@
 import React from "react";
 
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 import { Footer } from "../Footer";
-
-import { FooterExternal, FooterMetaLink, LinksColumn } from "./FooterExternal";
 
 import Link from "../Link";
 
 export default {
   title: "Components/UI Elements/Footer",
   component: Footer,
-  subcomponents: { FooterExternal, FooterMetaLink, LinksColumn },
   parameters: {
     componentSubtitle: "Component",
     status: "released",

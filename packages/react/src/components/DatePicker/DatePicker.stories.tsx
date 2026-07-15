@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 import { DatePickerInput } from "./DatePickerInput";
 import { DateRangePickerInput } from "./DateRangePickerInput";
 import ReactDatePicker from "react-datepicker";

@@ -1,7 +1,7 @@
 import React from "react";
 import { usePagination, useSortBy, useTable } from "react-table";
 import makeData, { sampleColumns } from "./makeData";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 
 import Table from "./Table";
 import TableSorting from "./TableSorting";

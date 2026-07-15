@@ -1,6 +1,6 @@
 import React from "react";
 import Tooltip from "./Tooltip";
-import markdown from "./README.mdx";
+import markdown from "./README.mdx?raw";
 import { Menu } from "@progressiveui/icons-react";
 
 export default {
