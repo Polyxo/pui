@@ -14,4 +14,4 @@ Key constraints:
 - Do not hand-edit generated React bundles, icon outputs, token outputs, website metadata, or Storybook output.
 - CI must validate before version/tag/publish and must never display `.npmrc` or secret environment values.
 
-Use Node 22.12+ and Yarn 1.22.22. Keep changes small and use Conventional Commit messages.
+Use Node 24 LTS and Yarn 1.22.22. Keep changes small and use Conventional Commit messages.

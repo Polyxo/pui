@@ -4,7 +4,7 @@ Progressive UI is a React design-system monorepo derived from the World Food Pro
 
 ## Requirements
 
-- Node.js 22.12 or newer
+- Node.js 24 LTS (`>=24 <25`)
 - Yarn 1.22.22 (the version in `packageManager`)
 
 ```sh
