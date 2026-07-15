@@ -193,8 +193,6 @@ const Slider: React.FC<SliderProps> = React.forwardRef((props, ref) => {
   const useInputProps = props as UseInputProps;
   const input = useInput(useInputProps);
 
-  console.log("valueMinimal", valueMinimal);
-
   return (
     <Input {...input.wrapperProps} formItemClassName={numberInputClasses}>
       <div className={sliderContainerClasses}>
