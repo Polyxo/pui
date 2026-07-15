@@ -249,7 +249,7 @@ historical baseline or its clean validation evidence.
   their React peer ranges.
 - No root export name, compatibility alias, CSS class, token, or icon name was
   intentionally changed in this batch. The final public-export and packed-package
-  checks remain required before merge.
+  checks passed before handoff.
 - `Hero.imageAlt` is additive. Existing `href` callers retain precedence over the
   `url` compatibility fallback.
 - Modal changes correct callback, keyboard, focus, and invalid-DOM-prop behavior;
@@ -265,20 +265,42 @@ historical baseline or its clean validation evidence.
 
 ### Validation evidence for this follow-up
 
-The following commands or focused checks completed successfully after their
-listed changes. They do not replace the still-pending clean release-equivalent
-gate for the complete follow-up diff.
+The exact final code commit (`ec3e9b278`) was validated from the detached clean
+worktree used for the follow-up. A fresh `yarn install --frozen-lockfile` passed
+there in 33.77 seconds with the expected legacy peer warnings. The final
+network-enabled `yarn validate` exited 0 in 169.68 seconds. Network access was
+needed only when the packed-package verifier installed public consumer
+dependencies; no private registry or release credential was used.
 
-| Check                                 | Result recorded 2026-07-16                                                                                      |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `yarn install --frozen-lockfile`      | Passed after the final manifest and lockfile refresh; expected legacy warnings remain.                         |
-| Algolia `search:index:check`          | Passed offline and validated 150 records; no remote write or credential was used.                               |
-| Focused Hero Testing Library suite    | Passed: 1 suite and 5 tests.                                                                                    |
-| Focused Hero/Modal/ModalWrapper suites | Passed after compatibility review: 3 suites and 18 tests.                                                     |
-| Full React workspace Jest run         | Passed: 13 suites, 91 tests, and 4 snapshots. Quarantined JavaScript suites remained excluded.                  |
-| React workspace type-check            | Passed after the Modal, Hero, and dependency changes.                                                           |
-| Website type-check                    | Passed after the Next/MDX compatibility fix.                                                                    |
-| `yarn build:website`                  | Passed with Next 16.2.10 in Webpack mode and generated 154 static pages. Existing Sass/content warnings remain. |
+| Check                                  | Result recorded 2026-07-16                                                                                                           |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `yarn install --frozen-lockfile`       | Passed from a checkout without `node_modules` in 33.77 seconds; expected legacy peer warnings remain.                                |
+| Algolia `search:index:check`           | Passed offline and validated 150 records; no remote write or credential was used.                                                    |
+| Focused Hero/Modal/ModalWrapper suites | Passed after compatibility review: 3 suites and 18 tests.                                                                            |
+| `yarn lint`                            | Passed with 0 errors; 65 React warnings and 22 website warnings remain recorded debt.                                                |
+| `yarn typecheck`                       | Passed for the shipped React surface and website after deterministic token/demo generation.                                          |
+| `yarn test`                            | Passed: 13 suites, 91 tests, and 4 snapshots. Quarantined JavaScript suites remained excluded.                                       |
+| `yarn build:packages`                  | Passed, including default tokens, Sass/CSS, icon tooling, 81 React icons, and the Vite React package build.                          |
+| `yarn build:storybook`                 | Passed with 705 transformed modules. Existing Sass, empty-story-glob, and Storybook eval warnings remain non-fatal.                  |
+| `yarn build:website`                   | Passed with Next 16.2.10 in Webpack mode and generated 154 static pages. Existing Sass, Figma, metadata, and sample warnings remain. |
+| `yarn verify:packages`                 | Passed: 127 React exports, 81 icon exports, and 282 declaration files.                                                               |
+| `yarn verify:packed-packages`          | Passed from five tarballs in an isolated consumer: ESM, CommonJS, UMD, compiled Sass, and strict TypeScript.                         |
+| `yarn verify:public-exports`           | Passed: the React runtime surface remains exactly 127 baseline exports.                                                              |
+| `yarn verify:bundle-size`              | Passed every configured threshold; exact results are listed below.                                                                   |
+| `yarn verify:clean`                    | Passed after all generators and builds; no tracked generated changes remained.                                                       |
+
+Packed output contained 311 files / 2,868,125 bytes for React, 9 / 390,094 for
+icons-react, 7 / 51,478 for icons-core, 267 / 920,591 for styles, and 26 /
+1,054,905 for themes-core.
+
+| Artifact       | Raw bytes (delta) | Gzip bytes (delta) |
+| -------------- | ----------------: | -----------------: |
+| React CommonJS | 131,798 (-61,368) |   39,815 (-17,889) |
+| React ESM      | 188,593 (-91,318) |   47,227 (-22,158) |
+| React UMD      | 131,105 (-60,982) |   39,766 (-17,782) |
+| Icons ESM      | 115,725 (-61,128) |   32,396 (-14,289) |
+| Icons UMD      | 122,374 (-59,984) |   33,137 (-13,878) |
+| Styles CSS     |      271,808 (+0) |       37,164 (+72) |
 
 ### Failures and regressions encountered
 
@@ -296,6 +318,18 @@ gate for the complete follow-up diff.
 - Yarn Classic's registry audit endpoint returned HTTP 410, so `yarn audit` did
   not provide usable evidence. The OSV scan ran instead and correctly exited
   nonzero for known findings.
+- The first complete follow-up validation from the long-lived local install
+  failed during icon generation because a stale nested Babel helper resolved
+  the root `lru-cache` 10 instead of its locked `lru-cache` 5 dependency.
+  `yarn install --frozen-lockfile --force` did not remove that orphaned nested
+  directory. The fresh worktree install had the lockfile-correct tree, passed
+  icon generation, and passed the complete release gate; this was local install
+  drift rather than a lockfile regression.
+- A sandboxed final-gate rerun reached the isolated packed-package consumer but
+  its public `npm install` remained idle in blocked DNS retries. That attempt was
+  interrupted and rerun with public-registry network access; the exact same
+  commit then passed the packed consumer and complete gate. No private registry
+  access was attempted.
 - The initial OSV inventory contained 59 affected package-version entries, 38
   package names, 113 advisories, and 114 unique package-name/advisory pairs.
   After selected updates and the final MDX upgrade, the report contains 53
@@ -303,41 +337,34 @@ gate for the complete follow-up diff.
   62 unique package-name/advisory pairs. By unique advisory, 4 are critical, 31
   high, 21 medium, and 5 low. OSV correctly exits nonzero; no clean security
   result is claimed.
-- For this follow-up diff, the package build, Storybook build, package/packed
-  consumers, public-export comparison,
-  bundle-size comparison, clean-tree check, and complete `yarn validate` were not
-  yet recorded at the time of this update.
 
 ### Remaining risks and recommended pull requests
 
-1. Run and record the complete clean `yarn validate` sequence for this follow-up,
-   including frozen installation, generated cleanliness, packed ESM/CommonJS/UMD
-   and declaration consumers, public exports, and bundle sizes.
-2. Triage the final OSV report by direct owner and runtime reachability. Remediate
+1. Triage the final OSV report by direct owner and runtime reachability. Remediate
    safe parent upgrades in focused pull requests, document unavoidable legacy
    development-only findings, and make CI blocking only when its baseline policy
    cannot create false regressions.
-3. Migrate the remaining 63 Enzyme suites component-by-component, preserving
+2. Migrate the remaining 63 Enzyme suites component-by-component, preserving
    behavior, markup, classes, and focus/accessibility evidence before removing
    Enzyme or the React 16 adapter.
-4. Tighten TypeScript by shipped-source ownership: remove remaining JavaScript
+3. Tighten TypeScript by shipped-source ownership: remove remaining JavaScript
    production boundaries, enable `noImplicitAny` in small slices, and make the
    website strict without hiding errors behind generated output or blanket
    exceptions.
-5. Replace Redux Form, React Dates, and React Table v7 examples and wrappers in
+4. Replace Redux Form, React Dates, and React Table v7 examples and wrappers in
    dedicated compatibility migrations.
-6. Consolidate React build/declaration ownership only after API and declaration
+5. Consolidate React build/declaration ownership only after API and declaration
    fixtures prove Vite can replace the retained direct Rollup path. Evaluate API
    Extractor or equivalent signature reports separately from runtime export-name
    checks.
-7. Add golden light/dark token, selector, custom-property, icon, and generated
+6. Add golden light/dark token, selector, custom-property, icon, and generated
    cleanliness fixtures before Style Dictionary 4 or broad Sass modernization.
-8. Address remaining React/website lint, React Compiler, Sass, and content-parser
+7. Address remaining React/website lint, React Compiler, Sass, and content-parser
    warnings with ownership-specific budgets. Keep Next on Webpack, Storybook on
    8, and Vite on 6 until dedicated migration evidence exists.
-9. Add accessibility and visual-regression coverage for stable component stories,
+8. Add accessibility and visual-regression coverage for stable component stories,
    and consider `publint`, package-attestation checks, and dead-code analysis as
    independent, reviewable gates.
-10. Rehearse Azure validation/version/publish ordering in a non-production
-    pipeline. Moving registry access to workload identity or another short-lived
-    credential mechanism requires release-owner and infrastructure coordination.
+9. Rehearse Azure validation/version/publish ordering in a non-production
+   pipeline. Moving registry access to workload identity or another short-lived
+   credential mechanism requires release-owner and infrastructure coordination.
