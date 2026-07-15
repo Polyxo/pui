@@ -1,17 +1,19 @@
-import algoliasearch from "algoliasearch/lite.js";
+import algoliasearch from "algoliasearch";
 import fs from "fs";
 import matter from "gray-matter";
 import { extname, resolve, join } from "path";
 import "dotenv/config";
 
 /*
- * This script is used to update the Algolia search index, which is used in the search bar on the website.
- * It is run as a build step in the @progressiveui/website package.
- * It only run in production. TODO: in the future.
- * It is similar to the api/buildIndex endpoint, but it is run at build time.
+ * This is an administrative write operation for the documentation search index.
+ * Run it only in a trusted deployment job. It is intentionally separate from the
+ * website build and must never be imported by a Next.js page or API route.
  */
 
 const fsPromises = fs.promises;
+const indexName = process.env.ALGOLIA_SEARCH_INDEX_NAME || "ui-docs";
+const writeConfirmation = "update-ui-docs";
+const dryRun = process.argv.includes("--dry-run");
 
 export const postsDirectory = join(process.cwd(), "_posts");
 
@@ -35,7 +37,7 @@ async function getFiles(dir) {
     dirents.map((dirent) => {
       const res = resolve(dir, dirent.name);
       return dirent.isDirectory() ? getFiles(res) : res;
-    })
+    }),
   );
   return Array.prototype.concat(...files);
 }
@@ -107,6 +109,42 @@ function transformPostsToSearchObjects(posts) {
   });
 }
 
+function requireIndexingEnvironment() {
+  if (process.env.ALGOLIA_INDEX_WRITE !== writeConfirmation) {
+    throw new Error(
+      `Refusing to update Algolia. Set ALGOLIA_INDEX_WRITE=${writeConfirmation} only in the trusted indexing job.`,
+    );
+  }
+
+  const appId = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID;
+  const adminKey = process.env.ALGOLIA_SEARCH_ADMIN_KEY;
+
+  if (!appId || !adminKey) {
+    throw new Error(
+      "Algolia indexing requires NEXT_PUBLIC_ALGOLIA_APP_ID and ALGOLIA_SEARCH_ADMIN_KEY.",
+    );
+  }
+
+  return { appId, adminKey };
+}
+
+function validateSearchObjects(objects) {
+  if (objects.length === 0) {
+    throw new Error("Refusing to replace the Algolia index with no records.");
+  }
+
+  const objectIDs = new Set(objects.map(({ objectID }) => objectID));
+  if (
+    objectIDs.has(undefined) ||
+    objectIDs.has("") ||
+    objectIDs.size !== objects.length
+  ) {
+    throw new Error(
+      "Refusing to update Algolia because record objectIDs are missing or duplicated.",
+    );
+  }
+}
+
 const runAlgoliaUpdate = async () => {
   const posts = await getAllPosts([
     "title",
@@ -118,22 +156,32 @@ const runAlgoliaUpdate = async () => {
   ]);
 
   const transformed = transformPostsToSearchObjects(posts);
+  validateSearchObjects(transformed);
 
-  // initialize the client with your environment variables
-  const client = algoliasearch(
-    process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    process.env.ALGOLIA_SEARCH_ADMIN_KEY
-  );
+  if (dryRun) {
+    console.log(
+      `Validated ${transformed.length} documentation records for ${indexName}.`,
+    );
+    return;
+  }
 
-  // initialize the index in Algolia
-  const index = client.initIndex("ui-docs");
-  await index.clearObjects();
+  const { appId, adminKey } = requireIndexingEnvironment();
+  const client = algoliasearch(appId, adminKey);
 
-  const algoliaResponse = await index.saveObjects(transformed);
+  const index = client.initIndex(indexName);
+
+  // Algolia builds a temporary index and swaps it into place. This avoids a
+  // failed upload leaving the live search index empty.
+  await index.replaceAllObjects(transformed, { safe: true });
 
   console.log(
-    `🎉 Sucessfully added ${algoliaResponse.objectIDs.length} records to Algolia search.`
+    `Successfully indexed ${transformed.length} documentation records.`,
   );
 };
 
-runAlgoliaUpdate();
+runAlgoliaUpdate().catch((error) => {
+  console.error(
+    error instanceof Error ? error.message : "Algolia indexing failed.",
+  );
+  process.exitCode = 1;
+});
