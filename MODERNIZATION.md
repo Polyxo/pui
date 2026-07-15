@@ -1,8 +1,10 @@
 # Modernization record
 
-Audit date: 2026-07-15  
-Branch: `chore/modernize-monorepo`  
-Baseline: `b662910f3` (`feat/april-release`)  
+Audit date: 2026-07-15
+
+Branch: `chore/modernize-monorepo`
+
+Baseline: `b662910f3` (`feat/april-release`)
 Local validation runtime: Node 24.0.2 and Yarn 1.22.22; CI target: Node 22 and Yarn 1.22.22.
 
 The work started with uncommitted Sass and `sass-loader` updates in the React and website manifests plus their lockfile changes. Those edits were preserved and adopted into the modernization dependency commit.
