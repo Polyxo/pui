@@ -17,9 +17,18 @@
   ],
   "type": "module",
   "main": "config.js",
+  "types": "config.d.ts",
   "exports": {
-    ".": "./config.js",
-    "./config.js": "./config.js",
+    ".": {
+      "types": "./config.d.ts",
+      "import": "./config.js",
+      "default": "./config.js"
+    },
+    "./config.js": {
+      "types": "./config.d.ts",
+      "import": "./config.js",
+      "default": "./config.js"
+    },
     "./package.json": "./package.json",
     "./dist/*": "./dist/*",
     "./distDark/*": "./distDark/*",
@@ -28,6 +37,7 @@
   },
   "files": [
     "config.js",
+    "config.d.ts",
     "scripts/config.js",
     "dist",
     "distDark",

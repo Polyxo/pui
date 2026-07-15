@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button, Text } from "@progressiveui/react";
 import { Add } from "@progressiveui/icons-react";
 import { convertFolder } from "@progressiveui/icons-core";
+import { config } from "@progressiveui/themes-core";
 
 export const Consumer = () => (
   <Text as="section" kind="story-title">
@@ -17,3 +18,5 @@ void element;
 
 const convertIcons: typeof convertFolder = convertFolder;
 void convertIcons;
+
+config({ source: "tokens/**/*.json", buildPath: "dist", themeName: "custom" });
