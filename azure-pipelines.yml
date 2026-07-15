@@ -8,20 +8,22 @@ trigger:
   - develop
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-24.04
 
 steps:
   - checkout: self
+    fetchDepth: 0
+    fetchTags: true
     persistCredentials: false
 
   - script: |
-      git config --global user.name "Azure Devops Pipeline"
-      git config --global user.email "roberg.guehne@progressiveui.org"
+      git config user.name "Azure DevOps Pipeline"
+      git config user.email "roberg.guehne@progressiveui.org"
     displayName: Git config user
 
   - task: NodeTool@0
     inputs:
-      versionSpec: "22.x"
+      versionSpec: "24.x"
     displayName: "Install Node.js"
 
   - script: |
@@ -48,6 +50,19 @@ steps:
   - script: |
       yarn install --frozen-lockfile
     displayName: "yarn install"
+
+  - script: |
+      set -euo pipefail
+      docker run --rm \
+        --volume "$(Build.SourcesDirectory):/src:ro" \
+        --workdir /src \
+        ghcr.io/google/osv-scanner:v2.3.8@sha256:64e86bec6df2466feea5137fc7c78fb3b7c21ec077f014d7130f64810e50676b \
+        scan source --lockfile yarn.lock
+    displayName: "Report dependency vulnerabilities with OSV-Scanner"
+    # The current dependency baseline contains known legacy findings. Keep the
+    # report visible while those are removed in scoped upgrades; make this a
+    # blocking no-new-findings gate once a reviewed baseline policy is added.
+    continueOnError: true
 
   - script: |
       yarn validate

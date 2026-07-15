@@ -1,0 +1,79 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Berlin
+    open-pull-requests-limit: 8
+    versioning-strategy: increase-if-necessary
+    commit-message:
+      prefix: chore(deps)
+    groups:
+      react-and-testing:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+          - "@testing-library/*"
+          - jest
+          - "jest-*"
+          - ts-jest
+        update-types:
+          - minor
+          - patch
+      next-and-mdx:
+        patterns:
+          - next
+          - eslint-config-next
+          - next-mdx-remote
+          - "@mdx-js/*"
+        update-types:
+          - minor
+          - patch
+      lint-and-types:
+        patterns:
+          - eslint
+          - "eslint-*"
+          - "@eslint/*"
+          - "@typescript-eslint/*"
+          - typescript
+        update-types:
+          - minor
+          - patch
+      build-tooling:
+        patterns:
+          - "@babel/*"
+          - "@rollup/*"
+          - rollup
+          - "rollup-*"
+          - vite
+          - "vite-*"
+          - storybook
+          - "@storybook/*"
+        update-types:
+          - minor
+          - patch
+      styles-and-tokens:
+        patterns:
+          - sass
+          - sass-loader
+          - postcss
+          - "postcss-*"
+          - style-dictionary
+          - svgo
+        update-types:
+          - minor
+          - patch
+      production-patches:
+        dependency-type: production
+        update-types:
+          - patch
+      development-patches:
+        dependency-type: development
+        update-types:
+          - patch

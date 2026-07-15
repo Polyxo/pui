@@ -9,7 +9,7 @@
   ],
   "packageManager": "yarn@1.22.22",
   "engines": {
-    "node": ">=22.12.0",
+    "node": ">=24 <25",
     "yarn": ">=1.22.22 <2"
   },
   "scripts": {
@@ -32,7 +32,9 @@
     "verify:public-exports": "node scripts/compare-public-exports.mjs",
     "verify:bundle-size": "node scripts/check-bundle-size.mjs",
     "verify:clean": "node scripts/verify-clean.mjs",
-    "validate": "yarn lint && yarn typecheck && yarn test && yarn build:packages && yarn build:storybook && yarn build:website && yarn verify:packages && yarn verify:packed-packages && yarn verify:public-exports && yarn verify:bundle-size && yarn verify:clean",
+    "validate:quick": "yarn lint && yarn typecheck && yarn test",
+    "validate:release": "yarn lint && yarn typecheck && yarn test && yarn build:packages && yarn build:storybook && yarn build:website && yarn verify:packages && yarn verify:packed-packages && yarn verify:public-exports && yarn verify:bundle-size && yarn verify:clean",
+    "validate": "yarn validate:release",
     "publish:alpha": "yarn validate && lerna publish --dist-tag alpha --temp-tag",
     "publish:alpha-cli": "yarn validate && lerna publish --dist-tag alpha --temp-tag --no-verify-access --conventional-commits --yes",
     "lerna:publish": "yarn validate && lerna publish --conventional-commits --temp-tag",
