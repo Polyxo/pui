@@ -6,7 +6,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Polyxo/pui.git",
-    "directory": "packages/styles"
+    "directory": "packages/themes-core"
   },
   "bugs": "https://github.com/Polyxo/pui/issues",
   "keywords": [
@@ -16,6 +16,27 @@
     "react"
   ],
   "type": "module",
+  "main": "config.js",
+  "exports": {
+    ".": "./config.js",
+    "./config.js": "./config.js",
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*",
+    "./distDark/*": "./distDark/*",
+    "./tokens/*": "./tokens/*",
+    "./tokensDark/*": "./tokensDark/*"
+  },
+  "files": [
+    "config.js",
+    "scripts/config.js",
+    "dist",
+    "distDark",
+    "tokens",
+    "tokensDark",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "node --stack-size=9900 scripts/runTheme.js",
     "filter:theme": "node scripts/filterJson.js",
@@ -26,12 +47,12 @@
     "access": "public"
   },
   "devDependencies": {
-    "change-case": "^5.2.0",
-    "deepdash": "^5.3.9",
-    "dotenv": "^16.3.1",
-    "lodash": "^4.17.21",
-    "style-dictionary": "^3.9.0",
-    "token-transformer": "^0.0.33"
+    "axios": "^1.10.0",
+    "dotenv": "^16.3.1"
+  },
+  "dependencies": {
+    "change-case": "^5.4.4",
+    "style-dictionary": "^3.9.2"
   },
   "gitHead": "7201da36cfb8dad97a91763abc2497f70c239243"
 }

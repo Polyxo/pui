@@ -4,7 +4,18 @@
   "version": "10.38.2",
   "license": "Apache-2.0",
   "main": "umd/index.js",
-  "module": "es/index.js",
+  "module": "es/index.mjs",
+  "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./umd/index.js",
+      "default": "./es/index.mjs"
+    },
+    "./package.json": "./package.json",
+    "./*": "./*"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Polyxo/pui.git",
@@ -15,7 +26,10 @@
     "es",
     "lib",
     "umd",
-    "next"
+    "next",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
   ],
   "keywords": [
     "elements",

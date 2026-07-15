@@ -5,25 +5,40 @@
   "license": "Apache-2",
   "private": true,
   "workspaces": [
-    "actions/*",
-    "codemods",
-    "config/*",
     "packages/*"
   ],
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=22.12.0",
+    "yarn": ">=1.22.22 <2"
+  },
   "scripts": {
-    "start:react": "cd packages/react && yarn start",
-    "build": "lerna run build --stream --prefix",
-    "publish:alpha": "lerna publish --dist-tag alpha",
-    "publish:alpha-cli": "lerna publish --dist-tag alpha --no-verify-access --conventional-commits --yes",
-    "publish:alpha-recover": "lerna exec -- \"npm publish --tag alpha || exit 0\"",
-    "lerna:publish": "lerna publish --conventional-commits",
-    "lerna:publishFromPackage": "lerna publish from-package --yes",
-    "lerna:publishFromPackageAlpha": "lerna publish --dist-tag alpha from-package --yes",
-    "lerna:version": "lerna version --conventional-commits",
-    "lerna:versionNoPush": "lerna version --no-push --conventional-commits --yes",
-    "publish:main": "lerna publish",
-    "update:progressiveui": "bash ./update-progressiveui.sh",
-    "test": "cd packages/react && yarn test"
+    "start:react": "yarn workspace @progressiveui/react storybook",
+    "build": "yarn build:packages && yarn build:website",
+    "build:packages": "yarn generate:tokens && yarn workspace @progressiveui/styles build && yarn workspace @progressiveui/icons-core build && yarn generate:icons && yarn workspace @progressiveui/react build",
+    "build:website": "yarn generate:website-assets && yarn workspace @progressiveui/core-website build",
+    "build:storybook": "yarn workspace @progressiveui/react build:storybook",
+    "generate": "yarn generate:tokens && yarn generate:icons",
+    "generate:icons": "yarn workspace @progressiveui/icons-react build",
+    "generate:tokens": "yarn workspace @progressiveui/themes-core build",
+    "generate:website-assets": "yarn workspace @progressiveui/react build:demos && yarn workspace @progressiveui/react generate:website-metadata",
+    "lint": "yarn workspace @progressiveui/react lint && yarn workspace @progressiveui/core-website lint",
+    "test": "yarn workspace @progressiveui/react test --runInBand",
+    "typecheck": "yarn workspace @progressiveui/react typecheck && yarn workspace @progressiveui/core-website ts",
+    "verify:packages": "node scripts/verify-packages.mjs",
+    "verify:public-exports": "node scripts/compare-public-exports.mjs",
+    "verify:bundle-size": "node scripts/check-bundle-size.mjs",
+    "verify:clean": "node scripts/verify-clean.mjs",
+    "validate": "yarn lint && yarn typecheck && yarn test && yarn build:packages && yarn build:storybook && yarn build:website && yarn verify:packages && yarn verify:public-exports && yarn verify:bundle-size && yarn verify:clean",
+    "publish:alpha": "yarn validate && lerna publish --dist-tag alpha --temp-tag",
+    "publish:alpha-cli": "yarn validate && lerna publish --dist-tag alpha --temp-tag --no-verify-access --conventional-commits --yes",
+    "lerna:publish": "yarn validate && lerna publish --conventional-commits --temp-tag",
+    "lerna:publishFromPackage": "yarn validate && lerna publish from-package --temp-tag --yes",
+    "lerna:publishFromPackageAlpha": "yarn validate && lerna publish from-package --dist-tag alpha --temp-tag --yes",
+    "lerna:version": "yarn validate && lerna version --conventional-commits",
+    "lerna:versionNoPush": "yarn validate && lerna version --no-push --conventional-commits --yes",
+    "publish:main": "yarn validate && lerna publish --temp-tag",
+    "update:progressiveui": "bash ./update-progressiveui.sh"
   },
   "keywords": [
     "react",
@@ -31,57 +46,11 @@
     "components"
   ],
   "devDependencies": {
-    "lerna": "^7.1.5"
+    "lerna": "^8.2.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Polyxo/pui.git"
-  },
-  "types": "src/types/index.d.ts",
-  "jest": {
-    "collectCoverageFrom": [
-      "src/components/**/*.js",
-      "!src/components/**/*-story.js"
-    ],
-    "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "text",
-      "html"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/jest/setup.js"
-    ],
-    "testMatch": [
-      "<rootDir>/**/__tests__/**/*.js?(x)",
-      "<rootDir>/**/?(*-)(spec|test).js?(x)"
-    ],
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/config/jest/jsTransform.js",
-      "^.+\\.s?css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/examples/",
-      "/config/",
-      "/lib/",
-      "/es/",
-      "/cjs/"
-    ],
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
-  },
-  "engines" : { 
-    "node" : ">=18.0.0"
   },
   "bundleSizeThreshold": 80000
 }
