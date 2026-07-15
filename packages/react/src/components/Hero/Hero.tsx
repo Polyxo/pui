@@ -15,6 +15,11 @@ type HeroProps = PropsWithChildren<{
  */
   image?: string;
   /**
+   Alternative text for related-card images. Defaults to a string title and
+   remains empty for non-text titles.
+ */
+  imageAlt?: string;
+  /**
   External link flag
 */
   isExternal?: boolean;
@@ -55,7 +60,9 @@ type HeroProps = PropsWithChildren<{
 const Hero: React.FC<HeroProps> = ({
   children,
   className,
+  href,
   image,
+  imageAlt,
   isExternal,
   isLink,
   metadata,
@@ -85,7 +92,12 @@ const Hero: React.FC<HeroProps> = ({
   const content = (
     <React.Fragment>
       <div className={`${prefix}--photo-card__background`} style={style} />
-      {image && kind === 'related' && <img src={image} /*TODO: alt={title}*/ />}
+      {image && kind === 'related' && (
+        <img
+          src={image}
+          alt={imageAlt ?? (typeof title === 'string' ? title : '')}
+        />
+      )}
       <div className={`${prefix}--photo-card__info`}>
         <div>
           {(kind === 'landscape' || kind === 'hero') && (
@@ -124,7 +136,7 @@ const Hero: React.FC<HeroProps> = ({
 
   return isLink ? (
     <a
-      href={url}
+      href={href ?? url}
       target={isExternal ? '_blank' : ''}
       className={wrapperClasses}
       {...other}>
