@@ -407,9 +407,9 @@ The measured progression was:
 - Upgraded Jest 29.7, `jest-environment-jsdom` 29.7, and Jest types 29 to their
   30.4/30.0 lines. `ts-jest` 29.4 remains because its declared peer range supports
   Jest 29 and 30. jsdom now normalizes the named color `red` to its equivalent RGB
-  value, so one Wrapper assertion was made representation-independent. Jest also
-  refreshed only the URL in four snapshot headers; rendered snapshots did not
-  change.
+  value, so one Wrapper assertion now checks that normalized representation.
+  Jest also refreshed only the URL in four snapshot headers; rendered snapshots
+  did not change.
 - Removed direct development dependencies `twig` and `pretty` after repository
   import searches and `yarn why` showed no active consumers. Existing `.twig`
   fixtures and quarantined `othersrc` material remain untouched. Removing Twig
@@ -469,6 +469,46 @@ Two non-passing working-copy attempts are recorded separately from regressions:
   No tests ran in that attempt. Final release evidence must come from a fresh
   frozen installation, not this drifted local tree.
 
-The clean install, full release-equivalent validation, Storybook/website builds,
-package consumers, export and bundle comparisons, and clean-generation result
-are recorded below after they are run; no pass is claimed here in advance.
+The exact code/documentation commit `a6cdb9511` was then validated from a detached
+worktree with no existing `node_modules`. `yarn install --frozen-lockfile` exited
+0 in 26.67 seconds and left the checkout clean. With
+`OSV_SCANNER_BIN=/private/tmp/osv-scanner` pointing to the verified 2.3.8 binary,
+`yarn validate` exited 0 in 186.83 seconds. Public network access was used for
+OSV queries and the isolated packed-package consumer; no private registry or
+release credential was used.
+
+| Check                                            | Result recorded 2026-07-16                                                                                              |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `yarn security:scan`                             | Passed; OSV scanned 2,016 locked package versions and reported no issues                                                |
+| `yarn lint`                                      | Passed with 0 errors; 65 React warnings and 13 website warnings remain recorded debt                                    |
+| `yarn typecheck`                                 | Passed for React's shipped surface and the website after token/demo generation                                          |
+| `yarn test`                                      | Passed: 13 suites, 91 tests, and 4 snapshots; quarantined JavaScript suites remain excluded                             |
+| `yarn build:packages`                            | Passed, including tokens, Sass/CSS, icon tooling, 81 generated icons, declarations, and the Vite React build            |
+| `yarn build:storybook`                           | Passed with 710 transformed modules; existing Sass, inactive-glob, and Storybook eval warnings remain                   |
+| `yarn build:website`                             | Passed in Next 16.2.10 Webpack mode and generated 154 static pages; existing Sass/Figma/metadata/sample warnings remain |
+| `yarn verify:packages`                           | Passed: 127 React exports, 81 icon exports, and 282 declaration files                                                   |
+| `yarn verify:packed-packages`                    | Passed in an isolated consumer for ESM, CommonJS, UMD, compiled Sass, and strict TypeScript                             |
+| `yarn verify:public-exports`                     | Passed; the React root surface remains exactly 127 baseline names                                                       |
+| `yarn verify:bundle-size`                        | Passed every configured raw and gzip threshold; exact output is below                                                   |
+| `yarn verify:clean`                              | Passed after all generators and builds; the detached worktree remained clean                                            |
+| `yarn lerna --version` / `yarn lerna list --all` | Passed with Lerna 9.0.7 and all seven workspaces; no version or publish command was run                                 |
+
+Packed output contained 311 files / 2,867,326 bytes for React, 9 / 390,094 for
+icons-react, 7 / 51,478 for icons-core, 267 / 920,591 for styles, and 26 /
+1,054,905 for themes-core.
+
+| Artifact       | Raw bytes (baseline delta) | Gzip bytes (baseline delta) |
+| -------------- | -------------------------: | --------------------------: |
+| React CommonJS |          131,790 (-61,376) |            39,811 (-17,893) |
+| React ESM      |          188,576 (-91,335) |            47,216 (-22,169) |
+| React UMD      |          131,097 (-60,990) |            39,758 (-17,790) |
+| Icons ESM      |          115,725 (-61,128) |            32,396 (-14,289) |
+| Icons UMD      |          122,374 (-59,984) |            33,137 (-13,878) |
+| Styles CSS     |               271,808 (+0) |                37,164 (+72) |
+
+The OSV result is point-in-time evidence, not a guarantee against future
+advisories. The four scoped resolutions and their expected install warnings are
+the remaining security-maintenance risk, with the Storybook UUID major override
+the highest compatibility concern. Azure's actual protected release job was not
+run. No package was versioned or published, and no tag or credential was created
+or exposed.
