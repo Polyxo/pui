@@ -599,7 +599,7 @@ only one Twig import, which populated an obsolete, unconsumed story parameter.
 The final generated index retained exactly 247 entries: 188 stories and 59 docs
 entries across the same 59 source files.
 
-### Validation evidence so far
+### Final validation evidence
 
 | Check | Result recorded 2026-07-16 |
 | --- | --- |
@@ -620,6 +620,7 @@ entries across the same 59 source files.
 | `yarn verify:packed-packages` | Passed for isolated ESM, CommonJS, UMD, compiled Sass, and strict TypeScript consumers |
 | `yarn verify:public-exports` | Passed; the React root surface remains exactly 127 baseline names |
 | `yarn verify:bundle-size` | Passed every configured raw and gzip threshold |
+| `yarn verify:clean` | Passed after the full generation and build sequence in a detached clean worktree |
 
 The successful interaction coverage included Button, Checkbox,
 ContentSwitcher, Modal keyboard close, controlled date range selection, React
@@ -627,11 +628,19 @@ Table sorting, Pagination, Tooltip, Loading, MainNavigation, React Hook Form
 PasswordInput, and dark/RTL globals. The additional React Hook Form TextInput
 check verified the same decorator path.
 
-The packed React artifact contained 312 files / 2,871,852 bytes. Bundle output
+The packed React artifact contained 312 files / 2,872,059 bytes. Bundle output
 was 131,795 bytes CommonJS (39,813 gzip), 188,585 bytes ESM (47,220 gzip), and
 131,102 bytes UMD (39,762 gzip). Public-export and bundle comparisons therefore
-remain within the recorded compatibility baselines. A clean-tree
-release-equivalent gate remains pending until these changes are committed.
+remain within the recorded compatibility baselines.
+
+After the changes were split into Conventional Commits, commit `3893c0158` was
+checked out into a detached worktree with no `node_modules`. The clean
+`yarn install --frozen-lockfile` completed in 25.82 seconds and left the checkout
+clean. With the verified OSV-Scanner 2.3.8 binary, the complete `yarn validate`
+release gate then exited 0 in 190.01 seconds, including its final
+`verify:clean`. Public network access was used only for OSV queries and the
+isolated packed-package consumer; no credentialed service or publishing command
+was used.
 
 ### Non-passing attempts and remaining debt
 
