@@ -88,6 +88,22 @@ bypassed.
 - Storybook output: `packages/react/docs`; website output:
   `packages/website/.next`.
 
+Storybook 10 is ESM-only. Keep `storybook`, `@storybook/react-vite`, and
+`@storybook/addon-docs` on one exact release line, use the consolidated
+`storybook/*` entry points, and keep configuration files valid ESM. The
+repository still uses Yarn Classic even though Storybook 10 supports Yarn 4+;
+treat install/build evidence as mandatory and do not upgrade one Storybook
+package independently.
+
+After changing stories or Storybook configuration, build the static site and
+compare `packages/react/docs/index.json` with the recorded inventory of 188
+stories and 59 autodocs entries across 59 source files. Browser-smoke affected
+stories and interactions; a successful static compilation does not catch
+undefined story metadata, missing assets, or post-interaction render failures.
+Do not pass cyclic or other non-serializable values through Storybook args or
+story context. Use React context inside a decorator and static docs source for
+examples whose runtime state cannot be serialized safely.
+
 Do not hand-edit generated output. Change the source or generator, run the owning
 root command, and inspect `git status --short` for unexpected changes. Generated
 directories are mostly ignored; a successful build alone does not prove a clean
@@ -110,6 +126,10 @@ or compatible result.
   Testing Library coverage before removing any suite or either dependency.
 - Redux Form, React Dates, and React Table v7 remain compatibility/example
   dependencies. Remove them only through an explicit, tested migration.
+- Stories exported by `packages/react/src/indexStories.ts` are also parsed into
+  website demo source. Keep their exported render functions and referenced
+  assets self-contained, then run `yarn build:website`; Storybook-only Vite asset
+  resolution is not sufficient evidence for those stories.
 - `allowJs` and relaxed TypeScript settings are deliberate boundary exceptions,
   not patterns for new code. New production code and tests should be TypeScript.
 

@@ -1,19 +1,23 @@
 # React legacy-code inventory
 
 Legacy code is intentionally quarantined while compatibility requirements are
-established. No legacy component was deleted during the 2026 modernization.
+established. No legacy component implementation was deleted during the 2026
+modernization; retired Twig and Handlebars template assets were removed only
+after their references and package reachability were audited.
 
 ## Current inventory
 
-- `othersrc`: 76 files in 14 component directories.
+- `othersrc`: 71 files in 14 component directories.
 - `src` old/legacy JavaScript variants: 35 files matching `*-old*.js`,
   `*.legacy.js`, or `*.js.legacy` naming.
 - JavaScript `*-test.js` suites: 65; 63 still import Enzyme. The two exceptions
   are pre-existing Testing Library suites under `othersrc`.
-- Active TypeScript Jest suites: 13. The Hero suite moved from an Enzyme-backed
+- Active TypeScript Jest suites: 14. The Hero suite moved from an Enzyme-backed
   JavaScript test to Testing Library on 2026-07-16; its replacement covers the
   documented classes, link aliases, related-card structure, and image text.
-- Active cross-boundary reference: the `ContentSwitcher` Storybook story imports `othersrc/Switch`.
+- Active cross-boundary references: the `ContentSwitcher` Storybook story and
+  focused Testing Library suite import `othersrc/Switch` while its callback
+  contract is preserved.
 - Redux Form is referenced by internal wrappers, historical documentation, and legacy examples.
 - React Table v7 is used by the table story and a legacy table story, not the shipped runtime bundle.
 
@@ -39,7 +43,8 @@ Before removing any legacy file or dependency:
 
 1. Convert the remaining hybrid Testing Library/Enzyme suites.
 2. Convert pure Enzyme suites by active public component.
-3. Move the `ContentSwitcher` story off `othersrc/Switch`.
+3. Replace the `ContentSwitcher` dependency on `othersrc/Switch` without changing
+   its established selection or callback contract.
 4. Audit Redux Form wrappers and replace examples with React Hook Form or Final Form.
 5. Replace the React Table v7 story with the supported table integration.
 6. Remove unreachable old variants only after downstream-search evidence is attached.

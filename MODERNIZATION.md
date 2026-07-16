@@ -512,3 +512,173 @@ the remaining security-maintenance risk, with the Storybook UUID major override
 the highest compatibility concern. Azure's actual protected release job was not
 run. No package was versioned or published, and no tag or credential was created
 or exposed.
+
+## Template retirement and Storybook 10 migration — 2026-07-16
+
+This section supersedes the current-state Storybook 8, retained-template, and
+Storybook UUID-resolution statements above. Earlier sections remain the
+historical evidence for their respective stages.
+
+### Baseline and scope
+
+Before the dependency and configuration edits, the working-copy Storybook
+8.6.18 build failed in the long-lived install with
+`[storybook:react-docgen-plugin] _lruCache is not a constructor`. This is
+recorded as a baseline/local-install failure rather than a Storybook 10
+regression because the same checkout had the previously documented stale nested
+Babel/`lru-cache` drift. There is no successful clean Storybook 8 artifact for a
+production-build or bundle-size comparison.
+
+The active Storybook inventory before this stage was 59 story source files, 188
+stories, and 59 generated docs entries, for 247 index entries in total. Template
+import and package-reachability searches found no active Handlebars consumer and
+only one Twig import, which populated an obsolete, unconsumed story parameter.
+
+### Template cleanup
+
+- Removed 27 `.hbs` and five `.twig` files after auditing their imports,
+  Storybook configuration, package reachability, and quarantined `othersrc`
+  references. The Blockquote implementation and story remain; only its unused
+  Twig import and parameter were removed.
+- Removed the direct React-workspace `handlebars` development dependency, stale
+  Twig story comments, and the React and website Twig module declarations. No
+  `.hbs`, `.handlebars`, or `.twig` source remains in the repository.
+- `yarn why twig` now reports no match. Handlebars is not claimed to be absent
+  from the installed toolchain: `handlebars@4.7.9` remains transitively through
+  `ts-jest` and through Lerna's conventional-changelog tooling.
+- The retired templates were not covered by the React package's `files`
+  allowlist and therefore were not present in its published tarball. No
+  JavaScript or TypeScript legacy implementation was removed.
+
+### Storybook dependencies and configuration
+
+- Upgraded the latest stable line observed for this audit by exact-pinning
+  `storybook`, `@storybook/react-vite`, and `@storybook/addon-docs` at 10.5.0.
+  Vite remains on its reviewed 6.4 line.
+- Removed direct `@storybook/react`, `@storybook/addon-actions`, and the unused
+  `eslint-plugin-storybook`. Actions, manager APIs, and theming now use
+  Storybook 10's consolidated `storybook/actions`, `storybook/manager-api`, and
+  `storybook/theming` entry points.
+- Removed the cross-major
+  `**/@storybook/addon-actions/uuid` resolution. Three scoped OSV resolutions
+  now remain; the Storybook override and its compatibility risk no longer apply.
+- Made the active CSF glob and docs addon explicit, enabled autodocs through
+  preview tags, typed the config and preview against `@storybook/react-vite`,
+  and selected TypeScript bundler resolution for this boundary.
+- Made theme and text-direction globals deterministic, including initial values,
+  body classes, and `dir`, and moved the manager panel setting to Storybook 10's
+  `layout.panelPosition` configuration.
+
+### Story behavior and compatibility repairs
+
+- Fixed invalid Avatar component metadata and Item/Text story metadata that
+  referenced nonexistent identifiers. Replaced unavailable Hero and Empty story
+  images with checked-in assets, and stopped Hero from emitting
+  `background-image: url(undefined)` when no image is supplied. A focused Hero
+  test protects the absent-image case.
+- Restored ContentSwitcher's established object callback payload
+  (`{ index, name, text }`) across pointer and keyboard selection and restored
+  index zero as the default selected item. Three Testing Library tests cover the
+  default state and both interaction paths while the active story still uses the
+  quarantined `othersrc/Switch` compatibility component.
+- Moved React Hook Form state out of Storybook args/context and into a typed
+  decorator-owned React context. PasswordInput and TextInput consume that
+  context, while docs use stable static source instead of serializing live form
+  objects.
+- Made the DatePicker and range-picker stories controlled so date selection is
+  visible and repeatable. Public date input types were widened to accept
+  `Date | null` and setter callbacks while retaining the previous string forms.
+  `ButtonKind` was widened to include the already supported rendered variants.
+  Both type changes are additive.
+- No root public export name, compatibility alias, CSS class, token, or icon name
+  was intentionally changed. Hero rendering with a valid image remains
+  unchanged; only the invalid absent-image style is omitted. Story sources are
+  not published, although the React package intentionally includes its
+  `.storybook` configuration, so packed-package validation remains required.
+
+The final generated index retained exactly 247 entries: 188 stories and 59 docs
+entries across the same 59 source files.
+
+### Validation evidence so far
+
+| Check | Result recorded 2026-07-16 |
+| --- | --- |
+| Fresh `yarn install --frozen-lockfile` | Passed; expected React 16-era peer warnings remain |
+| `yarn security:scan` | Passed with no findings after the first sandboxed attempt failed to resolve the public OSV service and the network-enabled retry completed |
+| `yarn lint` | Passed with 0 errors; 65 React warnings and 22 website warnings remain recorded debt |
+| `yarn typecheck` | Passed for the shipped React surface and website after deterministic token/demo generation |
+| `yarn test` | Passed: 14 suites, 95 tests, and 4 snapshots; quarantined JavaScript suites remain excluded |
+| `yarn build:packages` | Passed, including default tokens, Sass/CSS, icon tooling, 81 generated icons, declarations, and the Vite React build |
+| `yarn build:storybook` | Passed on Storybook 10.5.0 with 802 transformed modules; Sass `if()` deprecations and large-chunk warnings remain non-fatal |
+| Storybook doctor | `npx --yes storybook@10.5.0 doctor` exited 0 without diagnostics |
+| Focused Hero suite | Passed: 1 suite and 6 tests |
+| Story browser crawl | Passed 188/188 without a Storybook error boundary, uncaught page error, console error, or local HTTP failure |
+| Docs browser crawl | Passed 59/59 under the same checks |
+| Interaction smoke | Passed 12/12 final scenarios across bounded browser runs; the separate React Hook Form TextInput scenario also passed |
+| `yarn build:website` | Passed and generated all 154 static pages; existing offline Figma-fetch, metadata, and demo-source warnings remain |
+| `yarn verify:packages` | Passed: 127 React exports, 81 icon exports, and 282 declaration files |
+| `yarn verify:packed-packages` | Passed for isolated ESM, CommonJS, UMD, compiled Sass, and strict TypeScript consumers |
+| `yarn verify:public-exports` | Passed; the React root surface remains exactly 127 baseline names |
+| `yarn verify:bundle-size` | Passed every configured raw and gzip threshold |
+
+The successful interaction coverage included Button, Checkbox,
+ContentSwitcher, Modal keyboard close, controlled date range selection, React
+Table sorting, Pagination, Tooltip, Loading, MainNavigation, React Hook Form
+PasswordInput, and dark/RTL globals. The additional React Hook Form TextInput
+check verified the same decorator path.
+
+The packed React artifact contained 312 files / 2,871,852 bytes. Bundle output
+was 131,795 bytes CommonJS (39,813 gzip), 188,585 bytes ESM (47,220 gzip), and
+131,102 bytes UMD (39,762 gzip). Public-export and bundle comparisons therefore
+remain within the recorded compatibility baselines. A clean-tree
+release-equivalent gate remains pending until these changes are committed.
+
+### Non-passing attempts and remaining debt
+
+- The first complete story crawl exposed 19 affected entries: undefined
+  Avatar/Item/Text references and unavailable or invalid Empty/Hero assets. The
+  source fixes above were made before the successful 188/188 story and 59/59
+  docs reruns.
+- The initial broad interaction run passed 5 of 12 scenarios. Its seven failures
+  combined real ContentSwitcher callback/default-selection and uncontrolled Date
+  story defects with overly broad automation assumptions for Checkbox, Modal,
+  React Table, Pagination, and Tooltip. The defects and browser targeting were
+  separated, and the bounded final runs passed all 12 scenarios.
+- The Storybook-source-only command
+  `yarn tsc --noEmit --project packages/react/tsconfig.storybook.json --pretty false`
+  exited 2 with 64 diagnostics under the repository's TypeScript 5.9 compiler.
+  Diagnostics remain in MDX dependency declarations, legacy CSF stories that
+  rely on an undeclared `Story` type, React Hook Form story values, and existing
+  story prop values. Explicit `.tsx` demo imports are now accepted only inside
+  this no-emit bundler boundary. This is tracked Storybook migration debt, not a
+  hidden pass and not a regression in the successful root type-check, which
+  intentionally checks the shipped React surface and website.
+- Yarn Classic initially linked the root `tsc` executable to Lerna's nested
+  TypeScript 5.3 even though all owned workspaces declare 5.9.3. A direct root
+  TypeScript 5.9.3 development dependency now makes the release/tooling compiler
+  deterministic. `yarn tsc --version` now reports 5.9.3 and the complete root
+  `yarn typecheck` passed with that compiler after the lockfile refresh.
+- The first post-change frozen install was attempted inside the network-restricted
+  sandbox and stopped on `ENOTFOUND registry.yarnpkg.com`. The network-enabled
+  lock refresh then passed, and a subsequent `yarn install --frozen-lockfile`
+  exited 0 without changing the lockfile.
+- Legacy CSF2 `.story` metadata and `componentSubtitle` parameters remain; the
+  latter produces a Storybook deprecation warning. Migrating those stories to
+  typed CSF3 should be a separate ownership-based change.
+- Storybook 10 is ESM-only and compatible with the repository's Node 24 policy,
+  but Storybook does not support the retained Yarn Classic workflow. A Yarn 4
+  migration needs its own workspace, install, CI, and publishing compatibility
+  review.
+- The browser crawls are recorded validation evidence, not a committed permanent
+  regression gate. Stable `play` functions, accessibility checks, and visual
+  regression coverage remain recommended follow-up work.
+- Hero is not currently exported from `src/indexStories.ts`; its checked-in Vite
+  asset is therefore valid for Storybook but is not yet a website-demo asset.
+  If Hero is added to that demo index, first add a deterministic shared/public
+  asset copy so the source-extraction bundle does not emit a missing URL.
+- Removing transitive Handlebars requires focused replacements or upgrades for
+  `ts-jest` and Lerna's changelog tooling; it should not be forced through a
+  global resolution.
+
+No package was versioned or published, no tag was created, and no registry,
+Azure, Algolia, or other credentialed remote write was performed in this stage.

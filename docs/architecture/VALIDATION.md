@@ -17,7 +17,7 @@ ownership.
 | React / React DOM | 19.2.7 development runtime; public peer range starts at 19.1.1 | React workspace manifest and lockfile |
 | TypeScript | 5.9.3 line | React, website, and icons-core manifests; lockfile |
 | Vite / Rollup | Vite 6.4.3 line; Rollup 4.62.2 | React and icons-core manifests; lockfile |
-| Jest / Storybook | Jest 30.4 line; Storybook 8.6.18 line | React manifest; lockfile |
+| Jest / Storybook | Jest 30.4 line; Storybook 10.5.0 line | React manifest; lockfile |
 | ESLint / Next.js | ESLint 9.39.5 line; Next 16.2.10; `next-mdx-remote` 6.x | React/website manifests; lockfile |
 | Sass / Style Dictionary | Sass 1.98 line; Style Dictionary 3.9.2 | Styles/themes manifests; lockfile |
 
