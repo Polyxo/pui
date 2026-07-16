@@ -1,14 +1,14 @@
-import { create } from '@storybook/theming/create';
+import { create } from "storybook/theming/create";
 
 export default create({
-  base: 'light',
+  base: "light",
 
   // Typography
   fontBase: '"Open Sans", sans-serif',
-  fontCode: 'monospace',
+  fontCode: "monospace",
 
   // Text colors
-  textColor: '#031c2d',
-  headerCommon: { color: 'red' },
+  textColor: "#031c2d",
+  headerCommon: { color: "red" },
   brandUrl: null,
 });

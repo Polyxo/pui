@@ -36,6 +36,9 @@ a11y/results
 # Jest Test results
 jest-test-results.json
 
+# Local Playwright CLI artifacts
+.playwright-cli/
+
 # Carbon generated
 packages/icons/src/legacy/*
 packages/pictograms/es/*

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { buttonKinds } from "../../prop-types/types";
 import { AddCircle } from "@progressiveui/icons-react";
 import Button from "./Button";
@@ -95,7 +95,7 @@ export const ButtonSolid = (args) => (
           e === "primary" ||
           e === "secondary" ||
           e === "ghost" ||
-          e === "danger"
+          e === "danger",
       )
       .map((e) => (
         <div

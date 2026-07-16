@@ -1,47 +1,75 @@
-import React, { FC } from "react";
+import React from "react";
+import type { Decorator, Preview } from "@storybook/react-vite";
 import "./storybook.scss";
-import theme from "./theme";
+import docsTheme from "./theme.js";
 import { WFPCoreProvider } from "../src/components/WFPCoreSettings";
-
-import { themes, ensure } from "@storybook/theming";
-
 import "@fontsource-variable/open-sans/wdth.css";
 
-export const parameters = {
-  controls: { expanded: true },
-  docs: {
-    //components: { ...mdxComponents },
-    theme: theme,
-    //theme: ensure(themes.dark),
-    //page: DocsPage,
-  },
-  options: {
-    storySort: {
-      order: ["Getting started", "Documentation", "Templates", "Components"],
-    },
-  },
-};
+const withThemeProvider: Decorator = (Story, context) => {
+  const theme = context.globals.theme ?? "light";
+  const locale = context.globals.locale ?? "ltr";
 
-const withThemeProvider = (Story, context) => {
-  const { locale, theme } = context.globals;
-  document.body.classList.remove(
-    `wfp--theme-${theme === "light" ? "dark" : "light"}`
-  );
+  document.body.classList.remove("wfp--theme-light", "wfp--theme-dark");
   document.body.classList.add(`wfp--theme-${theme}`);
+
   return (
     <div
       className={`wfp--theme-${theme} wfp--theme-${locale}`}
-      dir={locale === "rtl" ? "rtl" : null}
+      dir={locale === "rtl" ? "rtl" : "ltr"}
     >
-      <Story {...context} />
+      <Story />
     </div>
   );
 };
 
-const withWFPCoreProvider = (Story) => (
+const withWFPCoreProvider: Decorator = (Story) => (
   <WFPCoreProvider prefix="wfp">
     <Story />
   </WFPCoreProvider>
 );
 
-export const decorators = [withThemeProvider, withWFPCoreProvider];
+const preview: Preview = {
+  tags: ["autodocs"],
+  initialGlobals: {
+    locale: "ltr",
+    theme: "light",
+  },
+  globalTypes: {
+    locale: {
+      description: "Text direction",
+      toolbar: {
+        icon: "globe",
+        items: [
+          { value: "ltr", title: "Left to right" },
+          { value: "rtl", title: "Right to left" },
+        ],
+        dynamicTitle: true,
+      },
+    },
+    theme: {
+      description: "Component theme",
+      toolbar: {
+        icon: "paintbrush",
+        items: [
+          { value: "light", title: "Light" },
+          { value: "dark", title: "Dark" },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  decorators: [withThemeProvider, withWFPCoreProvider],
+  parameters: {
+    controls: { expanded: true },
+    docs: {
+      theme: docsTheme,
+    },
+    options: {
+      storySort: {
+        order: ["Getting started", "Documentation", "Templates", "Components"],
+      },
+    },
+  },
+};
+
+export default preview;

@@ -51,10 +51,10 @@
     "components"
   ],
   "devDependencies": {
-    "lerna": "^9.0.7"
+    "lerna": "^9.0.7",
+    "typescript": "^5.9.3"
   },
   "resolutions": {
-    "**/@storybook/addon-actions/uuid": "11.1.1",
     "lerna/js-yaml": "4.2.0",
     "lerna/tar": "7.5.20",
     "**/next/postcss": "8.5.19"
