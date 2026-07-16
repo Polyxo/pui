@@ -64,6 +64,22 @@ describe("Hero", () => {
     ).toBeInTheDocument();
   });
 
+  it("does not request an undefined background image", () => {
+    const { container, rerender } = render(
+      <Hero kind="splash">Splash content</Hero>,
+    );
+    const background = container.querySelector(".wfp--photo-card__background");
+
+    expect(background).not.toHaveAttribute("style");
+
+    rerender(
+      <Hero image="/photo.jpg" kind="splash">
+        Splash content
+      </Hero>,
+    );
+    expect(background).toHaveStyle({ backgroundImage: "url(/photo.jpg)" });
+  });
+
   it("derives related image alternative text from a string title", () => {
     render(
       <Hero image="/photo.jpg" kind="related" title="Food distribution" />,

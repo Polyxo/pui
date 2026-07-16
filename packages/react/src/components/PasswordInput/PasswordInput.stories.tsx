@@ -1,8 +1,10 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Controller } from "react-hook-form";
 import PasswordInput from ".";
-import reactHookFormDecorator from "../../../.storybook/reactHookFormDecorator";
+import reactHookFormDecorator, {
+  useStoryForm,
+} from "../../../.storybook/reactHookFormDecorator";
 
 const meta: Meta<typeof PasswordInput> = {
   title: "Components/Forms/PasswordInput",
@@ -54,10 +56,10 @@ export const WithAddonAfter: Story = {
 };
 
 export const WithReactHookForm: Story = {
-  render: (args, context) => {
-    const form = (context as { form?: any }).form;
+  render: (args) => {
+    const form = useStoryForm();
 
-    if (!form?.register) {
+    if (!form) {
       return <div>Loading...</div>;
     }
 
@@ -82,4 +84,11 @@ export const WithReactHookForm: Story = {
     helperText: "Password managed by React Hook Form",
   },
   decorators: [reactHookFormDecorator],
+  parameters: {
+    docs: {
+      source: {
+        type: "code",
+      },
+    },
+  },
 };

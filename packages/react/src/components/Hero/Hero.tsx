@@ -1,8 +1,8 @@
-import * as React from 'react';
-import type { PropsWithChildren } from 'react';
-import classNames from 'classnames';
-import useSettings from '../../hooks/useSettings';
-import { HeroKind } from '../../utils';
+import * as React from "react";
+import type { PropsWithChildren } from "react";
+import classNames from "classnames";
+import useSettings from "../../hooks/useSettings";
+import { HeroKind } from "../../utils";
 /**
  * Hero are a convenient means of displaying content composed of different types of objects. It is a multi usage component which creates boxes that are usually teasing some kind of content. */
 type HeroProps = PropsWithChildren<{
@@ -76,7 +76,7 @@ const Hero: React.FC<HeroProps> = ({
   const { prefix } = useSettings();
 
   const style =
-    kind !== 'related'
+    image && kind !== "related"
       ? {
           backgroundImage: `url(${image})`,
         }
@@ -92,15 +92,15 @@ const Hero: React.FC<HeroProps> = ({
   const content = (
     <React.Fragment>
       <div className={`${prefix}--photo-card__background`} style={style} />
-      {image && kind === 'related' && (
+      {image && kind === "related" && (
         <img
           src={image}
-          alt={imageAlt ?? (typeof title === 'string' ? title : '')}
+          alt={imageAlt ?? (typeof title === "string" ? title : "")}
         />
       )}
       <div className={`${prefix}--photo-card__info`}>
         <div>
-          {(kind === 'landscape' || kind === 'hero') && (
+          {(kind === "landscape" || kind === "hero") && (
             <div
               className={`${prefix}--photo-card__info__background`}
               style={style}
@@ -111,10 +111,10 @@ const Hero: React.FC<HeroProps> = ({
               {metadata}
             </p>
           )}
-          {title && (kind === 'hero' || kind === 'splash-compact') && (
+          {title && (kind === "hero" || kind === "splash-compact") && (
             <h2 className={`${prefix}--photo-card__info__title`}>{title}</h2>
           )}
-          {title && kind !== 'hero' && kind !== 'splash-compact' && (
+          {title && kind !== "hero" && kind !== "splash-compact" && (
             <h3 className={`${prefix}--photo-card__info__title`}>{title}</h3>
           )}
           {subTitle && (
@@ -124,9 +124,9 @@ const Hero: React.FC<HeroProps> = ({
           )}
         </div>
 
-        {kind === 'hero' ||
-          kind === 'splash-image' ||
-          (kind === 'splash-compact' && (
+        {kind === "hero" ||
+          kind === "splash-image" ||
+          (kind === "splash-compact" && (
             <div className={`${prefix}--photo-card__info__more`}>{more}</div>
           ))}
       </div>
@@ -137,9 +137,10 @@ const Hero: React.FC<HeroProps> = ({
   return isLink ? (
     <a
       href={href ?? url}
-      target={isExternal ? '_blank' : ''}
+      target={isExternal ? "_blank" : ""}
       className={wrapperClasses}
-      {...other}>
+      {...other}
+    >
       {content}
     </a>
   ) : (
@@ -149,6 +150,6 @@ const Hero: React.FC<HeroProps> = ({
   );
 };
 
-Hero.displayName = 'Hero';
+Hero.displayName = "Hero";
 
 export default Hero;

@@ -7,15 +7,15 @@ declare type StatusKind = "info" | "error" | "warning" | "success";
 declare type ButtonKind =
   | "primary"
   | "secondary"
-  // | 'accent'
+  | "tertiary"
+  | "accent"
   | "danger"
-  | "ghost";
-// | 'inverse--primary'
-// | 'inverse'
-// | 'danger--primary'
-// | 'danger--secondary'
-// | 'tertiary'
-// | 'navigation';
+  | "danger--primary"
+  | "danger--secondary"
+  | "ghost"
+  | "inverse--primary"
+  | "inverse"
+  | "navigation";
 
 declare type InputModes =
   | "none"

@@ -2,7 +2,6 @@ import React from "react";
 import ContentSwitcher from "./ContentSwitcher";
 // import markdown from "./README.mdx";
 import Switch from "../../../othersrc/Switch";
-import { Add16, AddCircle } from "@progressiveui/icons-react";
 
 export default {
   title: "Components/Content Related/ContentSwitcher",
@@ -17,7 +16,7 @@ export default {
 
 export const ContentSwitcherDefault: Story = {
   render: (args) => (
-    <ContentSwitcher {...args}>
+    <ContentSwitcher {...args} onChange={() => {}}>
       <Switch name="one" text="First section" kind="button" />
       <Switch name="two" text="Second section" kind="button" />
       <Switch name="three" text="Third section" kind="button" />

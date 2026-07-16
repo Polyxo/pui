@@ -1,23 +1,46 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Button, TextInput } from '../src';
-import styles from './reactHookFormDecorator.module.scss';
+import { createContext, useContext, useState } from "react";
+import type { ChangeEvent } from "react";
+import type { Decorator } from "@storybook/react-vite";
+import { useForm } from "react-hook-form";
+import type { UseFormReturn } from "react-hook-form";
+import { Button, TextInput } from "../src";
+import styles from "./reactHookFormDecorator.module.scss";
 
-const reactHookFormDecorator = (Story) => {
-  const [defaultValues, setDefaultValues] = useState({ inputname: true });
-  const form = useForm({
+type StoryFormValues = {
+  confirmPassword: string;
+  inputname: string;
+  password: string;
+  select: string;
+};
+
+const initialDefaultValues: StoryFormValues = {
+  confirmPassword: "",
+  inputname: "",
+  password: "",
+  select: "",
+};
+
+const StoryFormContext = createContext<UseFormReturn<StoryFormValues> | null>(
+  null,
+);
+
+export const useStoryForm = () => useContext(StoryFormContext);
+
+const reactHookFormDecorator: Decorator = (Story) => {
+  const [defaultValues, setDefaultValues] =
+    useState<StoryFormValues>(initialDefaultValues);
+  const form = useForm<StoryFormValues>({
     defaultValues,
   });
-  const { control, register, handleSubmit, watch, reset } = form;
-  const [data, setData] = useState('');
+  const { handleSubmit, watch, reset } = form;
+  const [data, setData] = useState("");
 
-  const setDefaultValuesFunc = (e) => {
-    console.log(e.target.value);
+  const setDefaultValuesFunc = (event: ChangeEvent<HTMLInputElement>) => {
     try {
-      const values = JSON.parse(e.target.value);
+      const values = JSON.parse(event.target.value);
       setDefaultValues(values);
-    } catch (e) {
-      console.log(e);
+    } catch {
+      // Keep the last valid JSON object while the field is being edited.
     }
   };
 
@@ -36,14 +59,11 @@ const reactHookFormDecorator = (Story) => {
       />
       <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
         <div className={styles.preview}>
-          <Story
-            control={control}
-            aaaaaa="bbbbbbb"
-            register={register}
-            form={form}
-          />
+          <StoryFormContext.Provider value={form}>
+            <Story />
+          </StoryFormContext.Provider>
         </div>
-        <Button type="submit">Submit</Button>{' '}
+        <Button type="submit">Submit</Button>{" "}
         <Button onClick={resetInputs} kind="tertiary">
           Reset
         </Button>

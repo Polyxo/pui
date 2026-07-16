@@ -16,7 +16,7 @@ type ContentSwitcherProps = PropsWithChildren<{
 const ContentSwitcher: React.FC<ContentSwitcherProps> = ({
   children,
   className,
-  selectedIndex,
+  selectedIndex = 0,
   small,
   onChange,
   ...other
@@ -31,7 +31,7 @@ const ContentSwitcher: React.FC<ContentSwitcherProps> = ({
         onClick: handleChildChange,
         onKeyDown: handleChildChange,
         selected: index === selectedIdx,
-      })
+      }),
     );
   };
 

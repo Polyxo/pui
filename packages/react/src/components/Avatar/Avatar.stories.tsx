@@ -3,7 +3,7 @@ import Avatar from ".";
 
 export default {
   title: "Components/UI Elements/Avatar",
-  component: User,
+  component: Avatar,
   parameters: {
     componentSubtitle: "Component",
     status: "released",

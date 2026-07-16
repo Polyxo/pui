@@ -4,14 +4,16 @@ import { ArrowRight, CalendarAltRegular } from "@progressiveui/icons-react";
 
 export interface DateRangePickerInputProps {
   /**
-   * The starting date value, formatted as a string.
+   * The starting date value. React DatePicker adapters use `Date | null`;
+   * formatted strings remain accepted for compatibility with custom adapters.
    */
-  startDate?: string;
+  startDate?: string | Date | null;
 
   /**
-   * The ending date value, formatted as a string.
+   * The ending date value. React DatePicker adapters use `Date | null`;
+   * formatted strings remain accepted for compatibility with custom adapters.
    */
-  endDate?: string;
+  endDate?: string | Date | null;
 
   /**
    * The DatePicker component to be used (react-datepicker by default)
@@ -19,14 +21,16 @@ export interface DateRangePickerInputProps {
   datePicker?: React.ComponentType<any>;
 
   /**
-   * Function to set the starting date. Typically used as an event handler.
+   * Function to set the starting date. The string alternative is retained only
+   * for compatibility with the previous declaration and is not a valid handler.
    */
-  setStartDate?: string;
+  setStartDate?: string | ((date: Date | null, event?: unknown) => void);
 
   /**
-   * Function to set the ending date. Typically used as an event handler.
+   * Function to set the ending date. The string alternative is retained only
+   * for compatibility with the previous declaration and is not a valid handler.
    */
-  setEndDate?: string;
+  setEndDate?: string | ((date: Date | null, event?: unknown) => void);
 
   /**
    * Additional props for the start date DatePicker component.
@@ -55,7 +59,7 @@ export const DateRangePickerInput = React.forwardRef<
       fromProps = {},
       toProps = {},
     },
-    ref
+    ref,
   ) => {
     const { prefix } = useSettings();
     const DatePicker = datePicker;
@@ -100,7 +104,7 @@ export const DateRangePickerInput = React.forwardRef<
         </div>
       </div>
     );
-  }
+  },
 );
 
 DateRangePickerInput.displayName = "DateRangePickerInput";

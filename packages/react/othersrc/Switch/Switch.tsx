@@ -3,28 +3,27 @@ import * as React from "react";
 import classNames from "classnames";
 import useSettings from "../../src/hooks/useSettings";
 
-interface SwitchProps extends React.ComponentPropsWithRef<"a"> {
+type SwitchChangeData = {
+  index?: number;
+  name?: string | number;
+  text: string;
+};
+
+type SwitchProps = Omit<
+  React.ComponentPropsWithoutRef<"a">,
+  "onClick" | "onKeyDown"
+> & {
   className?: string;
   index?: number;
   kind: "button" | "anchor";
   name?: string | number;
-  onClick?: (
-    e?: Event,
-    index?: number,
-    name?: string | number,
-    text?: string
-  ) => void;
-  onKeyDown: (
-    e?: Event,
-    index?: number,
-    name?: string | number,
-    text?: string
-  ) => void;
+  onClick?: (data: SwitchChangeData) => void;
+  onKeyDown?: (data: SwitchChangeData) => void;
   selected?: boolean;
   text: string;
-  icon?: React.ReactElement;
-  href: string;
-}
+  icon?: React.ReactElement<{ className?: string }>;
+  href?: string;
+};
 
 const Switch: React.FC<SwitchProps> = (props) => {
   const { prefix } = useSettings();
@@ -42,18 +41,16 @@ const Switch: React.FC<SwitchProps> = (props) => {
     ...other
   } = props;
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    // ({ index, name, text }) => onClick(index, name, text);
-    onClick(e, index, name, text);
+    onClick({ index, name, text });
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     const key = e.key || e.which;
 
     if (key === "Enter" || key === 13 || key === " " || key === 32) {
-      //   ({ index, name, text }) => onKeyDown(index, name, text);
-      onKeyDown(e, index, name, text);
+      onKeyDown({ index, name, text });
     }
   };
 
@@ -71,14 +68,17 @@ const Switch: React.FC<SwitchProps> = (props) => {
     ? React.cloneElement(icon, {
         className: classNames(
           icon.props.className,
-          `${prefix}--content-switcher__icon`
+          `${prefix}--content-switcher__icon`,
         ),
       })
     : null;
 
   if (kind === "button") {
     return (
-      <button {...other} {...commonProps}>
+      <button
+        {...(other as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+        {...commonProps}
+      >
         {btnIcon}
         {text}
       </button>

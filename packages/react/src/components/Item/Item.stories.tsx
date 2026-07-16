@@ -50,7 +50,7 @@ import { Item, Tag } from "@progressiveui/react";
 
 `;
 
-Regular.story = {
+ItemDefault.story = {
   parameters: {
     docs: {
       source: {

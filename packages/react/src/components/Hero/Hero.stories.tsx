@@ -5,6 +5,11 @@ import React from "react";
 import { Hero, HeroExternal } from ".";
 import Button from "../Button";
 
+const heroImage = new URL(
+  "../../assets/internal/yemen-hero-min.jpg",
+  import.meta.url,
+).href;
+
 export default {
   title: "Components/Content Related/Hero",
   component: Hero,
@@ -19,7 +24,7 @@ export const Regular = (args) => <Hero {...args} />;
 
 Regular.args = {
   href: "#",
-  image: "http://www1.polyxo.de/sites/default/files/images/yemen-hero-min.jpg",
+  image: heroImage,
   subTitle:
     "Food security and climate change analyses, adaptation planning, and good practices in food security adaptation programming.",
   title: "The Climate Adaption Mangement and Innovation Initiative",
@@ -308,7 +313,7 @@ External.args = {
       for one or more sentences. Like this.
     </>
   ),
-  image: "http://www1.polyxo.de/sites/default/files/images/yemen-hero-min.jpg",
+  image: heroImage,
 };
 
 const externalsourcecode = `
@@ -316,7 +321,7 @@ import { HeroExternal, Button } from "@progressiveui/react";
         
 
 <HeroExternal
-  image="http://www1.polyxo.de/sites/default/files/images/yemen-hero-min.jpg"
+  image="/path/to/hero.jpg"
   subTitle={<>A description that can contain a{' '}<a>link</a>{' '}and{' '}<strong>a bold text</strong>{' '}to highlight important content. We have room for one or more sentences. Like this.</>}
   title={<>A headline that can be used{' '}<br />{' '}for the value proposition</>}
 >

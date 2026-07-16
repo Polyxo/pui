@@ -1,6 +1,8 @@
 import React from "react";
 import TextInput from ".";
-import reactHookFormDecorator from "../../../.storybook/reactHookFormDecorator";
+import reactHookFormDecorator, {
+  useStoryForm,
+} from "../../../.storybook/reactHookFormDecorator";
 import { Controller } from "react-hook-form";
 
 export default {
@@ -40,10 +42,10 @@ withDisabled.args = {
   disabled: true,
 };
 
-export const withReactHookForm = (args, props) => {
-  const { form } = props;
+export const withReactHookForm = (args) => {
+  const form = useStoryForm();
 
-  if (!props.form?.register) return <div>Loading...</div>;
+  if (!form) return <div>Loading...</div>;
   return (
     <>
       <TextInput {...args} {...form.register("inputname")} />
@@ -67,6 +69,14 @@ withReactHookForm.args = {
   name: "inputname",
   helperText: "Optional helperText",
   labelText: "Disabled labelText",
+};
+
+withReactHookForm.parameters = {
+  docs: {
+    source: {
+      type: "code",
+    },
+  },
 };
 
 withReactHookForm.decorators = [reactHookFormDecorator];

@@ -48,7 +48,7 @@ import { Text } from "@progressiveui/react";
 </div>
 `;
 
-Regular.story = {
+TextDefault.story = {
   parameters: {
     docs: {
       source: {
