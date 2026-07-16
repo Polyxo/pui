@@ -46,6 +46,7 @@ they consume; prefer them to workspace commands from a stale checkout.
 
 ```sh
 yarn install --frozen-lockfile
+yarn security:scan
 yarn lint
 yarn typecheck
 yarn test
@@ -63,6 +64,14 @@ yarn verify:clean
 `verify:clean` expects an entirely clean working tree, including no untracked
 files, so run the release-equivalent gate from a clean branch or disposable
 worktree. Never commit user changes merely to make this check pass.
+
+`yarn security:scan` runs OSV-Scanner 2.3.8 against `yarn.lock` and fails on any
+known affected version. It uses the digest-pinned Docker image by default. When
+Docker is unavailable, set `OSV_SCANNER_BIN` to a local 2.3.8 binary; the wrapper
+rejects other versions. The scan queries the public OSV service and never needs
+registry credentials. Use `yarn security:scan -- --json` for machine-readable
+stdout; other forwarded scanner flags are rejected so the gate cannot be
+bypassed.
 
 ## Generated boundaries
 
@@ -119,6 +128,24 @@ or compatible result.
   run only in an authorized trusted deployment job.
 - Keep validation before every version, tag, publish, or mirror step. Do not add a
   CI command that echoes config files or credentials.
+- Do not make `security:scan` advisory-only, add `continueOnError`, or suppress a
+  finding without a documented owner, reachability assessment, and review date.
+
+## Dependency and lockfile changes
+
+- Start with `yarn why <package>` and the OSV advisory's fixed-version events.
+  Identify the direct owner and whether it is shipped runtime, build, test,
+  documentation, or release tooling before choosing an upgrade.
+- Yarn Classic's `upgrade --pattern` only selects direct workspace requests; it
+  does not reliably refresh a vulnerable transitive entry under an otherwise
+  current parent. Refresh the smallest compatible parent subtree and inspect the
+  resulting `yarn.lock` diff.
+- Prefer a parent upgrade or a patched version inside the declared range. Use a
+  root `resolutions` entry only for an exact transitive pin with no patched parent,
+  scope it to the owning path, and record why the cross-range override is safe.
+  Never flatten multi-major packages such as `minimatch` or `picomatch` globally.
+- After any dependency edit, run a frozen install and `yarn security:scan` from a
+  fresh checkout, followed by the owning checks and full `yarn validate`.
 
 ## Change discipline
 

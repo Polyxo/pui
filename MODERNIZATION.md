@@ -368,3 +368,107 @@ icons-react, 7 / 51,478 for icons-core, 267 / 920,591 for styles, and 26 /
 9. Rehearse Azure validation/version/publish ordering in a non-production
    pipeline. Moving registry access to workload identity or another short-lived
    credential mechanism requires release-owner and infrastructure coordination.
+
+## OSV inventory remediation — 2026-07-16
+
+This section supersedes the report-only OSV status and security follow-up item
+above. It does not rewrite those earlier observations because they remain the
+baseline for this remediation.
+
+### Baseline and triage
+
+OSV-Scanner 2.3.8 reproduced the requested inventory from the pre-remediation
+`yarn.lock`: 53 affected package versions across 32 package names and 61 GHSA
+advisory IDs. The scanner groups contained 4 critical, 31 high, 21 medium, and 5
+low findings. The critical paths were `form-data` through Jest 29/jsdom 20,
+Handlebars through Lerna's changelog tooling, and Locutus through the unused Twig
+compiler dependency.
+
+No critical/high finding was imported by the published React browser runtime.
+The inventory was not entirely development-only: Style Dictionary dependencies
+used by the published themes builder and SVGO/matching dependencies used by the
+published icon generator were affected. Those build APIs were therefore treated
+as published compatibility surfaces and retained their token/icon validation.
+
+The measured progression was:
+
+| Stage                                             | Affected versions | Package names | Advisory IDs | Scanner result                                    |
+| ------------------------------------------------- | ----------------: | ------------: | -----------: | ------------------------------------------------- |
+| Reproduced baseline                               |                53 |            32 |           61 | Failed, as expected                               |
+| Lerna/Jest upgrades and unused dependency removal |                39 |            24 |           41 | Failed, remaining exact and stale lock selections |
+| Compatible transitive refresh                     |                 8 |             7 |           10 | Failed, exact parent constraints only             |
+| Scoped resolutions and final lockfile             |                 0 |             0 |            0 | Passed                                            |
+
+### Remediation and compatibility decisions
+
+- Upgraded Lerna 8.2.4 to 9.0.7. The repository does not use the removed legacy
+  `bootstrap`, `add`, or `link` commands; `lerna list --all` still discovers all
+  seven workspaces. Version and publish commands were not run.
+- Upgraded Jest 29.7, `jest-environment-jsdom` 29.7, and Jest types 29 to their
+  30.4/30.0 lines. `ts-jest` 29.4 remains because its declared peer range supports
+  Jest 29 and 30. jsdom now normalizes the named color `red` to its equivalent RGB
+  value, so one Wrapper assertion was made representation-independent. Jest also
+  refreshed only the URL in four snapshot headers; rendered snapshots did not
+  change.
+- Removed direct development dependencies `twig` and `pretty` after repository
+  import searches and `yarn why` showed no active consumers. Existing `.twig`
+  fixtures and quarantined `othersrc` material remain untouched. Removing Twig
+  removed Locutus rather than forcing Twig 1 across Locutus's major boundary.
+- Refreshed only OSV-affected compatible lock entries. The declaration subtree
+  moved API Extractor 7.52.8 to 7.58.10 inside `vite-plugin-dts`' existing
+  `^7.50.1` request. This removed its constrained Ajv, Lodash, and Minimatch
+  versions without changing the public declaration workflow.
+- Kept multiple major lines of packages such as Minimatch and Picomatch. No
+  global flattening resolution was introduced.
+
+Four exact-owner resolutions remain because the current parent releases do not
+request a patched version. Yarn's four incompatible-resolution warnings are
+expected and are not hidden:
+
+| Resolution                                  | Parent request                  | Why it is scoped/safe                                                                       | Required evidence and removal trigger                                                                                              |
+| ------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `lerna/js-yaml` → 4.2.0                     | Lerna 9.0.7 pins 4.1.1          | Same major; release-configuration parsing only                                              | Lerna CLI/list plus full validation; remove when Lerna requests at least 4.2.0                                                     |
+| `lerna/tar` → 7.5.20                        | Lerna 9.0.7 pins 7.5.11         | Same major; release/package tooling only                                                    | Lerna CLI/list plus package validation; remove when Lerna requests at least 7.5.16                                                 |
+| `**/next/postcss` → 8.5.19                  | Next 16.2.10 pins 8.4.31        | Same major; limited to the website CSS build                                                | Website production build; remove when Next requests at least 8.5.10                                                                |
+| `**/@storybook/addon-actions/uuid` → 11.1.1 | Addon Actions requests `^9.0.0` | Development-only addon imports the retained `v4` API; this is the only cross-major override | Storybook production/action smoke evidence; remove when the addon requests at least 11.1.1 or during a dedicated Storybook upgrade |
+
+Review these resolutions on every Lerna, Next, or Storybook dependency update and
+no later than 2026-08-16. A resolution may be removed only when a frozen install
+and OSV scan remain clean without it.
+
+### Security gate and agent workflow
+
+- Added `yarn security:scan` as the first release-equivalent validation command.
+  It runs OSV-Scanner 2.3.8 from a digest-pinned container or an explicitly pinned
+  local binary and fails on any finding.
+- The wrapper always scans `yarn.lock`; callers may request JSON output but cannot
+  replace the scan command, provide an ignore configuration, or request help in
+  place of the gate. The container receives only a read-only `yarn.lock` mount,
+  not source files, `.env`, or `.npmrc`.
+- Removed Azure's report-only `continueOnError` behavior. The blocking scan now
+  runs inside `yarn validate` before any version, secure-file, or publish step.
+- Expanded `AGENTS.md` and the validation map with direct-owner triage, Yarn
+  Classic lock-refresh limitations, scoped-resolution rules, and the exact scan
+  command. No ignore list or accepted vulnerability baseline was added.
+
+### Validation evidence and encountered failures
+
+Before the final clean-checkout run, the new OSV wrapper exited 0 and reported
+`No issues found`; Lerna 9.0.7 version/list checks, root lint, root type-checking,
+and the focused Jest 30 Wrapper suite also exited 0. Lint retained 65 React and
+13 website warnings with zero errors. Type-checking regenerated tokens and demo
+assets successfully.
+
+Two non-passing working-copy attempts are recorded separately from regressions:
+
+- A direct React workspace test did not generate the ignored icons package first,
+  so four suites could not resolve it. The root `yarn test` command owns that
+  prerequisite.
+- The root test retry then stopped during icon generation on the already-recorded
+  stale nested Babel/`lru-cache` directory in the long-lived `node_modules` tree.
+  No tests ran in that attempt. Final release evidence must come from a fresh
+  frozen installation, not this drifted local tree.
+
+The clean install, full release-equivalent validation, Storybook/website builds,
+package consumers, export and bundle comparisons, and clean-generation result
+are recorded below after they are run; no pass is claimed here in advance.

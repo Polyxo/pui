@@ -12,11 +12,12 @@ ownership.
 | --- | --- | --- |
 | Node.js | 24 LTS; `>=24 <25` | `.nvmrc`, root/website `engines`, Azure pipeline |
 | Yarn | 1.22.22 | Root `packageManager` and `engines`, Azure activation step |
-| Lerna | 8.2.4 line; independent package versions | Root `package.json`, `lerna.json`, lockfile |
+| OSV-Scanner | 2.3.8, blocking zero-finding policy | `scripts/osv-scan.mjs`, root validation, Azure pipeline |
+| Lerna | 9.0.7 line; independent package versions | Root `package.json`, `lerna.json`, lockfile |
 | React / React DOM | 19.2.7 development runtime; public peer range starts at 19.1.1 | React workspace manifest and lockfile |
 | TypeScript | 5.9.3 line | React, website, and icons-core manifests; lockfile |
 | Vite / Rollup | Vite 6.4.3 line; Rollup 4.62.2 | React and icons-core manifests; lockfile |
-| Jest / Storybook | Jest 29.7; Storybook 8.6.18 line | React manifest; lockfile |
+| Jest / Storybook | Jest 30.4 line; Storybook 8.6.18 line | React manifest; lockfile |
 | ESLint / Next.js | ESLint 9.39.5 line; Next 16.2.10; `next-mdx-remote` 6.x | React/website manifests; lockfile |
 | Sass / Style Dictionary | Sass 1.98 line; Style Dictionary 3.9.2 | Styles/themes manifests; lockfile |
 
@@ -33,10 +34,17 @@ git status --short --branch
 node --version
 yarn --version
 yarn install --frozen-lockfile
+yarn security:scan
 ```
 
 Confirm a task branch, preserve existing edits, and record the install baseline.
 A frozen install must not change `yarn.lock`.
+The security scan uses the digest-pinned OSV-Scanner Docker image or an explicit
+`OSV_SCANNER_BIN` that reports version 2.3.8. It queries the public OSV service
+for this lockfile scan and must return zero findings. Use
+`yarn security:scan -- --json` when machine-readable output is needed; the
+wrapper rejects other forwarded scanner flags so the release gate cannot be
+bypassed.
 
 ### 2. Focused feedback
 
@@ -100,6 +108,7 @@ user work and do not publish, version, or tag to test the pipeline.
 | Root command | Writes/reads | Prerequisite or follow-up | Change risk |
 | --- | --- | --- | --- |
 | `yarn install --frozen-lockfile` | Populates workspace `node_modules`; reads `yarn.lock` | Lockfile must remain unchanged | Medium: dependency resolution and lifecycle scripts |
+| `yarn security:scan` | Reads `yarn.lock`; queries the public OSV service | Docker, or `OSV_SCANNER_BIN` pointing to 2.3.8 | Blocking dependency-inventory gate; no repository writes |
 | `yarn lint` | No owned output | React and website source/config | Low; warnings are debt, errors fail |
 | `yarn typecheck` | Regenerates default tokens and website demo bundle, then checks React public source and website | Inspect generated cleanliness | Medium: generation can hide stale-input failures |
 | `yarn test` | Builds icon tools/icons, then runs active React 19 Jest suites serially | Inspect icon declaration changes | Medium: legacy JS suites remain excluded |
@@ -114,7 +123,7 @@ user work and do not publish, version, or tag to test the pipeline.
 | `yarn verify:bundle-size` | Reads built React/icon/CSS artifacts and fixture thresholds | Update baselines only with reviewed evidence | Detects raw/gzip regressions |
 | `yarn verify:clean` | Reads complete Git status | Requires clean tree before command | Fails on intentional uncommitted work as designed |
 | `yarn validate:quick` | Runs lint, type-checking, and tests with their owned prerequisites | Working tree may contain intentional edits | Fast broad feedback; not release evidence |
-| `yarn validate:release` / `yarn validate` | Runs every generator, build, check, and clean-tree assertion | Clean install/worktree for release evidence | Release-equivalent; no publish side effect itself |
+| `yarn validate:release` / `yarn validate` | Starts with the blocking OSV scan, then runs every generator, build, check, and clean-tree assertion | Clean install/worktree and public network for release evidence | Release-equivalent; no publish side effect itself |
 
 ## Common task routing
 
@@ -129,7 +138,7 @@ user work and do not publish, version, or tag to test the pipeline.
 | Website code/content | `packages/website/{app,pages,components,_posts,scss}` | Website lint and type-check | Website production build; Storybook/package checks only if shared API changed |
 | Search index content | Website `_posts`; `runAlgoliaUpdate.mjs` | `search:index:check` dry run | Trusted deployment review; never run update locally without authorization |
 | Enzyme/legacy migration | Existing TS implementation/test plus `packages/react/LEGACY.md` | One behavior-equivalent Testing Library migration | Root test/type-check and relevant package/docs checks; remove dependencies only at zero references |
-| Dependency/toolchain | Owning manifests, `yarn.lock`, CI/config | Frozen clean install and affected workspace checks | Full `yarn validate` from a clean checkout, with baseline/regression comparison |
+| Dependency/toolchain | Owning manifests, `yarn.lock`, CI/config | Frozen clean install, `yarn security:scan`, and affected workspace checks | Full `yarn validate` from a clean checkout, with baseline/regression comparison |
 | CI/release configuration | `azure-pipelines.yml`, root scripts, `lerna.json` | Syntax/static review without secrets | Non-production pipeline rehearsal; no registry publication |
 
 ## Secret and publishing guardrails
@@ -151,9 +160,9 @@ user work and do not publish, version, or tag to test the pipeline.
   `search:index:check` for local validation.
 - Package-verification scripts must continue to reject `.npmrc`, `.env`, tests,
   stories, and other non-production files from tarballs.
-- Azure's pinned OSV-Scanner step is a dependency report, not a passing gate,
-  while the lockfile has known findings. Do not make it blocking until a reviewed
-  baseline or remediation policy can distinguish existing debt from regressions;
-  record the current inventory in `MODERNIZATION.md`.
+- `yarn security:scan` is a blocking zero-finding gate and runs first in the
+  release-equivalent sequence. Do not add `continueOnError`, an ignore list, or a
+  baseline exception without a time-bounded security review recorded in
+  `MODERNIZATION.md`.
 - Validation does not authorize versioning, tagging, pushing, mirroring,
   publishing, remote token synchronization, or remote search indexing.
