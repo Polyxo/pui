@@ -52,21 +52,8 @@ steps:
     displayName: "yarn install"
 
   - script: |
-      set -euo pipefail
-      docker run --rm \
-        --volume "$(Build.SourcesDirectory):/src:ro" \
-        --workdir /src \
-        ghcr.io/google/osv-scanner:v2.3.8@sha256:64e86bec6df2466feea5137fc7c78fb3b7c21ec077f014d7130f64810e50676b \
-        scan source --lockfile yarn.lock
-    displayName: "Report dependency vulnerabilities with OSV-Scanner"
-    # The current dependency baseline contains known legacy findings. Keep the
-    # report visible while those are removed in scoped upgrades; make this a
-    # blocking no-new-findings gate once a reviewed baseline policy is added.
-    continueOnError: true
-
-  - script: |
       yarn validate
-    displayName: "Validate lint, types, tests, builds and packages"
+    displayName: "Validate dependency security, lint, types, tests, builds and packages"
     env:
       NEXT_PUBLIC_API: $(NEXT_PUBLIC_API)
       NEXT_PUBLIC_ALGOLIA_APP_ID: $(NEXT_PUBLIC_ALGOLIA_APP_ID)
