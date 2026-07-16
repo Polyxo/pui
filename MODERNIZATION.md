@@ -14,19 +14,19 @@ The work started with uncommitted Sass and `sass-loader` updates in the React an
 
 These results were recorded before modernization changes. A failed command is not treated as a regression unless it worked here.
 
-| Check | Baseline result |
-| --- | --- |
-| `yarn install --frozen-lockfile` | Passed after network access was allowed; peer warnings exposed React 19/React 16-era dependency conflicts. |
-| Root `yarn build` | Did not complete. `icons-core` generated output but its Rollup process stayed alive and was interrupted. |
-| React Jest | Failed: 7 suites passed, 2 suites failed to compile; 46 tests and 3 snapshots passed. Failures were Button event typing and a stale Footer prop. |
-| React `tsc --noEmit` | Failed with 82 diagnostics in 42 files, mixing public source, Storybook, tests, `othersrc`, casing problems, and React 19 type changes. |
-| React package build | Passed in 137.09 s but printed declaration diagnostics. ESM/CJS/UMD were 279,911/193,166/192,087 bytes. |
-| Storybook production build | Failed while Vite parsed `src/components/Checkbox/README.mdx` as a module. |
-| Website type-check | Passed. |
-| Website lint | Failed because Next 16 no longer implements `next lint`. |
-| Website production build | Passed on the network-enabled retry with Sass, MDX/runtime, Prettier plugin, and mismatched Next/MDX warnings. |
-| Icon React build | Passed and generated 81 icons. |
-| Local token generation | Passed. Authenticated `build:tokens` was not run because it synchronizes from Azure and requires `GIT_ACCESS_TOKEN`. |
+| Check                            | Baseline result                                                                                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `yarn install --frozen-lockfile` | Passed after network access was allowed; peer warnings exposed React 19/React 16-era dependency conflicts.                                       |
+| Root `yarn build`                | Did not complete. `icons-core` generated output but its Rollup process stayed alive and was interrupted.                                         |
+| React Jest                       | Failed: 7 suites passed, 2 suites failed to compile; 46 tests and 3 snapshots passed. Failures were Button event typing and a stale Footer prop. |
+| React `tsc --noEmit`             | Failed with 82 diagnostics in 42 files, mixing public source, Storybook, tests, `othersrc`, casing problems, and React 19 type changes.          |
+| React package build              | Passed in 137.09 s but printed declaration diagnostics. ESM/CJS/UMD were 279,911/193,166/192,087 bytes.                                          |
+| Storybook production build       | Failed while Vite parsed `src/components/Checkbox/README.mdx` as a module.                                                                       |
+| Website type-check               | Passed.                                                                                                                                          |
+| Website lint                     | Failed because Next 16 no longer implements `next lint`.                                                                                         |
+| Website production build         | Passed on the network-enabled retry with Sass, MDX/runtime, Prettier plugin, and mismatched Next/MDX warnings.                                   |
+| Icon React build                 | Passed and generated 81 icons.                                                                                                                   |
+| Local token generation           | Passed. Authenticated `build:tokens` was not run because it synchronizes from Azure and requires `GIT_ACCESS_TOKEN`.                             |
 
 Baseline package facts:
 
@@ -138,33 +138,33 @@ The first clean `yarn validate` attempt caught two hidden generated-artifact dep
 
 These clean-check failures were fixed and are not present in the final result. The final detached-worktree `yarn validate` exited 0 in 183.80 seconds.
 
-| Check | Final result |
-| --- | --- |
-| `yarn install --frozen-lockfile` | Passed from a checkout with no `node_modules`; expected legacy peer warnings remain. |
-| `yarn lint` | Passed with 0 errors; 69 React warnings and 24 website warnings remain recorded debt. |
-| `yarn typecheck` | Passed for the shipped React surface and website after deterministic token/demo generation. |
-| `yarn test` | Passed: 11 suites, 78 tests, and 4 snapshots. React 19 reports known Modal DOM-prop warnings. |
-| `yarn build:packages` | Passed, including default tokens, Sass/CSS, icon tooling, 81 React icons, and the Vite React package build. |
-| `yarn build:storybook` | Passed. Sass deprecations, an inactive MDX glob, and Storybook's eval warning remain non-fatal. |
-| `yarn build:website` | Passed in explicit Webpack mode and generated 154 static pages. Sass, legacy content-parser, and sample-code warnings remain non-fatal. |
-| `yarn verify:packages` | Passed: 127 React exports, 81 icon exports, and 282 declaration files; the legacy ESM alias triggers Node's typeless-package warning. |
-| `yarn verify:packed-packages` | Passed from five tarballs installed into an isolated npm consumer with blank npm configs and the public registry. ESM, CommonJS, UMD, Sass, and strict TypeScript consumption passed. |
-| `yarn verify:public-exports` | Passed: the React runtime surface remains exactly 127 baseline exports. |
-| `yarn verify:bundle-size` | Passed all thresholds. Exact results are listed below. |
-| `yarn verify:clean` | Passed after all generators and builds; no tracked generated changes remained. |
+| Check                            | Final result                                                                                                                                                                          |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `yarn install --frozen-lockfile` | Passed from a checkout with no `node_modules`; expected legacy peer warnings remain.                                                                                                  |
+| `yarn lint`                      | Passed with 0 errors; 69 React warnings and 24 website warnings remain recorded debt.                                                                                                 |
+| `yarn typecheck`                 | Passed for the shipped React surface and website after deterministic token/demo generation.                                                                                           |
+| `yarn test`                      | Passed: 11 suites, 78 tests, and 4 snapshots. React 19 reports known Modal DOM-prop warnings.                                                                                         |
+| `yarn build:packages`            | Passed, including default tokens, Sass/CSS, icon tooling, 81 React icons, and the Vite React package build.                                                                           |
+| `yarn build:storybook`           | Passed. Sass deprecations, an inactive MDX glob, and Storybook's eval warning remain non-fatal.                                                                                       |
+| `yarn build:website`             | Passed in explicit Webpack mode and generated 154 static pages. Sass, legacy content-parser, and sample-code warnings remain non-fatal.                                               |
+| `yarn verify:packages`           | Passed: 127 React exports, 81 icon exports, and 282 declaration files; the legacy ESM alias triggers Node's typeless-package warning.                                                 |
+| `yarn verify:packed-packages`    | Passed from five tarballs installed into an isolated npm consumer with blank npm configs and the public registry. ESM, CommonJS, UMD, Sass, and strict TypeScript consumption passed. |
+| `yarn verify:public-exports`     | Passed: the React runtime surface remains exactly 127 baseline exports.                                                                                                               |
+| `yarn verify:bundle-size`        | Passed all thresholds. Exact results are listed below.                                                                                                                                |
+| `yarn verify:clean`              | Passed after all generators and builds; no tracked generated changes remained.                                                                                                        |
 
 Packed output contained 311 files / 2,853,819 bytes for React (baseline: 400 files / about 3.77 MB), 9 / 390,094 for icons-react, 7 / 51,478 for icons-core, 267 / 920,591 for styles, and 26 / 1,054,905 for themes-core.
 
 Final bundle comparison:
 
-| Artifact | Raw bytes (delta) | Gzip bytes (delta) |
-| --- | ---: | ---: |
-| React CommonJS | 130,829 (-62,337) | 39,413 (-18,291) |
-| React ESM | 187,498 (-92,413) | 46,784 (-22,601) |
-| React UMD | 130,136 (-61,951) | 39,368 (-18,180) |
-| Icons ESM | 115,725 (-61,128) | 32,396 (-14,289) |
-| Icons UMD | 122,374 (-59,984) | 33,137 (-13,878) |
-| Styles CSS | 271,808 (+0) | 37,164 (+72) |
+| Artifact       | Raw bytes (delta) | Gzip bytes (delta) |
+| -------------- | ----------------: | -----------------: |
+| React CommonJS | 130,829 (-62,337) |   39,413 (-18,291) |
+| React ESM      | 187,498 (-92,413) |   46,784 (-22,601) |
+| React UMD      | 130,136 (-61,951) |   39,368 (-18,180) |
+| Icons ESM      | 115,725 (-61,128) |   32,396 (-14,289) |
+| Icons UMD      | 122,374 (-59,984) |   33,137 (-13,878) |
+| Styles CSS     |      271,808 (+0) |       37,164 (+72) |
 
 ## Recommended follow-up pull requests recorded 2026-07-15
 
