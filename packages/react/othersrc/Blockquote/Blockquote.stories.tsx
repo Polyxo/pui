@@ -2,7 +2,6 @@ import React from "react";
 import Blockquote from ".";
 import Button from "../Button";
 import { AddOutline } from "@progressiveui/icons-react";
-import blockquoteTwig from "./Blockquote.twig";
 
 const props = {
   children: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.`,
@@ -21,7 +20,6 @@ export default {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    twig: blockquoteTwig,
   },
 };
 

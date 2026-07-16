@@ -4,7 +4,6 @@ import React from "react";
 
 import { Hero, HeroExternal } from ".";
 import Button from "../Button";
-//import heroTwig from './Hero.twig';
 
 export default {
   title: "Components/Content Related/Hero",
@@ -13,7 +12,6 @@ export default {
     componentSubtitle: "Component",
     status: "released",
     //mdx: markdown,
-    //twig: heroTwig,
   },
 };
 

@@ -11,7 +11,6 @@ const meta: Meta<typeof Button> = {
   parameters: {
     componentSubtitle: "Component",
     status: "released",
-    // twig: buttonTwig,
   },
 };
 
