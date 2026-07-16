@@ -81,8 +81,8 @@ describe("Wrapper Component", () => {
   it("applies custom background styles", () => {
     const backgroundStyle = { backgroundColor: "red" };
     render(<Wrapper backgroundStyle={backgroundStyle}>Content</Wrapper>);
-    expect(screen.getByText("Content")?.parentNode).toHaveStyle(
-      backgroundStyle
+    expect(screen.getByText("Content").parentElement).toHaveStyle(
+      "background-color: rgb(255, 0, 0)"
     );
   });
 
